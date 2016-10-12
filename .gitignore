@@ -18,3 +18,8 @@ EssentialStatistics/figure/
 EssentialStatistics/Sweave.sty
 
 EssentialStatistics/Sweavel.sty
+.Rproj.user
+
+*.out
+
+EssentialStatistics/EssentialStatistics-concordance.tex
