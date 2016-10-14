@@ -89,12 +89,21 @@ literate={*}{{\char42}}1
 \null
 
 \begin{fullwidth}
-Course material for the MSc model Research Skills, University of Freiburg (website \href{http://florianhartig.github.io/ResearchSkills/}{here})\\[0.5cm]
+Recommended course material for
+
+\begin{itemize*}
+  \item BSc Biostatistik
+  \item MSc Research Skills (website \href{http://florianhartig.github.io/ResearchSkills/}{here})
+\end{itemize*}
+
+\vspace{0.5cm}
+
 Comments / questions to:\\[0.5cm]
 \href{https://florianhartig.wordpress.com/}{Florian Hartig}\\
-University of Freiburg\\
-Germany
+University of Regensburg\\
+Germany\\[0.5cm]
 
+Issues can be reported via the \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} of the \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} of these lecture notes. 
 
 \end{fullwidth}
 
@@ -266,9 +275,6 @@ A second important case for summary statistics is correlation. Correlation metho
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
-\begin{Soutput}
-Warning: package 'mvtnorm' was built under R version 3.1.3
-\end{Soutput}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
 \caption{Demonstration of possible correlations with the Pearson's correlation coefficients. Note that many datasets that show a clear dependence between variables are assigned a Pearson's correlation coefficient of 0 because the dependence is not linear.}
@@ -379,11 +385,20 @@ There are number of excellent introductions to graphics with R, so that I won't 
 
 \chapter{Inferential statistics}
 
-Inferential statistics is concerned with inference, i.e. drawing conclusions from observations.\marginnote{Statistical inference is drawing conclusions from observations using statistical methods} Inference is not always, but in most cases, connected to the idea of a data-generating model. 
+\marginnote{Statistical inference is drawing conclusions from observations using statistical methods} 
 
-\section{Obtaining a data-generating model}
+Inferential statistics is concerned with inference, i.e. drawing conclusions from observations. An example of an inferential conclusion would be the following: we observe that 15 of 20 subjects that were administered a certain medication (treatment group) improved in their condition, while only 3 of 20 subjects that did not receive medication (control group) improved --> statistical inference: we can say with a certainty of X that the medication has a positive effect.  
 
-Why do we need the idea of a data-generating model to draw conclusions from data?\marginnote{In statistics, one often uses the word treatment to describe manipulations to experimental units. Here, the two types of music would be called treatments. The particular treatment of "doing nothing" is called the control.} Imagine we want to know whether plant growth can be affected by music. We might take two pots, each with a plant, and expose one to classical music and the other to heavy metal. Inevitably, one of them will grow taller, but this could be by chance, as there is always some variation in the growth rates. 
+
+\section{The data-generating model}
+
+\marginnote{Statistical inference is not always, but in most cases, connected to the idea of a data-generating model}
+
+A central concept for many methods in inferential statistics is the idea of the data-generating model. In a nutshell, the data-generating model comprises our fixed assumptions about how our observed data arises (normally distributed noise, linear response). We can then calculate (inference) the unkown quantities (difference between treatment and control) conditional on the our fixed assumptions 
+
+\marginnote{In statistics, one often uses the word treatment to describe manipulations to experimental units. Here, the two types of music would be called treatments. The particular treatment of "doing nothing" is called the control.} 
+
+Imagine we want to know whether plant growth can be affected by music. We might take two pots, each with a plant, and expose one to classical music and the other to heavy metal. Inevitably, one of them will grow taller, but this could be by chance, as there is always some variation in the growth rates. 
 
 Hence, we need more repetitions. Let's say we take a few more pots, 30 in the hypothetical case I show below
 
