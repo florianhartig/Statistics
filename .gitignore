@@ -23,3 +23,12 @@ EssentialStatistics/Sweavel.sty
 *.out
 
 EssentialStatistics/EssentialStatistics-concordance.tex
+*.sty
+EssentialStatistics/flo.bib
+*.toc
+*.gz
+*.pdf
+*.log
+*.blg
+*.Rhistory
+*.aux
