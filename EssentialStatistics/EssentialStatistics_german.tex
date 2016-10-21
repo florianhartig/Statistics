@@ -10,13 +10,14 @@
   \fi
 }
 \makeatother
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 
 \usepackage{Sweavel}
-%\usepackage{german}
 
  %style file is in the same folder.
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{ngerman}
 
 \usepackage{color}
 \usepackage{xcolor}
@@ -78,7 +79,7 @@ literate={*}{{\char42}}1
 
 
 \title{Essentielle\\Statistik}
-\author{Florian Hartig}
+\author{Florian Hartig ä}
 
 
 \begin{document}
@@ -92,7 +93,7 @@ literate={*}{{\char42}}1
 \null
 
 \begin{fullwidth}
-Diese Vorlesung wird empfohlen für Studenten der
+Diese Vorlesung wird empfohlen f"ur Studenten der
 
 \begin{itemize*}
   \item BSc Biostatistik
@@ -103,17 +104,17 @@ Diese Vorlesung wird empfohlen für Studenten der
 
 Anmerkungen / Fragen an:\\[0.5cm]
 \href{https://florianhartig.wordpress.com/}{Florian Hartig}\\
-Universität Regensburg\\
+Universit"at Regensburg\\
 Germany\\[0.5cm]
 
-Probleme oder Unklarheiten bei dieser Vorlesung können mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
+Probleme oder Unklarheiten bei dieser Vorlesung k"onnen mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
 
 \end{fullwidth}
 
 
 \vfill
 \begin{fullwidth}
-Created 2014. Updated 2015. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International' Lizenz.
 \end{fullwidth}
 
 
@@ -124,79 +125,78 @@ Created 2014. Updated 2015. This work is licensed under a Creative Commons Attri
 
 \section{Absichten und vorgesehene Zielgruppe}
 
-Dieses Dokument beinhaltet eine kurze Einführung in die Statistik und in statistische Analysen, welche in elementaren Experimenten und beobachteten Situationen häufig anzutreffen sind ~\ref{sec: further readings}.
+Dieses Dokument beinhaltet eine kurze Einf"uhrung in die Statistik und in statistische Analysen, welche in elementaren Experimenten und beobachteten Situationen h"aufig von N"oten sind~\ref{sec: further readings}.
 
 \section{Themen der Statistik und Datenwissenschaften}
-
-Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Hinführung an die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
+Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Hinf"uhrung an die vier wichtigsten S"aulen der statistischen Methodik f"ur einen quantitativen Wissenschaftler:
 
 \paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, zusammenfassende Statistik} beinhaltet eine zusammenfassende Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
 
-\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parameterschätzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Schätzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als " Datenerzeugender Prozess" bezeichnet, da es Annahmen über einen Prozess beschreibt, die zu einer Variation an Daten führt (systematisch und stochastisch).
+\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parametersch"atzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Sch"atzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`Datenerzeugender Prozess"' bezeichnet, da es Annahmen "uber einen Prozess beschreibt, die zu einer Variation an Daten f"uhrt (systematisch und stochastisch).
 
-\paragraph{Vorhersagende Statistik und maschinelles Lernen:} Vorhersagende Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Gro"se Dateien = umfangreiche Datensätze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr " großen Dateien". Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu köennen ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen über den Datenerzeugenden Prozess.
+\paragraph{Vorhersagende Statistik und maschinelles Lernen:} Vorhersagende Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Gro"se Dateien = umfangreiche Datens"atze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`gro"sen Dateien"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu k"onnen ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen "uber den Datenerzeugenden Prozess.
 
-\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie " Welche Variablen sollten erfasst werden?", " Wie viele Replikate werden benötigt?", " Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?"
+\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden ben"otigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise ver"andert werden?"'
 
 
-\section{Die Umgebung R für statistische Berechnungen}
+\section{Die Umgebung R f"ur statistische Berechnungen}
 
-Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgeführt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgeführt, wofür es eine Reihe von Software-Umgebungen gibt.
+Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgef"uhrt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgef"uhrt, wof"ur es eine Reihe von Software-Umgebungen gibt.
 
-In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einführung in R an sich liegen wird. Bei Bedarf führt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einführung, inklusive Hilfestellungen für die Installation der Software.
+In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einf"uhrung in R an sich liegen wird. Bei Bedarf f"uhrt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einf"uhrung, inklusive Hilfestellungen f"ur die Installation der Software.
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 10cm]{rst_interface.png}
-\caption{Der RStudio Editor ist der wohl beliebteste Editor für R. R ist eine script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in die R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gewöhnt ist, kann es eine Weile dauern, bis man damit warm wird. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu können.}
+\caption{Der RStudio Editor ist der wohl beliebteste Editor f"ur R. R ist eine script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in die R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gew"ohnt ist, kann es eine Weile dauern, bis man damit warm wird. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu k"onnen.}
 \label{fig: Rstudio}
 \end{center}
 \end{figure}
 
 
 
-\chapter{Data, sample and population}
+\chapter{Dateien, Proben und Populationen}
 
-The four following chapters will be devoted to the four types of statistical analysis described in the introduction: descriptive statistics, inferential statistics, predictive statistics and experimental design. Before we go into these topics, however, we need to discuss how data arises, and how we represent it. 
+Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, vohersagende Statistik und experimentelle Planung. 
 
-\section{Sample, population, and the data-generating process}
+\section{Stichproben, Populationen und der Vorgang der Datenerzeugung}
 
-The very reason for doing statistics is that the data that we observe is somehow random. But how does this randomness arise?
+Der eigentliche Grund der f"ur statistische Berechnungen spricht, ist, dass die Daten, die wir erhalten, sehr zuf"allig erscheinen. Aber wie entsteht diese Zuf"alligkeit?
 
-Imagine \marginnote{The population is the set of all observations that you could have made. The sample is the observations that you have actually made.} that we are interested in the average growth rate of trees in Germany during two consecutive years. Ideally, we would measure them all and be done, without having to do statistics. In practice, however, we hardly ever have the resources to do so. We therefore have to make a selection of trees, and infer the growth rate of all trees from that. The statistical term for all the trees is the " population" , and the term for the trees that you have observed is the " sample". Hence, we want to infer properties of the population from a sample.
+Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man h"atte machen k"onnen. Eine Stichprobe ist die Beobachtung, die man tats"achlich gemacht hat.} man w"are in die durchschnittliche Wachstumsrate der B"aumen in Deutschland w"ahrend zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle B"aume per Hand messen und w"are somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuf"uhren. Um die durchschnittliche Rate ermitteln zu k"onnen, muss man nun eine Auswahl an B"aumen treffen und die Wachstumsrate aller dieser gew"ahlten B"aume ermitteln. Der statistische Terminus f"ur alle B"aume in Deutschland lautet "`Population"' und die Bezeichnung der ausgew"ahlten gemessenen B"aume ist "`Stichprobe"'.
 
-The \marginnote{Sampling creates randomness.} population as such is fixed and does not change, but every time we observe a random selection (sample) of the population, we may get elements with slightly different properties. As a concrete example: imagine we have the resources to only sample 1000 trees across Germany. Thus, every time we take a random selection of 1000 trees out of the population, we will get a slightly different average growth rate.
+Die \marginnote{Das W"ahlen von Stichproben erzeugt Zuf"alligkeit.} Population an sich ist definiert und "andert sich nicht, jedoch k"onnte man bei jeder Untersuchung einer zuf"allig gew"ahlten Stichprobe aus der Population andere Teilbereiche mit minimal unterschiedlichen Eigenschaften erhalten. Ein konkretes Beispiel: Man habe nur die M"oglichkeiten um 1000 B"aume in Deutschland zu untersuchen. Man wird bei jeder zuf"allig gew"ahlten Stichprobe mit 1000 B"aumen aus der gesamten Population unterschiedliche durchschnittliche Wachstumsraten erhalten.
 
-The\marginnote{However, not all randomness comes from sampling from a population.} process of sampling from the population does explain how randomness arises in our data. However, a slight issue with this concept is that it does not match very well with more complex random processes. Imagine, for example, that data arises from a person going to randomly selected plots to measure radiation (which varies within minutes due to cloud cover), using a measurement instrument that measures with some random error. Does it really make sense to think of the data arising from sampling from a " population" of possible observations?
+Der\marginnote{Jedoch kommt nicht jede Zuf"alligkeit durch das W"ahlen von Stichproben aus einer Population.} Vorgang des Stichproben-Festlegens aus einer Population erkl"art, wie die Zuf"alligkeit in unseren Daten entsteht. Jedoch gibt es ein kleines Problem bei dieser "Uberlegung, da dies nicht immer zutrifft, wenn man beispielsweise komplexere Zufallsprozesse betrachtet. Man gehe exemplarisch davon aus, dass man Daten z./,B. durch eine Person erh"alt, welche zu zuf"allig ausgew"ahlten Punkten geht und daraus die Ausbreitung ermitteln m"ochte (welche innerhalb von Minuten durch wechselnde Bew"olkung variieren kann). Man verwendet dazu ein Messger"at, das mit zufälliger Abweichung misst. Macht es da wirklich Sinn auf Daten zu vertrauen, die durch das Stichproben-W"ahlen aus einer Gesamtpopulation mit verschiedenst m"oglichen Beobachtungen entstanden sind?
 
-\marginnote{A more modern concept that replaces the " population" is the " data-generating process". The data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes.} A more modern and general concept to describe how data is created is the concept of the " data-generating process", which is pretty self-explenatory: the data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes. It therefore includes the properties of what would classically be called " sampling from a population", but it is broader and includes all other processes that would create systematic and random patterns in our data. In this picture, instead of infering properties of the population from a sample, we would say we want to infer the properties of the data-generating process from a sample of observations created by this process.
+\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verr"at, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zuf"allig gew"ahlten Stichprobe entsteht und dabei zus"atzlich systematische und stochasitsche Prozesse mit einbezieht.  Daf"ur bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenziehung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausma"s, indem es all die anderen Vorg"ange, die systematische und zuf"allige Muster im Datensatz entstehen lassen k"onnen, einschlie"st. In diesem Fall schlussfolgert man nicht die Umst"ande der Population aus der Stichprobe, sondern wir w"urden die Umst"ande des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schlie"sen. 
 
-Whether you think in populations or data-generating processes: the important point to remember from this section is that there are two objects that we have to distinguish well: on the one hand, there is our sample. We may describe it in terms of it's properties (mean, minimum, maximum), but the sample is not the final goal. Ultimately, we want to infer the properties of the population / data-generating process from the sample. We will explain how to do this in the next sections, in particular in the section on inferential statistics. Before we come to that, however, let us talk in a bit more detail about the representation of the sample, i.e. the data that we observe.
+Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zust"ande (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich m"ochte man lediglich die Umst"ande der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im n"achsten Abschnitt der Inferenzstatistik. Davor m"ussen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
 
-\section{Representation and classes of data}
+\section{Darstellung und Datenklassen}
 
-A typical dataset consists of multiple observations of a number of variables (e.g. temperature, precipitation, growth). You can think of this situation as a spreadsheet where the columns are the variables and the rows are the observations. Of course, there are other data structures, but this is the most common one.
+Ein typischer Datensatz beinhaltet meist mehrere Beobachtungen von verschiedensten Variablen (z./,B. Temperatur, Niederschlag, Wachstum). Man kann sich dabei eine Tabelle vorstellen, in der die Spalten die Variablen bezeichnen und die Reihen die unterschiedlichen Beobachtungen. Nat"urlich gibt es auch andere Datenstrukturen, jedoch ist diese die wohl H"aufigste.
 
-Usually, this data will contain one variable that is our focus, meaning that we want to understand how this variable is influenced by other variables.\marginnote{The response variable is the variable for which we try to understand how it responds to other factors.}  We call this variable the ``response variable'' (sometimes also the dependent variable or outcome variable), because we are interested if and how this variable of interest varies (responds, depends) when something else changes. The variables that affect the response could be environmental factors (e.g. temperature), treatments (fertilized vs. non fertilized), or anything else. \marginnote{The predictor variables are those that affect the response.} Those other variables that affect our response are called ``predictor variables'' (synonymous terms are explanatory variables, covariates or independent variables). 
+"Ublicherweise enthalten die Daten eine Variable auf der unser Fokus liegt, d./,h. wir m"ochten herausfinden, wie sehr unsere Variable von den anderen Variablen beeinflusst wird. \marginnote{Die Response-Variable ist die Variable, f"ur die wir herausfinden wollen, inwiefern sie von anderen Faktoren abh"angt.}  Diese Variable wird als ``Response-Variable'' bezeichnet (manchmal auch abh"angige Variable oder Ergebnisvariable), da wir wissen wollen, ob und wie diese untersuchte Variable variiert (Reaktion, Abh"angigkeit) wenn sich etwas anderes ver"andert. Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, k"onnen unter anderem Umweltfaktoren (z./,B. Temperatur) oder Behandlungen (befruchtet vs. unbefruchtet) sein. \marginnote{Einflussvariablen sind solche, die die Response-Variable beeinflussen.} Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, nennt man ``Einflussvariablen'' (Synonyme hierf"ur w"aren erklärende Variablen, Kovariaten oder unabh"angige Variablen). 
 
-The most\marginnote{Multivariate statistics deal with response variables that have several dimensions, such as species composition.} common case is that the response variable is a single variable (e.g. a single number or a categorical outcome), and we will concentrate on this case. However, there are cases when the response has more than one dimension, or when we are interested in the change of several response variables at a time. The analysis of such data is known as multivariate statistics. We will not cover these methods here; find some further links \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{here}.
+In den \marginnote{Multivariate Statistik behandelt Response-Variablen mit mehreren Dimensionen, wie z./,B. Artenzusammensetzungen} meisten F"allen ist unsere Response-Variable eine einzelne Variable (beispielsweise eine einfache Zahl oder ein kategorisches Ergebnis), worauf wir uns nun konzentrieren. Manchmal gibt es jedoch F"alle, bei denen eine Response mehr als nur eine Dimension einnimmt, oder wenn man an einer Ver"anderung von mehreren Variablen gleichzeitig interessiert ist. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Diese Methoden werden jedoch hier nicht weiter aufgef"uhrt, k"onnen aber bei Bedarf unter diesem \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{Link} nachgelesen werden.
 
-Another important distinction is the type of each variables independent of whether we are speaking about the response or the predictor, we distinguish: \marginnote{Variables can be continous, discrete or categorical. Categorical variables can be ordered, unordered, or binary.}
+Weiterhin ist zu beachten, dass man die Variablenart unterscheiden muss; unabh"angig davon, ob wir von Response- oder Einflussvariablen sprechen. Man unterscheidet hier: \marginnote{Variablen k"onnen stetig, unstetig oder kategorisch sein. Kategorische Variablen k"onnen geordnet, ungeordnet oder bin"ar sein.}
 
 \begin{itemize}
-\item Continuous numeric variables (ordered and continous / real), e.g. temperature
-\item Integer numeric variables (ordered, integer). An important special case of those are count data, i.e. 0,1,2,3, ...
-\item Categorical variables (e.g. a fixed set of options such as red, green blue), which can further be divided into
+\item Stetig numerische Variablen (geordnet und stetig / real), z./,B. Temperatur
+\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu z"ahlt der wichtige Spezialfall der Z"ahldaten, z./,B. 0,1,2,3, ...
+\item Kategorische Variablen (z./,B. eine feststehende Auswahlm"oglichkeit wie beispielsweise rot, gr"un, blau), welche dann weiterhin unterteilt werden kann in 
 \begin{itemize}
-\item Unordered categorical variables (Nominal) such as red, green, blue 
-\item Binary (Dichotomous) variables (dead / survived, 0/1)
-\item Ordered categorical variables (small, medium, large)
+\item Ungeordnete kategorische Variablen (Nominal) wie beispielsweise rot, gr"un, blau
+\item Bin"are (dichotome) Variablen (verstorben / "uberlebt, 0/1)
+\item Geordnete kategorische Variablen (klein, mittel, gro"s)
 \end{itemize}
 \end{itemize}
 
-It is important that you record the variables according to their ``nature''.\marginnote{Check that your variables have the right type after reading them in in your statistics software.} And if you use a statistics software, you have to make sure that the type is properly recognized after reading in the data, because many methods treat a variable differently if it is numeric or categorical.
+Hier ist es "au"serst wichtig die Variablen ihren entsprechendem ``Typ'' zuzuweisen.\marginnote{"Uberpr"uft, ob ihr eure Variablen dem richtigen Typ zugewiesen habt, nachdem ihr sie in euer Statistikprogramm eingegeben habt.} Und falls man eine Statistik Software benutzt, muss man sicher stellen, dass der Typ auch korrekt erkannt wurde, nachdem die Daten eingegeben wurden, da viele Methoden die Variablen unterschiedlich behandeln, wenn sie numerischem oder kategrosichem Typs sind.
 
-Experience shows that there is certain tendency of beginners to use categorical variables for things that are actually continuous, e.g. by coding body weight of animals into light, medium, heavy.\marginnote{Don't use categorical variables for things that can also be recorded numerically! } The justification stated is often that this avoids the measurement uncertainty. In short: it doesn't, it just creates more problems. Don't use categorical variables for things that can also be recorded numerically! 
+Aus Erfahrung wei"s man, dass Anf"anger eher dazu neigen, Variablen als kategorisch einzuordnen, obwohl diese eigentlich stetig w"aren, z./,B. beim Einteilen von K"orpergewicht von Tieren in leicht, mittel und schwer.\marginnote{Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden k"onnen!} Eine Rechtfertigung daf"ur ist meist, dass es ein ungewisses Messen vermeidet. Kurz gesagt: Das tut es ganz und gar nicht.Es ruft nur zus"atzliche Probleme hervor. Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden k"onnen!
 
 
 \vspace{1cm}
@@ -205,37 +205,36 @@ Experience shows that there is certain tendency of beginners to use categorical 
     
 \textbf{In R:} 
 
-To represent data, R has a basic data structure, the data.frame. A data frame is like a spread sheet, with columns, and each column can have a different type. Possibilities are
+Um Daten darzustellen besitzt R eine grundlegende Datenstruktur, den Daten-Frame (data.frame). Ein Daten-Frame ist gleichzusetzen mit einer Tabelle mit Spalten, wobei jede Spalte einen anderen Typ haben kann. M"oglichkeiten hier sind
 
 \begin{itemize*}
-  \item integer - what it says
-  \item numeric - continuos number (float)
-  \item boolean - true / false
-  \item factor - normally unordered, i.e. red, green, blue. Can also be made ordered (small, medium, large), although it is then often better to code this as an integer
+  \item ganzzahlig - selbsterkl"arend
+  \item numerisch - kontinuierliche Nummern (Gleitkommazahl)
+  \item boolean (=aussagenlogisch) - true / false
+  \item Faktor - normalerweise ungeordnet, z./,B. rot, gr"un, blau. Kann auch geordnet sein (klein, mittel, gro"s), wobei es hier manchmal ratsam w"are, diese als ganzzahlig einzustufen
 \end{itemize*}
 
+Desweiteren gibt es den Fall der ausbleibenden Beobachtung einer Variablen, auch wenn dies nicht wirklich ein Datentyp ist. Dies wird dann typischerweise mit "NA" betitelt. "Ahnlich, jedoch nicht identisch ist "NaN" (not a number), was bei einer nicht ausf"uhrbaren Rechnung als Ergebnis auftreten kann.
 
-Also, although not really a data type, a common case is the absence of an observation for a particular variable. This is typicall code by "NA". Similar, but not the same is "NaN" (not a number), which occurs as the result of a calculation that cannot be performed. 
+Um Daten als data.frame in R-studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R" im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{http://biometry.github.io/APES/R/R20-DataStructures.html} nachgelesen werden.
 
-To read in data as a data.frame in R-studio, go to the upper right part, "Import Dataset". For more explanation, see "Handling data in R" in Appendix~\ref{HandlingDataInR}, as well as \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{http://biometry.github.io/APES/R/R20-DataStructures.html}
-
-After reading in the data, it is very important that you check that your columns have the right type after reading in the data. To do so, type in str(TheNameOfMyData), and check the type of the columns
+Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu "uberpr"ufen. Dies wird ausgef"uhrt durch str(TheNameOfMyData), womit man kann die Spalten auf ihre Typen checken kann.
 
 \end{mdframed}
 \end{fullwidth}
 
 
-\chapter{Descriptive statstics and visualization}
+\chapter{Deskriptive Statistik und Visualisierung}
 
-Descriptive statistics\marginnote{We will speak about how to create data in the later chapter~\ref{cha: design of experiments} on experimental design.} deals with the summary and visualization of (sampled) data
+Deskriptive statistik\marginnote{Wie man Daten erstellt wird sp"ater noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gew"ahlten) Daten
 
-\section{Summary statistics}
+\section{Zusammenfassende Statistik}
 
-Summary statistics\marginnote{Summary statistics summarize data} are numerical calculations that summarize a dataset. They are used to display the properties of a dataset in a more compact way. 
+Zusammenfassende Statistik\marginnote{Zusammenfassende Statistik fasst die Daten zusammen} sind numerische Berechnungen, die Datens"atze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
 
-\subsection{Summarizing a single continous variable}
+\subsection{Zusammenfassen einer einzelnen stetigen Variable}
 
-A common situation in which we want to use summary statistics are repeated observations of a continous variable. If it helps you, imagine we have measured and remeasured 2000 trees, and we have now a distribution of observed diameter increments (see Fig.\ref{fig: data distribution}).
+Eine "ubliche Situation bei der wir von der zusammenfassenden Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 B"aume gemessen und anschlie"send erneut vermessen. Es ergab sich daraus die Beobachtung einer Verteilung an zunehmendem Durchmesser (siehe Abb.\ref{fig: data distribution}).
 
 \begin{figure}[htbp]
 \begin{center}
@@ -1156,7 +1155,7 @@ The most simple case are variables that contain a **single value** only. Here, t
 - integer (1, 2, 3, 5)
 - numeric (1.1, 2.5, 3.456)
 - factor ("red", "green", "blue")
-- character (ä word", änother word")
+- character ("a word", "another word")
 
 If we have a collection of several atomic types, we speak of a data structure or an object (there is a difference but it doesn't matter here). Important examples of this are: 
 
@@ -1310,7 +1309,7 @@ The latter works like that
 
 \begin{Schunk}
 \begin{Sinput}
-data = read.table("`airquality.txt", header = T)
+data = read.table("airquality.txt", header = T)
 \end{Sinput}
 \end{Schunk}
 
@@ -1888,7 +1887,7 @@ Result plotted
 
 \begin{Schunk}
 \begin{Sinput}
-plot("surv ~ age, main=only age term")
+plot(surv ~ age, main="only age term")
 \end{Sinput}
 \begin{Soutput}
 Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
