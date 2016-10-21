@@ -1,24 +1,8 @@
-\documentclass[a4paper,twoside]{tufte-book}\usepackage[]{graphicx}\usepackage[]{color}
-%% maxwidth is the original width if it is less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
-\makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
+\documentclass[a4paper,twoside]{tufte-book} %style file is in the same folder.
 
-\usepackage{Sweavel}
-
- %style file is in the same folder.
-
-%\usepackage{ngerman}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-
+\usepackage{german}
 
 \usepackage{color}
 \usepackage{xcolor}
@@ -73,14 +57,20 @@ literate={*}{{\char42}}1
 
 
 
+<<setup, cache=FALSE, include=FALSE>>=
+library(knitr)
+opts_knit$set(tidy = T, fig=TRUE, fig.height = 4, fig.width=4, fig.align='center')
+render_listings()
+@
 
-
-
+<<echo=F, results='hide'>>=
+set.seed(123)
+@
 
 
 
 \title{Essentielle\\Statistik}
-\author{Florian Hartig Ã¤}
+\author{Florian Hartig}
 
 
 \begin{document}
@@ -94,7 +84,7 @@ literate={*}{{\char42}}1
 \null
 
 \begin{fullwidth}
-Diese Vorlesung wird empfohlen f"ur Studenten der
+Diese Vorlesung wird empfohlen für Studenten der
 
 \begin{itemize*}
   \item BSc Biostatistik
@@ -105,17 +95,17 @@ Diese Vorlesung wird empfohlen f"ur Studenten der
 
 Anmerkungen / Fragen an:\\[0.5cm]
 \href{https://florianhartig.wordpress.com/}{Florian Hartig}\\
-Universit"at Regensburg\\
+Universität Regensburg\\
 Germany\\[0.5cm]
 
-Probleme oder Unklarheiten bei dieser Vorlesung k"onnen mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
+Probleme oder Unklarheiten bei dieser Vorlesung können mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
 
 \end{fullwidth}
 
 
 \vfill
 \begin{fullwidth}
-Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International' Lizenz.
+Created 2014. Updated 2015. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 \end{fullwidth}
 
 
@@ -126,78 +116,78 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 
 \section{Absichten und vorgesehene Zielgruppe}
 
-Dieses Dokument beinhaltet eine kurze Einf"uhrung in die Statistik und in statistische Analysen, welche in elementaren Experimenten und beobachteten Situationen h"aufig von N"oten sind~\ref{sec: further readings}.
+Dieses Dokument beinhaltet eine kurze Einführung in die Statistik und in statistische Analysen, welche in elementaren Experimenten und beobachteten Situationen h"aufig anzutreffen sind~\ref{sec: further readings}.
 
 \section{Themen der Statistik und Datenwissenschaften}
-Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Hinf"uhrung an die vier wichtigsten S"aulen der statistischen Methodik f"ur einen quantitativen Wissenschaftler:
+Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Hinführung an die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
 
 \paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, zusammenfassende Statistik} beinhaltet eine zusammenfassende Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
 
-\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parametersch"atzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Sch"atzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`Datenerzeugender Prozess"' bezeichnet, da es Annahmen "uber einen Prozess beschreibt, die zu einer Variation an Daten f"uhrt (systematisch und stochastisch).
+\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parameterschätzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Schätzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`Datenerzeugender Prozess"' bezeichnet, da es Annahmen über einen Prozess beschreibt, die zu einer Variation an Daten führt (systematisch und stochastisch).
 
-\paragraph{Vorhersagende Statistik und maschinelles Lernen:} Vorhersagende Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Gro"se Dateien = umfangreiche Datens"atze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`gro"sen Dateien"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu k"onnen ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen "uber den Datenerzeugenden Prozess.
+\paragraph{Vorhersagende Statistik und maschinelles Lernen:} Vorhersagende Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Große Dateien = umfangreiche Datensätze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`großen Dateien"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu köennen ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen über den Datenerzeugenden Prozess.
 
-\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden ben"otigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise ver"andert werden?"'
+\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden benötigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?"'
 
 
-\section{Die Umgebung R f"ur statistische Berechnungen}
+\section{Die Umgebung R für statistische Berechnungen}
 
-Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgef"uhrt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgef"uhrt, wof"ur es eine Reihe von Software-Umgebungen gibt.
+Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgeführt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgeführt, wofür es eine Reihe von Software-Umgebungen gibt.
 
-In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einf"uhrung in R an sich liegen wird. Bei Bedarf f"uhrt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einf"uhrung, inklusive Hilfestellungen f"ur die Installation der Software.
+In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einführung in R an sich liegen wird. Bei Bedarf führt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einführung, inklusive Hilfestellungen für die Installation der Software.
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 10cm]{rst_interface.png}
-\caption{Der RStudio Editor ist der wohl beliebteste Editor f"ur R. R ist eine script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in die R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gew"ohnt ist, kann es eine Weile dauern, bis man damit warm wird. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu k"onnen.}
+\caption{Der RStudio Editor ist der wohl beliebteste Editor für R. R ist eine script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in die R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gewöhnt ist, kann es eine Weile dauern, bis man damit warm wird. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu können.}
 \label{fig: Rstudio}
 \end{center}
 \end{figure}
 
 
 
-\chapter{Dateien, Proben und Populationen}
+\chapter{Data, sample and population}
 
-Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, vohersagende Statistik und experimentelle Planung. 
+The four following chapters will be devoted to the four types of statistical analysis described in the introduction: descriptive statistics, inferential statistics, predictive statistics and experimental design. Before we go into these topics, however, we need to discuss how data arises, and how we represent it. 
 
-\section{Stichproben, Populationen und der Vorgang der Datenerzeugung}
+\section{Sample, population, and the data-generating process}
 
-Der eigentliche Grund der f"ur statistische Berechnungen spricht, ist, dass die Daten, die wir erhalten, sehr zuf"allig erscheinen. Aber wie entsteht diese ZufÃ¤lligkeit?
+The very reason for doing statistics is that the data that we observe is somehow random. But how does this randomness arise?
 
-Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man hÃ¤tte machen k"onnen. Eine Stichprobe ist die Beobachtung, die man tatsÃ¤chlich gemacht hat.} man wÃ¤re in die durchschnittliche Wachstumsrate der BÃ¤umen in Deutschland wÃ¤hrend zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle BÃ¤ume per Hand messen und w"are somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuf"uhren. Um die durchschnittliche Rate ermitteln zu k"onnen, muss man nun eine Auswahl an BÃ¤umen treffen und die Wachstumsrate aller dieser gew"ahlten B"aume ermitteln. Der statistische Terminus f"ur alle BÃ¤ume in Deutschland lautet "`Population"' und die Bezeichnung der ausgew"ahlten gemessenen B"aume ist "`Stichprobe"'.
+Imagine \marginnote{The population is the set of all observations that you could have made. The sample is the observations that you have actually made.} that we are interested in the average growth rate of trees in Germany during two consecutive years. Ideally, we would measure them all and be done, without having to do statistics. In practice, however, we hardly ever have the resources to do so. We therefore have to make a selection of trees, and infer the growth rate of all trees from that. The statistical term for all the trees is the "population", and the term for the trees that you have observed is the "sample". Hence, we want to infer properties of the population from a sample.
 
-Die \marginnote{Das W"ahlen von Stichproben erzeugt Zuf"alligkeit.} Population an sich ist definiert und "andert sich nicht, jedoch k"onnte man bei jeder Untersuchung einer zuf"allig gew"ahlten Stichprobe aus der Population andere Teilbereiche mit minimal unterschiedlichen Eigenschaften erhalten. Ein konkretes Beispiel: Man habe nur die M"oglichkeiten um 1000 B"aume in Deutschland zu untersuchen. Man wird bei jeder zuf"allig gew"ahlten Stichprobe mit 1000 B"aumen aus der gesamten Population unterschiedliche durchschnittliche Wachstumsraten erhalten.
+The \marginnote{Sampling creates randomness.} population as such is fixed and does not change, but every time we observe a random selection (sample) of the population, we may get elements with slightly different properties. As a concrete example: imagine we have the resources to only sample 1000 trees across Germany. Thus, every time we take a random selection of 1000 trees out of the population, we will get a slightly different average growth rate.
 
-Der\marginnote{Jedoch kommt nicht jede Zuf"alligkeit durch das W"ahlen von Stichproben aus einer Population.} Vorgang des Stichproben-Festlegens aus einer Population erkl"art, wie die Zuf"alligkeit in unseren Daten entsteht. Jedoch gibt es ein kleines Problem bei dieser "Uberlegung, da dies nicht immer zutrifft, wenn man beispielsweise komplexere Zufallsprozesse betrachtet. Man gehe exemplarisch davon aus, dass man Daten z./,B. durch eine Person erh"alt, welche zu zuf"allig ausgew"ahlten Punkten geht und daraus die Ausbreitung ermitteln m"ochte (welche innerhalb von Minuten durch wechselnde Bew"olkung variieren kann). Man verwendet dazu ein Messger"at, das mit zufÃ¤lliger Abweichung misst. Macht es da wirklich Sinn auf Daten zu vertrauen, die durch das Stichproben-W"ahlen aus einer Gesamtpopulation mit verschiedenst m"oglichen Beobachtungen entstanden sind?
+The\marginnote{However, not all randomness comes from sampling from a population.} process of sampling from the population does explain how randomness arises in our data. However, a slight issue with this concept is that it does not match very well with more complex random processes. Imagine, for example, that data arises from a person going to randomly selected plots to measure radiation (which varies within minutes due to cloud cover), using a measurement instrument that measures with some random error. Does it really make sense to think of the data arising from sampling from a "population" of possible observations?
 
-\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verr"at, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zuf"allig gew"ahlten Stichprobe entsteht und dabei zus"atzlich systematische und stochasitsche Prozesse mit einbezieht.}  Daf"ur bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenziehung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausma"s, indem es all die anderen Vorg"ange, die systematische und zuf"allige Muster im Datensatz entstehen lassen k"onnen, einschlie"st. In diesem Fall schlussfolgert man nicht die Umst"ande der Population aus der Stichprobe, sondern wir w"urden die Umst"ande des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schlie"sen. 
+\marginnote{A more modern concept that replaces the "population" is the "data-generating process". The data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes.} A more modern and general concept to describe how data is created is the concept of the "data-generating process", which is pretty self-explenatory: the data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes. It therefore includes the properties of what would classically be called "sampling from a population", but it is broader and includes all other processes that would create systematic and random patterns in our data. In this picture, instead of infering properties of the population from a sample, we would say we want to infer the properties of the data-generating process from a sample of observations created by this process.
 
-Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zust"ande (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich m"ochte man lediglich die Umst"ande der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im n"achsten Abschnitt der Inferenzstatistik. Davor m"ussen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
+Whether you think in populations or data-generating processes: the important point to remember from this section is that there are two objects that we have to distinguish well: on the one hand, there is our sample. We may describe it in terms of it's properties (mean, minimum, maximum), but the sample is not the final goal. Ultimately, we want to infer the properties of the population / data-generating process from the sample. We will explain how to do this in the next sections, in particular in the section on inferential statistics. Before we come to that, however, let us talk in a bit more detail about the representation of the sample, i.e. the data that we observe.
 
-\section{Darstellung und Datenklassen}
+\section{Representation and classes of data}
 
-Ein typischer Datensatz beinhaltet meist mehrere Beobachtungen von verschiedensten Variablen (z./,B. Temperatur, Niederschlag, Wachstum). Man kann sich dabei eine Tabelle vorstellen, in der die Spalten die Variablen bezeichnen und die Reihen die unterschiedlichen Beobachtungen. Nat"urlich gibt es auch andere Datenstrukturen, jedoch ist diese die wohl H"aufigste.
+A typical dataset consists of multiple observations of a number of variables (e.g. temperature, precipitation, growth). You can think of this situation as a spreadsheet where the columns are the variables and the rows are the observations. Of course, there are other data structures, but this is the most common one.
 
-"Ublicherweise enthalten die Daten eine Variable auf der unser Fokus liegt, d./,h. wir m"ochten herausfinden, wie sehr unsere Variable von den anderen Variablen beeinflusst wird. \marginnote{Die Response-Variable ist die Variable, f"ur die wir herausfinden wollen, inwiefern sie von anderen Faktoren abh"angt.}  Diese Variable wird als ``Response-Variable'' bezeichnet (manchmal auch abh"angige Variable oder Ergebnisvariable), da wir wissen wollen, ob und wie diese untersuchte Variable variiert (Reaktion, Abh"angigkeit) wenn sich etwas anderes ver"andert. Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, k"onnen unter anderem Umweltfaktoren (z./,B. Temperatur) oder Behandlungen (befruchtet vs. unbefruchtet) sein. \marginnote{Einflussvariablen sind solche, die die Response-Variable beeinflussen.} Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, nennt man ``Einflussvariablen'' (Synonyme hierf"ur w"aren erklÃ¤rende Variablen, Kovariaten oder unabh"angige Variablen). 
+Usually, this data will contain one variable that is our focus, meaning that we want to understand how this variable is influenced by other variables.\marginnote{The response variable is the variable for which we try to understand how it responds to other factors.}  We call this variable the ``response variable'' (sometimes also the dependent variable or outcome variable), because we are interested if and how this variable of interest varies (responds, depends) when something else changes. The variables that affect the response could be environmental factors (e.g. temperature), treatments (fertilized vs. non fertilized), or anything else. \marginnote{The predictor variables are those that affect the response.} Those other variables that affect our response are called ``predictor variables'' (synonymous terms are explanatory variables, covariates or independent variables). 
 
-In den \marginnote{Multivariate Statistik behandelt Response-Variablen mit mehreren Dimensionen, wie z./,B. Artenzusammensetzungen} meisten F"allen ist unsere Response-Variable eine einzelne Variable (beispielsweise eine einfache Zahl oder ein kategorisches Ergebnis), worauf wir uns nun konzentrieren. Manchmal gibt es jedoch F"alle, bei denen eine Response mehr als nur eine Dimension einnimmt, oder wenn man an einer Ver"anderung von mehreren Variablen gleichzeitig interessiert ist. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Diese Methoden werden jedoch hier nicht weiter aufgef"uhrt, k"onnen aber bei Bedarf unter diesem \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{Link} nachgelesen werden.
+The most\marginnote{Multivariate statistics deal with response variables that have several dimensions, such as species composition.} common case is that the response variable is a single variable (e.g. a single number or a categorical outcome), and we will concentrate on this case. However, there are cases when the response has more than one dimension, or when we are interested in the change of several response variables at a time. The analysis of such data is known as multivariate statistics. We will not cover these methods here; find some further links \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{here}.
 
-Weiterhin ist zu beachten, dass man die Variablenart unterscheiden muss; unabh"angig davon, ob wir von Response- oder Einflussvariablen sprechen. Man unterscheidet hier: \marginnote{Variablen k"onnen stetig, unstetig oder kategorisch sein. Kategorische Variablen k"onnen geordnet, ungeordnet oder bin"ar sein.}
+Another important distinction is the type of each variables independent of whether we are speaking about the response or the predictor, we distinguish: \marginnote{Variables can be continous, discrete or categorical. Categorical variables can be ordered, unordered, or binary.}
 
 \begin{itemize}
-\item Stetig numerische Variablen (geordnet und stetig / real), z./,B. Temperatur
-\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu z"ahlt der wichtige Spezialfall der Z"ahldaten, z./,B. 0,1,2,3, ...
-\item Kategorische Variablen (z./,B. eine feststehende Auswahlm"oglichkeit wie beispielsweise rot, gr"un, blau), welche dann weiterhin unterteilt werden kann in 
+\item Continuous numeric variables (ordered and continous / real), e.g. temperature
+\item Integer numeric variables (ordered, integer). An important special case of those are count data, i.e. 0,1,2,3, ...
+\item Categorical variables (e.g. a fixed set of options such as red, green blue), which can further be divided into
 \begin{itemize}
-\item Ungeordnete kategorische Variablen (Nominal) wie beispielsweise rot, gr"un, blau
-\item Bin"are (dichotome) Variablen (verstorben / "uberlebt, 0/1)
-\item Geordnete kategorische Variablen (klein, mittel, gro"s)
+\item Unordered categorical variables (Nominal) such as red, green, blue 
+\item Binary (Dichotomous) variables (dead / survived, 0/1)
+\item Ordered categorical variables (small, medium, large)
 \end{itemize}
 \end{itemize}
 
-Hier ist es "au"serst wichtig die Variablen ihren entsprechendem ``Typ'' zuzuweisen.\marginnote{"Uberpr"uft, ob ihr eure Variablen dem richtigen Typ zugewiesen habt, nachdem ihr sie in euer Statistikprogramm eingegeben habt.} Und falls man eine Statistik Software benutzt, muss man sicher stellen, dass der Typ auch korrekt erkannt wurde, nachdem die Daten eingegeben wurden, da viele Methoden die Variablen unterschiedlich behandeln, wenn sie numerischem oder kategrosichem Typs sind.
+It is important that you record the variables according to their ``nature''.\marginnote{Check that your variables have the right type after reading them in in your statistics software.} And if you use a statistics software, you have to make sure that the type is properly recognized after reading in the data, because many methods treat a variable differently if it is numeric or categorical.
 
-Aus Erfahrung wei"s man, dass Anf"anger eher dazu neigen, Variablen als kategorisch einzuordnen, obwohl diese eigentlich stetig w"aren, z./,B. beim Einteilen von K"orpergewicht von Tieren in leicht, mittel und schwer.\marginnote{Verwende nie kategorische Variablen fÃ¼r Dinge, die ebenso als numerisch eingestuft werden k"onnen!} Eine Rechtfertigung daf"ur ist meist, dass es ein ungewisses Messen vermeidet. Kurz gesagt: Das tut es ganz und gar nicht.Es ruft nur zus"atzliche Probleme hervor. Verwende nie kategorische Variablen fÃ¼r Dinge, die ebenso als numerisch eingestuft werden k"onnen!
+Experience shows that there is certain tendency of beginners to use categorical variables for things that are actually continuous, e.g. by coding body weight of animals into light, medium, heavy.\marginnote{Don't use categorical variables for things that can also be recorded numerically! } The justification stated is often that this avoids the measurement uncertainty. In short: it doesn't, it just creates more problems. Don't use categorical variables for things that can also be recorded numerically! 
 
 
 \vspace{1cm}
@@ -206,42 +196,56 @@ Aus Erfahrung wei"s man, dass Anf"anger eher dazu neigen, Variablen als kategori
     
 \textbf{In R:} 
 
-Um Daten darzustellen besitzt R eine grundlegende Datenstruktur, den Daten-Frame (data.frame). Ein Daten-Frame ist gleichzusetzen mit einer Tabelle mit Spalten, wobei jede Spalte einen anderen Typ haben kann. M"oglichkeiten hier sind
+To represent data, R has a basic data structure, the data.frame. A data frame is like a spread sheet, with columns, and each column can have a different type. Possibilities are
 
 \begin{itemize*}
-  \item ganzzahlig - selbsterkl"arend
-  \item numerisch - kontinuierliche Nummern (Gleitkommazahl)
-  \item boolean (=aussagenlogisch) - true / false
-  \item Faktor - normalerweise ungeordnet, z./,B. rot, gr"un, blau. Kann auch geordnet sein (klein, mittel, gro"s), wobei es hier manchmal ratsam w"are, diese als ganzzahlig einzustufen
+  \item integer - what it says
+  \item numeric - continuos number (float)
+  \item boolean - true / false
+  \item factor - normally unordered, i.e. red, green, blue. Can also be made ordered (small, medium, large), although it is then often better to code this as an integer
 \end{itemize*}
 
-Desweiteren gibt es den Fall der ausbleibenden Beobachtung einer Variablen, auch wenn dies nicht wirklich ein Datentyp ist. Dies wird dann typischerweise mit "NA" betitelt. "Ahnlich, jedoch nicht identisch ist "NaN" (not a number), was bei einer nicht ausf"uhrbaren Rechnung als Ergebnis auftreten kann.
+Also, although not really a data type, a common case is the absence of an observation for a particular variable. This is typicall code by "NA". Similar, but not the same is "NaN" (not a number), which occurs as the result of a calculation that cannot be performed. 
 
-Um Daten als data.frame in R-studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R" im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{http://biometry.github.io/APES/R/R20-DataStructures.html} nachgelesen werden.
+To read in data as a data.frame in R-studio, go to the upper right part, "Import Dataset". For more explanation, see "Handling data in R" in Appendix~\ref{HandlingDataInR}, as well as \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{http://biometry.github.io/APES/R/R20-DataStructures.html}
 
-Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu "uberpr"ufen. Dies wird ausgef"uhrt durch str(TheNameOfMyData), womit man kann die Spalten auf ihre Typen checken kann.
+After reading in the data, it is very important that you check that your columns have the right type after reading in the data. To do so, type in str(TheNameOfMyData), and check the type of the columns
 
 \end{mdframed}
 \end{fullwidth}
 
 
-\chapter{Deskriptive Statistik und Visualisierung}
+\chapter{Descriptive statstics and visualization}
 
-Deskriptive statistik\marginnote{Wie man Daten erstellt wird sp"ater noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gew"ahlten) Daten
+Descriptive statistics\marginnote{We will speak about how to create data in the later chapter~\ref{cha: design of experiments} on experimental design.} deals with the summary and visualization of (sampled) data
 
-\section{Zusammenfassende Statistik}
+\section{Summary statistics}
 
-Zusammenfassende Statistik\marginnote{Zusammenfassende Statistik fasst die Daten zusammen} sind numerische Berechnungen, die Datens"atze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
+Summary statistics\marginnote{Summary statistics summarize data} are numerical calculations that summarize a dataset. They are used to display the properties of a dataset in a more compact way. 
 
-\subsection{Zusammenfassen einer einzelnen stetigen Variable}
+\subsection{Summarizing a single continous variable}
 
-Eine "ubliche Situation bei der wir von der zusammenfassenden Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 B"aume gemessen und anschlie"send erneut vermessen. Es ergab sich daraus die Beobachtung einer Verteilung an zunehmendem Durchmesser (siehe Abb.\ref{fig: data distribution}).
+A common situation in which we want to use summary statistics are repeated observations of a continous variable. If it helps you, imagine we have measured and remeasured 2000 trees, and we have now a distribution of observed diameter increments (see Fig.\ref{fig: data distribution}).
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo=FALSE>>=
+seed = (123)
+parameter = seq(-2,8,len=500)
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} \end{Schunk}
+mix <- rbinom(2000,1,0.5)
+samples = mix * rnorm(2000, mean = 3) + (1-mix)*rnorm(2000, mean = 0.5, sd=0.5)
+
+distr = (dnorm(parameter, mean = 3) + dnorm(parameter, mean = 0.5, sd=0.5)) /2
+
+plot(parameter,distr, type = "l", ylab = "Frequency", xlab = "Diameter growth [cm]", main = "Tree diameter growth data", col = "red", lwd = 2, ylim = c(0,0.5), lty = 2)
+hist(samples, breaks = 40, add = T,freq = F, col = "#99999930")
+# polygon(parameter, distr, border=NA, col="darksalmon")
+
+MLEEstimate <- parameter[which.max(distr)]
+# abline(v=MLEEstimate, col = "red")
+#text(3.1,0.4, "Mode", col = "red", cex = 1.5)
+@
 \caption{A distribution of observed values diameter increment values (gray bars). We assume (in this case I know it) that these values come from some true distribution (population or data-generating process) that I plotted here in dashed red color. If we would draw more and more data, the gray bars would approach the true distribution}
 \label{fig: data distribution}
 \end{center}
@@ -278,21 +282,81 @@ A second important case for summary statistics is correlation. Correlation metho
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-\begin{Soutput}
-Error in library(mvtnorm): there is no package called 'mvtnorm'
-\end{Soutput}
-\begin{Soutput}
-Error: konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
-\begin{Soutput}
-Error in RotNormal(200, c(0, pi/12, pi/6, pi/4, pi/2 - pi/6, pi/2 - pi/12, : konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
-\begin{Soutput}
-Error in Others(800): konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
+<<echo = F>>=
+# From https://en.wikipedia.org/wiki/File:Correlation_examples2.svg
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
+#Title: An example of the correlation of x and y for various distributions of (x,y) pairs
+#Tags: Mathematics; Statistics; Correlation
+#Author: Denis Boigelot
+#Packets needed : mvtnorm (rmvnorm), RSVGTipsDevice (devSVGTips)
+#How to use: output()
+#
+#This is an translated version in R of an Matematica 6 code by Imagecreator.
+
+library(mvtnorm)
+
+MyPlot <- function(xy, xlim = c(-4, 4), ylim = c(-4, 4), eps = 1e-15) {
+   title = round(cor(xy[,1], xy[,2]), 1)
+   if (sd(xy[,2]) < eps) title = "" # corr. coeff. is undefined
+   plot(xy, main = title, xlab = "", ylab = "",
+        col = "darkblue", pch = 16, cex = 0.2,
+        xaxt = "n", yaxt = "n", bty = "n",
+        xlim = xlim, ylim = ylim)
+}
+
+MvNormal <- function(n = 1000, cor = 0.8) {
+   for (i in cor) {
+      sd = matrix(c(1, i, i, 1), ncol = 2)
+      x = rmvnorm(n, c(0, 0), sd)
+      MyPlot(x)
+   }
+}
+
+rotation <- function(t, X) return(X %*% matrix(c(cos(t), sin(t), -sin(t), cos(t)), ncol = 2))
+
+RotNormal <- function(n = 1000, t = pi/2) {
+   sd = matrix(c(1, 1, 1, 1), ncol = 2)
+   x = rmvnorm(n, c(0, 0), sd)
+   for (i in t)
+      MyPlot(rotation(i, x))
+}
+
+Others <- function(n = 1000) {
+   x = runif(n, -1, 1)
+   y = 4 * (x^2 - 1/2)^2 + runif(n, -1, 1)/3
+   MyPlot(cbind(x,y), xlim = c(-1, 1), ylim = c(-1/3, 1+1/3))
+
+   y = runif(n, -1, 1)
+   xy = rotation(-pi/8, cbind(x,y))
+   lim = sqrt(2+sqrt(2)) / sqrt(2)
+   MyPlot(xy, xlim = c(-lim, lim), ylim = c(-lim, lim))
+
+   xy = rotation(-pi/8, xy)
+   MyPlot(xy, xlim = c(-sqrt(2), sqrt(2)), ylim = c(-sqrt(2), sqrt(2)))
+   
+   y = 2*x^2 + runif(n, -1, 1)
+   MyPlot(cbind(x,y), xlim = c(-1, 1), ylim = c(-1, 3))
+
+   y = (x^2 + runif(n, 0, 1/2)) * sample(seq(-1, 1, 2), n, replace = TRUE)
+   MyPlot(cbind(x,y), xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5))
+
+   y = cos(x*pi) + rnorm(n, 0, 1/8)
+   x = sin(x*pi) + rnorm(n, 0, 1/8)
+   MyPlot(cbind(x,y), xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5))
+
+   xy1 = rmvnorm(n/4, c( 3,  3))
+   xy2 = rmvnorm(n/4, c(-3,  3))
+   xy3 = rmvnorm(n/4, c(-3, -3))
+   xy4 = rmvnorm(n/4, c( 3, -3))
+   MyPlot(rbind(xy1, xy2, xy3, xy4), xlim = c(-3-4, 3+4), ylim = c(-3-4, 3+4))
+}
+
+ par(mfrow = c(3, 7), oma = c(0,0,0,0), mar=c(2,2,2,0))
+ MvNormal(800, c(1.0, 0.8, 0.4, 0.0, -0.4, -0.8, -1.0));
+ RotNormal(200, c(0, pi/12, pi/6, pi/4, pi/2-pi/6, pi/2-pi/12, pi/2));
+ Others(800)
+
+@
 \caption{Demonstration of possible correlations with the Pearson's correlation coefficients. Note that many datasets that show a clear dependence between variables are assigned a Pearson's correlation coefficient of 0 because the dependence is not linear.}
 \label{fig: correlation}
 \end{center}
@@ -302,17 +366,9 @@ Error in Others(800): konnte Funktion "rmvnorm" nicht finden
 
 Finally,\marginnote{This dataset from Berkeley is a famous example for the Simpson's paradox. Read up on wikipedia about this important statistical trap.} a classic concept for summarizing binary or categorical data are contingency tables. Here an example from a classical dataset available in R on aggregate data on applicants to graduate school at Berkeley for the six largest departments in 1973 classified by admission and sex. I show only the first department.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 UCBAdmissions[,,1]
-\end{Sinput}
-\begin{Soutput}
-          Gender
-Admit      Male Female
-  Admitted  512     89
-  Rejected  313     19
-\end{Soutput}
-\end{Schunk}
+@
 
 
 \vspace{1cm}
@@ -335,9 +391,36 @@ Summary statistics are useful, but also dangerous. A famous example is Anscombe'
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo = F, results="hide">>=
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} \end{Schunk}
+require(stats); require(graphics)
+##-- now some "magic" to do the 4 regressions in a loop:
+ff <- y ~ x
+mods <- setNames(as.list(1:4), paste0("lm", 1:4))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  ## or   ff[[2]] <- as.name(paste0("y", i))
+  ##      ff[[3]] <- as.name(paste0("x", i))
+  mods[[i]] <- lmi <- lm(ff, data = anscombe)
+  print(anova(lmi))
+}
+
+## See how close they are (numerically!)
+sapply(mods, coef)
+lapply(mods, function(fm) coef(summary(fm)))
+
+## Now, do what you should have done in the first place: PLOTS
+op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
+       xlim = c(3, 19), ylim = c(3, 13))
+  abline(mods[[i]], col = "blue")
+}
+mtext("Anscombe's 4 Regression data sets", outer = TRUE, cex = 1.5)
+par(op)
+
+@
 \caption{Anscombe's Quartet, a hypothetical dataset of four observations that are identical in classical summary statistics such as mean, variance, correlation, regression line, etc.}
 \label{fig: Anscombes Quartet}
 \end{center}
@@ -360,9 +443,22 @@ The principle\marginnote{Examples of distorting graphics \href{https://en.wikipe
 \begin{center}
 
 \setkeys{Gin}{width=\textwidth}
-\begin{Schunk}
+<<echo = FALSE>>=
+par(mfrow = c(2,2))
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-6-1} \end{Schunk}
+plot(co2, ylab = expression("Atmospheric concentration of CO"[2]),
+     las = 1)
+title(main = "a) Athmospheric CO2 Hawai")
+
+plot(airquality$Temp, airquality$Ozone, xlab = "Temperature", ylab = "Ozone", main = "b) Temperature vs. Ozone")
+
+barplot(table(mtcars$gear, mtcars$cyl), beside=T, xlab = "cylinders", main = "c) Gears / cylinders of cars")
+legend("top", legend = c("3 gears", "4 gears", "5 gears"), pch = 15, col = gray.colors(3, end = 0.7), bg = "#FFFFFF66", bty = "n")
+
+boxplot(weight ~ group, data = PlantGrowth, main = "d) Plant Growth",
+        ylab = "Dried weight of plants", col = "lightgray",
+        notch = F, names = c("control", "classical music", "heavy metal"), las = 1)
+@
 \caption{Four typical plot types, from top left to bottom right: a) A line plot to represent continous measurements of one variable; b) a scatter plot to represent the relationship between two continous variables; c) a bar plot to represent measurements in discrete groups / variables; d) a box plot to represent repeated continous measurements in discrete groups.}
 \label{fig: exaple plots}
 \end{center}
@@ -420,9 +516,13 @@ Hence, we need more repetitions. Let's say we take a few more pots, 30 in the hy
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo = FALSE>>=
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-1} \end{Schunk}
+boxplot(weight ~ group, data = PlantGrowth, main = "Plant Growth",
+        ylab = "Dried weight of plants", col = "lightgray",
+        notch = F, names = c("control", "classical music", "heavy metal"))
+
+@
 \caption{Groth measurements under three different treatments}
 \label{fig: plant growth music}
 \end{center}
@@ -494,40 +594,23 @@ A t-test tests for differences between the means of two normally distributed sam
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-8-1} \end{Schunk}
+<< echo = F>>=
+boxplot(extra ~ group, data = sleep, col = "lightgrey", xlab = "treatment", ylab = "Extra hours sleep")
+@
 \caption{Data from \citet{Student-probableerrormean-1908}}
 \label{fig: Student Sleep Data}
 \end{center}
 \end{figure}
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=FALSE>>=
 ## Traditional interface
 with(sleep, t.test(sleep$extra[sleep$group == 1], extra[group == 2]))
-\end{Sinput}
-\end{Schunk}
+@
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## Formula interface
 t.test(extra ~ group, data = sleep)
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  extra by group
-t = -1.8608, df = 17.776, p-value = 0.07939
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -3.3654832  0.2054832
-sample estimates:
-mean in group 1 mean in group 2 
-           0.75            2.33 
-\end{Soutput}
-\end{Schunk}
+@
 
 Note that the output provides a p-value (H0 = no difference), but also the maximum-likelihood estimate for the difference of the means, together with the confidence intervals. This is goes beyond the classical t-test, but probably the programmers assumed that you would also want to have the best estimate for the difference of the means.
 
@@ -541,19 +624,11 @@ While the word ANOVA is generally associated with the assumption explained above
 
 Here a simple example with a standard ANOVA (normal errors), testing whether weight (of chicken) depends on their diet, where diet is a factor variable with four levels:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 aovresult <- aov(weight~Diet, ChickWeight)
 summary(aovresult)
-\end{Sinput}
-\begin{Soutput}
-             Df  Sum Sq Mean Sq F value   Pr(>F)    
-Diet          3  155863   51954   10.81 6.43e-07 ***
-Residuals   574 2758693    4806                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-\end{Soutput}
-\end{Schunk}
+
+@
 
 We find a p-value of  6.43e-07, which is highly significant at an $\alpha$ level of 0.05. Hence, we can reject the null hypothesis that the diet has no influence on the response "weight". Note that in this case, we don't get any parameter estimates, and we can't say anything about which of the diets differs from which. If you want those, there are two options:
 
@@ -585,39 +660,17 @@ where y is the response, x is a predictor, a is the parameter that fits how stro
 
 In R, we can do such a regression by typing
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--22.147  -4.858   1.828   4.342  12.328 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      69.41072    1.02971   67.41   <2e-16 ***
-airquality$Ozone  0.20081    0.01928   10.42   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.819 on 114 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.4877,	Adjusted R-squared:  0.4832 
-F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
+@
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-13-1} \end{Schunk}
+<< echo = F>>=
+plot(airquality$Temp ~ airquality$Ozone, ylab = "Temperature", xlab = "Ozone")
+abline(fit)
+@
 \caption{Airquality data: Temperature plotted against Ozone. Relationship indicated by the regression line.}
 \label{fig: LR}
 \end{center}
@@ -638,39 +691,31 @@ The regression results gives us a lot of p-values as well. These are results of 
 
 Response y depends linearly on a variable a (continous or categorical)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y depends linearly on two variables a and b (continous or categorical), but the value of either variable doesn't influence the effect the other variable has on the response (no interaction)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a+b)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y depends linearly on two variables a and b (continous or categorical), but the value of one variable does influence the effect the other variable on the response (interaction)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a*b)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y depends as in $a + a^2$ on a variable a (continous or categorical)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a + I(a^2))
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 the I() notation means that the following expression is interpreted as a mathematical formula. 
 
@@ -692,9 +737,24 @@ i.e. the difference between the observed value and the model predictions. These 
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<< echo = F>>=
+oldpar <- par(mfrow = c(2,2))
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-18-1} \end{Schunk}
+plot(rnorm(1000), ylim = c(-4,4), main = "Perfekt Normal", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+plot(rnorm(1000, sd = seq(0.01,2, len = 1000)), ylim = c(-4,4), main = "Heteroscedasticity", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+
+plot(rnorm(1000, mean = seq(-2,2, len = 1000)), ylim = c(-4,4), main = "Pattern in the residuals", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+plot(ifelse(runif(1000) <0.5, rnorm(1000, mean = 2, sd = 0.3), rnorm(1000, mean = -2, sd = 0.3)) , ylim = c(-4,4), main = "Distribution not normal", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+par(oldpar)
+@
 \caption{A collection of possible patterns when plotting the residuals against the fitted value (default in R) or a predictor.}
 \label{fig: ResidualPatterns}
 \end{center}
@@ -758,26 +818,11 @@ evspace{1cm}
 
 Here an example with the data of the Titanic survivors. Note that if you tell R to use the binomial distribution, the logit link is automatically selected. If you wanted, you could overrule this choice. 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 library(effects)
-\end{Sinput}
-\begin{Soutput}
-Error in library(effects): there is no package called 'effects'
-\end{Soutput}
-\begin{Sinput}
 fmt <- glm(survived ~ age + I(age^2) + I(age^3), family=binomial, data = TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Error in is.data.frame(data): Objekt 'TitanicSurvival' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 summary(fmt)
-\end{Sinput}
-\begin{Soutput}
-Error in summary(fmt): Objekt 'fmt' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 \end{mdframed}
 \end{fullwidth} 
@@ -796,37 +841,11 @@ Poisson regression is the standard choice for working with count data, although 
 \textbf{In R:} 
 
 An example, using some data on the feeding of bird nestlings, in relation to their attractiveness:
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 schnaepper <- read.csv("schnaepper.txt", sep="")
 fm <- glm(stuecke ~ attrakt, family=poisson, data = schnaepper)
 summary(fm)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-glm(formula = stuecke ~ attrakt, family = poisson, data = schnaepper)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--1.55377  -0.72834   0.03699   0.59093   1.54584  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  1.47459    0.19443   7.584 3.34e-14 ***
-attrakt      0.14794    0.05437   2.721  0.00651 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for poisson family taken to be 1)
-
-    Null deviance: 25.829  on 24  degrees of freedom
-Residual deviance: 18.320  on 23  degrees of freedom
-AIC: 115.42
-
-Number of Fisher Scoring iterations: 4
-\end{Soutput}
-\end{Schunk}
+@
 
 \end{mdframed}
 \end{fullwidth} 
@@ -1060,11 +1079,9 @@ The window you see here is called the R Console. Through the console, you intera
 
 Let's write something else: R has a few standard datasets that are automatically loaded. We will be using the airmiles dataset, which shows the number of airmiles awarded over time. Let's shortly demonstrate how to do a plot with this dataset. Type:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 plot(airmiles, col = 4)
-\end{Sinput}
-\end{Schunk}
+@
 
 The result should look like Fig.~\ref{fig: Rgui2}:
 
@@ -1097,8 +1114,7 @@ RStudio basically offers the same functions as the RGui, but a many things can b
 
 A typical script may look like that:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 # the hash means this is treated as a comment
 # this file is written by FH, 25.10.13
 
@@ -1107,8 +1123,8 @@ rm(list=ls(all=TRUE))  # this command means all variables in the memory are eras
 # load some data
 
 # do some plots
-\end{Sinput}
-\end{Schunk}
+
+@
 
 To send a part of the script to the console, you can use the run button on the top right border of the editor window. For everything we do from now on, I would strongly recommend writing in the script, and then sending it to console from there. 
 
@@ -1119,21 +1135,14 @@ To send a part of the script to the console, you can use the run button on the t
 
 Who has ever worked with a programming language? In a programming language, data is stored in variables / objects. This is how we assign the word "test" to the variable "VariableX"
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 VariableX = "test"
-\end{Sinput}
-\end{Schunk}
+@
 
 I can now access the variable by typing its name in the console, and it will return the value that it stores.
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 VariableX
-\end{Sinput}
-\begin{Soutput}
-[1] "test"
-\end{Soutput}
-\end{Schunk}
+@
 
 We can see all the variables that we have specified in the global environment or R in the top-right corner or RStudio. You see that we have here the variable "VariableX" together with it's value. 
 
@@ -1172,27 +1181,21 @@ Especially after reading in your data, it is important to check which type it ha
 
 If you want to see which type or structure a variable has, use the str command:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 str(object)
-\end{Sinput}
-\end{Schunk}
+@
 
 To get a summary of your structure (e.g. mean per column, but what exactly is summarized depends on the data structure and type), use:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 summary(object)
-\end{Sinput}
-\end{Schunk}
+@
 
 To try to make an automatic plot (R will choose what it thinks most suitable for this structure / type), type:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 plot(object)
-\end{Sinput}
-\end{Schunk}
+@
 
 Try this with the object airquality. 
 
@@ -1203,19 +1206,15 @@ As said, the most common structure in R is the data frame. Basically, columns ar
 You can select columns in a number of ways:
 
 - By name:
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality$Ozone
-\end{Sinput}
-\end{Schunk}
+@
 
 - By column index: 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[,1]
-\end{Sinput}
-\end{Schunk}
+@
 
 Note that here [,1] means the first column. You could get the first row by [1,].
 
@@ -1223,74 +1222,58 @@ Note that here [,1] means the first column. You could get the first row by [1,].
 
 The last type of accessing is an example of slizing. Slizing is a very powerfull technique that is available in most scientific programming languages. What it means is that you can access your data by typing in colums, rows, or particular elements. Look at the following commands (explanation always below):
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[,1:2]
-\end{Sinput}
-\end{Schunk}
+@
 
 gets the first colums 1 and 2.
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[4:6,1]]
-\end{Sinput}
-\end{Schunk}
+@
 
 gets rows 4 to 6 in column 1
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[c(1,2,3,4,7,8),1]
-\end{Sinput}
-\end{Schunk}
+@
 
 gets rows 1,2,3,4,7,8 in column 1. 
 
 You see, we can select any combination of elemets we want very conveniently from the data frame. Even more convenient is how we can create selections.
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 1:10
-\end{Sinput}
-\end{Schunk}
+@
 
 gives us the values of 1 to 10
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 c(1,5,6)
-\end{Sinput}
-\end{Schunk}
+@
 
 the c() function combines values in one vector (it is neccessary to have the values in one vector for slicing)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 c(1,5,6)
-\end{Sinput}
-\end{Schunk}
+@
 
 But we can also create selections with logical operators
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality$Temp > 80
-\end{Sinput}
-\end{Schunk}
+@
 
 creates a vector with True on all temperature values that are > 80. I can store this and use it for selection, or use it immediately
 
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[airquality$Temp > 80 , ]
-\end{Sinput}
-\end{Schunk}
+@
 
 selects all rows with temperature > 80.
 
@@ -1308,11 +1291,9 @@ There are basically two options to load data
 The latter works like that
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 data = read.table("airquality.txt", header = T)
-\end{Sinput}
-\end{Schunk}
+@
 
 In this case it works nice because I have prepared the data in the most easy way. If you have other data formates (commas, semicolons, header / no header), consult the help of teh read.table command. See also http://www.statmethods.net/input/importingdata.html for more options, e.g. excel or database import. 
 
@@ -1320,29 +1301,19 @@ In this case it works nice because I have prepared the data in the most easy way
 
 After loading the data, always check whether the data format is correct 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 str(data)
-\end{Sinput}
-\begin{Soutput}
-function (..., list = character(), package = NULL, lib.loc = NULL, 
-    verbose = getOption("verbose"), envir = .GlobalEnv)  
-\end{Soutput}
-\end{Schunk}
+@
 
 You see here the atomic type of every column. Make sure it corresponds to what you want (sometimes numeric is read in as factor, or *vice versa*). If a column would have the wrong type, we have to change this by typing
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 as.factor(x)
-\end{Sinput}
-\end{Schunk}
+@
 or 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 as.numeric(x)
-\end{Sinput}
-\end{Schunk}
+@
 
 
 Note: this data file is already included in R, so if you don't manage to load it, you can continue anyway. 
@@ -1361,159 +1332,66 @@ Before that, a few important references
 
 \marginnote{An overview or R colors \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 plot(airquality$Ozone, airquality$Temp)
-\end{Sinput}
+@
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-42-1} 
-
-}
-
-\end{Schunk}
-
-
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "Ozone ")
-\end{Sinput}
+@
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-43-1} 
-
-}
-
-\end{Schunk}
-
-
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 plot(airquality)
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-44-1} 
-
-}
-
-\end{Schunk}
+@
 
 pairs(airquality)
 
 
 Simple Bar Plot 
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 counts <- table(mtcars$gear)
 barplot(counts, main="Car Distribution", 
    xlab="Number of Gears")
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-45-1} 
-
-}
-
-\end{Schunk}
+@
 
 Grouped Bar Plot
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 counts <- table(mtcars$vs, mtcars$gear)
 barplot(counts, main="Car Distribution by Gears and VS",
   xlab="Number of Gears", col=c("darkblue","red"),
   legend = rownames(counts), beside=TRUE)
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-46-1} 
-
-}
-
-\end{Schunk}
+@
 
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 boxplot(mpg~cyl,data=mtcars, main="Car Milage Data", 
    xlab="Number of Cylinders", ylab="Miles Per Gallon")
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-47-1} 
-
-}
-
-\end{Schunk}
+@
 
 Notched Boxplot of Tooth Growth Against 2 Crossed Factors
 boxes colored for ease of interpretation 
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 boxplot(len~supp*dose, data=ToothGrowth, notch=TRUE, 
   col=(c("gold","darkgreen")),
   main="Tooth Growth", xlab="Suppliment and Dose")
-\end{Sinput}
-\begin{Soutput}
-Warning in bxp(structure(list(stats = structure(c(8.2, 9.7, 12.25, 16.5, : some notches went outside hinges ('box'): maybe set notch=FALSE
-\end{Soutput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-48-1} 
-
-}
-
-\end{Schunk}
+@
 
 %See http://www.statmethods.net/graphs/index.html 
 
 
 Correlation heatmap. The heatmap visualizes correlation between variables. A handy property of this function is that variables can be reordered, so that closely correlated variables are close to each other. This is often useful if one wants to select uncorrelated variables for an analysis
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 6, fig.width=6, fig.align='center'>>=
 round(Ca <- cor(attitude), 2)
-\end{Sinput}
-\begin{Soutput}
-           rating complaints privileges learning raises critical advance
-rating       1.00       0.83       0.43     0.62   0.59     0.16    0.16
-complaints   0.83       1.00       0.56     0.60   0.67     0.19    0.22
-privileges   0.43       0.56       1.00     0.49   0.45     0.15    0.34
-learning     0.62       0.60       0.49     1.00   0.64     0.12    0.53
-raises       0.59       0.67       0.45     0.64   1.00     0.38    0.57
-critical     0.16       0.19       0.15     0.12   0.38     1.00    0.28
-advance      0.16       0.22       0.34     0.53   0.57     0.28    1.00
-\end{Soutput}
-\begin{Sinput}
 symnum(Ca) # simple graphic
-\end{Sinput}
-\begin{Soutput}
-           rt cm p l rs cr a
-rating     1                
-complaints +  1             
-privileges .  .  1          
-learning   ,  .  . 1        
-raises     .  ,  . , 1      
-critical             .  1   
-advance          . . .     1
-attr(,"legend")
-[1] 0 ' ' 0.3 '.' 0.6 ',' 0.8 '+' 0.9 '*' 0.95 'B' 1
-\end{Soutput}
-\begin{Sinput}
 heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-49-1} 
-
-}
-
-\end{Schunk}
+@
 
 \chapter{Regression in R}
 
@@ -1522,69 +1400,36 @@ heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
 
 Linear regression is the simples form of regression. We can use this when the response is continous. The assumption is that the response depends on the predictors as in 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = F>>=
 y ~ par1 * pred1 +  par2 * pred2 +  par3 * pred2^2 + ... + residual Error
-\end{Sinput}
-\end{Schunk}
+@
 
 where the parameters par1 ... par3 are estimated, and the residual error is normally distributed. 
 
 Let's look at some example, using the data from Monday. We see that there is a correlation between Ozone and Temperature. 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Temp~airquality$Ozone)
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
+@
 
 With the lm() command, we can ask R to try to get the best fitting straight line between the two variables. 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
-\end{Sinput}
-\end{Schunk}
+@
 
 Let's look at the result visually first
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Ozone, airquality$Temp)
 abline(fit, col = "blue")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} \end{Schunk}
+@
 
 Here's the detailed output
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--22.147  -4.858   1.828   4.342  12.328 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      69.41072    1.02971   67.41   <2e-16 ***
-airquality$Ozone  0.20081    0.01928   10.42   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.819 on 114 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.4877,	Adjusted R-squared:  0.4832 
-F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
+@
 
 In the output, we see the parameters for the effect of Ozone (called the regression slope), and the intercept. 
 
@@ -1594,106 +1439,47 @@ R knows the line is straight because we tell the program that airquality$Temp~ai
 
 with plot(fit), we get the residuals (the deviation from the straight line). As said, the linear regression assumes that those are normally distributed, so we should check whether this is really the case. 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 par(mfrow=c(2,2))
 plot(fit)
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
+@
 
 Here, the residuals are not really homogenously scattering around the predicted value, suggesting that the model doesn't fit very well. Well, one could have already guessed this, because the correlation doesn't look very linear. We can add a quadratic term by 
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit2 = lm(airquality$Temp~airquality$Ozone + I(airquality$Ozone^2))
 summary(fit2)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone + I(airquality$Ozone^2))
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--16.1553  -3.9374   0.9296   4.0393  12.9195 
-
-Coefficients:
-                        Estimate Std. Error t value Pr(>|t|)    
-(Intercept)           63.8614538  1.3163562  48.514  < 2e-16 ***
-airquality$Ozone       0.4896669  0.0524715   9.332 1.07e-15 ***
-I(airquality$Ozone^2) -0.0023198  0.0003987  -5.818 5.64e-08 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.008 on 113 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.6058,	Adjusted R-squared:  0.5988 
-F-statistic: 86.83 on 2 and 113 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
+@
 
 Residuals look better now
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 par(mfrow=c(2,2))
 plot(fit2)
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-57-1} \end{Schunk}
+@
 
 Plotting the results
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Ozone, airquality$Temp)
 points(fit2$model[,2], predict(fit2), col = "blue")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-58-1} \end{Schunk}
+@
 
 \subsection{Categorical predictors}
 
 If we have categorical varialbles such as in this dataset
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 boxplot(PlantGrowth$weight~PlantGrowth$group, main = "growth of plants")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-59-1} \end{Schunk}
+@
 
 This still works:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit <- lm(weight~group, data = PlantGrowth)
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = weight ~ group, data = PlantGrowth)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.0710 -0.4180 -0.0060  0.2627  1.3690 
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   5.0320     0.1971  25.527   <2e-16 ***
-grouptrt1    -0.3710     0.2788  -1.331   0.1944    
-grouptrt2     0.4940     0.2788   1.772   0.0877 .  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.6234 on 27 degrees of freedom
-Multiple R-squared:  0.2641,	Adjusted R-squared:  0.2096 
-F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591
-\end{Soutput}
-\end{Schunk}
+@
 
 A thing that is confusing many people now, however, is that we have two parameter estimates for the one predictor variable. The reson is that there are 3 groups in the dataset. The first group is set in this case automatically as reference, and for the other groups, predictors are estimated. The p-values for those predictors are thus against the reference (if I take predictor trt1 out, it will get the value of ctrl). Hence, these p-values for categorical variables depend on the order of the varialbles (you could reorder to have trt1 as reference.)
 
@@ -1702,19 +1488,10 @@ A thing that is confusing many people now, however, is that we have two paramete
 
 A question that often pops up in this context is: is there are difference between the groups at all? The regression only shows us whether there is a signficant difference between the first factor and the two others. If we want to test for overall differences, we can make an ANOVA of the fitted object
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 aovresult <- aov(fit)
 summary(aovresult)
-\end{Sinput}
-\begin{Soutput}
-            Df Sum Sq Mean Sq F value Pr(>F)  
-group        2  3.766  1.8832   4.846 0.0159 *
-Residuals   27 10.492  0.3886                 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-\end{Soutput}
-\end{Schunk}
+@
 
 Note that we get now significance for an overall difference, although we didn't have significance in the regression before. 
 
@@ -1728,60 +1505,23 @@ Note: aov is designed for balanced designs, and the results can be hard to inter
 
 A simple option if you just want to test two groups against each other is the t-test. It assumes normal distribution within the groups. We can use this to do post-hoc testing for the example above: 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 attach(PlantGrowth)
 t.test(weight[group=='ctrl'], weight[group=="trt1"])
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  weight[group == "ctrl"] and weight[group == "trt1"]
-t = 1.1913, df = 16.524, p-value = 0.2504
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.2875162  1.0295162
-sample estimates:
-mean of x mean of y 
-    5.032     4.661 
-\end{Soutput}
-\end{Schunk}
+@
 
 testing against group 2
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 t.test(weight[group=='ctrl'], weight[group=="trt2"])
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  weight[group == "ctrl"] and weight[group == "trt2"]
-t = -2.134, df = 16.786, p-value = 0.0479
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.98287213 -0.00512787
-sample estimates:
-mean of x mean of y 
-    5.032     5.526 
-\end{Soutput}
-\begin{Sinput}
 detach(PlantGrowth)
-\end{Sinput}
-\end{Schunk}
+@
 
 but if we really would have done both tests, we would have had to correct for multiple testing
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 p.adjust(c(0.2504, 0.0479), method = "holm")
-\end{Sinput}
-\begin{Soutput}
-[1] 0.2504 0.0958
-\end{Soutput}
-\end{Schunk}
+  @
 
 How does this work? Write ?p.adjust in the console. Also, read \href{this}{http://webdev.cas.msu.edu/cas992/weeks/week10.html}
 
@@ -1789,8 +1529,7 @@ How does this work? Write ?p.adjust in the console. Also, read \href{this}{http:
 
 The glm is a generalization of lm to other response types. We could create a model identical to lm() by glm(formula, family = gaussian(link = "identity")), but the advantage is that glm has more options, among them the following defaults
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = F>>=
 binomial(link = "logit")
 gaussian(link = "identity")
 Gamma(link = "inverse")
@@ -1799,267 +1538,111 @@ poisson(link = "log")
 quasi(link = "identity", variance = "constant")
 quasibinomial(link = "logit")
 quasipoisson(link = "log")
-\end{Sinput}
-\end{Schunk}
+@
 
 but step for step ... let's look at an example for binomial data
 
 
 \section{0/1 Response - the logistic regression}
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 library(effects) 
-\end{Sinput}
-\begin{Soutput}
-Error in library(effects): there is no package called 'effects'
-\end{Soutput}
-\begin{Sinput}
 data(TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Warning in data(TitanicSurvival): data set 'TitanicSurvival' not found
-\end{Soutput}
-\begin{Sinput}
 head(TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Error in head(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 str(TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Error in str(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 attach(TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Error in attach(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 Let's visualize this. About visualizing associations see http://www.statmethods.net/advgraphs/mosaic.html
 
 We'll use the mosaic plot. May be you have to install.packages("vcd")
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 library(vcd)
-\end{Sinput}
-\begin{Soutput}
-Error in library(vcd): there is no package called 'vcd'
-\end{Soutput}
-\begin{Sinput}
 mosaic(~ sex + passengerClass + survived, shade=TRUE, legend=TRUE) 
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): konnte Funktion "mosaic" nicht finden
-\end{Soutput}
-\begin{Sinput}
 surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): Objekt 'survived' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 How do we analyze this data? Response clearly not normal, but 1/0. now, the glm is basically the same as lm(), just that you specify the family.
 
 Let's first test whether survival is correlated to age
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fmt <- glm(surv ~ age, family=binomial)
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 summary(fmt)
-\end{Sinput}
-\begin{Soutput}
-Error in summary(fmt): Objekt 'fmt' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 Result plotted 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(surv ~ age, main="only age term")
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 newage <- seq(min(age, na.rm=T), max(age, na.rm=T), len=100)
-\end{Sinput}
-\begin{Soutput}
-Error in seq(min(age, na.rm = T), max(age, na.rm = T), len = 100): Objekt 'age' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 preds <- predict(fmt, newdata=data.frame("age"=newage), se.fit=T)
-\end{Sinput}
-\begin{Soutput}
-Error in predict(fmt, newdata = data.frame(age = newage), se.fit = T): Objekt 'fmt' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 lines(newage, plogis(preds$fit), col="purple", lwd=3)
-\end{Sinput}
-\begin{Soutput}
-Error in lines(newage, plogis(preds$fit), col = "purple", lwd = 3): Objekt 'newage' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 lines(newage, plogis(preds$fit-2*preds$se.fit), col="purple", lwd=3, lty=2)
-\end{Sinput}
-\begin{Soutput}
-Error in lines(newage, plogis(preds$fit - 2 * preds$se.fit), col = "purple", : Objekt 'newage' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 lines(newage, plogis(preds$fit+2*preds$se.fit), col="purple", lwd=3, lty=2)
-\end{Sinput}
-\begin{Soutput}
-Error in lines(newage, plogis(preds$fit + 2 * preds$se.fit), col = "purple", : Objekt 'newage' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 Now, let's out all relevant variables in 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): Objekt 'survived' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 fmt <- glm(surv ~ age  + sex + passengerClass, family=binomial)
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
-\end{Soutput}
-\begin{Sinput}
 summary(fmt)
-\end{Sinput}
-\begin{Soutput}
-Error in summary(fmt): Objekt 'fmt' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 \subsection{ANOVA for GLM}
 
 If you want an ANOVA
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 library(car)
-\end{Sinput}
-\begin{Soutput}
-Error in library(car): there is no package called 'car'
-\end{Soutput}
-\begin{Sinput}
 Anova(fmt)
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): konnte Funktion "Anova" nicht finden
-\end{Soutput}
-\begin{Sinput}
+
 detach(TitanicSurvival)
-\end{Sinput}
-\begin{Soutput}
-Error in detach(TitanicSurvival): invalid 'name' argument
-\end{Soutput}
-\end{Schunk}
+@
 
 \section{Count data - Poisson Regression}
 
 For count data, we use the glm with the Poisson error distribution. Here's some observations of the pieces of food given to young birds, and their perceived attractiveness.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 cfc <- data.frame(
   stuecke = c(3,6,8,4,2,7,6,8,10,3,5,7,6,7,5,6,7,11,8,11,13,11,7,7,6),
   attrakt = c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5) 
 )
 attach(cfc)
 plot(stuecke ~ attrakt)
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-72-1} \end{Schunk}
+@
 
 This is how you specify the poisson
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fm <- glm(stuecke ~ attrakt, family=poisson)
 summary(fm)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-glm(formula = stuecke ~ attrakt, family = poisson)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--1.55377  -0.72834   0.03699   0.59093   1.54584  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  1.47459    0.19443   7.584 3.34e-14 ***
-attrakt      0.14794    0.05437   2.721  0.00651 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for poisson family taken to be 1)
-
-    Null deviance: 25.829  on 24  degrees of freedom
-Residual deviance: 18.320  on 23  degrees of freedom
-AIC: 115.42
-
-Number of Fisher Scoring iterations: 4
-\end{Soutput}
-\end{Schunk}
+@
 
 predictions
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 newattrakt <- c(1,1.5,2,2.5,3,3.5,4,4.5,5)
 preds <- predict(fm, newdata=data.frame("attrakt"=newattrakt))
 plot(stuecke ~ attrakt)
 lines(newattrakt, exp(preds), lwd=2, col="green")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-74-1} \end{Schunk}
+@
 
 same with 95\% confidence interval:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 preds <- predict(fm, newdata=data.frame("attrakt"=newattrakt), se.fit=T)
 str(preds)
-\end{Sinput}
-\begin{Soutput}
-List of 3
- $ fit           : Named num [1:9] 1.62 1.7 1.77 1.84 1.92 ...
-  ..- attr(*, "names")= chr [1:9] "1" "2" "3" "4" ...
- $ se.fit        : Named num [1:9] 0.1459 0.1235 0.1034 0.0872 0.0775 ...
-  ..- attr(*, "names")= chr [1:9] "1" "2" "3" "4" ...
- $ residual.scale: num 1
-\end{Soutput}
-\begin{Sinput}
 plot(stuecke ~ attrakt)
 lines(newattrakt, exp(preds$fit), lwd=2, col="green")
 lines(newattrakt, exp(preds$fit+2*preds$se.fit), lwd=2, col="green", lty=2)
 lines(newattrakt, exp(preds$fit-2*preds$se.fit), lwd=2, col="green", lty=2)
-\end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-75-1} \begin{Sinput}
 detach(cfc)
-\end{Sinput}
-\end{Schunk}
+@
 
 
 
@@ -2072,26 +1655,12 @@ If you don't have your data in this format, and don't want to reshape, an altern
 \subsection{mlogit example}
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<message=FALSE>>=
 library(mlogit)
-\end{Sinput}
-\begin{Soutput}
-Error in library(mlogit): there is no package called 'mlogit'
-\end{Soutput}
-\begin{Sinput}
+ 
 data("Fishing", package = "mlogit")
-\end{Sinput}
-\begin{Soutput}
-Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'mlogit'
-\end{Soutput}
-\begin{Sinput}
 head(Fishing)
-\end{Sinput}
-\begin{Soutput}
-Error in head(Fishing): Objekt 'Fishing' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 
 The data we are using is a dataframe containing :
 
@@ -2121,64 +1690,42 @@ The data we are using is a dataframe containing :
 
 We transform this in an object mlogit can work with by
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 Fish <- mlogit.data(Fishing, varying = c(2:9), shape = "wide", choice = "mode")
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): konnte Funktion "mlogit.data" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
 
 varying tells the model that those are variables that are specific to the alternative outcomes of the response, i.e. price of the boat, while variables that are not varying are independent of the outcome, e.g. income. 
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## a pure "conditional" model
 summary(mlogit(mode ~ price + catch, data = Fish))
-\end{Sinput}
-\begin{Soutput}
-Error in summary(mlogit(mode ~ price + catch, data = Fish)): konnte Funktion "mlogit" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
 
 Fits, for each outcome, the increase of the choice with the price and catch. Hence, we get the intercepts for each outcome, and one parameter fitted per variable that is the effect of price / choice on the probability to choose any of the 4 outcomes. 
 
 If we correlate the variable income, this is different. Income is not specific to the choice (not selected as varying when we set up the data). In this case, we ask how the choice differs when we have people of different incomes. Hence, we obtain an intervept value per parameter, and an estimate for whether this choice is affected by an increase of income, relative to the baseline (pier).
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## a pure "multinomial model"
 summary(mlogit(mode ~ 0 | income, data = Fish))
-\end{Sinput}
-\begin{Soutput}
-Error in summary(mlogit(mode ~ 0 | income, data = Fish)): konnte Funktion "mlogit" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
 
 Note that if you want to interpret the parameter values, you have to transform back to the response with the relatively complicated link function of the multinomial logistic regression, see formula \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{here}. More examples \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{here} and see also the mlogit tutorial \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{here}.
 
 \subsection{mlogit example}
 
-\begin{Schunk}
-\begin{Sinput}
+<<message=FALSE>>=
 require(nnet)
-\end{Sinput}
-\end{Schunk}
+@
 
 We use the original (without reshaping) fishing data as for the mlogit example above. 
 And also the same model structure
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## a pure "conditional" model
 summary(multinom(mode ~ price.beach + price.pier + price.boat + price.charter + 
                    catch.beach + catch.pier + catch.boat + catch.charter, data = Fishing))
-\end{Sinput}
-\begin{Soutput}
-Error in is.data.frame(data): Objekt 'Fishing' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 \end{appendices}
 
 

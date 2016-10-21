@@ -15,6 +15,9 @@
 
  %style file is in the same folder.
 
+\usepackage[T1]{fontenc}
+
+
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{framed}
@@ -74,7 +77,7 @@ literate={*}{{\char42}}1
 
 
 
-\title{Essential\\statistics}
+\title{Essentielle\\Statistik}
 \author{Florian Hartig}
 
 
@@ -275,6 +278,18 @@ A second important case for summary statistics is correlation. Correlation metho
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
+\begin{Soutput}
+Error in library(mvtnorm): there is no package called 'mvtnorm'
+\end{Soutput}
+\begin{Soutput}
+Error: konnte Funktion "rmvnorm" nicht finden
+\end{Soutput}
+\begin{Soutput}
+Error in RotNormal(200, c(0, pi/12, pi/6, pi/4, pi/2 - pi/6, pi/2 - pi/12, : konnte Funktion "rmvnorm" nicht finden
+\end{Soutput}
+\begin{Soutput}
+Error in Others(800): konnte Funktion "rmvnorm" nicht finden
+\end{Soutput}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
 \caption{Demonstration of possible correlations with the Pearson's correlation coefficients. Note that many datasets that show a clear dependence between variables are assigned a Pearson's correlation coefficient of 0 because the dependence is not linear.}
@@ -745,36 +760,21 @@ Here an example with the data of the Titanic survivors. Note that if you tell R 
 \begin{Schunk}
 \begin{Sinput}
 library(effects)
+\end{Sinput}
+\begin{Soutput}
+Error in library(effects): there is no package called 'effects'
+\end{Soutput}
+\begin{Sinput}
 fmt <- glm(survived ~ age + I(age^2) + I(age^3), family=binomial, data = TitanicSurvival)
+\end{Sinput}
+\begin{Soutput}
+Error in is.data.frame(data): Objekt 'TitanicSurvival' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 summary(fmt)
 \end{Sinput}
 \begin{Soutput}
-
-Call:
-glm(formula = survived ~ age + I(age^2) + I(age^3), family = binomial, 
-    data = TitanicSurvival)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.5062  -0.9978  -0.9695   1.3483   2.0135  
-
-Coefficients:
-              Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  7.855e-01  3.031e-01   2.592 0.009549 ** 
-age         -1.189e-01  3.291e-02  -3.613 0.000303 ***
-I(age^2)     3.414e-03  1.113e-03   3.066 0.002171 ** 
-I(age^3)    -2.931e-05  1.107e-05  -2.648 0.008109 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 1414.6  on 1045  degrees of freedom
-Residual deviance: 1398.5  on 1042  degrees of freedom
-  (263 observations deleted due to missingness)
-AIC: 1406.5
-
-Number of Fisher Scoring iterations: 4
+Error in summary(fmt): Objekt 'fmt' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
@@ -1809,31 +1809,34 @@ but step for step ... let's look at an example for binomial data
 \begin{Schunk}
 \begin{Sinput}
 library(effects) 
+\end{Sinput}
+\begin{Soutput}
+Error in library(effects): there is no package called 'effects'
+\end{Soutput}
+\begin{Sinput}
 data(TitanicSurvival)
+\end{Sinput}
+\begin{Soutput}
+Warning in data(TitanicSurvival): data set 'TitanicSurvival' not found
+\end{Soutput}
+\begin{Sinput}
 head(TitanicSurvival)
 \end{Sinput}
 \begin{Soutput}
-                                survived    sex     age passengerClass
-Allen, Miss. Elisabeth Walton        yes female 29.0000            1st
-Allison, Master. Hudson Trevor       yes   male  0.9167            1st
-Allison, Miss. Helen Loraine          no female  2.0000            1st
-Allison, Mr. Hudson Joshua Crei       no   male 30.0000            1st
-Allison, Mrs. Hudson J C (Bessi       no female 25.0000            1st
-Anderson, Mr. Harry                  yes   male 48.0000            1st
+Error in head(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
 \end{Soutput}
 \begin{Sinput}
 str(TitanicSurvival)
 \end{Sinput}
 \begin{Soutput}
-'data.frame':	1309 obs. of  4 variables:
- $ survived      : Factor w/ 2 levels "no","yes": 2 2 1 1 1 2 2 1 2 1 ...
- $ sex           : Factor w/ 2 levels "female","male": 1 2 1 2 1 2 1 2 1 2 ...
- $ age           : num  29 0.917 2 30 25 ...
- $ passengerClass: Factor w/ 3 levels "1st","2nd","3rd": 1 1 1 1 1 1 1 1 1 1 ...
+Error in str(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
 \end{Soutput}
 \begin{Sinput}
 attach(TitanicSurvival)
 \end{Sinput}
+\begin{Soutput}
+Error in attach(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
+\end{Soutput}
 \end{Schunk}
 
 Let's visualize this. About visualizing associations see http://www.statmethods.net/advgraphs/mosaic.html
@@ -1845,15 +1848,20 @@ We'll use the mosaic plot. May be you have to install.packages("vcd")
 library(vcd)
 \end{Sinput}
 \begin{Soutput}
-Loading required package: grid
+Error in library(vcd): there is no package called 'vcd'
 \end{Soutput}
 \begin{Sinput}
 mosaic(~ sex + passengerClass + survived, shade=TRUE, legend=TRUE) 
 \end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-67-1} \begin{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): konnte Funktion "mosaic" nicht finden
+\end{Soutput}
+\begin{Sinput}
 surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
 \end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): Objekt 'survived' nicht gefunden
+\end{Soutput}
 \end{Schunk}
 
 How do we analyze this data? Response clearly not normal, but 1/0. now, the glm is basically the same as lm(), just that you specify the family.
@@ -1863,32 +1871,15 @@ Let's first test whether survival is correlated to age
 \begin{Schunk}
 \begin{Sinput}
 fmt <- glm(surv ~ age, family=binomial)
+\end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 summary(fmt)
 \end{Sinput}
 \begin{Soutput}
-
-Call:
-glm(formula = surv ~ age, family = binomial)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--1.1189  -1.0361  -0.9768   1.3187   1.5162  
-
-Coefficients:
-             Estimate Std. Error z value Pr(>|z|)  
-(Intercept) -0.136531   0.144715  -0.943   0.3455  
-age         -0.007899   0.004407  -1.792   0.0731 .
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 1414.6  on 1045  degrees of freedom
-Residual deviance: 1411.4  on 1044  degrees of freedom
-  (263 observations deleted due to missingness)
-AIC: 1415.4
-
-Number of Fisher Scoring iterations: 4
+Error in summary(fmt): Objekt 'fmt' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
@@ -1897,50 +1888,62 @@ Result plotted
 \begin{Schunk}
 \begin{Sinput}
 plot(surv ~ age, main="only age term")
+\end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 newage <- seq(min(age, na.rm=T), max(age, na.rm=T), len=100)
+\end{Sinput}
+\begin{Soutput}
+Error in seq(min(age, na.rm = T), max(age, na.rm = T), len = 100): Objekt 'age' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 preds <- predict(fmt, newdata=data.frame("age"=newage), se.fit=T)
+\end{Sinput}
+\begin{Soutput}
+Error in predict(fmt, newdata = data.frame(age = newage), se.fit = T): Objekt 'fmt' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 lines(newage, plogis(preds$fit), col="purple", lwd=3)
+\end{Sinput}
+\begin{Soutput}
+Error in lines(newage, plogis(preds$fit), col = "purple", lwd = 3): Objekt 'newage' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 lines(newage, plogis(preds$fit-2*preds$se.fit), col="purple", lwd=3, lty=2)
+\end{Sinput}
+\begin{Soutput}
+Error in lines(newage, plogis(preds$fit - 2 * preds$se.fit), col = "purple", : Objekt 'newage' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 lines(newage, plogis(preds$fit+2*preds$se.fit), col="purple", lwd=3, lty=2)
 \end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-69-1} \end{Schunk}
+\begin{Soutput}
+Error in lines(newage, plogis(preds$fit + 2 * preds$se.fit), col = "purple", : Objekt 'newage' nicht gefunden
+\end{Soutput}
+\end{Schunk}
 
 Now, let's out all relevant variables in 
 
 \begin{Schunk}
 \begin{Sinput}
 surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
+\end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): Objekt 'survived' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 fmt <- glm(surv ~ age  + sex + passengerClass, family=binomial)
+\end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): Objekt 'surv' nicht gefunden
+\end{Soutput}
+\begin{Sinput}
 summary(fmt)
 \end{Sinput}
 \begin{Soutput}
-
-Call:
-glm(formula = surv ~ age + sex + passengerClass, family = binomial)
-
-Deviance Residuals: 
-    Min       1Q   Median       3Q      Max  
--2.6399  -0.6979  -0.4336   0.6688   2.3964  
-
-Coefficients:
-                   Estimate Std. Error z value Pr(>|z|)    
-(Intercept)        3.522074   0.326702  10.781  < 2e-16 ***
-age               -0.034393   0.006331  -5.433 5.56e-08 ***
-sexmale           -2.497845   0.166037 -15.044  < 2e-16 ***
-passengerClass2nd -1.280570   0.225538  -5.678 1.36e-08 ***
-passengerClass3rd -2.289661   0.225802 -10.140  < 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for binomial family taken to be 1)
-
-    Null deviance: 1414.62  on 1045  degrees of freedom
-Residual deviance:  982.45  on 1041  degrees of freedom
-  (263 observations deleted due to missingness)
-AIC: 992.45
-
-Number of Fisher Scoring iterations: 4
+Error in summary(fmt): Objekt 'fmt' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
@@ -1953,31 +1956,20 @@ If you want an ANOVA
 library(car)
 \end{Sinput}
 \begin{Soutput}
-
-Attaching package: 'car'
-\end{Soutput}
-\begin{Soutput}
-The following object is masked from 'package:effects':
-
-    Prestige
+Error in library(car): there is no package called 'car'
 \end{Soutput}
 \begin{Sinput}
 Anova(fmt)
 \end{Sinput}
 \begin{Soutput}
-Analysis of Deviance Table (Type II tests)
-
-Response: surv
-               LR Chisq Df Pr(>Chisq)    
-age              31.344  1  2.161e-08 ***
-sex             273.239  1  < 2.2e-16 ***
-passengerClass  118.886  2  < 2.2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Error in eval(expr, envir, enclos): konnte Funktion "Anova" nicht finden
 \end{Soutput}
 \begin{Sinput}
 detach(TitanicSurvival)
 \end{Sinput}
+\begin{Soutput}
+Error in detach(TitanicSurvival): invalid 'name' argument
+\end{Soutput}
 \end{Schunk}
 
 \section{Count data - Poisson Regression}
@@ -2082,25 +2074,21 @@ If you don't have your data in this format, and don't want to reshape, an altern
 \begin{Schunk}
 \begin{Sinput}
 library(mlogit)
- 
+\end{Sinput}
+\begin{Soutput}
+Error in library(mlogit): there is no package called 'mlogit'
+\end{Soutput}
+\begin{Sinput}
 data("Fishing", package = "mlogit")
+\end{Sinput}
+\begin{Soutput}
+Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'mlogit'
+\end{Soutput}
+\begin{Sinput}
 head(Fishing)
 \end{Sinput}
 \begin{Soutput}
-     mode price.beach price.pier price.boat price.charter catch.beach
-1 charter     157.930    157.930    157.930       182.930      0.0678
-2 charter      15.114     15.114     10.534        34.534      0.1049
-3    boat     161.874    161.874     24.334        59.334      0.5333
-4    pier      15.134     15.134     55.930        84.930      0.0678
-5    boat     106.930    106.930     41.514        71.014      0.0678
-6 charter     192.474    192.474     28.934        63.934      0.5333
-  catch.pier catch.boat catch.charter   income
-1     0.0503     0.2601        0.5391 7083.332
-2     0.0451     0.1574        0.4671 1250.000
-3     0.4522     0.2413        1.0266 3750.000
-4     0.0789     0.1643        0.5391 2083.333
-5     0.0503     0.1082        0.3240 4583.332
-6     0.4522     0.1665        0.3975 4583.332
+Error in head(Fishing): Objekt 'Fishing' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
@@ -2136,6 +2124,9 @@ We transform this in an object mlogit can work with by
 \begin{Sinput}
 Fish <- mlogit.data(Fishing, varying = c(2:9), shape = "wide", choice = "mode")
 \end{Sinput}
+\begin{Soutput}
+Error in eval(expr, envir, enclos): konnte Funktion "mlogit.data" nicht finden
+\end{Soutput}
 \end{Schunk}
 
 varying tells the model that those are variables that are specific to the alternative outcomes of the response, i.e. price of the boat, while variables that are not varying are independent of the outcome, e.g. income. 
@@ -2146,33 +2137,7 @@ varying tells the model that those are variables that are specific to the altern
 summary(mlogit(mode ~ price + catch, data = Fish))
 \end{Sinput}
 \begin{Soutput}
-
-Call:
-mlogit(formula = mode ~ price + catch, data = Fish, method = "nr", 
-    print.level = 0)
-
-Frequencies of alternatives:
-  beach    boat charter    pier 
-0.11337 0.35364 0.38240 0.15059 
-
-nr method
-7 iterations, 0h:0m:0s 
-g'(-H)^-1g = 6.22E-06 
-successive function values within tolerance limits 
-
-Coefficients :
-                      Estimate Std. Error  t-value  Pr(>|t|)    
-boat:(intercept)     0.8713749  0.1140428   7.6408 2.154e-14 ***
-charter:(intercept)  1.4988884  0.1329328  11.2755 < 2.2e-16 ***
-pier:(intercept)     0.3070552  0.1145738   2.6800 0.0073627 ** 
-price               -0.0247896  0.0017044 -14.5444 < 2.2e-16 ***
-catch                0.3771689  0.1099707   3.4297 0.0006042 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Log-Likelihood: -1230.8
-McFadden R^2:  0.17823 
-Likelihood ratio test : chisq = 533.88 (p.value = < 2.22e-16)
+Error in summary(mlogit(mode ~ price + catch, data = Fish)): konnte Funktion "mlogit" nicht finden
 \end{Soutput}
 \end{Schunk}
 
@@ -2186,34 +2151,7 @@ If we correlate the variable income, this is different. Income is not specific t
 summary(mlogit(mode ~ 0 | income, data = Fish))
 \end{Sinput}
 \begin{Soutput}
-
-Call:
-mlogit(formula = mode ~ 0 | income, data = Fish, method = "nr", 
-    print.level = 0)
-
-Frequencies of alternatives:
-  beach    boat charter    pier 
-0.11337 0.35364 0.38240 0.15059 
-
-nr method
-4 iterations, 0h:0m:0s 
-g'(-H)^-1g = 8.32E-07 
-gradient close to zero 
-
-Coefficients :
-                       Estimate  Std. Error t-value  Pr(>|t|)    
-boat:(intercept)     7.3892e-01  1.9673e-01  3.7560 0.0001727 ***
-charter:(intercept)  1.3413e+00  1.9452e-01  6.8955 5.367e-12 ***
-pier:(intercept)     8.1415e-01  2.2863e-01  3.5610 0.0003695 ***
-boat:income          9.1906e-05  4.0664e-05  2.2602 0.0238116 *  
-charter:income      -3.1640e-05  4.1846e-05 -0.7561 0.4495908    
-pier:income         -1.4340e-04  5.3288e-05 -2.6911 0.0071223 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Log-Likelihood: -1477.2
-McFadden R^2:  0.013736 
-Likelihood ratio test : chisq = 41.145 (p.value = 6.0931e-09)
+Error in summary(mlogit(mode ~ 0 | income, data = Fish)): konnte Funktion "mlogit" nicht finden
 \end{Soutput}
 \end{Schunk}
 
@@ -2237,43 +2175,7 @@ summary(multinom(mode ~ price.beach + price.pier + price.boat + price.charter +
                    catch.beach + catch.pier + catch.boat + catch.charter, data = Fishing))
 \end{Sinput}
 \begin{Soutput}
-# weights:  40 (27 variable)
-initial  value 1638.599935 
-iter  10 value 1259.378401
-iter  20 value 1107.487082
-iter  30 value 1080.109863
-iter  40 value 1071.690367
-final  value 1066.673017 
-converged
-\end{Soutput}
-\begin{Soutput}
-Call:
-multinom(formula = mode ~ price.beach + price.pier + price.boat + 
-    price.charter + catch.beach + catch.pier + catch.boat + catch.charter, 
-    data = Fishing)
-
-Coefficients:
-        (Intercept)  price.beach   price.pier price.boat price.charter
-pier      -7.179469 -0.002574919 -0.002574919 -0.3214320     0.3197300
-boat     -13.428983  0.016175579  0.016175579 -0.5792052     0.5557474
-charter  -16.149440  0.013289286  0.013289286 -0.6704588     0.6518595
-        catch.beach catch.pier catch.boat catch.charter
-pier       37.51200  -51.32769 -1.7835077     0.0998035
-boat       58.57987  -86.66495 -0.5202275     0.3055832
-charter    60.63974  -86.88573  0.3685243     0.1187109
-
-Std. Errors:
-        (Intercept) price.beach  price.pier price.boat price.charter
-pier      0.5280588 0.001764405 0.001764405 0.02236164    0.02208038
-boat      0.7076107 0.001779923 0.001779923 0.02771352    0.02762961
-charter   0.7183116 0.001741317 0.001741317 0.02799268    0.02783368
-        catch.beach catch.pier catch.boat catch.charter
-pier      0.5310725  0.3762405  0.1589259     0.2567735
-boat      0.6800386  0.5761398  0.5994476     0.3152429
-charter   0.6516732  0.5478077  0.6099301     0.3098643
-
-Residual Deviance: 2133.346 
-AIC: 2181.346 
+Error in is.data.frame(data): Objekt 'Fishing' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 \end{appendices}

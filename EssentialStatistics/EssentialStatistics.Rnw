@@ -1,5 +1,8 @@
 \documentclass[a4paper,twoside]{tufte-book} %style file is in the same folder.
 
+\usepackage[T1]{fontenc}
+
+
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{framed}
@@ -65,7 +68,7 @@ set.seed(123)
 
 
 
-\title{Essential\\statistics}
+\title{Essentielle\\Statistik}
 \author{Florian Hartig}
 
 
