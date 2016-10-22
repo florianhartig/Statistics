@@ -30,7 +30,7 @@
 \usepackage{multicol}              
 \usepackage{multirow}
 \usepackage{booktabs}
-\usepackage{natbib} 
+%\usepackage{natbib} 
 
 \usepackage[innerrightmargin = 0.7cm, innerleftmargin = 0.3cm]{mdframed}
 \usepackage{mdwlist}
@@ -94,7 +94,7 @@
 	\null
 	
 	\begin{fullwidth}
-		Diese Vorlesung wird empfohlen für Studenten der
+		Diese Vorlesung ist empfehlenswert für Studenten der
 		
 		\begin{itemize*}
 			\item BSc Biostatistik
@@ -118,9 +118,11 @@
 		Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International' Lizenz.
 	\end{fullwidth}
 	
+	\newpage
+	\renewcommand{\contentsname}{Inhalt}
+	\tableofcontents
 	
 	\newpage
-	\tableofcontents
 	
 	\chapter{Einleitung} % Use chapters instead of sections
 	
@@ -187,7 +189,7 @@
 	\begin{itemize}
 		\item Stetig numerische Variablen (geordnet und stetig / real), z./,B. Temperatur
 		\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu zählt der wichtige Spezialfall der Zähldaten, z./,B. 0,1,2,3, ...
-		\item Kategorische Variablen (z./,B. eine feststehende Auswahlmöglichkeit wie beispielsweise rot, grün, blau), welche dann weiterhin unterteilt werden kann in 
+		\item Kategorische Variablen (z./,B. eine feststehende Auswahlmöglichkeit wie beispielsweise rot, grün, blau), welche dann weiterhin unterteilt werden können in 
 		\begin{itemize}
 			\item Ungeordnete kategorische Variablen (Nominal) wie beispielsweise rot, grün, blau
 			\item Binäre (dichotome) Variablen (verstorben / überlebt, 0/1)
