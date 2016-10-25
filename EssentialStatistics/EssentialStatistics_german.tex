@@ -244,7 +244,7 @@
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} \end{Schunk}
-\caption{A distribution of observed values diameter increment values (gray bars). We assume (in this case I know it) that these values come from some true distribution (population or data-generating process) that I plotted here in dashed red color. If we would draw more and more data, the gray bars would approach the true distribution}
+\caption{Eine Verteilung von beobachteten zunehmenden Durchmessergrößen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datenerzeugender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
 \label{fig: data distribution}
 \end{center}
 \end{figure}
@@ -252,31 +252,31 @@
 Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften wären beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der höchsten Beobachtungsdichte). Außerdem  gibt es zwei weitere Maßzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
 
 
-Der Begriff 'Moment' mag vielleicht nicht jedem geläufig sein, aber vermutlich wurde schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. In general, das n-te moment $\mu_n$ of a distribution $f(x)$ around a value c is defined as 
+Der Begriff 'Moment' mag vielleicht nicht jedem geläufig sein, vermutlich wurde aber schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
 
 \begin{equation}
 \mu_n(c) = \int_{-\infty}^{\infty} f(x) (x - c)^n dx
 \end{equation}
 
-or, for a finite number of observations 
+oder, für eine endliche Anzahl an Beobachtungen 
 
 \begin{equation}
 \mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n dx
 \end{equation}
 
-The first moment, with c=0, is simply the mean. For the following higher moments, it is common to consider the central moments, which are obtained by setting c to the mean, because their values are easier interpretable as indicators of the distribution's shape.\footnote{To estiamte the variance, we often replace the 1/N term by a bias-correction of 1/(N-1)} The 3 higher central moments are called the variance(n=2, identical to standard deviation squared, measure of spread), the skewness (n=3, measure of asymmetry in the distribution) and the kurtosis (n=4). 
+Das erste Moment mit c=0, ist der Mittelwert. Für die folgenden höheren Momente ist es üblich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erhält, da ihre Werte einfacher als Indikatoren für die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzuschätzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei höheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgröße der Streuung),Schiefe (n=3, Messgröße für die Asymmetrie in der Verteilung) und Wölbung (n=4) genannt. 
 
-Quantiles are the second central class of summary statistics for describing continous distributions. If we have a distribution such as the figure above, we can ask ourself: which is the value of the variable that divides the data in half, so that half of the observed data are lower, and half are higher than this value?\marginnote{Half of the data are lower, and half of the data are higher than the 0.5 quantile, which is called the median} This point is called the median, and also the 0.5 quantile. More general, the 0.x quantile is the value at which a fraction of 0.x of the data is smaller. 
+Quantilen stellen die zweite Zentralklasse der Maßzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei Hälften trennt, sodass eine Hälfte der beobachten Daten kleiner und die andere Hälfte größer als dieser Wert ist?\marginnote{Eine Hälfte der Daten ist kleiner und die andere Hälfte ist größer als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5 Quantile bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
 
-\subsection{Correlation - summarizing the dependence between continous variables}
+\subsection{Korrelation - Erläuterung der Abhängigkeit stetiger Variablen}
 
-A second important case for summary statistics is correlation. Correlation methods measure the dependence between continous variables. Unfortunately, there are quite a number of measures of correlation, and it is imporant to distinguish between them. The two most important are:
+Ein weiterer wichtiger Bereich der Maßzahlen-Statistik ist die Korrelation. Korrelationsstudien messen die Abhängigkeit von stetigen Variablen. Leider gibt es eine Menge Korrelations-Messgrößen, die es zu unterscheiden gilt. Die zwei wichtigsten sind:
 
-\paragraph{Linear coefficients:}Linear coefficients, most notably the widely used "Pearson's correlation coefficient", measure the linear dependence between two variables. Pearson's correlation coefficient is widely used because it computes fast and is easily interpretable. However, it can be misleading if variables are not in a linear dependence. This effect is displayed in Fig.~\ref{fig: correlation}.
+\paragraph{Lineare Koeffizienten:}Lineare Koeffizienten, mit dem "Pearson'schen Korrelationskoeffizienten" als wohl Häufigsten, ermitteln die lineare Abhängigkeit zwischen zwei Variablen. Der Pearson'sche Korrelationskoeffizient wird wegen seiner schnellen Berechnung und leichten Interpretation am häufigsten verwendet. Jedoch kann es hier zu Fehlern kommen, wenn die Variablen nicht linear abhängig voneinander sind. Fig.~\ref{fig: correlation}.
 
-\paragraph{Rank correlation coefficients:} Rank correlation coefficients, such as ``Spearman's rank correlation coefficient'' and ``Kendall tau rank correlation coefficient'' measure how well the variables match in their tendency to increase or decrease, without considering the extend or linearity of this increase. They are preferable if you think variables could be in a nonlinear relationship.
+\paragraph{Rangkorrelationskoeffizient:} Rangkorrelationskoeffizient, wie zum Beispiel der ``Spearman'sche Rangkorrelationskoeffizient'' und der ``Kendall Tau Rangkorrelationskoeffizient'' ermitteln, wie genau die Variablen gemeinsam tendenziell steigen oder fallen, ohne hierbei das Ausmaß oder die Linearität ihrer Steigung zu beachten. Diese werden bevorzugt, wenn man von zueinander nicht-linearen Variablen ausgeht. 
 
-\paragraph{Strong correlation != important effect:} Also visible in Fig.~\ref{fig: correlation} is an often misunderstood property of correlations and dependence - a high correlation coefficient does not mean that a variable has a strong reaction to another variable. All that is needed to obtain a high correlation coefficient is little spread around the line (see middle row - the effects are different, but the correlation is the same). 
+\paragraph{Starke Korrelation != bedeutender Einfluss:} Siehe auch Fig.~\ref{fig: correlation}; ist ein oft falsch verstandener Zustand der Korrelation und Abhändigkeit - ein hoher Korrelationskoeffizient bedeutet nicht, dass eine Variable eine starke Reaktion auf eine andere bewirkt. Um eine hohe Korrelation zu erreichen braucht es nur eine geringe Streuung um die Linie (siehe mittlere Reihe - die Auswirkung ist anders, aber die Korrelation bleibt gleich). 
 
 
 \begin{figure}[htbp]
@@ -296,14 +296,15 @@ Error in Others(800): konnte Funktion "rmvnorm" nicht finden
 \end{Soutput}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
-\caption{Demonstration of possible correlations with the Pearson's correlation coefficients. Note that many datasets that show a clear dependence between variables are assigned a Pearson's correlation coefficient of 0 because the dependence is not linear.}
+\caption{Beispiele einer möglichen Korrelation mit dem Pearson'schen Korrelationskoeffizienten. Beachte, dass viele Datensätze, die eine klare Abhängigkeit zwischen Variablen aufweisen, einen Pearson'schen Korrelationskoeffizienten von 0 aufweisen, da die Abhängigkeit nicht linear ist.}
 \label{fig: correlation}
 \end{center}
 \end{figure}
 
-\subsection{Contingency tables - summarizing disrecte outcomes of several variables}
+\subsection{Kreuztabellen - Erläuterung unstetiger Ergebnisse mehrerer Variablen}
 
-Finally,\marginnote{This dataset from Berkeley is a famous example for the Simpson's paradox. Read up on wikipedia about this important statistical trap.} a classic concept for summarizing binary or categorical data are contingency tables. Here an example from a classical dataset available in R on aggregate data on applicants to graduate school at Berkeley for the six largest departments in 1973 classified by admission and sex. I show only the first department.
+Zu guter Letzt\marginnote{This dataset from Berkeley is a famous example for the Simpson's paradox. Read up on wikipedia about this important statistical trap.} gibt es noch die klassischen Kreuztabellen, um binäre oder kathegorische Daten zu beschreiben. Hier ist ein Auszug eines üblichen Datensatzes aus R über Sammeldaten von Hochschulbewerber in Berkeley aus dem sechstgrößten Departments im Jahre 1973, geordnet nach Zulassung und Geschlecht. Hier wird nur das erste Department gezeigt.
+.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -324,39 +325,39 @@ Admit      Male Female
     
 \textbf{In R:} 
 
-For the various options to calculate descriptive statistics in R, see \href{http://www.uni-kiel.de/psychologie/rexrepos/rerDescriptive.html}{here}
+Für die vielseitigen Berechnungsmöglichkeiten der deskriptiven Statistik in R, siehe \href{http://www.uni-kiel.de/psychologie/rexrepos/rerDescriptive.html}{here}
 
 \end{mdframed}
 \end{fullwidth} 
 
 
-\section{Visualization}
+\section{Visualisierung}
 
-\marginnote{Type ?anscombe in R to see the code to create these plots and to calculate the statistical properties of the datastes}
+\marginnote{Gebe ?anscombe in R ein, um den Code zu sehen, der diese Plots ausgibt und um die statistischen Eigenschaften des Datensatzes zu berechnen.}
 
-Summary statistics are useful, but also dangerous. A famous example is Anscombe's Quartet, a hypothetical dataset of four observations that are identical in classical summary statistics such as mean, variance, correlation, regression line, etc. \citep{Anscombe-Graphsinstatistical-1973}. It is therefore very useful to get a graphical overview of your data, additionally to the summary statistics that you may calculate.
+Maßzahlen sind sehr nützlich, können aber auch zum Problem werden. Ein bekanntes Beispiel dafür ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Maßzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es äußerst nützlich zusätzlich eine graphische Übersicht zu den berechneten Maßzahlen der Daten zu erhalten.
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} \end{Schunk}
-\caption{Anscombe's Quartet, a hypothetical dataset of four observations that are identical in classical summary statistics such as mean, variance, correlation, regression line, etc.}
+\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Maßzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
 \label{fig: Anscombes Quartet}
 \end{center}
 \end{figure}
 
 
-\subsection{Principles of visualization}
+\subsection{Grundsätze der Visualisierung}
 
-The principle\marginnote{Examples of distorting graphics \href{https://en.wikipedia.org/wiki/Misleading_graph}{here}} of graphics and visualization is to represent the data as accessible and truthful as possible. The reader should get the best possible overview about the data in the shortest possible time. And, of course, the graphics should look nice as well. First of all, some general hints that may help:
+Der Grundsatz\marginnote{Beispiele für verzerrte Grafiken \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Grafiken und Darstellungen  ist die Daten so einsehbar und wahr wie möglich darzustellen. Der Leser sollte einen bestmöglichen Überblick in kürzester Zeit über die Daten erhalten. Zusätzlich sollten die Graphen natürlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen könnten:
 
 \begin{itemize}
-\item Simple is better than complicated
-\item Avoid excessive color. Graphics should be b/w readable if possible (use a color gradient that is a gradient in intensity at the same time, use dashing of lines additional to colors). If your graphic relies on color, try to choose colors that can be read by color blinds (avoid red/green).
-\item Truthfulness: avoid distortions. Use quadratic figures unless there are particular reasons. Axis should start at 0 unless you have good reasons not to. If presenting several graphics, use the same scale unless there are good reasons for it. 
-\item Don't manipulate graphics by hand
-\item Output in a vector format (pdf, eps, svg)
+\item Einfach ist besser, als kompliziert
+\item Vermeide übertriebene Farben. Graphen sollten wenn möglich auch in schwarz-weiß leserlich sein (benutze einen Farbgradienten, der gleichzeitig ein Intensitätsgradient ist, benutze zusätzlich zu Farben auch gestrichelte Linien). Wenn dein Graph auf Farben basiert, achte darauf welche zu verwenden, die auch Menschen mit einer Rot-Grün-Schwäche erkennen können.
+\item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, außer es gibt besondere Gründe. Achsen sollten bei 0 beginnen, außer es gibt gute Gründe, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Grafiken, wenn es keine Gründe gibt, die dagegen sprechen. 
+\item Manipuliere deine Grafiken nicht!
+\item Ausgabe in einem Vektor-Format (pdf, eps, svg)
 \end{itemize}
 
 \begin{figure}[htbp]
