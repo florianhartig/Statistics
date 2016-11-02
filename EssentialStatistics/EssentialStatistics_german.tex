@@ -480,19 +480,19 @@ oder extremeren Daten unter einer festgelegten (Null-) Hypothese ist, gibt uns d
 
 Die Maximum-likelihood-Schätzung ist nur ein einzelner Parameterwert.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Diese Art Schätzung wird oft Punktschätzung genannt. Jedoch ist eine Punktschätzung oft unbrauchbar, wenn wir nicht wissen wie genau sie ist.\marginnote{Konfidenzintervalle bieten einen Unsicherheitsschätzwert um die Punktschätzung herum.} Deswegen werden Parameterschätzungen immer mit Konfidenzintervallen angegeben. Salopp kann man sagen, dass das 95\% Konfidenzintervall eines Parameters eine wahrscheinliche Reichweite für diesen Bereich ist. Verwirrend ist hier, dass dies nicht das Intervall ist, in dem der richtige Parameter mit 95\% Wahrscheinlichkeit liegt. Vielmehr beinhaltet das Standard 95\% Konfidenzintervall bei wiederholten Experimenten zu 95\% aller Fälle den richtigen Wert. Dies ist ein kleiner, aber entscheidender Unterschied. Jedoch machen wir uns hierüber nun keine weiteren Gedanken. Das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
 
-\subsection{Bayesian inference}
+\subsection{Bayes Verfahren}
 
-To conclude\marginnote{Bayesian methods calculate a third quantity, the posterior probability. Although they can be used for any model, Bayesian methods tend to be used for more advanced statistics.} our overview on inferential products, one method is still lacking - Bayesian methods calculate a quantity that is called the posterior parameter estimate. It is similar, but not identical to the parameter estimates discussed previously. You won't need this here, but if you want to know more about those, have a look at \citep{Gelman-BayesianDataAnalysis-2003} and at my website \href{http://florianhartig.github.io/LearningBayes/}{Learning Bayes}.
+Um unsere\marginnote{Bayes'sche Verfahren berechnen eine dritte Größe, die posteriore Wahrscheinlichkeit. Auch wenn man diese auf jedes Modell anwenden kann, benutzt man sie üblicherweise bei erweiterten statistischen Berechnungen.} Übersicht der schlussfolgernden Methoden zu komplettieren, fehlt noch eine, die erwähnt werden sollte - Bayes'sche Methoden berechnen eine Größe, die sich die posteriore Parameterschätzung (posterior parameter estimate) nennt. Diese ist ähnlich, jedoch nicht identisch zu der vorherigen Parameterschätzung. Näheres ist hier nicht von Nöten, bei Bedarf und Interesse kann jedoch meine Seite weiterhelfen \citep{Gelman-BayesianDataAnalysis-2003} \href{http://florianhartig.github.io/LearningBayes/}{Learning Bayes}.
 
-\subsection{Different methods != different models}
+\subsection{Verschiedene Methoden != verschiedene Modelle}
 
-You know now that there are three different things that statisticians typically calculate: p-values, MLE, and the posterior. For a given data-generating process, you can always calcuate any of the three.
+Wir wissen nun, dass es drei verschiedene Größen gibt, die Statistiker typischerweise berechnen: p-Werte, Maximum-likelihood und die Posteriori. Man kann bei gegebenen datenerzeugenden Prozessen immer jede einzelne davon berechnen.
 
-I\marginnote{ANOVA , t-tests and linear regression are only different evaluations of the same model} make this point because many people wrongly assume that they use different models when they are indeed only using different ways to evaluate them. An example is the case of ANOVA, t-tests and linear regression. All of them are based on the same data-generating process - some fixed effects between groups and an iid normal observation error on top. ANOVA and t-tests specify different null-hypothesis, and the linear regression searches for the MLEs. You could additionally calculate the Bayesian posterior if you wanted.
+Ich\marginnote{ANOVA , T-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} formuliere diesen Punkt konkreter, da fälschlicherweise viele Menschen glauben sie benutzen unterschiedliche Modelle, wobei sie lediglich unterschiedliche Wege nutzen, um diese zu begutachten. Ein Beispiel hierfür sind ANOVA, T-Tests und die lineare Regression. Alle basieren auf ein und dem selben datenerzeugenden Prozess - einige festgelegte Auswirkungen zwischen Gruppen und obendrein ein unabhängiger und identischer normalverteilter Fehler. ANOVA und T-Tests legen verschiedenste Nullhypothesen fest und die lineare Regression sucht nach dem Maximum-likelihood-Schätzwert. Hier könnte man bei Bedarf noch die Bayes'sche Posteriori berechnen. 
 
-\section{Important hypothesis tests}
+\section{Wichtige Hypothesentests}
 
-After having discussed the basic statistical outputs, lets move to practice and get to know the two probably most applied hypothesis tests, the t-test and ANOVA. I told you already that they are based on the same data-generating process, but specify slightly different null-hypotheses. 
+Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennen zu lernen - den T-Test und ANOVA. Wie bereits erwähnt, basieren sie beide auf dem selben datenerzeugenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
 
 \subsection{t-test}
 
