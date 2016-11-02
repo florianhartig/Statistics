@@ -462,21 +462,23 @@ Wenn der p-Wert unter eine gewisse Schwelle sinkt (Das Signifikanzlevel $\alpha$
 
 Ein Problem der Hypothesentests und der p-Werte ist die notorische Fehlinterpretation der Ergebnisse. Der p-Wert ist NICHT die Wahrscheinlichkeit, dass die Nullhypothese wahr, oder die Alternativhypothese falsch ist; auch wenn viele Autoren diesen Fehler bei ihrer Interpretation gemacht haben, wie z.B. \citep[][]{Cohen-earthisround-1994}. Eher kann man den p-Wert als eine Kontrolle der Falsch-Positiven-Rate ansehen (Typ I-Fehler). Wenn man Hypothesentests mit einem $\alpha$ -Level von 0.05 auf Zufallsdaten anwendet, erhält man exakt 5\% Falsch-Positive. Nicht mehr und auch nicht weniger.  
 
-\subsection{Maximum likelihood estimation}
+\subsection{Maximum-likelihood-Schätzung}
 
-The second type of output that is reported by most statistical methods are maximum-likelihood parameter estimates. In a nutshell, the maximum-likelihood estimate (MLE) is our best estimate for the parameters in our model (e.g. a difference between the treatments and the control in our example). 
+Eine zweite Variante der Ergebnisdarstellung, welche bei den meisten statistischen Methoden verwendet wird, ist das Schätzen von Maximum-likelihood Parametern. Zusammenfassend kann man sagen, dass die Maximum-likelihood-Schätzung (maximum-likelihood estimate (MLE)) die beste Schätzung für Parameter in unserem Modell ist (z.B. Unterschiede zwischen den Behandlungsarten und der Kontrolle, wie in unserem Beispiel).
 
-In a bit more detail: in statistics, we define the likelihood as a function of the model parameters $\theta$ as  
+
+Genauer gesagt wird die Wahrscheinlichkeit in der Statistik als Funktion der Modellparameter $\theta$ beschrieben als
 
 \begin{equation}
 L(\theta) := p(dD_{obs} | M(\theta))
 \end{equation}
 
-, i.e. as the function that is obtained by calculating the probability of obtaining the observed data when we vary the model parameters.
+, z.B. als die Funktion die man erhält, wenn man die Wahrscheinlichkeit der erhaltenen beobachteten Daten bei veränderten Modellparameter berechnet.
 
-The maximum-likelihood estimate (MLE)\marginnote{It is important to note that the MLE is the parameter set for which the data is most likely, not the most likely parameter set!} is then defined as the combination of parameters or model assumptions for which the likelihood is maximal. So, while the p-value is the probability of the observed data or more extreme data under a fixed (null) hypothesis, the MLE gives us the ``hypothesis'' that has the highest probability to produce the observed data  
+Die Maximum-likelihood-Schätzung\marginnote{Hier ist zu beachten, dass die Maximum-likelihood-Schätzung ein Parametersatz ist, für den die Daten am Wahrscheinlichsten sind, nicht jedoch der wahrscheinlichste Parametersatz!} ist weiterhin definiert als eine Kombination von Parametern oder Modellannahmen, für welche die Wahrscheinlichkeit maximal ist. Während der p-Wert die Wahrscheinlichkeit der beobachteten 
+oder extremeren Daten unter einer festgelegten (Null-) Hypothese ist, gibt uns die Maximum-likelihood-Schätzung die "`Hypothese"' mit der höchsten Wahrscheinlichkeit unsere beobachteten Daten zu erhalten.
 
-The MLE is only a single parameter value.\marginnote{A point estimate is something like a single best estimate.} This type of estimate is often called a point estimate. However, a point estimate is typically of little use if we don't know how certain it is.\marginnote{Confidence intervals provide an estimate of uncertainty around the point estimate.} Therefore, parameter estimates are usually accompanied by confidence intervals. Sloppily you can think of the 95\% confidence interval of a parameter as the probable range for this area. Somewhat confusing for many, it's not the interval in which the true parameter lies with 95\% probability. Rather, in a repeated experiments, the standard 95\% CI will contain the true value in 95\% of all cases. It's a subtle, but important difference. However, for now, don't worry about it. The CI interval is roughly the range within which we expect the true parameter to be. 
+Die Maximum-likelihood-Schätzung ist nur ein einzelner Parameterwert.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Diese Art Schätzung wird oft Punktschätzung genannt. Jedoch ist eine Punktschätzung oft unbrauchbar, wenn wir nicht wissen wie genau sie ist.\marginnote{Konfidenzintervalle bieten einen Unsicherheitsschätzwert um die Punktschätzung herum.} Deswegen werden Parameterschätzungen immer mit Konfidenzintervallen angegeben. Salopp kann man sagen, dass das 95\% Konfidenzintervall eines Parameters eine wahrscheinliche Reichweite für diesen Bereich ist. Verwirrend ist hier, dass dies nicht das Intervall ist, in dem der richtige Parameter mit 95\% Wahrscheinlichkeit liegt. Vielmehr beinhaltet das Standard 95\% Konfidenzintervall bei wiederholten Experimenten zu 95\% aller Fälle den richtigen Wert. Dies ist ein kleiner, aber entscheidender Unterschied. Jedoch machen wir uns hierüber nun keine weiteren Gedanken. Das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
 
 \subsection{Bayesian inference}
 
