@@ -572,7 +572,7 @@ Mit einem Post-Hoc-Test wendet man multiple Tests auf die gleichen Daten an. Die
 
 \subsection{Weitere wichtige Tests}
 
-T-Test und ANOVA sind die gebräuchlichsten Tests, wenn man are the commonly needed tests in the context of the research skills module, but there are many more tests that could be potentially important. A list of tests that have wikipedia articles can be found at \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{here} 
+T-Tests und ANOVA sind sehr häufig verwendete Tests, wobei es noch viele weitere gibt. Eine Liste mit Tests kann man beispielsweise im Wikipedia-Artikel unter diesem \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Link} finden.
 
 
 \section{Regression}
@@ -683,86 +683,86 @@ die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel.
 \end{fullwidth}
 
 
-\subsection{Checking the assumptions}
+\subsection{Überprüfen der Annahmen}
 
-Formally, we can fit any data with a linear model. However, as in any statistical inference procedure the results (i.e. parameter estimates, p-values) are conditional on the assumptions that we have made. Hence, the p-value we get is conditional on the assumption that the data is actually from a process that conforms to eq.~\ref{eq: linear regression}. If it doesn't the p-value could be completely wrong. Hence, we have to check whether those assumptions are actually met. 
+Formal gesehen kann man jegliche Datensätze auf lineare Modelle übertragen. Jedoch sind hier wie bei jeder statistischen Folgerung, die Ergebnisse (z.B. Parameterschätzungen, p-Werte) von den getroffenen Annahmen abhängig. Dementsprechend ist der p-Wert, den wir erhalten, von der Annahme abhängig, dass die Daten auch tatsächlich mit der Formel ~\ref{eq: linear regression} übereinstimmen. Wenn dies nicht der Fall ist, könnte der p-Wert völlig falsch sein. Somit muss man prüfen, ob diese Annahmen auch tatsächlich erfüllt wurden.
 
-So, what were the assumptions of a linear regression? One problem I often encounter is that students remember that the assumptions were normal distribution. Hence, they look at whether the response variable is normally distributed. However, if you look sharply at eq.~\ref{eq: linear regression}, you see that this was actually not the point. If we shift around the terms in eq.~\ref{eq: linear regression}, we see that what is actually supposed to be normally distributed is 
+Also was genau waren die Annahmen einer linearen Regressioin? Ein Problem ist, dass sich Studenten an die Annahme der Normalverteilung erinnern. Deswegen überprüfen sie, ob die Response-Variable normalverteilt ist. Wenn man jedoch die Formel ~\ref{eq: linear regression} genauer betrachtet, erkennt man, dass dies nicht entscheident ist. Wenn man die Terme in der Formel ~\ref{eq: linear regression} verschiebt,
+sehen wir das, was eigentlich normalverteilt sein soll
 
 \begin{equation} \label{eq: linear regression}
 y - (a \cdot x + b ) \sim \epsilon 
 \end{equation}
 
-i.e. the difference between the observed value and the model predictions. These differences are called the residuals, and, according to the assumptions of our model, they should be normally distributed. To see whether this is indeed the case, one should perform a number of checks. The most basic is to plot the residuals against the fitted value AND against all predictors in the model. The resulting plots allow to diagnose a number of possible problems (Fig.~\ref{fig: ResidualPatterns})
+nämlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen. Diese Unterschiede werden Residuen genannt und sollten, entsprechend unserer Modellannahmen, normalverteilt sein. Um zu überprüfen, ob dies wirklich der Fall ist, sollten einige Tests durchgeführt werden. Der einfachste Test ist das Erstellen eines Plots mit den Residuen gegen die angepassten Werte UND gegen alle Prädiktoren im Modell. Der daraus entstehende Plot erlaubt es dann viele mögliche Probleme zu erkennen (Fig.~\ref{fig: ResidualPatterns})
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-18-1} \end{Schunk}
-\caption{A collection of possible patterns when plotting the residuals against the fitted value (default in R) or a predictor.}
+\caption{Eine Sammlung möglicher Pattern, wenn die Residuen gegen den angepassten Wert (voreingestellt in R) oder einen Prädiktor geplottet werden.}
 \label{fig: ResidualPatterns}
 \end{center}
 \end{figure}
 
-Common problems and their solutions are 
+Übliche Probleme und ihre Lösungen sind  
 
 \begin{itemize}
-  \item Heteroskedasticity (variance changes) --> transform response, or use a regression model that can account for heteroscedasticity
-  \item Pattern in the residuals --> Wrong functional form of the regression model. Try to add predictors, quadratic effects, interactions, or other things that change the functional form
-  \item Distribution not normal --> Assuming this is not due to one of the earlier problems (no pattern / no heteroskedasticity), you can still try a variable transformation, or go to a regression with a different distributional assumption (see next section)
+  \item Heteroskedastizität (Varianzveränderungen) --> Verändere die Response, oder verwende ein Regressionsmodell, das Heteroskedastizität berücksichtigen kann
+  \item Muster in den Residuen -> Falsche Funktionsform des Regressionsmodells. Versuchen Sie, Prädiktoren, quadratische Effekte, Interaktionen oder andere Dinge hinzuzufügen, die die funktionale Form ändern
+  \item Verteilung nicht normal -> Angenommen, es liegt nicht an einem der früheren Probleme (kein Muster / keine Heteroskedastizität), kann man noch eine Variablentransformation ausprobieren oder eine Regression mit einer anderen Verteilungsannahme durchführen (siehe nächsten Abschnitt)
 \end{itemize}  
 
-There are further specialized plots to help with the diagnosis of these problems. You get then when applying the plot() command 
+Es gibt weitere spezialisierte Plots, um mit der Diagnose dieser Probleme zu helfen. Diese erfolgen bei der Anwendung des Befehls plot ()
 
 
-You get basic residual diagnostics by typing plot(fit), where fit is your fitted model object. For further details on residual diagnostics, see \href{http://www.statmethods.net/stats/rdiagnostics.html}{here}.
+Sie erhalten grundlegende Residuendiagnosen durch Eingabe von Plot (Fit), wobei fit das angepasste Modell ist. Weitere Details zur Residuendiagnose siehe \href{http://www.statmethods.net/stats/rdiagnostics.html}{hier}.
 
 
 
-\section{Generalized linear regression models}
+\section{Allgemeine lineare Regressionsmodelle}
 
-The general ideas of a linear regression was that 1) The response is continuous, theoretically from -infinity to + infinity, and 2) residuals are normally distributed around the model predictions. The idea of the GLM framework is take the linear regression framework is to allow you to work as before in the linear regression example, but relaxing both the assumptions about response values from - to + infinity, and the normality. To do this, we have to do two things
+Die allgemeine Vorstellung einer linearen Regression war, dass 1) die Response stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen über Responsegrößen von - bis + unendlich und die Normalität zu lockern. Dazu müssen wir zwei Dinge tun
 
 \begin{itemize}
-  \item To get the output values on the range that we want, we wrap the linear model in a transformation function that forces the response on the right interval (typical intervals are positive, or between 0 and 1). This transformation is called the link function
-  \item To fit other distributions, we have to tell the model to use something else than the Gaussian error function. 
+  \item Um die Ausgabewerte in dem Bereich zu erhalten, den wir wollen, wickeln wir das lineare Modell in eine Transformationsfunktion, die die Response ins rechten Intervall zwingt (typische Intervalle sind positiv oder zwischen 0 und 1). Diese Transformation wird als Link-Funktion bezeichnet
+  \item Um andere Verteilungen anzupassen, müssen wir dem Modell sagen, dass es etwas anderes als die Gaußsche Fehlerfunktion verwenden soll.
 \end{itemize}    
    
-Let's talk about these points in a bit more detail.
+Wir werden über diese Punkte nun etwas mehr ins Detail gehen.
 
-\subsection{The link function}
+\subsection{Die Link-Funktion}
 
-We said above that a linear regression takes the form 
+Wir haben gesagt, dass eine lineare Regression folgende Form annimmt
 
 \begin{equation}
 y \sim a \cdot x + b 
 \end{equation}
 
-That means that if x gets large, y could take any value, positive or negative. A trick to ensure that all predictions for y are positive, or within a certain range is using a link function of the form 
+Das heißt, wenn x groß wird, könnte y jeden Wert einnehmen, positiv oder negativ. Ein Trick, um sicherzustellen, dass alle Vorhersagen für y positiv sind oder innerhalb eines bestimmten Bereichs liegen, ist eine Link-Funktion der Form
 
 \begin{equation}
 y \sim f^{link}(a \cdot x + b )
 \end{equation}
 
-Any function is possible, but as we see later typical choices are the exponential function, which ensures positives outcomes, and the inverse logit, which ensures are range between 0 and 1.
+Jede Funktion ist möglich, aber wie wir später sehen werden, sind typische Alternativen die Exponentialfunktion, die positive Ergebnisse garantiert, und die inverse Logit, die Bereich zwischen 0 und 1 garantiert.
 
-\subsection{Other distributions}
+\subsection{Andere Verteilungen}
 
-Well, this is conceptually the easy part, but maybe you are not yet aware what kind of distributions exist beside the normal. Two typical choices that we use below are the binomial (the distribution for coin flipping), and the Poisson distribution (a discrete probability distribution). There are many other choices available. Maybe it becomes more clear when we move to the actual examples in the next sections. 
+Nun, das ist konzeptionell der einfache Teil, aber vielleicht ist noch nicht klar, welche Art von Distributionen neben der normalen vorhanden sind. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird es deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
 
-\subsection{0/1 data - logistic regression}
+\subsection{0/1 Daten - logistische Regression}
 
-Logistic regression is the most common analysis for binary data (presence/absence; survived/dead; infected/not infected). Logistic regression assumes that the distribution is binomial (coin flip model). To get the linear predictor on a scale between 0 and 1 that is necessary for the binomial distribution, we use the logistic link function (or inverse logit). 
+Logistische Regression ist die häufigste Analyse für binäre Daten (Präsenz / Abwesenheit, überlebt / tot, infiziert / nicht infiziert). Logistische Regression geht davon aus, dass die Verteilung binomial ist (Münzwurf-Modell). Um den linearen Prädiktor auf einer Skala zwischen 0 und 1 zu erhalten, die für die Binomialverteilung erforderlich ist, verwenden wir die logistische Linkfunktion (oder inverse Logit).
 
-evspace{1cm}
+\vspace{1cm}
 \begin{fullwidth}
 \begin{mdframed}
     
 \textbf{In R:} 
 
-Here an example with the data of the Titanic survivors. Note that if you tell R to use the binomial distribution, the logit link is automatically selected. If you wanted, you could overrule this choice. 
-
+Hier ein Beispiel mit den Daten der Titanik-Überlebenden. Beachte, dass die Logit-Link automatisch ausgewählt wird, wenn in R die Binomialverteilung verwendet wird. Bei bedarf, könnte man diese Wahl überschreiben.
 \begin{Schunk}
 \begin{Sinput}
 library(effects)
@@ -790,9 +790,9 @@ Error in summary(fmt): Objekt 'fmt' nicht gefunden
 
 
 
-\subsection{count data - poisson regression}
+\subsection{Zähldaten - Poisson-Regression}
 
-Poisson regression is the standard choice for working with count data, although there are a few other options available as well. In poisson regression, the standard choice is to use a exponential function to make all values positive. The inverse of the exponential is the log, so we call this the log link. As before, R is choosing this automatically if you specify the distribution to be poisson. 
+Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obwohl ein paar andere Optionen zur Verfügung stehen. In der Poisson-Regression wird standardisiert eine Exponentialfunktion gewählt, um alle Werte positiv zu machen. Das Inverse des Exponentials ist der Log, also nennen wir das den Log-Link. Nach wie vor wählt R diese automatisch aus, wenn man angibt die Verteilung zu "`poissonieren"'.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -800,7 +800,7 @@ Poisson regression is the standard choice for working with count data, although 
     
 \textbf{In R:} 
 
-An example, using some data on the feeding of bird nestlings, in relation to their attractiveness:
+Ein Beispiel hierfür zeigt einige Daten über die Fütterung von Nesthockern in Bezug auf ihre Attraktivität:
 \begin{Schunk}
 \begin{Sinput}
 schnaepper <- read.csv("schnaepper.txt", sep="")
@@ -837,11 +837,11 @@ Number of Fisher Scoring iterations: 4
 \end{fullwidth} 
 
 
-\subsection{Residual checks in GLMs}
+\subsection{Residuen-Überprüfungen in allgemeinen linearen Regressionsmodellen}
 
-Residuals in glms are not supposed to be normally distributed, so don't use standard checks for normality such as normal qq plots to check for the appropriateness of the residuals. For not too complicate models, a good way to deal with this problem is to use the so-called pearsons residuals, which scale the observed differences between model and data by the expected variance of the model \footnote{in R, you can specify the option pearson in many fuctions, including the residual() function that you can apply to a fitted object}
+Residuen in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen für Normalität wie normale qq-Plots, um auf die Angemessenheit der Residuen zu überprüfen. Für nicht zu komplizierte Modelle gibt es eine Möglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R können Sie die Option Pearson in vielen Funktionen angeben, einschließlich der Residual()-Funktion, die Sie auf ein angepasstes Objekt anwenden können}
 
-One standard concern in poisson or binomial glms is that the variance of the poisson and binomial distribution cannot be adjusted, but is fixed by the mean. This is a problem you don't encounter in the normal linear model, because here the random part is modelled by a normal distribution, which has a parameter for the variance. A problem that appears very frequently in Poisson or binomial glms is overdispersion, i.e. that the residuals show more variance than expected under the fitted model. \marginnote{You can check for overdispersion by looking at the fitted deviance, or apply an overdispersion test} The easiest way to correct for this is to use the quasi-Poisson and quasi-binomial models available in the glm function. These models fit an additional parameter that modifies the variance of the Poisson and binomial glm. 
+Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine Überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf Überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen Überdispersiontest anwendt} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
 
 
 \chapter{Predictive statistics - machine learning}
