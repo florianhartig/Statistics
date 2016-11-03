@@ -541,11 +541,11 @@ Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den G
 
 \subsection{Varianzanalyse (ANOVA)}
 
-ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene Resonanz (z.B. eine abhängige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung = eine Variable verändert die Auswirkung einer anderen Variable} zwischen zweier Variablen bedeutet, dass sich der Wert einer erläuternden Variable darauf auswirkt, wie sehr eine andere erläuternde Variable die Resonanz beeinträchtigt.
+ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene Resonanz (z.B. eine abhängige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung: eine Variable verändert die Auswirkung einer anderen Variablen} zwischen zweier Variablen bedeutet, dass sich der Wert einer erläuternden Variable darauf auswirkt, wie sehr eine andere erläuternde Variable die Resonanz beeinträchtigt.
 
-While the word ANOVA is generally associated with the assumption explained above (which correspond to a t-test / linear regression, see next chapter), the concept of ANOVA can be extended in the same way as linear regression models can be extended to generalized linear models etc. Hence, we can do ANOVA also for models with non-normally distributed errors (of course you have to tell this the software, it won't do it automatically). You therefore have to read carefully what people mean if they use the term.
+Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe nächstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (natürlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
 
-Here a simple example with a standard ANOVA (normal errors), testing whether weight (of chicken) depends on their diet, where diet is a factor variable with four levels:
+Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein variabler Faktor mit vier Stufen ist:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -561,35 +561,35 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-We find a p-value of  6.43e-07, which is highly significant at an $\alpha$ level of 0.05. Hence, we can reject the null hypothesis that the diet has no influence on the response "weight". Note that in this case, we don't get any parameter estimates, and we can't say anything about which of the diets differs from which. If you want those, there are two options:
+Wir erhalten einen p-Wert von 6.43e-07, welcher mit einem $\alpha$ Level von 0.05 höchst signifikant ist. Somit können wir die Nullhypothese abweisen, dass die Ernährung keinen Einfluss auf die Response "`Gewicht"' habe. Beachte hier, dass wir keine Parameterschätzwerte erhalten und wir keine Aussagen darüber machen können, welche Ernährung sich von welcher unterscheidet. Hierfür gibt es zwei Möglichkeiten:
 
 \begin{itemize}
-\item Either you apply what is called post-hoc testing, which means that you test for differences (e.g. with a t-test) between the diets.
-\item Or you switch to a regression, which is described in the next chapter
+\item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Ernährungsweisen testet (Bsp. mit einem T-Test).
+\item Oder man wechselt zu einer Regression, die im folgenden Kapitel genauer beschrieben wird.
 \end{itemize}
 
-If you do post-hoc testing, you are doing multiple tests on the same data. This is a problem - the idea of the p-value is that you calculate the probability of seeing the data under ONE null hypothesis. If you do this, you will get at most 5\% error at an $\alpha$ level of 0.05. \marginnote{When doing multiple tests on the same data, we need to correct the p-values for multiple testing.} However, if we do multiple tests, we are testing multiple null hypotheses, and there are more options for the test statistics to get significant just by chance. Hence, we need to correct the p-values for multiple testing. There are a number of options to do so, google is your friend. 
+Mit einem Post-Hoc-Test wendet man multiple Tests auf die gleichen Daten an. Dies kann zum Problem werden - der Gedanke des p-Werts ist die die Wahrscheinlichkeitkalkulation für das Betrachtet der Daten bezüglich EINER Nullhypothese. Nach einer solchen Durchführung, erhält mal allenfalls einen  5\% Fehler bei einem $\alpha$ Level von 0.05. \marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} Wenn wir jedoch multiple Tests durchführen, testen wir auch multiple Nullhypothesen und es ergeben sich mehr Möglichkeiten für die Testgrößen ein Signifikanzlevel nur durch Zufall zu erreichen. Deswegen müssen wir den p-Wert für mulitples Testen korrigieren. Um hierzu mehr Informationen zu erhalten, ist Google dein bester Freund. 
 
-\subsection{Other important tests}
+\subsection{Weitere wichtige Tests}
 
-t-test and ANOVA are the commonly needed tests in the context of the research skills module, but there are many more tests that could be potentially important. A list of tests that have wikipedia articles can be found at \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{here} 
+T-Test und ANOVA sind die gebräuchlichsten Tests, wenn man are the commonly needed tests in the context of the research skills module, but there are many more tests that could be potentially important. A list of tests that have wikipedia articles can be found at \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{here} 
 
 
 \section{Regression}
 
-As explained earlier, regression does not necessarily mean using a different statistical model as in hypothesis testing (ANOVA and the linear regression model in R use the same assumptions). However, the goal of regression is a different one. While hypothesis tests are all about seeing whether the data would be compatible with a null-hypothesis, regression is about finding the best-fitting hypothesis or parameters (the MLE). Hence, a regression model tries to find the parameter combination that produces the highest probability to create the observed data, given the model assumptions.
+Wie schon zuvor beschrieben, bedeutet Regression nicht zwingend, dass man ein anderes statistisches Modell wie bei Hypothesentests verwendet (ANOVA und das lineare Regressionsmodell verwenden in R die gleichen Annahmen). Nichtsdestotrotz ist das Ziel einer Regression ein anderes. Während Hypothesentests nur überprüfen, ob die Daten mit einer Nullhypothese vereinbar sind, sucht eine Regression nach einer am besten passenden Hypothese oder Parametern (Maximum-likelihood-Schätzwert). Somit sucht ein Regressionsmodell nach einer Parameterkombination, die mit der höchsten Wahrscheinlichkeit die beobachteten Daten, mit vorgegebenen Modellannahmen, ausgibt.
 
-\subsection{Linear regression}
+\subsection{Lineare Regression}
 
-The most basic regression model is the linear regression. The assumption here is that we have a response that depends on the predictors in a form of 
+Das grundlegendste Regressionsmodell ist die lineare Regression. Hier lautet die Annahme, dass wir eine Reaktion haben, die von einem Prädiktor wiefolgt abhängt:
 
 \begin{equation} \label{eq: linear regression}
 y \sim a \cdot x + b + \epsilon 
 \end{equation}
 
-where y is the response, x is a predictor, a is the parameter that fits how strongly the predictor influences the response, b is the intercept, and $\epsilon$ is the random variation, which in a linear regression is assumed to be normally distributed. 
+wobei y die Response, x der Prädiktor ist; a ist der Parameter, wie sehr der Prädiktor die Response beeinflusst, b ist der Schnittpunkt und $\epsilon$ ist die Zufallsvariation, welche in einer linearen Regression als normalverteilt angenommen wird.
 
-In R, we can do such a regression by typing
+In R wird solch eine Regression durch folgenden Befehl erreicht
 
 \begin{Schunk}
 \begin{Sinput}
@@ -629,20 +629,19 @@ F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
 \end{center}
 \end{figure}
 
-You can use the same code regardless of whether your predictor is continuous or categorical. In case of continuous variable, a line is fit to the data. In case of a categorical variable with n levels, the first level is set as the reference (intercept), and n-1 parameters are fitted for the following levels that describe the difference to the reference. 
+Dieser Code kann unabhängig davon verwendet werden, ob der Prädiktor stetig oder kategorisch ist. Im Falle einer stetigen Variable entsteht eine Linie anhand der Daten. Im Falle einer kategorischen Variable mit n Stufen ist die erste Stufe als Referenz gesetzt (Schnittpunkt), und n-1 Faktoren entsprechen den folgenden Stufen, die den Unterschied zur Referenz beschreiben.
 
-The fitted parameters appear in the column "Estimate". This tells us how much the predictor, in this case Ozone, affects the response, in this case the Temperature: for each unit of Ozone more, temperature increases by a 0.208 units, with a standard error (confidence interval) of 0.019. Apart from seeing how a regression output looks like, this teaches us another valuable lesson: the fact that we have used temperature as a response here and ozone as a predictor doesn't mean that ozone causally affects temperature. \marginnote{Correlation is not causality.} In fact, it is likely the other way around: if we have more sun, it's hotter, and we tend to have more ozone as well. Regression, as most other statistical analysis, doesn't establish causality, it establishes correlation. What we are saying is that if our ozone measurements go up, we can be pretty sure that it is hotter as well. Doesn't mean that ozone creates heat. Correlation is not causality. 
+Die entsprechenden Parameter erscheinen in der Spalte "Estimate". Dies zeigt uns, wie sehr der Prädiktor, in diesem Fall Ozon, die Response, hier Temperatur, beeinflusst: Für jede Einheit Ozon mehr steigt die Temperatur um 0.208 Einheiten, mit einem Standardfehler (Konfidenzintervall) von 0.019. Abgesehen davon, wie ein Regressions-Output aussieht, lehrt uns dies etwas anderes Wichtiges: Die Tatsache, dass wir die Temperatur als Response und Ozon als Prädiktor benutzt haben, bedeutet nicht, dass Ozone ursächlich die Temperatur beeinflusst. \marginnote{Korrelation ist nicht Kausalität.}Tatsächlich ist es genau anders herum: wenn wir mehr Sonne haben, wird es wärmer und wir haben tendenziell mehr Ozon. Regression schafft nicht, wie die meisten anderen statistischen Analysen, Kausalität. Es schafft Korrelation. Was wir hier ausdrücken ist, dass wenn unsere Ozonmessungen steigen, wir ziemlich sicher davon ausgehen können, dass es auch gleichzeitig wärmer wird. Was widerum nicht bedeutet, dass Ozon Hitze erschafft. Korrelation ist nicht Kausalität.
 
-The regression results gives us a lot of p-values as well. These are results of various hypothesis tests that are performed automatically for you after the regression is done. For example, we get a p-value for each parameter. This p-value is based on a particular type of t-tests where the full model is tested against the model with the parameter set to 0. There is also other p-value, based on a different test statistics at the end of the regression output. This tests the null hypothesis that all parameters are zero.  
-
+Die Regressionsergebnisse geben uns ebenfalls einige p-Werte aus. Das sind die Ergebnisse von mehreren Hypothesentests, die automatisch für dich nach der Regression geschaltet sind. Beispielsweise erhält man einen p-Wert für jeden Parameter. Dieser p-Wert basiert auf einem bestimmten Typ von T-Test, wobei das vollständige Modell gegen ein Modell mit auf 0 gesetzten Parametern getestet wird. Zusätzlich gibt es noch einen weiteren p-Wert, welcher auf einer anderen Testgröße am Ende der Regressionsausgabe beruht. Dieser testet die Nullhypothese mit allen Paramteren gleich 0.
 
 \vspace{1cm}
 \begin{fullwidth}
 \begin{mdframed}
     
-\textbf{Specifying different model assumptions in R:} 
+\textbf{Präzisieren von verschiedenen Modellannahmen in R:} 
 
-Response y depends linearly on a variable a (continous or categorical)
+Response y hängt linear von Variable a (stetig oder kategorsich) ab
 
 \begin{Schunk}
 \begin{Sinput}
@@ -651,7 +650,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y depends linearly on two variables a and b (continous or categorical), but the value of either variable doesn't influence the effect the other variable has on the response (no interaction)
+Response y hängt linear von zwei Variablen a and b (stetig oder kategorsich) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die Response hat (keine Interaktion)
 
 \begin{Schunk}
 \begin{Sinput}
@@ -660,7 +659,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y depends linearly on two variables a and b (continous or categorical), but the value of one variable does influence the effect the other variable on the response (interaction)
+Response y hängt linear von zwei Variablen a and b (stetig oder kategorsich) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die Response (Interaktion)
 
 \begin{Schunk}
 \begin{Sinput}
@@ -669,7 +668,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y depends as in $a + a^2$ on a variable a (continous or categorical)
+Response y ist von einer Variablen a (stetig oder kategorisch) wie in $a + a^2$ abhängig
 
 \begin{Schunk}
 \begin{Sinput}
@@ -678,7 +677,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-the I() notation means that the following expression is interpreted as a mathematical formula. 
+die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel. 
 
 \end{mdframed}
 \end{fullwidth}
