@@ -1079,7 +1079,7 @@ Das Ergebnis sollte wie folgt aussehen Fig.~\ref{fig: Rgui2}:
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{rgui2.png}
-\caption{Ein Graph mit RGui erstellt}
+\caption{Ein Graph erstellt mit RGui}
 \label{fig: Rgui2}
 \end{center}
 \end{figure}
@@ -1123,9 +1123,9 @@ Um einen Teil des Skripts an die Konsole zu senden, können Sie den run-Button a
 \chapter{Verarbeitung von Daten in R}
 \label{HandlingDataInR}
 
-\section{Variables}
+\section{Variablen}
 
-Who has ever worked with a programming language? In a programming language, data is stored in variables / objects. This is how we assign the word "test" to the variable "VariableX"
+Wer hat jemals mit einer Programmiersprache gearbeitet? In einer Programmiersprache werden die Daten in Variablen / Objekten gespeichert. So weisen wir der Variablen "VariableX" das Wort "test" zu,
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1133,7 +1133,7 @@ VariableX = "test"
 \end{Sinput}
 \end{Schunk}
 
-I can now access the variable by typing its name in the console, and it will return the value that it stores.
+Ich kann jetzt auf die Variable zugreifen, indem ich seinen Namen in der Konsole eingebe und es wird den Wert ausgeben, den es gespeichert hat.
 \begin{Schunk}
 \begin{Sinput}
 VariableX
@@ -1143,42 +1143,42 @@ VariableX
 \end{Soutput}
 \end{Schunk}
 
-We can see all the variables that we have specified in the global environment or R in the top-right corner or RStudio. You see that we have here the variable "VariableX" together with it's value. 
+Wir können alle Variablen, die wir in der globalen Umgebung oder in R angegeben haben, in der oberen rechten Ecke oder in RStudio sehen. Wie man sieht haben wir hier die Variable "VariableX" zusammen mit ihrem Wert.
 
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{rst_globenv.png}
-\caption{The global environment is displayed in the upper right corner of the The RStudio editor.}
+\caption{Die globale Umgebung wird in der oberen rechten Ecke des R Studio-Editors angezeigt.}
 \label{fig: Rstudio}
 \end{center}
 \end{figure}
 
-\section{Data types and structures}
+\section{Datentypen und Strukturen}
 
-A variable can store different things: a number, a word, a list, or a whole dataset. 
+Eine Variable kann verschiedene Dinge speichern: eine Zahl, ein Wort, eine Liste oder eine ganze Datenmenge.
 
-The most simple case are variables that contain a **single value** only. Here, the only question is what kind of values the variable contains. The different data types a single value can have are called the **atomic types** - think of it as the basic data types in R. Important atomic types are: 
+Der einfachste Fall sind Variablen, die nur einen **einzigen Wert** enthalten. Hier ist die Frage, welche Art von Werten die Variable enthält. Die verschiedenen Datentypen, die ein einzelner Wert haben kann, heißen die **atomaren Typen** (atomic types) - sie entsprechen den grundlegenden Datentypen in R. Wichtige Atomtypen sind:
 
 - boolean (TRUE / FALSE)
-- integer (1, 2, 3, 5)
-- numeric (1.1, 2.5, 3.456)
-- factor ("red", "green", "blue")
-- character ("a word", "another word")
+- ganzzahlig (1, 2, 3, 5)
+- numerisch (1.1, 2.5, 3.456)
+- Faktor ("red", "green", "blue")
+- Subjekt ("a word", "another word")
 
-If we have a collection of several atomic types, we speak of a data structure or an object (there is a difference but it doesn't matter here). Important examples of this are: 
+Wenn wir eine Sammlung von mehreren "atomic types" haben, sprechen wir von einer Datenstruktur oder einem Objekt (es gibt einen Unterschied, der hier aber keine Rolle spielt). Wichtige Beispiele hierfür sind:
 
-- **vector** (a row of the same atomic types, e.g. [1,2,3,4,5] )
-- **list** (basically like a vector, but can contain different types such as [1, "red", FALSE] )
-- **data.frame** (a list of vectors, this is the standard format for data in R. Think of it as a spreadsheet - each colum is a vector and can have a different type)
+- **Vektor** (Eine Reihe der gleichen 'Atomtypen', z.B. [1,2,3,4,5] )
+- **Liste** (Im Grunde wie ein Vektor, kann aber verschiedene Typen enthalten, Bsp. [1, "rot", FALSE] )
+- **data.frame** (Eine Liste von Vektoren, dies ist das Standardformat für Daten in R. Man stellt sich dies wie eine Tabelle vor - jede Spalte ist ein Vektor und kann einen anderen Typ haben)
 
-A full list of data types is here http://www.statmethods.net/input/datatypes.html 
+Eine vollständige Liste der Datentypen finden Sie hier http://www.statmethods.net/input/datatypes.html 
  
-\subsection{Checking data types and structures}
+\subsection{Prüfung von Datentypen und Strukturen}
 
-Especially after reading in your data, it is important to check which type it has. The functions in R react differently depending on which atomic type you supply. 
+Besonders nach dem Einlesen Ihrer Daten ist es wichtig zu prüfen, welchen Typ die Daten haben. Die Funktionen in R reagieren je nach Atomtyp unterschiedlich.
 
-If you want to see which type or structure a variable has, use the str command:
+Wenn man wissen will, welchen Typ oder Struktur eine Variable hat, verwendet man den str-Befehl:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1186,7 +1186,7 @@ str(object)
 \end{Sinput}
 \end{Schunk}
 
-To get a summary of your structure (e.g. mean per column, but what exactly is summarized depends on the data structure and type), use:
+Um eine Zusammenfassung Ihrer Struktur (z. B. Mittelwert pro Spalte; was genau zusammengefasst wird, ist abhängig von Datenstruktur und Typ) zu erhalten, verwenden Sie:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1194,7 +1194,7 @@ summary(object)
 \end{Sinput}
 \end{Schunk}
 
-To try to make an automatic plot (R will choose what it thinks most suitable for this structure / type), type:
+Um eine automatischen Plot zu erstellen (R wird selbst entscheiden, welcher am meisten für diese Struktur / Typ geeignet ist), tippt man:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1202,22 +1202,22 @@ plot(object)
 \end{Sinput}
 \end{Schunk}
 
-Try this with the object airquality. 
+Probiere dies mit dem Objekt Luftqualität.
 
-\subsection{Accessing columns, rows and elements in a data.frame or matrix}
+\subsection{Zugriff auf Spalten, Zeilen und Elemente in einem Datenframe oder einer Matrix}
 
-As said, the most common structure in R is the data frame. Basically, columns are stored as a list of vectors, so that each column can be a different data type.
+Wie bereits erwähnt, ist die häufigste Struktur in R der Datenframe. Grundsätzlich werden Spalten als eine Liste von Vektoren gespeichert, so dass jede Spalte ein anderer Datentyp sein kann.
 
-You can select columns in a number of ways:
+Man kann Spalten auf verschiedenste Weisen auswählen:
 
-- By name:
+- Nach Name:
 \begin{Schunk}
 \begin{Sinput}
 airquality$Ozone
 \end{Sinput}
 \end{Schunk}
 
-- By column index: 
+- Nach Spaltenindex: 
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1225,11 +1225,11 @@ airquality[,1]
 \end{Sinput}
 \end{Schunk}
 
-Note that here [,1] means the first column. You could get the first row by [1,].
+Zu beachten sei hier, dass die erste Spalte durch [,1] ausgedrückt wird. Die erste Reihe erhält man durch [1,].
 
-\section{Selecting data}
+\section{Daten auswählen}
 
-The last type of accessing is an example of slizing. Slizing is a very powerfull technique that is available in most scientific programming languages. What it means is that you can access your data by typing in colums, rows, or particular elements. Look at the following commands (explanation always below):
+Die letzte Art des Datenzugriffs ist ein Beispiel für das "Slicen". Slicing ist eine sehr leistungsfähige Technik, die in den meisten wissenschaftlichen Programmiersprachen verfügbar ist. Das bedeutet, dass Sie auf Ihre Daten zugreifen können, indem Sie Spalten, Zeilen oder bestimmte Elemente eingeben. Schauen Sie sich die folgenden Befehle an (Erläuterung immer unten):
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1237,7 +1237,7 @@ airquality[,1:2]
 \end{Sinput}
 \end{Schunk}
 
-gets the first colums 1 and 2.
+verschafft die ersten Spalten 1 und 2.
 
 
 \begin{Schunk}
@@ -1246,7 +1246,7 @@ airquality[4:6,1]]
 \end{Sinput}
 \end{Schunk}
 
-gets rows 4 to 6 in column 1
+verschafft die Reihen 4 bis 6 in Spalte 1
 
 
 \begin{Schunk}
@@ -1255,9 +1255,9 @@ airquality[c(1,2,3,4,7,8),1]
 \end{Sinput}
 \end{Schunk}
 
-gets rows 1,2,3,4,7,8 in column 1. 
+verschafft die Reihen 1,2,3,4,7,8 in Spalte 1. 
 
-You see, we can select any combination of elemets we want very conveniently from the data frame. Even more convenient is how we can create selections.
+So können wir eine beliebige Kombination von gewünschten Elementen sehr bequem aus dem Datenframe auswählen. Noch einfacher ist das Erstellen von Selektionen.
 
 
 \begin{Schunk}
@@ -1266,7 +1266,7 @@ You see, we can select any combination of elemets we want very conveniently from
 \end{Sinput}
 \end{Schunk}
 
-gives us the values of 1 to 10
+verschafft uns die Werte von 1 bis 10
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1274,7 +1274,7 @@ c(1,5,6)
 \end{Sinput}
 \end{Schunk}
 
-the c() function combines values in one vector (it is neccessary to have the values in one vector for slicing)
+Die c() - Funktion kombiniert Werte in einem Vektor (für das Slicen ist es notwendig die Werte in einem Vektor zu haben)
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1282,7 +1282,7 @@ c(1,5,6)
 \end{Sinput}
 \end{Schunk}
 
-But we can also create selections with logical operators
+Wir können aber auch Selektionen mit logischen Operatoren erzeugen
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1290,8 +1290,7 @@ airquality$Temp > 80
 \end{Sinput}
 \end{Schunk}
 
-creates a vector with True on all temperature values that are > 80. I can store this and use it for selection, or use it immediately
-
+Erstellt einen Vektor mit True auf allen Temperaturwerten, die >80 sind. Ich kann diesen speichern und für eine Selektion, oder auch sofort verwenden
 
 
 \begin{Schunk}
@@ -1300,20 +1299,20 @@ airquality[airquality$Temp > 80 , ]
 \end{Sinput}
 \end{Schunk}
 
-selects all rows with temperature > 80.
+Wählt alle Zeilen mit einer Temperatur >80 aus.
 
 
-\section{loading data into R}
+\section{Laden von Daten in R}
 
-So far, we had the data already in the R program. Now, we will demonstrate how to load some data (we will use the airquality.txt file provided to you)
+Bisher hatten wir die Daten schon im R Programm. Nun werden wir demonstrieren, wie einige Daten geladen werden (wir verwenden die airquality.txt-Datei, die zur Verfügung gestellt wird)
 
-There are basically two options to load data
+Es gibt grundsätzlich zwei Möglichkeiten Daten zu laden
 
-- with RStudio (point and click) - go to Environment (top right), import dataset, and follow instructions
+- mit RStudio (Punkt und Klick) - gehe zu Environment (oben rechts), importiere den Datensatz und folge den Anweisungen
 
-- from the script with the read.table() command
+- aus dem Skript mit dem Befehl read.table ()
 
-The latter works like that
+Das funktioniert so
 
 
 \begin{Schunk}
@@ -1322,11 +1321,11 @@ data = read.table("airquality.txt", header = T)
 \end{Sinput}
 \end{Schunk}
 
-In this case it works nice because I have prepared the data in the most easy way. If you have other data formates (commas, semicolons, header / no header), consult the help of teh read.table command. See also http://www.statmethods.net/input/importingdata.html for more options, e.g. excel or database import. 
+In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise vorbereitet habe. Wenn man andere Datenformate (Kommas, Semikolons, Überschriften / keine Überschriften) hat, befragt man die Hilfe-Option mit dem Befehl read.table. Siehe auch http://www.statmethods.net/input/importingdata.html für weitere Optionen, z.B. Excel oder Datenbankimport.
 
-\subsection{Checking the data}
+\subsection{Überprüfen der Daten}
 
-After loading the data, always check whether the data format is correct 
+Überprüfe nach dem Laden der Daten immer, ob das Datenformat korrekt ist
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1338,7 +1337,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
 \end{Soutput}
 \end{Schunk}
 
-You see here the atomic type of every column. Make sure it corresponds to what you want (sometimes numeric is read in as factor, or *vice versa*). If a column would have the wrong type, we have to change this by typing
+Hier sieht man den Atomtyp jeder Säule. Stelle sicher, dass es dem entspricht, was man möchte (manchmal wird numerisch als Faktor eingelesen , oder umgekehrt). Wenn eine Spalte den falschen Typ haben würde, müssen wir das manuell ändern durch:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1353,21 +1352,21 @@ as.numeric(x)
 \end{Schunk}
 
 
-Note: this data file is already included in R, so if you don't manage to load it, you can continue anyway. 
+Hinweis: Diese Datei ist bereits in R enthalten. Wenn man es nicht schafft den Datensatz zu laden, kann man trotzdem fortfahren.
 
-\chapter{Plot commands in R}
+\chapter{Plot-Befehle in R}
 
-Before that, a few important references 
+Davor einige wichtige Hinweise
 
 \begin{itemize}
-\item \href{http://rgraphgallery.blogspot.de/search/label/3%20vartiable%20plots}{here}
-\item Excellent: the \href{http://shiny.stat.ubc.ca/r-graph-catalog/#}{R Graph Catalog}
-\item \href{http://rgm3.lab.nig.ac.jp/RGM/R_image_list?page=2282&init=true}{R Graphical Manual}
+\item \href{http://rgraphgallery.blogspot.de/search/label/3%20vartiable%20plots}{hier}
+\item Sehr hilfreich, der \href{http://shiny.stat.ubc.ca/r-graph-catalog/#}{R Graphenkatalog}
+\item \href{http://rgm3.lab.nig.ac.jp/RGM/R_image_list?page=2282&init=true}{R Graphik-Handbuch}
 \item \href{http://www.statmethods.net/graphs/line.html}{QuickR}
 \end{itemize}
 
 
-\marginnote{An overview or R colors \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
+\marginnote{Ein Überblick über die Farben in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1410,7 +1409,7 @@ plot(airquality)
 pairs(airquality)
 
 
-Simple Bar Plot 
+Einfaches Balkendiagramm
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1426,7 +1425,7 @@ barplot(counts, main="Car Distribution",
 
 \end{Schunk}
 
-Grouped Bar Plot
+Gruppiertes Balkendiagramm
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1458,8 +1457,8 @@ boxplot(mpg~cyl,data=mtcars, main="Car Milage Data",
 
 \end{Schunk}
 
-Notched Boxplot of Tooth Growth Against 2 Crossed Factors
-boxes colored for ease of interpretation 
+Gekerbter Boxplot des Zahnwachstums gegen 2 gekreuzte Faktoren aufgetragen
+Boxen für eine leichtere Interpretation eingefärbt
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1481,7 +1480,7 @@ Warning in bxp(structure(list(stats = structure(c(8.2, 9.7, 12.25, 16.5, : some 
 %See http://www.statmethods.net/graphs/index.html 
 
 
-Correlation heatmap. The heatmap visualizes correlation between variables. A handy property of this function is that variables can be reordered, so that closely correlated variables are close to each other. This is often useful if one wants to select uncorrelated variables for an analysis
+Korrelations-Heatmap. Die Heatmap visualisiert die Korrelation zwischen Variablen. Eine praktische Eigenschaft dieser Funktion ist, dass Variablen neu angeordnet werden können, so dass eng korrelierte Variablen nahe beieinander liegen. Dies ist oft nützlich, wenn man nicht korrelierte Variablen für eine Analyse auswählen möchte
 
 \begin{Schunk}
 \begin{Sinput}
