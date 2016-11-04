@@ -996,26 +996,26 @@ Das bedeutet, dass, im Gegensatz zum festgelegten Typ-I-Fehler, die Berechnung d
 \end{mdframed}
 
 
-\chapter{Good to knows and further reading}
+\chapter{Wissenswertes und weiteführende Lektüren}
 
-\section{Reproducibility and good scientific practice}
+\section{Reproduzierbarkeit und gute wissenschaftliche Vorgehensweise}
 
-Reproducibility means that each step of your analysis is repeatable. Experience shows that it is not as trivial as it sounds to ensure reproducibility. Here some hints for making your data analysis reproducible
+Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Die Erfahrung zeigt, dass es nicht so trivial ist, wie man denkt, die Reproduzierbarkeit zu gewährleisten. Hier einige Hinweise, wie man Datenanalyse reproduzierbar machen kann
 
 \begin{itemize}
 
-\item{Once you have your raw data produced, NEVER change it. Store it in a save location, make a backup, and never touch it again}
+\item{Sobald man Rohdaten produziert hat, ändert man es NIE. Man speichert sie an einem Speicherort, erstellt eine Sicherung und berührt sie niemals erneut}
 
-\item{Typically you will have to do some cleaning, renaming etc. before the data analysis. If possible at all, make this through a script (e.g. R, python, perl). Store the script with the analysis.}
+\item{In der Regel muss man einige Aufwertungen, Umbenennung etc. vor der Datenanalyse tun. Wenn möglich, machen man dies durch ein Skript (z. B. R, python, perl). Man speichert das Skript mit der Analyse.}
 
-\item{Use a version control system for your code, and note for each output the revision number that the output was produced with.} \marginnote{See our RS lab on this topic \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/VersionControl}{here}}
+\item{Verwende ein Versionskontrollsystem für den Code und notiere für jede Ausgabe die Revisionsnummer, mit der die Ausgabe erstellt wurde.}
 
-\item{When running the analysis, store the random seed and the settings of your computer to ensure reproducibility. In R, the easiest way to do this is to set the random seed by random.seed(123), and store the results of sessionInfo() which provides you with the version numbers of all the packages that you use}
+\item{Wenn die Analyse durchgeführt wird, speichere die random-seed und die Einstellungen des Computers, um die Reproduzierbarkeit sicherzustellen. In R ist der einfachste Weg dies zu tun, die random-seed auf random.seed(123) zu setzen und die Ergebnisse von sessionInfo(), welche die Versionsnummern aller verwendeten Pakete enthält, zu speichern}
 
-\item{Think about running your code within an reporting environment such as Rmd or sweave}\marginnote{See our RS lab on this topic \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics/reporting}{here}}
+\item{Denke darüber nach, den Code in einer Reporting-Umgebung wie z.B. Rmd oder sweave auszuführen}
 
 
-%\footnote{See also the R task view on \href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{reproducible research}
+%\footnote{Siehe auch die R-Task-Ansicht über \href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{reproduzierbare Forschung}
 
 \end{itemize}
 
