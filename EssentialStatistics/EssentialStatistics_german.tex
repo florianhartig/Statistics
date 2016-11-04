@@ -1058,7 +1058,7 @@ R kommt mit einem einfachen Editor, der grundlegende Funktionen dieser Art zur V
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{rgui1.png}
-\caption{Typing a simple calculation into the RGui}
+\caption{Eine einfache Rechnung in RGui tippen}
 \label{fig: Rgui1}
 \end{center}
 \end{figure}
@@ -1074,36 +1074,36 @@ plot(airmiles, col = 4)
 \end{Sinput}
 \end{Schunk}
 
-The result should look like Fig.~\ref{fig: Rgui2}:
+Das Ergebnis sollte wie folgt aussehen Fig.~\ref{fig: Rgui2}:
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{rgui2.png}
-\caption{A figure produced with the RGui}
+\caption{Ein Graph mit RGui erstellt}
 \label{fig: Rgui2}
 \end{center}
 \end{figure}
 
-So, as you see, this apparently opens a new window (a graphics output) and plots airmiles against time. We'll discuss why and how this works. Before you get too used the the RGui, however, let's first move to RStudio, an alternative program to interact with R.
+Wie man erkennen kann, öffnet dies anscheinend ein neues Fenster (eine Grafik-Ausgabe) und plottet die Luft-Meilen gegen die Zeit. Wir werden diskutieren, warum und wie das funktioniert. Bevor man sich nun an RGui gewöhnt, sehen wir uns zuerst RStudio an, ein alternatives Programm, um mit R zu interagieren.
 
-\section{The Rstudio editor}
+\section{Der Rstudio Editor}
  
-RStudio basically offers the same functions as the RGui, but a many things can be done easier or are handled more comfortable for you. This is how it looks like:
+RStudio bietet grundsätzlich die gleichen Funktionen wie das RGui, aber man kann vieles einfacher machen oder bequemer handhaben. So sieht es aus:
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 9cm]{rst_interface.png}
-\caption{The RStudio editor, arguably the most popular editor for R}
+\caption{Der RStudio Editor, der wohl beliebteste Editor für R}
 \label{fig: Rstudio}
 \end{center}
 \end{figure}
 
 
-\paragraph{Console:} The console that we have already seen is in the bottom-left panel. You can confirm that it behaves in the same way by typing in the same commands as we did before, i.e. 2+2, or plot the graph.
+\paragraph{Konsole:} Die Konsole, die wir bereits gesehen haben, befindet sich im linken unteren Bereich. Man kann nachweisen, dass sie sich gleich verhält, indem man die gleichen Befehle wie zuvor eingibt, d.h. 2 + 2, oder das Diagramm erneut grafisch darstellt.
 
-\paragraph{Editor:} Above the console (top left), r script files are displayed and can be changed in the editor. The idea of a script file is that you collect all the commands that you send to the console in one file, so that you can re-run it later.  
+\paragraph{Editor:} Über der Konsole (oben links) werden r Skriptdateien angezeigt und können im Editor geändert werden. Die Idee einer Skriptdatei ist, dass man alle Befehle sammelt, die man an die Konsole in einer Datei sendet, sodass man sie später erneut ausführen kann.  
 
-A typical script may look like that:
+Ein typisches Skript kann so aussehen:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1118,9 +1118,9 @@ rm(list=ls(all=TRUE))  # this command means all variables in the memory are eras
 \end{Sinput}
 \end{Schunk}
 
-To send a part of the script to the console, you can use the run button on the top right border of the editor window. For everything we do from now on, I would strongly recommend writing in the script, and then sending it to console from there. 
+Um einen Teil des Skripts an die Konsole zu senden, können Sie den run-Button am oberen rechten Rand des Editorfensters verwenden. Für alles, was wir von nun an tun, würde ich dringend empfehlen, es in das Skript zu schreiben und es dann von dort aus an die Konsole zu senden.
 
-\chapter{Handling data in R}
+\chapter{Verarbeitung von Daten in R}
 \label{HandlingDataInR}
 
 \section{Variables}
