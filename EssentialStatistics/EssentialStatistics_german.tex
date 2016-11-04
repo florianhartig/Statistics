@@ -543,7 +543,7 @@ Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den G
 
 ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene Resonanz (z.B. eine abhängige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung: eine Variable verändert die Auswirkung einer anderen Variablen} zwischen zweier Variablen bedeutet, dass sich der Wert einer erläuternden Variable darauf auswirkt, wie sehr eine andere erläuternde Variable die Resonanz beeinträchtigt.
 
-Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe nächstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (natürlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
+Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe nächstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell (engl. Generalized Linear Models, glm) erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (natürlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
 
 Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein variabler Faktor mit vier Stufen ist:
 
@@ -721,7 +721,7 @@ Sie erhalten grundlegende Residuendiagnosen durch Eingabe von Plot (Fit), wobei 
 
 
 
-\section{Allgemeine lineare Regressionsmodelle}
+\section{Allgemeine lineare Regressionsmodelle (glm)}
 
 Die allgemeine Vorstellung einer linearen Regression war, dass 1) die Response stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen über Responsegrößen von - bis + unendlich und die Normalität zu lockern. Dazu müssen wir zwei Dinge tun
 
@@ -1041,7 +1041,7 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
-\begin{Anhang}
+\begin{appendices}
 
 \chapter{R and Rstudio}
 
@@ -1525,9 +1525,9 @@ heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
 \chapter{Regression in R}
 
 
-\section{Continous response - linear regression}
+\section{Stetige Response - lineare Regression}
 
-Linear regression is the simples form of regression. We can use this when the response is continous. The assumption is that the response depends on the predictors as in 
+Die lineare Regression ist die einfachste Form der Regression. Wir können diese bei einer stetigen Response verwenden. Die Annahme hierbei ist, dass die Response von den Prädiktoren wiefolt abhängt:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1535,9 +1535,9 @@ y ~ par1 * pred1 +  par2 * pred2 +  par3 * pred2^2 + ... + residual Error
 \end{Sinput}
 \end{Schunk}
 
-where the parameters par1 ... par3 are estimated, and the residual error is normally distributed. 
+Wobei die Parameter par1 ... par3 geschätzt werden und der Residuenfehler normalverteilt ist.
 
-Let's look at some example, using the data from Monday. We see that there is a correlation between Ozone and Temperature. 
+Werfen wir einen Blick auf einige Beispiele, mit den Daten von Montag. Wir sehen, dass es eine Korrelation zwischen Ozon und Temperatur gibt.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1546,7 +1546,7 @@ plot(airquality$Temp~airquality$Ozone)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
 
-With the lm() command, we can ask R to try to get the best fitting straight line between the two variables. 
+Mit dem Befehl lm() können wir R versuchen lassen, eine bestmöglich passende Gerade zwischen den beiden Variablen zu finden.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1554,7 +1554,7 @@ fit = lm(airquality$Temp~airquality$Ozone)
 \end{Sinput}
 \end{Schunk}
 
-Let's look at the result visually first
+Lassen Sie uns das Ergebnis zuerst visuell betrachten
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1564,7 +1564,7 @@ abline(fit, col = "blue")
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} \end{Schunk}
 
-Here's the detailed output
+Hier ist die Ausgabe im Detail
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1593,13 +1593,13 @@ F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
 \end{Soutput}
 \end{Schunk}
 
-In the output, we see the parameters for the effect of Ozone (called the regression slope), and the intercept. 
+In der Ausgabe sehen wir die Parameter für die Auswirkung von Ozon (genannt Regressionssteigung) und den Schnittpunkt.
 
-R knows the line is straight because we tell the program that airquality$Temp~airquality$Ozone . We'll see later how to modify this if we want to fit other functions. 
+R erkennt, dass die Linie gerade ist, weil wir dem Programm sagen, dass airquality$Temp~airquality$Ozone. Wir werden später sehen, wie wir das ändern können, wenn wir andere Funktionen anpassen wollen. 
 
-\subsection{Residual analysis}
+\subsection{Residuenanalyse}
 
-with plot(fit), we get the residuals (the deviation from the straight line). As said, the linear regression assumes that those are normally distributed, so we should check whether this is really the case. 
+Mit plot(fit) erhalten wir die Residuen (die Abweichung von der Geraden). Wie bereits gesagt, geht die lineare Regression davon aus, dass diese normal verteilt sind, also sollten wir überprüfen, ob dies wirklich der Fall ist.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1609,7 +1609,7 @@ plot(fit)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
 
-Here, the residuals are not really homogenously scattering around the predicted value, suggesting that the model doesn't fit very well. Well, one could have already guessed this, because the correlation doesn't look very linear. We can add a quadratic term by 
+Hier sind die Residuen nicht wirklich homogen um den vorhergesagten Wert gestreut, was darauf hindeutet, dass das Modell nicht sehr gut passt. Dies hätte man schon erahnen können, weil die Korrelation nicht sehr linear aussieht. Wir können einen quadratischen Term hinzugügen durch
 
 
 \begin{Schunk}
@@ -1641,7 +1641,7 @@ F-statistic: 86.83 on 2 and 113 DF,  p-value: < 2.2e-16
 \end{Soutput}
 \end{Schunk}
 
-Residuals look better now
+Die Residuen sehen jetzt besser aus
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1651,7 +1651,7 @@ plot(fit2)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-57-1} \end{Schunk}
 
-Plotting the results
+Plotten der Ergebnisse
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1661,9 +1661,9 @@ points(fit2$model[,2], predict(fit2), col = "blue")
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-58-1} \end{Schunk}
 
-\subsection{Categorical predictors}
+\subsection{Kategorische Prädiktoren}
 
-If we have categorical varialbles such as in this dataset
+Wenn wir kategoriale Variablen wie in diesem Datensatz haben
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1672,7 +1672,7 @@ boxplot(PlantGrowth$weight~PlantGrowth$group, main = "growth of plants")
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-59-1} \end{Schunk}
 
-This still works:
+Funktioniert dies noch:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1702,12 +1702,12 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591
 \end{Soutput}
 \end{Schunk}
 
-A thing that is confusing many people now, however, is that we have two parameter estimates for the one predictor variable. The reson is that there are 3 groups in the dataset. The first group is set in this case automatically as reference, and for the other groups, predictors are estimated. The p-values for those predictors are thus against the reference (if I take predictor trt1 out, it will get the value of ctrl). Hence, these p-values for categorical variables depend on the order of the varialbles (you could reorder to have trt1 as reference.)
+Eine Sache, die viele Menschen jetzt verwirrt, ist, dass wir zwei Parameter-Schätzungen für die eine Prädiktor-Variable haben. Der Grund dafür ist, dass es 3 Gruppen in der Datenmenge gibt. Die erste Gruppe wird in diesem Fall automatisch als Referenz gesetzt, und für die anderen Gruppen werden Prädiktoren geschätzt. Die p-Werte für diese Prädiktoren sind also gegen die Referenz (wenn ich Prädiktor trt1 herausnehme, erhält er den Wert von ctrl). Daher hängen diese p-Werte für kategoriale Variablen von der Reihenfolge der Variablen ab (Man kann die Reihenfolge von trt1 als Referenz ändern.)
 
 
 \subsection{ANOVA}
 
-A question that often pops up in this context is: is there are difference between the groups at all? The regression only shows us whether there is a signficant difference between the first factor and the two others. If we want to test for overall differences, we can make an ANOVA of the fitted object
+Eine Frage, die oft in diesem Zusammenhang auftaucht, ist: Gibt es überhaupt Unterschiede zwischen den Gruppen? Die Regression zeigt uns nur, ob es einen signfikanten Unterschied zwischen dem ersten Faktor und den zwei anderen gibt. Wenn wir auf allgemeine Differenzen testen wollen, können wir eine ANOVA des angepassten Objekts machen
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1723,17 +1723,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-Note that we get now significance for an overall difference, although we didn't have significance in the regression before. 
+Beachte, dass wir jetzt Signifikanz für einen allgemeinen Unterschied erhalten, obwohl wir keine Signifikanz in der Regression zuvor hatten.
 
-We can now use so-called post-hoc tests to find out which differences are significant.
+Wir können nun sogenannte Post-hoc-Tests verwenden, um herauszufinden, welche Unterschiede signifikant sind.
 
-See more examples, with more factors \href{http://www.statmethods.net/stats/anova.html}{here} 
+Weitere Beispiele mit weiteren Faktoren finden man \href{http://www.statmethods.net/stats/anova.html}{hier} 
 
-Note: aov is designed for balanced designs, and the results can be hard to interpret without balance: beware that missing values in the response(s) will likely lose the balance. If there are two or more error strata, the methods used are statistically inefficient without balance, and it may be better to use lme in package nlme.
 
-\subsection{T-test}
+Anmerkung: aov ist für ausgeglichene Versuchsanordnungen ausgelegt, und die Ergebnisse können schwer ohne Abgleich interpretiert werden: Achte darauf, dass fehlende Werte in der Response wahrscheinlich den Ausgleich kosten. Wenn es zwei oder mehr Fehler in den Stichprobenschichten gibt, sind die verwendeten Methoden ohne Ausgleich statistisch ineffizient, und es kann vorteilhaft sein lme in Paket nlme zu verwenden.
 
-A simple option if you just want to test two groups against each other is the t-test. It assumes normal distribution within the groups. We can use this to do post-hoc testing for the example above: 
+\subsection{T-Test}
+
+Eine einfache Option für das Testen von nur zwei Gruppen gegeneinander ist der t-Test. Er nimmt eine normale Verteilung innerhalb der Gruppen an. Wir können dies verwenden, um post-hoc-Tests für das obige Beispiel durchzuführen:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1755,7 +1756,7 @@ mean of x mean of y
 \end{Soutput}
 \end{Schunk}
 
-testing against group 2
+Testen gegen Gruppe 2
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1779,7 +1780,7 @@ detach(PlantGrowth)
 \end{Sinput}
 \end{Schunk}
 
-but if we really would have done both tests, we would have had to correct for multiple testing
+Aber wenn wir wirklich beide Tests ausgeführt hätten, müssten wir für multiple Tests korrigieren
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1790,11 +1791,11 @@ p.adjust(c(0.2504, 0.0479), method = "holm")
 \end{Soutput}
 \end{Schunk}
 
-How does this work? Write ?p.adjust in the console. Also, read \href{this}{http://webdev.cas.msu.edu/cas992/weeks/week10.html}
+Wie funktioniert das? Schreibe ?p.adjust in die Konsole. Lese auch \href{das hier}{http://webdev.cas.msu.edu/cas992/weeks/week10.html}
 
-\section{The generalized linear model framework}
+\section{Die "allgemeine lineare Modell"-Rahmenbedingung}
 
-The glm is a generalization of lm to other response types. We could create a model identical to lm() by glm(formula, family = gaussian(link = "identity")), but the advantage is that glm has more options, among them the following defaults
+Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir könnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "identity")), aber mit dem Vorteil, dass glm mehr Optionen hat; darunter die folgenden Vorgaben
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1809,7 +1810,7 @@ quasipoisson(link = "log")
 \end{Sinput}
 \end{Schunk}
 
-but step for step ... let's look at an example for binomial data
+Aber Schritt für Schritt ... schauen wir uns ein Beispiel für binomische Daten an
 
 
 \section{0/1 Response - the logistic regression}
@@ -1847,9 +1848,9 @@ Error in attach(TitanicSurvival): Objekt 'TitanicSurvival' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
-Let's visualize this. About visualizing associations see http://www.statmethods.net/advgraphs/mosaic.html
+Veranschaulichen wir uns dies. Informationen zur Visualisierung von Assoziationen finden Sie unter http://www.statmethods.net/advgraphs/mosaic.html
 
-We'll use the mosaic plot. May be you have to install.packages("vcd")
+Wir benutzen das Mosaikplot. Möglicherweise muss man zuvor das Paket installieren: install.packages ("vcd")
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1872,9 +1873,9 @@ Error in eval(expr, envir, enclos): Objekt 'survived' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
-How do we analyze this data? Response clearly not normal, but 1/0. now, the glm is basically the same as lm(), just that you specify the family.
+Wie analysieren wir diese Daten? Die Response ist eindeutig nicht normal, jedoch 1/0. Das glm ist im Grunde das gleiche wie lm (), nur dass wir die Familie angeben.
 
-Let's first test whether survival is correlated to age
+Wir werden zuerst testen, ob das Überleben mit dem Alter korreliert
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1891,7 +1892,7 @@ Error in summary(fmt): Objekt 'fmt' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
-Result plotted 
+Ergebnis geplottet
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1932,7 +1933,7 @@ Error in lines(newage, plogis(preds$fit + 2 * preds$se.fit), col = "purple", : O
 \end{Soutput}
 \end{Schunk}
 
-Now, let's out all relevant variables in 
+Nun setzen wir alle relevanten Variablen ein in:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1955,9 +1956,9 @@ Error in summary(fmt): Objekt 'fmt' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
-\subsection{ANOVA for GLM}
+\subsection{ANOVA für GLM}
 
-If you want an ANOVA
+Wenn eine ANOVA erwünscht ist
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1980,9 +1981,9 @@ Error in detach(TitanicSurvival): invalid 'name' argument
 \end{Soutput}
 \end{Schunk}
 
-\section{Count data - Poisson Regression}
+\section{Zähldaten - Poisson's Regression}
 
-For count data, we use the glm with the Poisson error distribution. Here's some observations of the pieces of food given to young birds, and their perceived attractiveness.
+Für Zähldaten verwenden wir den GLM mit der Poisson'schen-Fehlerverteilung. Hier sind einige Beobachtungen der Verteilung von Futterstücke an junge Vögel und ihre wahrgenommene Attraktivität.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1996,7 +1997,7 @@ plot(stuecke ~ attrakt)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-72-1} \end{Schunk}
 
-This is how you specify the poisson
+So wird der Poisson angegeben
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2029,7 +2030,7 @@ Number of Fisher Scoring iterations: 4
 \end{Soutput}
 \end{Schunk}
 
-predictions
+Vorhersagen
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2041,7 +2042,7 @@ lines(newattrakt, exp(preds), lwd=2, col="green")
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-74-1} \end{Schunk}
 
-same with 95\% confidence interval:
+Das gleiche mit 95\% Konfidenzinterval:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2070,13 +2071,13 @@ detach(cfc)
 
 
 
-\section{Multinomial Data - multinomial regression}
+\section{Multinomiale Daten - multinomiale Regression}
 
-If you have several options for the response (red, green, blue), you are fitting a multinomial regression. This is not in the standard glm package. The standard package to do this would be mlogit. I give an example below. The problem with mlogit is that it requires data in a particular way, i.e. that for every observation, every choice is a single line, and then there is one column that tells you which choice was made (yes / no). To use mlogit, you need to reshape you data to this format. 
+Wenn Sie mehrere Optionen für die Response haben (rot, grün, blau), passt dies zu einer multinomialen Regression. Dies ist nicht im Standard-GLM-Paket. Das Standardpaket dazu wäre mlogit. Ich gebe dazu unten ein Beispiel an. Das Problem mit mlogit ist, dass es Daten in einer bestimmten Weise erfordert, d.h. dass für jede Beobachtung jede Auswahl eine einzelne Zeile ist. Zusätzlich gibt es eine Spalte, die sagt, welche Wahl getroffen wurde (ja / nein). Um mlogit verwenden zu können, müssen Sie die Daten in dieses Format umwandeln.
 
-If you don't have your data in this format, and don't want to reshape, an alternative is the less powerful but easier to use multinom function from the nnet package. You find an example of how to use this function below or \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{here}.
+Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren möchte, ist eine weniger leistungsstarke, aber einfacher zu bedienende Alternative die Multinom-Funktion aus dem nnet-Paket. Im Folgenden finden Sie ein Beispiel für die Verwendung dieser Funktion oder \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{hier}.
 
-\subsection{mlogit example}
+\subsection{mlogit Beispiel}
 
 
 \begin{Schunk}
@@ -2100,7 +2101,7 @@ Error in head(Fishing): Objekt 'Fishing' nicht gefunden
 \end{Soutput}
 \end{Schunk}
 
-The data we are using is a dataframe containing :
+Die Daten, die wir verwenden, ist ein Datenframe mit folgendem Inhalt :
 
 \begin{enumerate}
 \setlength\itemsep{-0.5em}
@@ -2126,7 +2127,7 @@ The data we are using is a dataframe containing :
 
 \end{enumerate}
 
-We transform this in an object mlogit can work with by
+Wir transformieren das in ein Objekt, mit dem mlogit arbeiten kann
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2137,7 +2138,7 @@ Error in eval(expr, envir, enclos): konnte Funktion "mlogit.data" nicht finden
 \end{Soutput}
 \end{Schunk}
 
-varying tells the model that those are variables that are specific to the alternative outcomes of the response, i.e. price of the boat, while variables that are not varying are independent of the outcome, e.g. income. 
+Variation zeigt dem Modell an, dass es sich um Variablen handelt, die für die alternativen Outputs der Response spezifisch sind, z.B. der Preis des Bootes; während Variablen, die nicht variieren, unabhängig vom Output sind, z.B. Einkommen.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2149,9 +2150,9 @@ Error in summary(mlogit(mode ~ price + catch, data = Fish)): konnte Funktion "ml
 \end{Soutput}
 \end{Schunk}
 
-Fits, for each outcome, the increase of the choice with the price and catch. Hence, we get the intercepts for each outcome, and one parameter fitted per variable that is the effect of price / choice on the probability to choose any of the 4 outcomes. 
+Für jeden Outcome passt die Erhöhung der "choice" zu "price" und "catch". Daher erhalten wir die Schnittpunkte für jeden Outcome und ein Parameter pro Variable, was die Auswirkung von "price" / "choice" auf die Wahrscheinlichkeit ist, eines der 4 Ergebnisse zu wählen.
 
-If we correlate the variable income, this is different. Income is not specific to the choice (not selected as varying when we set up the data). In this case, we ask how the choice differs when we have people of different incomes. Hence, we obtain an intervept value per parameter, and an estimate for whether this choice is affected by an increase of income, relative to the baseline (pier).
+Wenn wir die Variable "income" korrelieren, ist dies anders. Das Einkommen ist nicht spezifisch für "choice" (nicht als variabel ausgewählt, als wir die Daten eingelesen haben). In diesem Fall fragen wir uns, wie sich "choice" verändert, wenn wir Menschen mit unterschiedlichen Einkommen haben. Daher erhalten wir einen Intervallwert pro Parameter und eine Schätzung, ob diese Wahl durch eine Erhöhung des Einkommens, bezogen auf die Grundlinie (Pier), beeinflusst wird.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2163,9 +2164,9 @@ Error in summary(mlogit(mode ~ 0 | income, data = Fish)): konnte Funktion "mlogi
 \end{Soutput}
 \end{Schunk}
 
-Note that if you want to interpret the parameter values, you have to transform back to the response with the relatively complicated link function of the multinomial logistic regression, see formula \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{here}. More examples \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{here} and see also the mlogit tutorial \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{here}.
+Wenn wir die Parameterwerte interpretieren wollen, müssen wir die Response mit der relativ komplizierten Linkfunktion der multinomialen logistischen Regression zurück transformieren, siehe \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{hier}. Mehr Beispiele \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{hier} und ein mlogit Tutorial findet man \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{hier}.
 
-\subsection{mlogit example}
+\subsection{mlogit Beispiel}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2173,8 +2174,8 @@ require(nnet)
 \end{Sinput}
 \end{Schunk}
 
-We use the original (without reshaping) fishing data as for the mlogit example above. 
-And also the same model structure
+Wir verwenden die ursprünglichen fishing- Daten (ohne Umformung), wie für das mlogit Beispiel siehe oben.
+Und auch die gleiche Modellstruktur
 
 \begin{Schunk}
 \begin{Sinput}
