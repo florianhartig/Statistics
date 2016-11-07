@@ -1,4 +1,19 @@
-\documentclass[a4paper,twoside]{tufte-book} %style file is in the same folder.
+\documentclass[a4paper,twoside]{tufte-book}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\usepackage{Sweavel}
+
+ %style file is in the same folder.
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -57,15 +72,9 @@ literate={*}{{\char42}}1
 
 
 
-<<setup, cache=FALSE, include=FALSE>>=
-library(knitr)
-opts_knit$set(tidy = T, fig=TRUE, fig.height = 4, fig.width=4, fig.align='center')
-render_listings()
-@
 
-<<echo=F, results='hide'>>=
-set.seed(123)
-@
+
+
 
 
 
