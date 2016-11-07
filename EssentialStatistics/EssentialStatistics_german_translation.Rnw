@@ -147,7 +147,7 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 	
 	
 	
-	\chapter{Dateien, Proben und Populationen}
+	\chapter{Daten, Proben und Populationen}
 	
 	Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, vorhersagende Statistik und experimentelle Planung. 
 	
@@ -947,7 +947,7 @@ Das bedeutet, dass, im Gegensatz zum festgelegten Typ-I-Fehler, die Berechnung d
 
 \item[( )] Eindeutige, logisch einheitliche Frage? Schreib es auf. Lesen des Kapitels "uber g"ultige / gute wissenschaftliche Fragen in den Vorlesungsunterlagen
 
-\item[( )] Stelle sicher, dass alle Fragen der Richtigkeit, die in den Haupt-Vorlesungsunterlagen besprochen wurden, gelesen und ber"ucksichtigt haben. Gehen Sie durch die Checkliste Richtigkeit am Ende des Abschnitts in den Haupt-Vorlesungsunterlagen.
+\item[( )] Stelle sicher, dass alle Fragen der Richtigkeit, die in den Haupt-Skript besprochen wurden, gelesen und ber"ucksichtigt haben. Gehen Sie durch die Checkliste Richtigkeit am Ende des Abschnitts in den Haupt-Skript.
 
 \item[( )] Entwerfe einen Versuchsaufbau
 
