@@ -710,7 +710,7 @@ Sie erhalten grundlegende Residuendiagnosen durch Eingabe von plot(fit), wobei f
 
 
 
-\section{Allgemeine lineare Regressionsmodelle (glm)}
+\section{Allgemeine lineare Regressionsmodelle (GLM)}
 
 Die allgemeine Vorstellung einer linearen Regression war, dass 1) die Response stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen "uber Responsegr"o"sen von - bis + unendlich und die Normalit"at zu lockern. Dazu m"ussen wir zwei Dinge tun
 
@@ -1696,7 +1696,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Beachte, dass wir jetzt Signifikanz f"ur einen allgemeinen Unterschied erhalten, obwohl wir keine Signifikanz in der Regression zuvor hatten.
 
-Wir k"onnen nun sogenannte Post-hoc-Tests verwenden, um herauszufinden, welche Unterschiede signifikant sind.
+Wir k"onnen nun sogenannte Post-Hoc-Tests verwenden, um herauszufinden, welche Unterschiede signifikant sind.
 
 Weitere Beispiele mit weiteren Faktoren findt man \href{http://www.statmethods.net/stats/anova.html}{hier}.
 
@@ -1766,7 +1766,7 @@ Wie funktioniert das? Schreibe ?p.adjust in die Konsole. Lese auch \href{das hie
 
 \section{Allgemeine lineare Modell-Rahmenbedingung}
 
-Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir k"onnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "`identity"')), aber mit dem Vorteil, dass glm mehr Optionen hat; darunter die folgenden Vorgaben
+Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir k"onnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "`identity"')), aber mit dem Vorteil, dass GLM mehr Optionen hat; darunter die folgenden Vorgaben
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1797,9 +1797,9 @@ attach(TitanicSurvival)
 @
 
 
-Veranschaulichen wir uns dies. Informationen zur Visualisierung von Assoziationen finden Sie unter \href{http://www.statmethods.net/advgraphs/mosaic.html}{diesem Link}.
+Veranschaulichen wir uns dies. Informationen zur Visualisierung von Assoziationen findet man unter \href{http://www.statmethods.net/advgraphs/mosaic.html}{diesem Link}.
 
-Wir benutzen das Mosaikplot. M"oglicherweise muss man zuvor das Paket installieren: install.packages ("vcd")
+Wir benutzen das Mosaikplot. M"oglicherweise muss man zuvor das dazu benötigte Paket installieren: install.packages ("vcd")
 
 <<>>=
 library(vcd)
@@ -1808,7 +1808,7 @@ surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
 @
 
 
-Wie analysieren wir diese Daten? Die Response ist eindeutig nicht normal, jedoch 1/0. Das glm ist im Grunde das gleiche wie lm (), nur dass wir die Familie angeben.
+Wie analysieren wir diese Daten? Die Response ist eindeutig nicht normal, jedoch 1/0. Das GLM ist im Grunde das gleiche wie lm (), nur dass wir die Familie angeben.
 
 Wir werden zuerst testen, ob das "uberleben mit dem Alter korreliert
 
@@ -1941,7 +1941,7 @@ detach(cfc)
 
 \section{Multinomiale Daten - multinomiale Regression}
 
-Wenn Sie mehrere Optionen f"ur die Response haben (rot, gr"un, blau), passt dies zu einer multinomialen Regression. Dies ist nicht im Standard-GLM-Paket. Das Standardpaket dazu w"are mlogit. Ich gebe dazu unten ein Beispiel an. Das Problem mit mlogit ist, dass es Daten in einer bestimmten Weise erfordert, d.h. dass f"ur jede Beobachtung jede Auswahl eine einzelne Zeile ist. Zus"atzlich gibt es eine Spalte, die sagt, welche Wahl getroffen wurde (ja / nein). Um mlogit verwenden zu k"onnen, m"ussen Sie die Daten in dieses Format umwandeln.
+Wenn man mehrere Optionen f"ur die Response habt (rot, gr"un, blau), passt dies zu einer multinomialen Regression. Dies ist nicht im Standard-GLM-Paket. Das Standardpaket dazu w"are mlogit. Ich gebe dazu unten ein Beispiel an. Das Problem mit mlogit ist, dass es Daten in einer bestimmten Weise erfordert, d.h. dass f"ur jede Beobachtung jede Auswahl eine einzelne Zeile ist. Zus"atzlich gibt es eine Spalte, die sagt, welche Wahl getroffen wurde (ja / nein). Um mlogit verwenden zu k"onnen, m"ussen Sie die Daten in dieses Format umwandeln.
 
 Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren m"ochte, ist eine weniger leistungsstarke, aber einfacher zu bedienende Alternative die multinomiale Funktion aus dem nnet-Paket. Im Folgenden finden Sie ein Beispiel f"ur die Verwendung dieser Funktion oder \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{hier}.
 
@@ -1984,64 +1984,45 @@ Die Daten, die wir verwenden, ist ein Datenframe mit folgendem Inhalt :
 
 Wir transformieren das in ein Objekt, mit dem mlogit arbeiten kann
 
-\begin{Schunk}
-\begin{Sinput}
+
+<<>>=
 Fish <- mlogit.data(Fishing, varying = c(2:9), shape = "wide", choice = "mode")
-\end{Sinput}
-\begin{Soutput}
-Error in eval(expr, envir, enclos): konnte Funktion "mlogit.data" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
+
 
 Variation zeigt dem Modell an, dass es sich um Variablen handelt, die f"ur die alternativen Outputs der Response spezifisch sind, z.B. der Preis des Bootes; w"ahrend Variablen, die nicht variieren, unabh"angig vom Output sind, z.B. Einkommen.
 
-\begin{Schunk}
-\begin{Sinput}
+
+<<>>=
 ## a pure "conditional" model
 summary(mlogit(mode ~ price + catch, data = Fish))
-\end{Sinput}
-\begin{Soutput}
-Error in summary(mlogit(mode ~ price + catch, data = Fish)): konnte Funktion "mlogit" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
 
 F"ur jeden Outcome passt die Erh"ohung der "choice" zu "price" und "catch". Daher erhalten wir die Schnittpunkte f"ur jeden Outcome und ein Parameter pro Variable, was die Auswirkung von "price" / "choice" auf die Wahrscheinlichkeit ist, eines der 4 Ergebnisse zu w"ahlen.
 
 Wenn wir die Variable "income" korrelieren, ist dies anders. Das Einkommen ist nicht spezifisch f"ur "choice" (nicht als variabel ausgew"ahlt, als wir die Daten eingelesen haben). In diesem Fall fragen wir uns, wie sich "choice" ver"andert, wenn wir Menschen mit unterschiedlichen Einkommen haben. Daher erhalten wir einen Intervallwert pro Parameter und eine Sch"atzung, ob diese Wahl durch eine Erh"ohung des Einkommens, bezogen auf die Grundlinie (Pier), beeinflusst wird.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## a pure "multinomial model"
 summary(mlogit(mode ~ 0 | income, data = Fish))
-\end{Sinput}
-\begin{Soutput}
-Error in summary(mlogit(mode ~ 0 | income, data = Fish)): konnte Funktion "mlogit" nicht finden
-\end{Soutput}
-\end{Schunk}
+@
 
 Wenn wir die Parameterwerte interpretieren wollen, m"ussen wir die Response mit der relativ komplizierten Linkfunktion der multinomialen logistischen Regression zur"uck transformieren, siehe \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{hier}. Mehr Beispiele \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{hier} und ein mlogit Tutorial findet man \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{hier}.
 
 \subsection{mlogit Beispiel}
 
-\begin{Schunk}
-\begin{Sinput}
+<<message=FALSE>>=
 require(nnet)
-\end{Sinput}
-\end{Schunk}
+@
 
 Wir verwenden die urspr"unglichen fishing- Daten (ohne Umformung), wie f"ur das mlogit Beispiel siehe oben.
 Und auch die gleiche Modellstruktur
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## a pure "conditional" model
 summary(multinom(mode ~ price.beach + price.pier + price.boat + price.charter + 
                    catch.beach + catch.pier + catch.boat + catch.charter, data = Fishing))
-\end{Sinput}
-\begin{Soutput}
-Error in is.data.frame(data): Objekt 'Fishing' nicht gefunden
-\end{Soutput}
-\end{Schunk}
+@
 \end{appendices}
 
 
