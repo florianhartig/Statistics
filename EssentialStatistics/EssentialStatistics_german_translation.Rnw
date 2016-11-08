@@ -63,7 +63,7 @@ opts_knit$set(tidy = T, fig=TRUE, fig.height = 4, fig.width=4, fig.align='center
 render_listings()
 @
 
-<<echo=F, results='hide'>>=
+<<echo=FALSE, cache=TRUE, results='hide', message=FALSE, warning=FALSE>>=
 set.seed(123)
 @
 
@@ -122,7 +122,7 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 	\section{Themen der Statistik und Datenwissenschaften}
 	Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Einf"uhrung in die vier wichtigsten S"aulen der statistischen Methodik f"ur einen quantitativen Wissenschaftler:
 	
-	\paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, Ma"szahlen der Statistik} beinhaltet die Ma"szahlen der Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
+	\paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, Kennzahlen der Statistik} beinhaltet die Kennzahlen der Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
 	
 	\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parametersch"atzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Sch"atzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`datenerzeugender Prozess"' bezeichnet, da es Annahmen "uber einen Prozess beschreibt, die zu einer Variation an Daten f"uhrt (systematisch und stochastisch).
 	
@@ -220,13 +220,13 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 	
 	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird sp"ater noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gew"ahlten) Daten
 	
-	\section{Ma"szahlen der Statistik}
+	\section{Kennzahlen der Statistik}
 	
-	Ma"szahlen der Statistik\marginnote{Ma"szahlen der Statistik fassen die Daten zusammen} sind numerische Berechnungen, die Datens"atze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
+	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten zusammen} sind numerische Berechnungen, die Datens"atze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
 	
 	\subsection{Zusammenfassen einer einzelnen stetigen Variable}
 	
-	Eine "ubliche Situation bei der wir von den Ma"szahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 B"aume gemessen und anschlie"send erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
+	Eine "ubliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 B"aume gemessen und anschlie"send erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
 
 \begin{figure}[htbp]
 \begin{center}
@@ -238,7 +238,7 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 \end{center}
 \end{figure}
 
-Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften w"aren beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der h"ochsten Beobachtungsdichte). Au"serdem  gibt es zwei weitere Ma"szahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
+Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften w"aren beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der h"ochsten Beobachtungsdichte). Au"serdem  gibt es zwei weitere Kennzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
 
 
 Der Begriff "`Moment"' mag vielleicht nicht jedem gel"aufig sein, vermutlich wurde aber schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
@@ -255,11 +255,11 @@ oder, f"ur eine endliche Anzahl an Beobachtungen
 
 Das erste Moment mit c=0, ist der Mittelwert. F"ur die folgenden h"oheren Momente ist es "ublich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erh"alt, da ihre Werte einfacher als Indikatoren f"ur die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzusch"atzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei h"oheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgr"o"se der Streuung), Schiefe (n=3, Messgr"o"se f"ur die Asymmetrie in der Verteilung) und W"olbung (n=4) genannt. 
 
-Quantilen stellen die zweite Zentralklasse der Ma"szahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei H"alften trennt, sodass eine H"alfte der beobachten Daten kleiner und die andere H"alfte gr"o"ser als dieser Wert ist?\marginnote{Eine H"alfte der Daten ist kleiner und die andere H"alfte ist gr"o"ser als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
+Quantilen stellen die zweite Zentralklasse der Kennzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei H"alften trennt, sodass eine H"alfte der beobachten Daten kleiner und die andere H"alfte gr"o"ser als dieser Wert ist?\marginnote{Eine H"alfte der Daten ist kleiner und die andere H"alfte ist gr"o"ser als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
 
 \subsection{Korrelation - Erl"auterung der Abh"angigkeit stetiger Variablen}
 
-Ein weiterer wichtiger Bereich der Ma"szahlen-Statistik ist die Korrelation. Korrelationsstudien messen die Abh"angigkeit von stetigen Variablen. Leider gibt es eine Menge Korrelations-Messgr"o"sen, die es zu unterscheiden gilt. Die zwei wichtigsten sind:
+Ein weiterer wichtiger Bereich der Kennzahlen-Statistik ist die Korrelation. Korrelationsstudien messen die Abh"angigkeit von stetigen Variablen. Leider gibt es eine Menge Korrelations-Messgr"o"sen, die es zu unterscheiden gilt. Die zwei wichtigsten sind:
 
 \paragraph{Lineare Koeffizienten:}Lineare Koeffizienten, mit dem "`Pearson'schen Korrelationskoeffizienten"', als dem wohl H"aufigsten, ermitteln die lineare Abh"angigkeit zwischen zwei Variablen. Der Pearson'sche Korrelationskoeffizient wird wegen seiner schnellen Berechnung und leichten Interpretation am h"aufigsten verwendet. Jedoch kann es hier zu Fehlern kommen, wenn die Variablen nicht linear abh"angig voneinander sind. Fig.~\ref{fig: correlation}.
 
@@ -324,14 +324,14 @@ F"ur die vielseitigen Berechnungsm"oglichkeiten der deskriptiven Statistik in R,
 
 \marginnote{Gebe ?anscombe in R ein, um den Code zu sehen, der diese Plots ausgibt und um die statistischen Eigenschaften des Datensatzes zu berechnen.}
 
-Ma"szahlen sind sehr n"utzlich, k"onnen aber auch zum Problem werden. Ein bekanntes Beispiel daf"ur ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Ma"szahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es "au"serst n"utzlich zus"atzlich eine graphische "ubersicht zu den berechneten Ma"szahlen der Daten zu erhalten.
+Kennzahlen sind sehr n"utzlich, k"onnen aber auch zum Problem werden. Ein bekanntes Beispiel daf"ur ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es "au"serst n"utzlich zus"atzlich eine graphische "ubersicht zu den berechneten Kennzahlen der Daten zu erhalten.
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} \end{Schunk}
-\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Ma"szahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
+\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
 \label{fig: Anscombes Quartet}
 \end{center}
 \end{figure}
