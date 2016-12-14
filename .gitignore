@@ -32,3 +32,9 @@ EssentialStatistics/flo.bib
 *.blg
 *.Rhistory
 *.aux
+
+EssentialStatistics/GrundlagenDerStatistik-concordance.tex
+
+EssentialStatistics/GrundlagenDerStatistik.bbl
+
+*.html

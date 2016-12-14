@@ -1,0 +1,125 @@
+---
+title: "Vorlesung 2"
+author: "Florian Hartig"
+date: "14 Nov 2016"
+output: html_document
+---
+
+```{r}
+Klasse <- read.delim("~/Home/Teaching/Vorlesungen/Statistik/Vorlesungen/16-11-Biostatistik/Biostatistik Vorlesung.csv", na.strings = "")
+attach(Klasse)
+```
+
+
+## Assoziation zweier nominaler Variablen
+
+Schauen wir uns doch mal an ob die Augenfarbe was damit zu tun hat wie schwer sie das Studium finden - so ein Effekt ist zwar nicht zu erwarten, aber es ermöglichst uns ein paar Plots zu machen. 
+
+In der Kontingenztabelle sehen wir die Häufigkeit der verschiedenen Kombinationen
+
+
+```{r}
+
+Kontingenztabelle = table(Augenfarbe, Studium)
+Kontingenztabelle
+
+```
+
+Frage: wie kann man die Kontingenztabelle visualisieren? 
+
+Antwort: genau, entweder als barplot
+
+```{r}
+par(mfrow = c(1,2))
+
+barplot(t(Kontingenztabelle), beside = F)
+legend("topright", legend = c("leicht", "mittel", "schwer"), col = gray.colors(3), pch = 15)
+
+barplot(t(Kontingenztabelle), beside = T)
+legend("topright", legend = c("leicht", "mittel", "schwer"), col = gray.colors(3), pch = 15)
+```
+
+oder als Mosaikplot
+
+```{r}
+mosaicplot(Kontingenztabelle)
+```
+
+Frage: Wie ist das jetzt - zeigen die Daten dass Studierende mit grünen Augen ihr Studium leichter finden?
+
+Richtige Antwort: nein! Um solche Schlüsse zu ziehen brauchen wir die inferentielle Statistik (nächste Woche). Die deskriptive Statistik sagt erst mal nur faktisch dass in diesen Daten die einzige Person die "leicht"" angekreuzt hat grüne Augen hatte. Die deskriptive Statistik ist aber kein Instrument um daraus allgemeine Schlüsse über einen Zusammenhang zu ziehen.
+
+## Assoziation von numerisch und kategorial (nominal)
+
+Frage: Was benutzen wir für die Visualisierung der Assoziation von numerisch und kategorial (nominal)?
+
+Antwort: Boxplot
+
+```{r}
+boxplot(log10(Einwohnerzahl) ~ Augenfarbe, col = "grey")
+```
+
+Den sollten sie dann auch vollständig interpretieren können. 
+
+Machen Sie sich noch mal klar dass die Breite der Boxen nur ein Maß für die Verteilung ist, aber KEINE Aussage darüber ermöglicht ob die Unterschiede systematisch sind. Sie können dass daran sehen dass die Boxen sich eigentlich nicht ändern sollten wenn Sie mehr Daten sammeln. Ihre Sicherheit über den Unterschied sollte aber mit einer steigenden Anzahl von Daten zunehmen. 
+
+## Korrelation von numerisch und numerisch
+
+Darstellung
+
+```{r}
+
+plot(log10(Einwohnerzahl), log10(Distanz + 1))
+
+```
+
+Nehmen wir mal die Körpergröße als Info dazu
+
+```{r}
+
+plot(log10(Einwohnerzahl), log10(Distanz + 1), cex = Körpergröße /100, pch = 16)
+
+```
+
+Und dann noch die Augenfarbe
+
+```{r}
+
+plot(log10(Einwohnerzahl), log10(Distanz + 1), cex = Körpergröße /100, pch = 16, col = c("darkblue", "brown", "darkgreen")[Augenfarbe])
+
+```
+
+Frage: erwarten Sie eine Korrelation zwischen Einwohnerzahl und Distanz? Welche Richtung
+
+Dann schauen wir mal
+
+```{r}
+cor(log10(Einwohnerzahl), log10(Distanz + 1), use = "complete.obs")
+
+```
+
+hmm, negativ ... optisch sieht das doch eher positiv aus ... der Standard in R ist Pearson. Versuchen wir doch mal die Rank-correlation 
+
+```{r}
+cor(log10(Einwohnerzahl), log10(Distanz + 1), use = "complete.obs", method = "kendall")
+```
+
+Jetzt ist es leicht positv ... also, merken Sie sich - das Kleingedruckte lesen bei Korrelationen - Pearson (linear) und Rangkorrelationen (Spearman, Kendall) zeigen oft Unterschiede. 
+
+Als letztes noch mal ein pairplot ... machen Sie sich klar dass das nur lineare Korrelationen sind
+
+```{r}
+pairs(cbind(log10(Einwohnerzahl), log10(Distanz + 1), Körpergröße))
+```
+
+
+
+
+
+
+
+
+
+
+
+
