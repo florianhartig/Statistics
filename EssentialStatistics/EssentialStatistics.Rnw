@@ -205,7 +205,7 @@ To represent data, R has a basic data structure, the data.frame. A data frame is
   \item factor - normally unordered, i.e. red, green, blue. Can also be made ordered (small, medium, large), although it is then often better to code this as an integer
 \end{itemize*}
 
-Also, although not really a data type, a common case is the absence of an observation for a particular variable. This is typically code by "NA". Similar, but not the same is "NaN" (not a number), which occurs as the result of a calculation that cannot be performed. 
+Also, although not really a data type, a common case is the absence of an observation for a particular variable. This is typically coded by "NA". Similar, but not the same is "NaN" (not a number), which occurs as the result of a calculation that cannot be performed. 
 
 To read in data as a data.frame in R-studio, go to the upper right part, "Import Dataset". For more explanation, see "Handling data in R" in Appendix~\ref{HandlingDataInR}, as well as \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{http://biometry.github.io/APES/R/R20-DataStructures.html}
 
@@ -262,7 +262,7 @@ The moments may not sound familiar to you, but you have probably already used th
 or, for a finite number of observations 
 
 \begin{equation}
-\mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n dx
+\mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n
 \end{equation}
 
 The first moment, with c=0, is simply the mean. For the following higher moments, it is common to consider the central moments, which are obtained by setting c to the mean, because their values are easier interpretable as indicators of the distribution's shape.\footnote{To estimate the variance, we often replace the 1/N term by a bias-correction of 1/(N-1)} The 3 higher central moments are called the variance(n=2, identical to standard deviation squared, measure of spread), the skewness (n=3, measure of asymmetry in the distribution) and the kurtosis (n=4). 
@@ -499,7 +499,7 @@ There are number of excellent introductions to graphics with R, so that I won't 
 
 \marginnote{Statistical inference is drawing conclusions from observations using statistical methods} 
 
-Inferential statistics is concerned with inference, i.e. drawing conclusions from observations. An example of an inferential conclusion would be the following: we observe that 15 of 20 subjects that were administered a certain medication (treatment group) improved in their condition, while only 3 of 20 subjects that did not receive medication (control group) improved --> statistical inference: we can say with a certainty of X that the medication has a positive effect.  
+In contrast to descriptive statistics, which mereley describe data, inferential statistics is concerned with inference, i.e. drawing conclusions from observations. An example of an inferential conclusion would be the following: we observe that 15 of 20 subjects that were administered a certain medication (treatment group) improved in their condition, while only 3 of 20 subjects that did not receive medication (control group) improved --> statistical inference: we can say with a certainty of X that the medication has a positive effect.  
 
 
 \section{The data-generating model}
