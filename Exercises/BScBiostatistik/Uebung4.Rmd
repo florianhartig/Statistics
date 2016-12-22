@@ -1,0 +1,259 @@
+---
+title: "Übung zur Vorlesung 4 - Likelihood und Regression"
+author: "Florian Hartig"
+date: "1 Dec 2016"
+output:
+  html_document:
+    keep_md: yes
+    theme: united
+    toc: yes
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=5, fig.height=5, warning=FALSE, message=FALSE)
+```
+
+# Maximum Likelihood 
+
+**Frage**: Wie ist die Likelihood der beobachteten Daten D für ein gegebenes Modell M mit Parameter x definiert?
+
+**Antwort**: p(D|M,x) - in Worten: die Wahrscheinlichkeits(dichte) für D, gegeben M und x
+
+Bemerkung: ich schreibe immer Dichte in Klammern, weil es sich mathematisch bei den Wahrscheinlichkeitsfunktionen von kontinuierlichen Daten um Dichtefunktionen handelt, d.h. die Normalverteilung ist eine Wahrscheinlichkeitsdichte.
+
+Eine Wahrscheinlichkeit erhält man dadurch dass man eine Dichte über einen gewissen Bereich integriert. Als kleines Beispiel schauen Sie sich doch mal die uniforme Verteilung [0,1) an
+
+```{r}
+curve(dunif, 0,1)
+```
+
+Auch diese ist eine Dichtefunktion. Wie Sie sehen ist die Dichte für den Wert 0.2 genau 1 - das ist aber nicht die Wahrscheinlichkeit dass der Wert 0.2 auftritt. Genaugenommen ist die Wahrscheinlichkeit dass genau 0.2 auftritt unendlich klein, weil ja alle möglichen Werte zwischen 0 und 1 auftregen können, d.h. genau 0.2 kommt unendlich selten vor. Man bekommt eine Wahrscheinlichkeit wenn man einen über einen bestimmten Bereich der Funktion integriert. Z.B ist die Wahrscheinlichkeit dass ein Wert zwischen 0.15 und 0.25 auftritt das Integral der Dichtefunktion über diesen Bereich, = 0.1.
+
+
+**Frage**: Beschreiben Sie die Idee des Maximum Likelihod Schätzers (MLE)
+
+**Antwort**: Man nimmt p(D|M,x), probiert alle möglichen Parameter aus, und nimmt den Parameter für den die Wahrscheinlichkeit der Daten am höchsten ist
+
+**Frage**: Also ist der MLE der Parameter der an wahrscheinlichsten ist?
+
+**Antwort**: Nein, er ist erst mal nur der Parameter für den die Wahrscheinlichkeit der Daten am höchsten ist. Nur wenn Sie die Zusatzannahme machen dass auch alle Parameterwerte gleich wahrscheinlich sind dürften Sie sagen dass der MLE der wahrscheinlichste Parameter ist.
+
+
+# Beispiele Regression
+
+Machen Sie sich noch mal klar - die lineare Regression sucht den MLE von Abhängigkeiten zwischen 2 Variablen, die sich durch eine Gerade oder Kurve beschreiben lassen, mit den folgenden Einschränkugen
+
+* Die Streuung um die Kurve (in y-Richtung) folgt einer Normalverteilung 
+* Die Parameter der Kurve gehen linear in die Formel ein (deshalb lineare Regression)
+
+Um die Anwendung der Regression zu veranschaulichen benutzen wir Daten von klassischen landwirtschaftlichen Versuchen aus dem Paket 'agridat'
+
+```{r}
+#install.packages("agridat")
+library(agridat)
+```
+
+## Überleben und Wachstum von tropischen Bäumen
+
+siehe ?williams.trees für Details
+
+#### Daten
+
+```{r}
+plot(height ~ survival, data = williams.trees)
+```
+
+
+#### Regression
+
+```{r}
+fit <- lm(height ~ survival, data = williams.trees)
+summary(fit)
+```
+
+Stellene Sie sicher dass Sie diesen Output interpretieren können
+
+* Wie ist der gefittete Zusammenhang? Zeigt die Regression eine Zu- oder Abnahme der abhängigen Variable bei einer Zunahme der unabhängigen Variable an?
+* Wie weit ist das Konfidenzinterval für den Schätzer Effekt der erklärenden Variable (95% CI ungefähr 1.96 * Std. Error)
+* Zeigt die Regression an dass der Effekt der erklärenden Variable auf die abhängige Variable signifikant ist?
+* Sehen die Residuen symmetrisch aus? (schauen sie auf die Q1, Median, Q2)
+* Wie gut ist die Korellation mit der erklärenden Varialble (Multiple R-squared) - Hinweis: man sagt hier auch oft: wie viel Prozent der Varianz erklärt das Modell. 
+
+Hinweis: Wenn Sie die Antworten in der obenstehenden Tabelle nicht finden schauen Sie noch mal in die Vorlesungsunterlagen. 
+
+Wir können uns auch den Logarithmus der Likelihood des Modells anzeigen lassen
+
+```{r}
+logLik(fit)
+```
+
+Man nimmt immer den logarithms weil die Zahle sonst zu klein werden - exp(-1000) kann der Computer nicht darstellen. 
+
+#### Visuelles ergebnis
+
+```{r}
+plot(height ~ survival, data = williams.trees)
+abline(fit, col = "red", lwd = 2)
+```
+
+#### Residuen 
+
+Nach dem Regression immer Residuen checken. 
+
+```{r}
+plot(residuals(fit) ~ predict(fit), data = williams.trees)
+```
+
+Problem: Varianz nimmt zu -> Varianheterogenität. Es gibt schlimmeres, aber für eine Publikation sollten Sie jetzt zu dem Statistiker Ihres Vertrauens gehen. 
+
+## Mangold Blätter
+
+siehe ?mercer.mangold.uniformity für Details
+
+#### Daten
+
+```{r}
+plot(roots ~ leaves, data = mercer.mangold.uniformity)
+```
+
+
+#### Regression
+
+```{r}
+fit <- lm(roots ~ leaves, data = mercer.mangold.uniformity)
+summary(fit)
+```
+
+Stellene Sie sicher dass Sie diesen Output interpretieren können
+
+* Wie ist der gefittete Zusammenhang? Zeigt die Regression eine Zu- oder Abnahme der abhängigen Variable bei einer Zunahme der unabhängigen Variable an?
+* Wie weit ist das Konfidenzinterval für den Schätzer Effekt der erklärenden Variable (95% CI ungefähr 1.96 * Std. Error)
+* Zeigt die Regression an dass der Effekt der erklärenden Variable auf die abhängige Variable signifikant ist?
+* Sehen die Residuen symmetrisch aus? (schauen sie auf die Q1, Median, Q2)
+* Wie gut ist die Korellation mit der erklärenden Varialble (Multiple R-squared) - Hinweis: man sagt hier auch oft: wie viel Prozent der Varianz erklärt das Modell. 
+
+#### Visuelles ergebnis
+
+```{r}
+plot(roots ~ leaves, data = mercer.mangold.uniformity)
+abline(fit, col = "red", lwd = 2)
+```
+
+#### Residuen 
+
+```{r}
+plot(residuals(fit) ~ predict(fit), data = williams.trees)
+```
+
+Sieht eigentlich OK aus ... ein bisschen scheint es so als weichen die Datepunkte in der Mitte mehr nach oben und an den Rändern mehr nach unten ab. Das könnte bedeuten dass die Beziehung nicht linear ist. 
+
+#### Quadratischer Effekt 
+
+Probieren wir doch mal ob es Anzeichen für einen zusätzlichen quadratischen Effekt gibt, d.h. statt des alten Modells 
+
+roots = a0 * a1 * leaves
+
+fitten wir jetzt 
+
+roots = a0 * a1 * leaves + a2 * leaves^2
+
+also eine quadratische Funktion, oder auch Polynom 2. Grades. 
+
+```{r}
+fit2 <- lm(roots ~ leaves + I(leaves^2), data = mercer.mangold.uniformity)
+summary(fit2)
+```
+
+Wie sie sehen ist der quadratische Term wirklich siginifikant. 
+
+#### Visuelles ergebnis
+
+```{r}
+plot(roots ~ leaves, data = mercer.mangold.uniformity)
+nLeave = seq(35,70, len = 100)
+lines(nLeave, predict(fit2, newdata = data.frame(leaves = nLeave)), col = "red", lwd = 2)
+```
+
+Wir könne auch die Likelihoods der beiden Modelle vergleichen 
+
+```{r}
+logLik(fit)
+logLik(fit2)
+```
+
+Ein Unterschied von 7 - das sieht erst mal nicht so viel aus, aber machen Sie sich klar dass das log Werte sind, d.h. die Wahrscheinlichkeit der Daten sind für Modell 2 1000x höher als für Modell 1 
+
+```{r}
+exp(7)
+```
+
+Heißt dass auch das Modell 2 1000x wahrscheinlich ist? Natürlich nicht, nach den üblichen Argumenten - die Likelihood ist die Wahrscheinlichkeit der Daten, sie können die nicht ohne weiteres umdrehen (s.o.).
+
+Außerdem sollten Sie bedenken dass ein flexibleres Modell (mehr Parameter) immer besser an die Daten passt - d.h. die Likelihood wird nie schlechter wenn Sie einen Parameter dazunehmen, denn das alte Modell ist ja in dem neuen enthalten.
+
+Die Daumenregel ist dass eine Verbesserung in der log Likelihood kleiner als 2 keine signifikante Evidenz für das komplizertere Modell zeigt (wir besprechen das nächste Woche noch mal genauer). Bei einem Unterschied wie hier von 7 würde man aber schon sagen dass das Modell mit dem quadratische Effekt besser ist. 
+
+
+#### Residuen 
+
+```{r}
+plot(residuals(fit2) ~ predict(fit2), data = williams.trees)
+```
+
+Jetzt sehen die Residuen deutlich stabiler aus, aber ist ist immer noch etwas Varianzinhomogenität zu bemerken ... das würden wir aber jetzt erst mal wieder akzeptieren, oder Sie müssen wieder zu Ihrem Statistiker.
+
+## Ernte von Apfelbäumen
+
+siehe ?pearce.apple für Details
+
+#### Daten
+
+Es geht um den Ernteerfolg von Apfelbäumen. Der Unterschied zu den vorherigen Datensätzen ist dass wir jetzt eine kategoriale erklärende Variable haben
+
+```{r}
+plot(yield ~ block, data = pearce.apple)
+```
+
+#### Regression mit kategorialen Prediktoren
+
+In R gibt man die Regression völlig identisch ein, aber man muss aufpassen mit der Interpretation
+
+```{r}
+fit <- lm(yield ~ block, data = pearce.apple)
+summary(fit)
+```
+
+Machen Sie sich klar dass die Parameter so zu interpretieren sind
+
+* Intercept = erste Möglichkeit des kategorialen Prediktors (hier B1)
+* Die Effekte für B2, B3, B4 sind der UNTERSCHIED zu B1
+
+* D.h. der Schätzer für B4 ergibt sich aus Intercept 235.5 + blockB4 114.8, also ungefähr 350 
+* Auch die Hypothesentests sind immer im Unterschied zu Intercept, also B1 - stellen Sie sicher dass Sie das ordentlich interpretieren könnten.
+
+#### Residuen 
+
+Bei kategorialen Variablen sollte man immer für die einzelnen Gruppen plotten
+
+```{r}
+plot(residuals(fit) ~ block, data = pearce.apple)
+```
+
+hmm ... naja. Der Datensatz ist halt nicht besonders groß. Die Schwankungen könnten auch Zufall sein. 
+
+# ANOVA
+
+Zu allerletzt wollte ich Ihnen noch was zeigen. Bei den kategorialen Prediktoren hat man ja das Problem dass der p-Wert (und der Schäzter) immer Bezug auf die erste Gruppe nimmt. Vielleicht würde man aber gerne wissen ob block überhaupt einen Effekt hat. Dafür gibt es einen speziellen und sehr bekannten Test, die ANOVA = Analysis of Variance. 
+
+Die Nullhypothese der Anova ist: könnten die Daten aus einem Modell stammen in dem Block insgesamt keinen Effekt hat. Die Antwort bekommt man dann mit 
+
+```{r}
+summary(aov(fit))
+```
+
+Signifikant, also nein - die ANOVA sagt uns dass es einen Effekt von Block gibt, aber nicht welcher Block sich von welchem unterscheidet. 
+
+Also, mit der ANOVA schätzen sie die gesamt-Signfikanz eines kategorialen Prediktors. Das unterliegende statistische Modell ist identisch zu dem der linearen Regression. 
+
+
+

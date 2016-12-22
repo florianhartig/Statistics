@@ -128,7 +128,7 @@ Dann schauen wir mal
 hist(Einwohnerzahl, breaks = 50)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 Also, wir haben eine starke Häufung von kleinere Orten, und nur wenige große Städte die die Verteilung nach rechts ziehen. Vielleicht sollten wir die rechtsschiefe aber noch mal formal ausrechen. Also, wie war das, sollte die Schiefe jetzt postiv oder negativ sein?
 
@@ -157,7 +157,7 @@ Dann schauen wir noch mal auf die Verteilung
 hist(Distanz, breaks = 50)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 Ja, es sieht ganz leicht rechtsschief aus. Überprüfen wir das auch noch mal numerisch
 
@@ -195,7 +195,7 @@ hist(Distanz, breaks = 50)
 abline(v = Quantile, col = "red", lwd = 2)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 Sie sehen dass die Abstände der Quartile weiter werden nach rechts. Das zeigt die Rechtsschiefe an. 
 
@@ -239,7 +239,7 @@ lines(x = c(-1,1), y = dnorm(c(-1,1)), col = "red", lwd = 2)
 lines(x = c(-2,2), y = dnorm(c(-2,2)), col = "red", lwd = 2)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
 Mit den roten Linien habe ich den bereich von 1 und 2 Standardabweichungen vom Mittelwert eingezeichnet. 63% der Daten liegen +/- 1 Standardabweichung vom Mittelwert.
 
@@ -269,7 +269,7 @@ plot(Geschlecht, las = 2)
 plot(Studium, las = 2)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 ```r
 par(oldpar)
@@ -282,7 +282,7 @@ Ausblick auf nächste Woche ... natürlich liegt es jetzt auf der Hand mal zu sc
 boxplot(Körpergröße ~ Geschlecht)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
 Hier geht die Achse aber nicht bei 0 los ... das kann verwirrend sein. So noch mal anders.
 
@@ -291,7 +291,7 @@ Hier geht die Achse aber nicht bei 0 los ... das kann verwirrend sein. So noch m
 boxplot(Körpergröße ~ Geschlecht, ylim = c(0,350))
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 Sind denn größere Menschen vielleicht auch mehr mit den Fahrad unterwegs?
 
@@ -300,7 +300,7 @@ Sind denn größere Menschen vielleicht auch mehr mit den Fahrad unterwegs?
 boxplot(Körpergröße ~ Transport)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
 Da kann man so nicht viel sehen. Vielleicht als letztes noch mal 
 
@@ -310,7 +310,7 @@ Da kann man so nicht viel sehen. Vielleicht als letztes noch mal
 plot(Distanz, Einwohnerzahl)
 ```
 
-![](Vorlesung1-UnivariateDeskriptiveStatistik_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](Uebung1_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 Noch eine Bemerkung für die MSc Arbeit:
 
