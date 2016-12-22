@@ -17,7 +17,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{german}
+%\usepackage{german}
 
 \usepackage{color}
 \usepackage{xcolor}
@@ -94,7 +94,7 @@ literate={*}{{\char42}}1
 \null
 
 \begin{fullwidth}
-Diese Vorlesung ist empfehlenswert f"ur Studenten der
+Vorlesungsunterlagen für Studierende der
 
 \begin{itemize*}
   \item BSc Biostatistik
@@ -105,17 +105,17 @@ Diese Vorlesung ist empfehlenswert f"ur Studenten der
 
 Anmerkungen / Fragen an:\\[0.5cm]
 \href{https://florianhartig.wordpress.com/}{Florian Hartig}\\
-Universit"at Regensburg\\
+Universität Regensburg\\
 Germany\\[0.5cm]
 
-Probleme oder Unklarheiten bei dieser Vorlesung k"onnen mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
+Probleme oder Unklarheiten bei dieser Vorlesung können mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
 
 \end{fullwidth}
 
 
 \vfill
 \begin{fullwidth}
-Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Attribution-NonCommercial- NoDerivatives 4.0 International' Lizenz.
+Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Attribution-NonCommercial- NoDerivatives 4.0 International' Lizenz.
 \end{fullwidth}
 
 
@@ -124,32 +124,32 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 
 \chapter{Einleitung} % Use chapters instead of sections
 
-	\section{Absichten und vorgesehene Zielgruppe}
+	\section{Ziel und Zielgruppe diese Textes}
 	
-	Dieses Dokument beinhaltet eine kurze Einf"uhrung in die Statistik und in statistische Analysen, welcher es in elementaren Experimenten und beobachteten Situationen h"aufig bedarf~\ref{sec: further readings}.
+	Dieses Dokument beinhaltet eine kurze Einführung in die Statistik und in statistische Analysen, welcher es in elementaren Experimenten und beobachteten Situationen häufig bedarf~\ref{sec: further readings}.
 	
 	\section{Themen der Statistik und Datenwissenschaften}
-	Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Einf"uhrung in die vier wichtigsten S"aulen der statistischen Methodik f"ur einen quantitativen Wissenschaftler:
+	Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Einführung in die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
 	
 	\paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, Kennzahlen der Statistik} beinhaltet die Kennzahlen der Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
 	
-	\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parametersch"atzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Sch"atzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`datenerzeugender Prozess"' bezeichnet, da es Annahmen "uber einen Prozess beschreibt, die zu einer Variation an Daten f"uhrt (systematisch und stochastisch).
+	\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parameterschätzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Schätzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`datenerzeugender Prozess"' bezeichnet, da es Annahmen über einen Prozess beschreibt, die zu einer Variation an Daten führt (systematisch und stochastisch).
 	
-	\paragraph{Vorhersagende Statistik und maschinelles Lernen:} Vorhersagende Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Gro"se Dateien = umfangreiche Datens"atze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`gro"sen Datens"atzen"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu k"onnen ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen "uber den Datenerzeugenden Prozess.
+	\paragraph{Prädiktive Statistik und maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Große Dateien = umfangreiche Datensätze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`großen Datensätzen"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu können ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen über den Datenerzeugenden Prozess.
 	
-	\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden ben"otigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise ver"andert werden?"'
+	\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden benötigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?"'
 	
 	
-	\section{Die Umgebung R f"ur statistische Berechnungen}
+	\section{Die Umgebung R für statistische Berechnungen}
 	
-	Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgef"uhrt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgef"uhrt, wof"ur es eine Reihe von Software-Umgebungen gibt.
+	Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgeführt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgeführt, wofür es eine Reihe von Software-Umgebungen gibt.
 	
-	In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einf"uhrung in R an sich liegen wird. Bei Bedarf f"uhrt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einf"uhrung, inklusive Hilfestellungen f"ur die Installation der Software.
+	In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einführung in R an sich liegen wird. Bei Bedarf führt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einführung, inklusive Hilfestellungen für die Installation der Software.
 	
 	\begin{figure}[]
 		\begin{center}
 			\includegraphics[width = 10cm]{rst_interface.png}
-			\caption{Der RStudio Editor ist der wohl beliebteste Editor f"ur R. R ist eine Script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in der R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gew"ohnt ist, kann es eine Weile dauern, bis man sich damit zurrecht findet. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu k"onnen.}
+			\caption{Der RStudio Editor ist der wohl beliebteste Editor für R. R ist eine Script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in der R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gewöhnt ist, kann es eine Weile dauern, bis man sich damit zurrecht findet. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu können.}
 			\label{fig: Rstudio}
 		\end{center}
 	\end{figure}
@@ -158,46 +158,46 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 	
 	\chapter{Daten, Proben und Populationen}
 	
-	Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, vorhersagende Statistik und Versuchsplanung. 
+	Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, prädiktive Statistik und Versuchsplanung. 
 	
 	\section{Stichproben, Populationen und der Vorgang der Datenerzeugung}
 	
-	Der eigentliche Grund der f"ur statistische Berechnungen spricht, ist, dass die Daten, die wir erhalten, sehr zuf"allig erscheinen. Aber wie entsteht diese Zuf"alligkeit?
+	Der eigentliche Grund der für statistische Berechnungen spricht, ist, dass die Daten, die wir erhalten, sehr zufällig erscheinen. Aber wie entsteht diese Zufälligkeit?
 	
-	Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man h"atte machen k"onnen. Eine Stichprobe ist die Beobachtung, die man tats"achlich gemacht hat.} man w"are in die durchschnittliche Wachstumsrate der B"aumen in Deutschland w"ahrend zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle B"aume per Hand messen und w"are somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuf"uhren. Um die durchschnittliche Rate ermitteln zu k"onnen, muss man nun eine Auswahl an B"aumen treffen und die Wachstumsrate aller dieser gew"ahlten B"aume ermitteln. Der statistische Terminus f"ur 'alle B"aume in Deutschland' lautet "`Population"' und die Bezeichnung der ausgew"ahlten gemessenen B"aume ist "`Stichprobe"'.
+	Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man hätte machen können. Eine Stichprobe ist die Beobachtung, die man tatsächlich gemacht hat.} man wäre in die durchschnittliche Wachstumsrate der Bäumen in Deutschland während zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle Bäume per Hand messen und wäre somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuführen. Um die durchschnittliche Rate ermitteln zu können, muss man nun eine Auswahl an Bäumen treffen und die Wachstumsrate aller dieser gewählten Bäume ermitteln. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "`Population"' und die Bezeichnung der ausgewählten gemessenen Bäume ist "`Stichprobe"'.
 	
-	Die \marginnote{Das W"ahlen von Stichproben erzeugt Zuf"alligkeit.} Population an sich ist definiert und "andert sich nicht, jedoch k"onnte man bei jeder Untersuchung einer zuf"allig gew"ahlten Stichprobe aus der Population andere Teilbereiche mit minimal unterschiedlichen Eigenschaften erhalten. Ein konkretes Beispiel: Man habe nur die M"oglichkeiten um 1000 B"aume in Deutschland zu untersuchen. Man wird bei jeder zuf"allig gew"ahlten Stichprobe mit 1000 B"aumen aus der gesamten Population unterschiedliche durchschnittliche Wachstumsraten erhalten.
+	Die \marginnote{Das Wählen von Stichproben erzeugt Zufälligkeit.} Population an sich ist definiert und ändert sich nicht, jedoch könnte man bei jeder Untersuchung einer zufällig gewählten Stichprobe aus der Population andere Teilbereiche mit minimal unterschiedlichen Eigenschaften erhalten. Ein konkretes Beispiel: Man habe nur die Möglichkeiten um 1000 Bäume in Deutschland zu untersuchen. Man wird bei jeder zufällig gewählten Stichprobe mit 1000 Bäumen aus der gesamten Population unterschiedliche durchschnittliche Wachstumsraten erhalten.
 	
-	Der\marginnote{Jedoch kommt nicht jede Zuf"alligkeit durch das W"ahlen von Stichproben aus einer Population.} Vorgang des Stichproben-Festlegens aus einer Population erkl"art, wie die Zuf"alligkeit in unseren Daten entsteht. Jedoch gibt es ein kleines Problem bei dieser "Uberlegung, da dies nicht immer zutrifft, wenn man beispielsweise komplexere Zufallsprozesse betrachtet. Man gehe exemplarisch davon aus, dass man Daten z.B. durch eine Person erh"alt, welche zu zuf"allig ausgew"ahlten Punkten geht und daraus die Ausbreitung ermitteln m"ochte (welche innerhalb von Minuten durch wechselnde Bew"olkung variieren kann). Man verwendet dazu ein Messger"at, das mit zuf"alliger Abweichung misst. Macht es da wirklich Sinn auf Daten zu vertrauen, die durch das Stichproben-W"ahlen aus einer Gesamtpopulation mit verschiedenst m"oglichen Beobachtungen entstanden sind?
+	Der\marginnote{Jedoch kommt nicht jede Zufälligkeit durch das Wählen von Stichproben aus einer Population.} Vorgang des Stichproben-Festlegens aus einer Population erklärt, wie die Zufälligkeit in unseren Daten entsteht. Jedoch gibt es ein kleines Problem bei dieser überlegung, da dies nicht immer zutrifft, wenn man beispielsweise komplexere Zufallsprozesse betrachtet. Man gehe exemplarisch davon aus, dass man Daten z.B. durch eine Person erhält, welche zu zufällig ausgewählten Punkten geht und daraus die Ausbreitung ermitteln möchte (welche innerhalb von Minuten durch wechselnde Bewölkung variieren kann). Man verwendet dazu ein Messgerät, das mit zufälliger Abweichung misst. Macht es da wirklich Sinn auf Daten zu vertrauen, die durch das Stichproben-Wählen aus einer Gesamtpopulation mit verschiedenst möglichen Beobachtungen entstanden sind?
 	
-	\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verr"at, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zuf"allig gew"ahlten Stichprobe entsteht und dabei zus"atzlich systematische und stochastische Prozesse mit einbezieht.}  Daf"ur bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenerhebung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausma"s, indem es all die anderen Vorg"ange, die systematische und zuf"allige Muster im Datensatz entstehen lassen k"onnen, einschlie"st. In diesem Fall schlussfolgert man nicht die Umst"ande der Population aus der Stichprobe, sondern wir w"urden die Umst"ande des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schlie"sen. 
+	\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verrät, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zufällig gewählten Stichprobe entsteht und dabei zusätzlich systematische und stochastische Prozesse mit einbezieht.}  Dafür bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenerhebung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausmaß, indem es all die anderen Vorgänge, die systematische und zufällige Muster im Datensatz entstehen lassen können, einschließt. In diesem Fall schlussfolgert man nicht die Umstände der Population aus der Stichprobe, sondern wir würden die Umstände des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schließen. 
 	
-	Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zust"ande (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich m"ochte man lediglich die Umst"ande der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im n"achsten Abschnitt der Inferenzstatistik. Davor m"ussen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
+	Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zustände (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich möchte man lediglich die Umstände der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im nächsten Abschnitt der Inferenzstatistik. Davor müssen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
 	
 	\section{Darstellung und Datenklassen}
 	
-	Ein typischer Datensatz beinhaltet meist mehrere Beobachtungen von verschiedensten Variablen (z.B. Temperatur, Niederschlag, Wachstum). Man kann sich dabei eine Tabelle vorstellen, in der die Spalten die Variablen bezeichnen und die Reihen die unterschiedlichen Beobachtungen. Nat"urlich gibt es auch andere Datenstrukturen, jedoch ist diese die wohl H"aufigste.
+	Ein typischer Datensatz beinhaltet meist mehrere Beobachtungen von verschiedensten Variablen (z.B. Temperatur, Niederschlag, Wachstum). Man kann sich dabei eine Tabelle vorstellen, in der die Spalten die Variablen bezeichnen und die Reihen die unterschiedlichen Beobachtungen. Natürlich gibt es auch andere Datenstrukturen, jedoch ist diese die wohl Häufigste.
 	
-	"Ublicherweise enthalten die Daten eine Variable auf der unser Fokus liegt, d.h. wir m"ochten herausfinden, wie sehr unsere Variable von den anderen Variablen beeinflusst wird. \marginnote{Die Response-Variable ist die Variable, f"ur die wir herausfinden wollen, inwiefern sie von anderen Faktoren abh"angt.}  Diese Variable wird als ``Response-Variable'' bezeichnet (manchmal auch abh"angige Variable oder Ergebnisvariable), da wir wissen wollen, ob und wie diese untersuchte Variable variiert (Reaktion, Abh"angigkeit) wenn sich etwas anderes ver"andert. Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, k"onnen unter anderem Umweltfaktoren (z.B. Temperatur) oder Behandlungen (befruchtet vs. unbefruchtet) sein. \marginnote{Einflussvariablen sind solche, die die Response-Variable beeinflussen.} Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, nennt man "`Einflussvariablen"' (Synonyme hierf"ur w"aren erkl"arende Variablen, Kovariaten oder unabh"angige Variablen). 
+	üblicherweise enthalten die Daten eine Variable auf der unser Fokus liegt, d.h. wir möchten herausfinden, wie sehr unsere Variable von den anderen Variablen beeinflusst wird. \marginnote{Die Response-Variable ist die Variable, für die wir herausfinden wollen, inwiefern sie von anderen Faktoren abhängt.}  Diese Variable wird als ``Response-Variable'' bezeichnet (manchmal auch abhängige Variable oder Ergebnisvariable), da wir wissen wollen, ob und wie diese untersuchte Variable variiert (Reaktion, Abhängigkeit) wenn sich etwas anderes verändert. Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, können unter anderem Umweltfaktoren (z.B. Temperatur) oder Behandlungen (befruchtet vs. unbefruchtet) sein. \marginnote{Einflussvariablen sind solche, die die Response-Variable beeinflussen.} Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, nennt man "`Einflussvariablen"' (Synonyme hierfür wären erklärende Variablen, Kovariaten oder unabhängige Variablen). 
 	
-	In den \marginnote{Multivariate Statistik behandelt Response-Variablen mit mehreren Dimensionen, wie z.B. Artenzusammensetzungen} meisten F"allen ist unsere Response-Variable eine einzelne Variable (beispielsweise eine einfache Zahl oder ein kategorisches Ergebnis), worauf wir uns nun konzentrieren. Manchmal gibt es jedoch F"alle, bei denen eine Response mehr als nur eine Dimension einnimmt, oder wenn man an einer Ver"anderung von mehreren Variablen gleichzeitig interessiert ist. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Diese Methoden werden jedoch hier nicht weiter aufgef"uhrt, k"onnen aber bei Bedarf unter diesem \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{Link} nachgelesen werden.
+	In den \marginnote{Multivariate Statistik behandelt Response-Variablen mit mehreren Dimensionen, wie z.B. Artenzusammensetzungen} meisten Fällen ist unsere Response-Variable eine einzelne Variable (beispielsweise eine einfache Zahl oder ein kategorisches Ergebnis), worauf wir uns nun konzentrieren. Manchmal gibt es jedoch Fälle, bei denen eine Response mehr als nur eine Dimension einnimmt, oder wenn man an einer Veränderung von mehreren Variablen gleichzeitig interessiert ist. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Diese Methoden werden jedoch hier nicht weiter aufgeführt, können aber bei Bedarf unter diesem \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{Link} nachgelesen werden.
 	
-	Weiterhin ist zu beachten, dass man die Variablenart unterscheiden muss; unabh"angig davon, ob wir von Response- oder Einflussvariablen sprechen. Man unterscheidet hier: \marginnote{Variablen k"onnen stetig, unstetig oder kategorisch sein. Kategorische Variablen k"onnen geordnet, ungeordnet oder bin"ar sein.}
+	Weiterhin ist zu beachten, dass man die Variablenart unterscheiden muss; unabhängig davon, ob wir von Response- oder Einflussvariablen sprechen. Man unterscheidet hier: \marginnote{Variablen können stetig, unstetig oder kategorisch sein. Kategorische Variablen können geordnet, ungeordnet oder binär sein.}
 	
 	\begin{itemize}
 		\item Stetig numerische Variablen (geordnet und stetig / real), z.B. Temperatur
-		\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu z"ahlt der wichtige Spezialfall der Z"ahldaten, z.B. 0,1,2,3, ...
-		\item Kategorische Variablen (z.B. eine feststehende Auswahlm"oglichkeit wie beispielsweise rot, gr"un, blau), welche dann weiterhin unterteilt werden k"onnen in 
+		\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu zählt der wichtige Spezialfall der Zähldaten, z.B. 0,1,2,3, ...
+		\item Kategorische Variablen (z.B. eine feststehende Auswahlmöglichkeit wie beispielsweise rot, grün, blau), welche dann weiterhin unterteilt werden können in 
 		\begin{itemize}
-			\item Ungeordnete kategorische Variablen (nominal) wie beispielsweise rot, gr"un, blau
-			\item Bin"are (dichotome) Variablen (verstorben / "uberlebt, 0/1)
-			\item Geordnete kategorische Variablen (klein, mittel, gro"s)
+			\item Ungeordnete kategorische Variablen (nominal) wie beispielsweise rot, grün, blau
+			\item Binäre (dichotome) Variablen (verstorben / überlebt, 0/1)
+			\item Geordnete kategorische Variablen (klein, mittel, groß)
 		\end{itemize}
 	\end{itemize}
 	
-	Hier ist es "au"serst wichtig die Variablen ihren entsprechendem "`Typ"' zuzuweisen.\marginnote{Man muss "uberpr"ufen, ob die Variablen zum richtigen Typ zugewiesen wurden, nachdem man sie in das Statistikprogramm eingegeben habt.} Und falls man eine Statistik-Software benutzt, muss man sicher stellen, dass der Typ auch korrekt erkannt wurde, nachdem die Daten eingegeben wurden, da viele Methoden die Variablen unterschiedlich behandeln, wenn sie numerischem oder kategorischem Typs sind.
+	Hier ist es äußerst wichtig die Variablen ihren entsprechendem "`Typ"' zuzuweisen.\marginnote{Man muss überprüfen, ob die Variablen zum richtigen Typ zugewiesen wurden, nachdem man sie in das Statistikprogramm eingegeben habt.} Und falls man eine Statistik-Software benutzt, muss man sicher stellen, dass der Typ auch korrekt erkannt wurde, nachdem die Daten eingegeben wurden, da viele Methoden die Variablen unterschiedlich behandeln, wenn sie numerischem oder kategorischem Typs sind.
 	
-	Aus Erfahrung wei"s man, dass Anf"anger eher dazu neigen, Variablen als kategorisch einzuordnen, obwohl diese eigentlich stetig w"aren, z.B. beim Einteilen von K"orpergewicht von Tieren in leicht, mittel und schwer.\marginnote{Verwende nie kategorische Variablen f"ur Dinge, die ebenso als numerisch eingestuft werden k"onnen!} Eine Rechtfertigung daf"ur ist meist, dass es ein ungewisses Messen vermeidet. Kurz gesagt: Das tut es ganz und gar nicht.Es ruft nur zus"atzliche Probleme hervor. Verwende nie kategorische Variablen f"ur Dinge, die ebenso als numerisch eingestuft werden k"onnen!
+	Aus Erfahrung weiß man, dass Anfänger eher dazu neigen, Variablen als kategorisch einzuordnen, obwohl diese eigentlich stetig wären, z.B. beim Einteilen von Körpergewicht von Tieren in leicht, mittel und schwer.\marginnote{Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden können!} Eine Rechtfertigung dafür ist meist, dass es ein ungewisses Messen vermeidet. Kurz gesagt: Das tut es ganz und gar nicht.Es ruft nur zusätzliche Probleme hervor. Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden können!
 	
 	
 	\vspace{1cm}
@@ -206,20 +206,20 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 			
 			\textbf{In R:} 
 			
-			Um Daten darzustellen besitzt R eine grundlegende Datenstruktur, den Daten-Frame (data.frame). Ein Daten-Frame ist gleichzusetzen mit einer Tabelle mit Spalten, wobei jede Spalte einen anderen Typ haben kann. M"oglichkeiten hier sind
+			Um Daten darzustellen besitzt R eine grundlegende Datenstruktur, den Daten-Frame (data.frame). Ein Daten-Frame ist gleichzusetzen mit einer Tabelle mit Spalten, wobei jede Spalte einen anderen Typ haben kann. Möglichkeiten hier sind
 			
 			\begin{itemize*}
-				\item ganzzahlig - selbsterkl"arend
+				\item ganzzahlig - selbsterklärend
 				\item numerisch - kontinuierliche Nummern (Gleitkommazahl)
 				\item boolean (=aussagenlogisch) - true / false
-				\item Faktor - normalerweise ungeordnet, z.B. rot, gr"un, blau. Kann auch geordnet sein (klein, mittel, gro"s), wobei es hier manchmal ratsam w"are, diese als ganzzahlig einzustufen
+				\item Faktor - normalerweise ungeordnet, z.B. rot, grün, blau. Kann auch geordnet sein (klein, mittel, groß), wobei es hier manchmal ratsam wäre, diese als ganzzahlig einzustufen
 			\end{itemize*}
 			
-			Desweiteren gibt es den Fall der ausbleibenden Beobachtung einer Variablen, auch wenn dies nicht wirklich ein Datentyp ist. Dies wird dann typischerweise mit "`NA"' betitelt. "Ahnlich, jedoch nicht identisch ist "`NaN"' (not a number), was bei einer nicht ausf"uhrbaren Rechnung als Ergebnis auftreten kann.
+			Desweiteren gibt es den Fall der ausbleibenden Beobachtung einer Variablen, auch wenn dies nicht wirklich ein Datentyp ist. Dies wird dann typischerweise mit "`NA"' betitelt. ähnlich, jedoch nicht identisch ist "`NaN"' (not a number), was bei einer nicht ausführbaren Rechnung als Ergebnis auftreten kann.
 			
 			Um Daten als data.frame in R-studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R " im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{der Seite hier} nachgelesen werden.
 			
-			Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu "uberpr"ufen. Dies wird ausgef"uhrt durch str(TheNameOfMyData), womit man kann die Spalten auf ihre Typen checken kann.
+			Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu überprüfen. Dies wird ausgeführt durch str(TheNameOfMyData), womit man kann die Spalten auf ihre Typen checken kann.
 			
 		\end{mdframed}
 	\end{fullwidth}
@@ -227,54 +227,54 @@ Erstellt 2014. Updated 2015. Diese Arbeit f"allt unter die 'Creative Commons Att
 	
 	\chapter{Deskriptive Statistik und Visualisierung}
 	
-	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird sp"ater noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gew"ahlten) Daten
+	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird später noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gewählten) Daten
 	
 	\section{Kennzahlen der Statistik}
 	
-	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten zusammen} sind numerische Berechnungen, die Datens"atze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
+	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten zusammen} sind numerische Berechnungen, die Datensätze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
 	
 	\subsection{Zusammenfassen einer einzelnen stetigen Variable}
 	
-	Eine "ubliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 B"aume gemessen und anschlie"send erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
+	Eine übliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 Bäume gemessen und anschließend erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} \end{Schunk}
-\caption{Eine Verteilung von beobachteten zunehmenden Durchmessergr"o"sen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datenerzeugender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen w"urden, w"urden sich die grauen Balken der wahren Verteilung immer mehr ann"ahern.}
+\caption{Eine Verteilung von beobachteten zunehmenden Durchmessergrößen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datenerzeugender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
 \label{fig: data distribution}
 \end{center}
 \end{figure}
 
-Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften w"aren beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der h"ochsten Beobachtungsdichte). Au"serdem  gibt es zwei weitere Kennzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
+Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften wären beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der höchsten Beobachtungsdichte). Außerdem  gibt es zwei weitere Kennzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
 
 
-Der Begriff "`Moment"' mag vielleicht nicht jedem gel"aufig sein, vermutlich wurde aber schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
+Der Begriff "`Moment"' mag vielleicht nicht jedem geläufig sein, vermutlich wurde aber schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
 
 \begin{equation}
 \mu_n(c) = \int_{-\infty}^{\infty} f(x) (x - c)^n dx
 \end{equation}
 
-oder, f"ur eine endliche Anzahl an Beobachtungen 
+oder, für eine endliche Anzahl an Beobachtungen 
 
 \begin{equation}
 \mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n dx
 \end{equation}
 
-Das erste Moment mit c=0, ist der Mittelwert. F"ur die folgenden h"oheren Momente ist es "ublich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erh"alt, da ihre Werte einfacher als Indikatoren f"ur die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzusch"atzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei h"oheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgr"o"se der Streuung), Schiefe (n=3, Messgr"o"se f"ur die Asymmetrie in der Verteilung) und W"olbung (n=4) genannt. 
+Das erste Moment mit c=0, ist der Mittelwert. Für die folgenden höheren Momente ist es üblich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erhält, da ihre Werte einfacher als Indikatoren für die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzuschätzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei höheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgröße der Streuung), Schiefe (n=3, Messgröße für die Asymmetrie in der Verteilung) und Wölbung (n=4) genannt. 
 
-Quantilen stellen die zweite Zentralklasse der Kennzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei H"alften trennt, sodass eine H"alfte der beobachten Daten kleiner und die andere H"alfte gr"o"ser als dieser Wert ist?\marginnote{Eine H"alfte der Daten ist kleiner und die andere H"alfte ist gr"o"ser als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
+Quantilen stellen die zweite Zentralklasse der Kennzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei Hälften trennt, sodass eine Hälfte der beobachten Daten kleiner und die andere Hälfte größer als dieser Wert ist?\marginnote{Eine Hälfte der Daten ist kleiner und die andere Hälfte ist größer als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
 
-\subsection{Korrelation - Erl"auterung der Abh"angigkeit stetiger Variablen}
+\subsection{Korrelation - Erläuterung der Abhängigkeit stetiger Variablen}
 
-Ein weiterer wichtiger Bereich der Kennzahlen-Statistik ist die Korrelation. Korrelationsstudien messen die Abh"angigkeit von stetigen Variablen. Leider gibt es eine Menge Korrelations-Messgr"o"sen, die es zu unterscheiden gilt. Die zwei wichtigsten sind:
+Ein weiterer wichtiger Bereich der Kennzahlen-Statistik ist die Korrelation. Korrelationsstudien messen die Abhängigkeit von stetigen Variablen. Leider gibt es eine Menge Korrelations-Messgrößen, die es zu unterscheiden gilt. Die zwei wichtigsten sind:
 
-\paragraph{Lineare Koeffizienten:}Lineare Koeffizienten, mit dem "`Pearson'schen Korrelationskoeffizienten"', als dem wohl H"aufigsten, ermitteln die lineare Abh"angigkeit zwischen zwei Variablen. Der Pearson'sche Korrelationskoeffizient wird wegen seiner schnellen Berechnung und leichten Interpretation am h"aufigsten verwendet. Jedoch kann es hier zu Fehlern kommen, wenn die Variablen nicht linear abh"angig voneinander sind. Fig.~\ref{fig: correlation}.
+\paragraph{Lineare Koeffizienten:}Lineare Koeffizienten, mit dem "`Pearson'schen Korrelationskoeffizienten"', als dem wohl Häufigsten, ermitteln die lineare Abhängigkeit zwischen zwei Variablen. Der Pearson'sche Korrelationskoeffizient wird wegen seiner schnellen Berechnung und leichten Interpretation am häufigsten verwendet. Jedoch kann es hier zu Fehlern kommen, wenn die Variablen nicht linear abhängig voneinander sind. Fig.~\ref{fig: correlation}.
 
-\paragraph{Rangkorrelationskoeffizient:} Rangkorrelationskoeffizient, wie zum Beispiel der "`Spearman'sche Rangkorrelationskoeffizient"' und der "`Kendall Tau Rangkorrelationskoeffizient"' ermitteln, wie genau die Variablen gemeinsam tendenziell steigen oder fallen, ohne hierbei das Ausma"s oder die Linearit"at ihrer Steigung zu beachten. Diese werden bevorzugt, wenn man von zueinander nicht-linearen Variablen ausgeht. 
+\paragraph{Rangkorrelationskoeffizient:} Rangkorrelationskoeffizient, wie zum Beispiel der "`Spearman'sche Rangkorrelationskoeffizient"' und der "`Kendall Tau Rangkorrelationskoeffizient"' ermitteln, wie genau die Variablen gemeinsam tendenziell steigen oder fallen, ohne hierbei das Ausmaß oder die Linearität ihrer Steigung zu beachten. Diese werden bevorzugt, wenn man von zueinander nicht-linearen Variablen ausgeht. 
 
-\paragraph{Starke Korrelation != bedeutender Einfluss:} Siehe auch Fig.~\ref{fig: correlation}; ist ein oft falsch verstandener Zustand der Korrelation und Abh"angigkeit - ein hoher Korrelationskoeffizient bedeutet nicht, dass eine Variable eine starke Reaktion auf eine andere bewirkt. Um eine hohe Korrelation zu erreichen braucht es nur eine geringe Streuung um die Korrelationslinie (siehe mittlere Reihe - die Auswirkung ist anders, aber die Korrelation bleibt gleich). 
+\paragraph{Starke Korrelation != bedeutender Einfluss:} Siehe auch Fig.~\ref{fig: correlation}; ist ein oft falsch verstandener Zustand der Korrelation und Abhängigkeit - ein hoher Korrelationskoeffizient bedeutet nicht, dass eine Variable eine starke Reaktion auf eine andere bewirkt. Um eine hohe Korrelation zu erreichen braucht es nur eine geringe Streuung um die Korrelationslinie (siehe mittlere Reihe - die Auswirkung ist anders, aber die Korrelation bleibt gleich). 
 
 
 \begin{figure}[htbp]
@@ -294,14 +294,14 @@ Error in Others(800): konnte Funktion "rmvnorm" nicht finden
 \end{Soutput}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
-\caption{Beispiele einer m"oglichen Korrelation mit dem Pearson'schen Korrelationskoeffizienten. Beachte, dass viele Datens"atze, die eine klare Abh"angigkeit zwischen Variablen aufweisen, einen Pearson'schen Korrelationskoeffizienten von 0 aufweisen, da die Abh"angigkeit nicht linear ist.}
+\caption{Beispiele einer möglichen Korrelation mit dem Pearson'schen Korrelationskoeffizienten. Beachte, dass viele Datensätze, die eine klare Abhängigkeit zwischen Variablen aufweisen, einen Pearson'schen Korrelationskoeffizienten von 0 aufweisen, da die Abhängigkeit nicht linear ist.}
 \label{fig: correlation}
 \end{center}
 \end{figure}
 
-\subsection{Kreuztabellen - Erl"auterung unstetiger Ergebnisse mehrerer Variablen}
+\subsection{Kreuztabellen - Erläuterung unstetiger Ergebnisse mehrerer Variablen}
 
-Zu guter Letzt\marginnote{Dieser Datensatz von Berkeley ist ein ber"uhmtes Beispiel f"ur das Simpson-Paradoxon. Weitere Informationen auf Wikipedia "uber diese wichtige statistische Falle.} gibt es noch die klassischen Kreuztabellen, um bin"are oder kategorische Daten zu beschreiben. Hier ist ein Auszug eines "ublichen Datensatzes aus R "uber Sammeldaten von Hochschulbewerber in Berkeley aus dem sechst-gr"o"sten Departments im Jahre 1973, geordnet nach Zulassung und Geschlecht. Hier wird nur das erste Department gezeigt.
+Zu guter Letzt\marginnote{Dieser Datensatz von Berkeley ist ein berühmtes Beispiel für das Simpson-Paradoxon. Weitere Informationen auf Wikipedia über diese wichtige statistische Falle.} gibt es noch die klassischen Kreuztabellen, um binäre oder kategorische Daten zu beschreiben. Hier ist ein Auszug eines üblichen Datensatzes aus R über Sammeldaten von Hochschulbewerber in Berkeley aus dem sechst-größten Departments im Jahre 1973, geordnet nach Zulassung und Geschlecht. Hier wird nur das erste Department gezeigt.
 .
 
 \begin{Schunk}
@@ -323,7 +323,7 @@ Admit      Male Female
     
 \textbf{In R:} 
 
-F"ur die vielseitigen Berechnungsm"oglichkeiten der deskriptiven Statistik in R, siehe \href{http://www.uni-kiel.de/psychologie/rexrepos/rerDescriptive.html}{hier}
+Für die vielseitigen Berechnungsmöglichkeiten der deskriptiven Statistik in R, siehe \href{http://www.uni-kiel.de/psychologie/rexrepos/rerDescriptive.html}{hier}
 
 \end{mdframed}
 \end{fullwidth} 
@@ -333,27 +333,27 @@ F"ur die vielseitigen Berechnungsm"oglichkeiten der deskriptiven Statistik in R,
 
 \marginnote{Gebe ?anscombe in R ein, um den Code zu sehen, der diese Plots ausgibt und um die statistischen Eigenschaften des Datensatzes zu berechnen.}
 
-Kennzahlen sind sehr n"utzlich, k"onnen aber auch zum Problem werden. Ein bekanntes Beispiel daf"ur ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es "au"serst n"utzlich zus"atzlich eine graphische "ubersicht zu den berechneten Kennzahlen der Daten zu erhalten.
+Kennzahlen sind sehr nützlich, können aber auch zum Problem werden. Ein bekanntes Beispiel dafür ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es äußerst nützlich zusätzlich eine graphische übersicht zu den berechneten Kennzahlen der Daten zu erhalten.
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} \end{Schunk}
-\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische "ubliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
+\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
 \label{fig: Anscombes Quartet}
 \end{center}
 \end{figure}
 
 
-\subsection{Grunds"atze der Visualisierung}
+\subsection{Grundsätze der Visualisierung}
 
-Ein Grundsatz\marginnote{Beispiele f"ur verzerrte Grafiken \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Grafiken und Darstellungen ist, die Daten so einsehbar und wahr wie m"oglich darzustellen. Der Leser sollte einen bestm"oglichen "Uberblick in k"urzester Zeit "uber die Daten erhalten. Zus"atzlich sollten die Graphen nat"urlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen k"onnten:
+Ein Grundsatz\marginnote{Beispiele für verzerrte Grafiken \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Grafiken und Darstellungen ist, die Daten so einsehbar und wahr wie möglich darzustellen. Der Leser sollte einen bestmöglichen überblick in kürzester Zeit über die Daten erhalten. Zusätzlich sollten die Graphen natürlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen könnten:
 
 \begin{itemize}
 \item Einfach ist besser, als kompliziert
-\item Vermeide "ubertriebene Farben. Graphen sollten wenn m"oglich auch in schwarz-wei"s leserlich sein (benutze einen Farbgradienten, der gleichzeitig ein Intensit"atsgradient ist; benutze zus"atzlich zu Farben auch gestrichelte Linien). Wenn dein Graph auf Farben basiert, achte darauf welche zu verwenden, die auch Menschen mit einer Rot-Gr"un-Schw"ache erkennen k"onnen.
-\item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, au"ser es gibt besondere Gr"unde. Achsen sollten bei 0 beginnen, au"ser es gibt gute Gr"unde, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Grafiken, wenn es keine Gr"unde gibt, die dagegen sprechen. 
+\item Vermeide übertriebene Farben. Graphen sollten wenn möglich auch in schwarz-weiß leserlich sein (benutze einen Farbgradienten, der gleichzeitig ein Intensitätsgradient ist; benutze zusätzlich zu Farben auch gestrichelte Linien). Wenn dein Graph auf Farben basiert, achte darauf welche zu verwenden, die auch Menschen mit einer Rot-Grün-Schwäche erkennen können.
+\item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, außer es gibt besondere Gründe. Achsen sollten bei 0 beginnen, außer es gibt gute Gründe, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Grafiken, wenn es keine Gründe gibt, die dagegen sprechen. 
 \item Manipuliere deine Grafiken nicht!
 \item Ausgabe in einem Vektor-Format (pdf, eps, svg)
 \end{itemize}
@@ -365,7 +365,7 @@ Ein Grundsatz\marginnote{Beispiele f"ur verzerrte Grafiken \href{https://en.wiki
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-6-1} \end{Schunk}
-\caption{Vier typische Plot-Typen, von oben links nach unten rechts: a) Liniendiagramm, repr"asentiert stetige Messungen einer Variablen; b) Streudiagramm, repr"asentiert eine Beziehung zwischen zweier stetigen Variablen; c) Balkendiagramm, repr"asentiert Messungen in unstetigen Gruppen / Variablen; d) Boxplot, repr"asentiert stetige Messungen in unstetigen Gruppen.}
+\caption{Vier typische Plot-Typen, von oben links nach unten rechts: a) Liniendiagramm, repräsentiert stetige Messungen einer Variablen; b) Streudiagramm, repräsentiert eine Beziehung zwischen zweier stetigen Variablen; c) Balkendiagramm, repräsentiert Messungen in unstetigen Gruppen / Variablen; d) Boxplot, repräsentiert stetige Messungen in unstetigen Gruppen.}
 \label{fig: exaple plots}
 \end{center}
 \end{figure}
@@ -373,15 +373,15 @@ Ein Grundsatz\marginnote{Beispiele f"ur verzerrte Grafiken \href{https://en.wiki
 
 \subsection{Graphen-Typen}
 
-Es gibt eine gro"se, fast unendliche Bandbreite an verschiedenen visuellen Darstellungen von Datens"atzen. Im Folgenden werden nun vier h"aufig verwendete Graph-Typen gezeigt. 
+Es gibt eine große, fast unendliche Bandbreite an verschiedenen visuellen Darstellungen von Datensätzen. Im Folgenden werden nun vier häufig verwendete Graph-Typen gezeigt. 
 
-\paragraph{Liniendiagramme:} Liniendiagramme werden benutzt, um stetige, geordnete Messwerte darzustellen. Typische Beispiele hierf"ur w"aren Zeitreihen, stetige Parameterver"anderungen oder mathematische Funktionen. Beispiel siehe Fig.~\ref{fig: exaple plots} a.
+\paragraph{Liniendiagramme:} Liniendiagramme werden benutzt, um stetige, geordnete Messwerte darzustellen. Typische Beispiele hierfür wären Zeitreihen, stetige Parameterveränderungen oder mathematische Funktionen. Beispiel siehe Fig.~\ref{fig: exaple plots} a.
 
-\paragraph{Streudiagramme:} Streudiagramme veranschaulichen zwei stetige Variablen die paarweise gemessen wurden. Ein typisches Beispiel hierf"ur w"are das wiederholte Messen von verschiedenen Variablen mit der Absicht herauszufinden, ob diese korrelieren. Beispiel siehe Fig.~\ref{fig: exaple plots} b.
+\paragraph{Streudiagramme:} Streudiagramme veranschaulichen zwei stetige Variablen die paarweise gemessen wurden. Ein typisches Beispiel hierfür wäre das wiederholte Messen von verschiedenen Variablen mit der Absicht herauszufinden, ob diese korrelieren. Beispiel siehe Fig.~\ref{fig: exaple plots} b.
 
-\paragraph{Balkendiagramme:} Balkendiagramme beinhalten Informationen (Z"ahlungen oder stetige Variablen) "uber unstetige Gruppen. Beispiel siehe Fig.~\ref{fig: exaple plots} c.
+\paragraph{Balkendiagramme:} Balkendiagramme beinhalten Informationen (Zählungen oder stetige Variablen) über unstetige Gruppen. Beispiel siehe Fig.~\ref{fig: exaple plots} c.
 
-\paragraph{Boxplots:} Boxplots benutzt man h"aufig bei der Verteilung einer stetigen Variable "uber mehrere unstetige Gruppen. Klassischerweise bestehen sie aus einer Box, 'Whiskers' (Linien) und gegebenfalls Punktewerte um die 'Whiskers'. Deren Bedeutung ist von der benutzten Software abh"angig, mit der man die Plots gestaltet hat. Normalerweise bedeckt die Box die in der Mitte liegenden 50\%, mit dem angedeuteten zentralen Medianwert. Die Linien sollen zur Absch"atzung der Daten-Bandbreite dienen, Ausrei"ser ausgenommen. Nat"urlich liegt es im Auge des Betrachters, was als Ausrei"ser angesehen wird und was nicht. Die exakte Definition von Whiskers besagt, dass die weit entfernteste Beobachtung weniger oder gleich der oberen Quantile plus 1,5 der L"ange der Interquartilenbreite ist. Beispiel siehe Fig.~\ref{fig: exaple plots} d.
+\paragraph{Boxplots:} Boxplots benutzt man häufig bei der Verteilung einer stetigen Variable über mehrere unstetige Gruppen. Klassischerweise bestehen sie aus einer Box, 'Whiskers' (Linien) und gegebenfalls Punktewerte um die 'Whiskers'. Deren Bedeutung ist von der benutzten Software abhängig, mit der man die Plots gestaltet hat. Normalerweise bedeckt die Box die in der Mitte liegenden 50\%, mit dem angedeuteten zentralen Medianwert. Die Linien sollen zur Abschätzung der Daten-Bandbreite dienen, Ausreißer ausgenommen. Natürlich liegt es im Auge des Betrachters, was als Ausreißer angesehen wird und was nicht. Die exakte Definition von Whiskers besagt, dass die weit entfernteste Beobachtung weniger oder gleich der oberen Quantile plus 1,5 der Länge der Interquartilenbreite ist. Beispiel siehe Fig.~\ref{fig: exaple plots} d.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -389,7 +389,7 @@ Es gibt eine gro"se, fast unendliche Bandbreite an verschiedenen visuellen Darst
     
 \textbf{In R:} 
 
-Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier nicht weiter aufgef"uhrt werden. Zu Beginn empfehle ich diese  \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics/Practicals/GraphicsInR}{"Ubungen zum graphischen Gestalten mit R}. Diese sind begleitend zu diesem Skript, oder auch zu
+Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier nicht weiter aufgeführt werden. Zu Beginn empfehle ich diese  \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics/Practicals/GraphicsInR}{übungen zum graphischen Gestalten mit R}. Diese sind begleitend zu diesem Skript, oder auch zu
 
 \begin{itemize*}
   \item \href{http://www.statmethods.net/graphs/index.html}{QuickR}
@@ -403,22 +403,22 @@ Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier ni
 
 \chapter{Inferenzstatistik}
 
-\marginnote{Inferenzstatistik ist das Ziehen von Schl"ussen aus Beobachtungen durch statistische Methoden} 
+\marginnote{Inferenzstatistik ist das Ziehen von Schlüssen aus Beobachtungen durch statistische Methoden} 
 
-Inferenzstatistik behandelt das Schlussfolgern, z.B. das R"uckschl"usse ziehen aus Beobachtungen. Ein Beispiel einer solchen Folgerung w"are beispielsweise die Beobachtung, dass 15 von 20 Testobjekte, die eine bestimmte Medikation erhielten (Behandlungsgruppe), eine Verbesserung ihres Zustandes zeigten --> Statistische Folge: Wir k"onnen davon ausgehen, dass es eine Wahrscheinlichkeit von X gibt, dass die Medikation einen positiven Effekt hat.
+Inferenzstatistik behandelt das Schlussfolgern, z.B. das Rückschlüsse ziehen aus Beobachtungen. Ein Beispiel einer solchen Folgerung wäre beispielsweise die Beobachtung, dass 15 von 20 Testobjekte, die eine bestimmte Medikation erhielten (Behandlungsgruppe), eine Verbesserung ihres Zustandes zeigten --> Statistische Folge: Wir können davon ausgehen, dass es eine Wahrscheinlichkeit von X gibt, dass die Medikation einen positiven Effekt hat.
 
 
 \section{Datenerzeugendes Modell}
 
-\marginnote{Inferenzstatistik ist nicht immer, aber meist mit dem Prinzip des datenerzeugenden Modells verkn"upft}
+\marginnote{Inferenzstatistik ist nicht immer, aber meist mit dem Prinzip des datenerzeugenden Modells verknüpft}
 
-Eine zentrale Idee von vielen Methoden der Inferenzstatistik ist das Prinzip des datenerzeugenden Modells. Kurz gesagt beinhaltet unser datenerzeugendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abh"angig unserer festgelegten Annahme die unbekannten Gr"o"sen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
+Eine zentrale Idee von vielen Methoden der Inferenzstatistik ist das Prinzip des datenerzeugenden Modells. Kurz gesagt beinhaltet unser datenerzeugendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abhängig unserer festgelegten Annahme die unbekannten Größen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
 
-\marginnote{In der Statistik verwendet man oft das Wort "`behandelt"' um Ver"anderungen in experimentellen Einheiten zu beschreiben. Hier w"aren die zwei Musikarten "`Behandlung"' und das "`Nichts-tun"' die Kontrolle} 
+\marginnote{In der Statistik verwendet man oft das Wort "`behandelt"' um Veränderungen in experimentellen Einheiten zu beschreiben. Hier wären die zwei Musikarten "`Behandlung"' und das "`Nichts-tun"' die Kontrolle} 
 
-Man stelle sich vor man m"ochte herausfinden, ob das Pflanzenwachstum von Musik beeinflusst werden kann. Hierzu nehmen wir zwei T"opfe, jeder mit einer Pflanze, wobei eine mit klassischer und eine andere mit Heavy Metal -Musik beschallt wird. Eine der beiden wird zwangsl"aufig h"oher wachsen, jedoch k"onnte dies reiner Zufall sein, da es immer Variationen in Wachstumsraten gibt.
+Man stelle sich vor man möchte herausfinden, ob das Pflanzenwachstum von Musik beeinflusst werden kann. Hierzu nehmen wir zwei Töpfe, jeder mit einer Pflanze, wobei eine mit klassischer und eine andere mit Heavy Metal -Musik beschallt wird. Eine der beiden wird zwangsläufig höher wachsen, jedoch könnte dies reiner Zufall sein, da es immer Variationen in Wachstumsraten gibt.
 
-Somit bedarf es mehrerer Wiederholungen. Nun nehmen wir im unten aufgef"uhrten Beispiel 30 T"opfe.
+Somit bedarf es mehrerer Wiederholungen. Nun nehmen wir im unten aufgeführten Beispiel 30 Töpfe.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -431,38 +431,38 @@ Somit bedarf es mehrerer Wiederholungen. Nun nehmen wir im unten aufgef"uhrten B
 \end{figure}
 
 \marginnote{Beachte die Interpretation eines Boxplots - die dickere Linie in der Mitte der Box ist der Medianwert. Die Box bedeckt die zentrale 0,5 Quantile der Verteilung}
-Es scheint Unterschiede zwischen den drei F"allen zu geben, jedoch gab es auch Abweichungen in den Wachstumsraten innerhalb der einzelnen Behandlungsguppen (durchschnittlich haben wir hier sieben Beobachtungen pro Behandlung). Somit ist es immer noch m"oglich, dass die Unterschiede in den Beobachtungen durch Zufall entstanden sind.
+Es scheint Unterschiede zwischen den drei Fällen zu geben, jedoch gab es auch Abweichungen in den Wachstumsraten innerhalb der einzelnen Behandlungsguppen (durchschnittlich haben wir hier sieben Beobachtungen pro Behandlung). Somit ist es immer noch möglich, dass die Unterschiede in den Beobachtungen durch Zufall entstanden sind.
 
-Wenn wir genaue Aussagen "uber die Wahrscheinlichkeit der Unterschiede zwischen den zwei behandelten und der Kontrollgruppe treffen m"ochten, m"ussen wir ein Modell erstellen, welches die stochastische Abweichung in den Daten beschreibt. Dies erlaubt uns wiederum Eigenschaften, wie z.B. die Zufallswahrscheinlichkeit der beobachteten Unterschiede berechnen zu k"onnen. Diese Annahmen sind das, was wir als statistisches Modell bezeichnen (oder auch: stochastische Verfahren, datenerzeugendes Modell). 
+Wenn wir genaue Aussagen über die Wahrscheinlichkeit der Unterschiede zwischen den zwei behandelten und der Kontrollgruppe treffen möchten, müssen wir ein Modell erstellen, welches die stochastische Abweichung in den Daten beschreibt. Dies erlaubt uns wiederum Eigenschaften, wie z.B. die Zufallswahrscheinlichkeit der beobachteten Unterschiede berechnen zu können. Diese Annahmen sind das, was wir als statistisches Modell bezeichnen (oder auch: stochastische Verfahren, datenerzeugendes Modell). 
 
-Die "ublichere Modellart f"ur solche Zwecke ist das parametrische statistische Modell. F"ur die Daten, die wir hier haben, w"urde das parametrische statistische Modell annehmen, dass es eine durchschnittliche Wachstumsrate f"ur jede Behandlungsart (Kontrolle, klassische und Heavy Metal Musik) gibt, jedoch das Wachstum jeder individuellen Pflanze mit einer normalverteilten Abweichung um ihre behandlungsspezifische durchschnittliche Wachstumsrate variiert. Die Parameter dieses Modells sind die unbekannten durchschnittlichen Wachstumsraten und die Abweichung der Normalverteilung. Diese Parameter werden dann mit Methoden, die hier in diesem Kapitel erkl"art werden, an die Daten angepasst und basieren auf der Berechnung f"ur z.B. die Wahrscheinlichkeit der Datenresultate, wenn keine Unterschiede zwischen den Gruppen w"aren.
+Die üblichere Modellart für solche Zwecke ist das parametrische statistische Modell. Für die Daten, die wir hier haben, würde das parametrische statistische Modell annehmen, dass es eine durchschnittliche Wachstumsrate für jede Behandlungsart (Kontrolle, klassische und Heavy Metal Musik) gibt, jedoch das Wachstum jeder individuellen Pflanze mit einer normalverteilten Abweichung um ihre behandlungsspezifische durchschnittliche Wachstumsrate variiert. Die Parameter dieses Modells sind die unbekannten durchschnittlichen Wachstumsraten und die Abweichung der Normalverteilung. Diese Parameter werden dann mit Methoden, die hier in diesem Kapitel erklärt werden, an die Daten angepasst und basieren auf der Berechnung für z.B. die Wahrscheinlichkeit der Datenresultate, wenn keine Unterschiede zwischen den Gruppen wären.
 
-Eine andere M"oglichkeit, um datenerzeugende Modelle zu erstellen, sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen "uber datenerzeugende Prozesse zu vermeiden. Normalerweise entsteht der datenerzeugende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Pr"ufen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit einer Annahme z.B. "uber die Streuung der Daten durch das Randomisieren (zuf"alliges Anordnen) oder das wiederholte Pr"ufen des Datensatzes. Wie funktioniert das? F"ur das Pflanzenwachstum beispielsweise l"asst sich diese Frage wie folgt beantworten: Wie wahrscheinlich w"are das erneute Erhalten der beobachteten Ergebnisse, wenn keine Unterschiede zwischen den Gruppen w"aren und ohne das Anstellen von Vermutungen "uber die Streuung? Hierf"ur werfen wir einfach alle Beobachtungen ungeachtet ihrer Behandlungsart in einen Topf und verteilt sie erneut zuf"allig in die drei Behandlungsgruppen. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt h"atten.
+Eine andere Möglichkeit, um datenerzeugende Modelle zu erstellen, sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datenerzeugende Prozesse zu vermeiden. Normalerweise entsteht der datenerzeugende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit einer Annahme z.B. über die Streuung der Daten durch das Randomisieren (zufälliges Anordnen) oder das wiederholte Prüfen des Datensatzes. Wie funktioniert das? Für das Pflanzenwachstum beispielsweise lässt sich diese Frage wie folgt beantworten: Wie wahrscheinlich wäre das erneute Erhalten der beobachteten Ergebnisse, wenn keine Unterschiede zwischen den Gruppen wären und ohne das Anstellen von Vermutungen über die Streuung? Hierfür werfen wir einfach alle Beobachtungen ungeachtet ihrer Behandlungsart in einen Topf und verteilt sie erneut zufällig in die drei Behandlungsgruppen. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
 
-Nicht-parametrische Methoden sind ein wichtiger Bestandteil moderner Statistik.\marginnote{Die Feinsinnigkeit der parametrischen Methoden baut auf das Treffen von Annahmen, was in einer Art und Weise zus"atzliche Daten darstellt. Nat"urlich basieren dann alle Ergebnisse auf der Richtigkeit dieser Vermutungen. Wie man parametrische Vermutungen "uberpr"uft werden wir sp"ater in diesem Kapitel behandeln.} Ihr Vorteil liegt wohl in der Tatsache, dass sie keine Vermutungen anstellen. Andererseits sind parametrische Methoden meist viel schneller und sind, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten viel aussagekr"aftiger und feinf"uhliger, wodurch sie viel wahrscheinlicher einen Effekt, falls vorhanden, erkennen k"onnen. Aufgrund der letzten beiden Argumente sind momentan parametrische Methoden die Grundlage der meisten statistischen Analysen.
+Nicht-parametrische Methoden sind ein wichtiger Bestandteil moderner Statistik.\marginnote{Die Feinsinnigkeit der parametrischen Methoden baut auf das Treffen von Annahmen, was in einer Art und Weise zusätzliche Daten darstellt. Natürlich basieren dann alle Ergebnisse auf der Richtigkeit dieser Vermutungen. Wie man parametrische Vermutungen überprüft werden wir später in diesem Kapitel behandeln.} Ihr Vorteil liegt wohl in der Tatsache, dass sie keine Vermutungen anstellen. Andererseits sind parametrische Methoden meist viel schneller und sind, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten viel aussagekräftiger und feinfühliger, wodurch sie viel wahrscheinlicher einen Effekt, falls vorhanden, erkennen können. Aufgrund der letzten beiden Argumente sind momentan parametrische Methoden die Grundlage der meisten statistischen Analysen.
 
 
 \section{Inferentielle Outputs}
 
-Auf dem datenerzeugendem Modell basierend (parametrisch oder nicht-parametrisch) k"onnen wir nun verschiedene inferentielle Vorgehensweisen anwenden, um R"uckschl"usse "uber unsere Daten (in unserem Fall: Um entscheiden zu k"onnen, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der "ublichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle m"oglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Sch"atzwerte. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachtr"aglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+Auf dem datenerzeugendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzwerte. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
 
 \subsection{p-Werte}
 
-Die Verwendung des p-Wertes ist eng mit der Inferenzmethode der Null-Hypothesen Signifikanzpr"ufung (null hypothesis significance testing, NHST) verbunden. Die Idee, die dahinter steckt, ist Folgende: wenn wir gewisse Daten beobachten und ein statistisches Modell haben, k"onnen wir dieses statistische Modell benutzen, um eine vorgegebene Hypothese "uber das Entstehen der Daten zu pr"azisieren. F"ur das Beispiel der Pflanzen und der Musik k"onnte unsere Hypothese so lauten: "`Musik hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zuf"alligen Abweichungen zwischen den Individuen."' Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen "uber erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} Auch wenn es "ublich ist, die Annahme keinerlei Auswirkungen auf die beobachteten Objekte als Nullhypothese zu setzen, ist es tats"achlich die eigene Entscheidung und man k"onnte genauso gut die Vermutung "`klassische Musik verdoppelt die Wachstumsrate der Pflanzen"' als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund f"ur die gro"se Auswahlm"oglichkeit an verf"ugbaren Tests. Wir werden noch einige davon im folgenden Kapitel "uber wichtige Hypothesentests kennen lernen.
+Die Verwendung des p-Wertes ist eng mit der Inferenzmethode der Null-Hypothesen Signifikanzprüfung (null hypothesis significance testing, NHST) verbunden. Die Idee, die dahinter steckt, ist Folgende: wenn wir gewisse Daten beobachten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um eine vorgegebene Hypothese über das Entstehen der Daten zu präzisieren. Für das Beispiel der Pflanzen und der Musik könnte unsere Hypothese so lauten: "`Musik hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen."' Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} Auch wenn es üblich ist, die Annahme keinerlei Auswirkungen auf die beobachteten Objekte als Nullhypothese zu setzen, ist es tatsächlich die eigene Entscheidung und man könnte genauso gut die Vermutung "`klassische Musik verdoppelt die Wachstumsrate der Pflanzen"' als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
 
-Wenn wir uns f"ur eine Nullhypothese entschieden haben, berechnen wir die Wahrscheinlichkeit f"ur dieses oder ein extremeres Beobachten der Daten in diesem Szenario. \marginnote{Der p-Wert ist die Wahrscheinlichkeit die Daten oder extremere Daten unter unserer Nullhypothese beobachten zu k"onnen.} 
+Wenn wir uns für eine Nullhypothese entschieden haben, berechnen wir die Wahrscheinlichkeit für dieses oder ein extremeres Beobachten der Daten in diesem Szenario. \marginnote{Der p-Wert ist die Wahrscheinlichkeit die Daten oder extremere Daten unter unserer Nullhypothese beobachten zu können.} 
 
 \begin{equation}
 p := p(d >= D_{obs} | H_0)
 \end{equation}
 
-Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), spricht man von einem signifikantem Beweis, um die Nullhypothese abzuweisen. Die Schwelle $\alpha$ ist eine Vereinbarung, in der "Okologie "ublicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranl"asst. \marginnote{Wenn p<0.05, haben wir signifikante Beweise f"ur ein Abweisen der Nullhypothese.} 
+Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), spricht man von einem signifikantem Beweis, um die Nullhypothese abzuweisen. Die Schwelle $\alpha$ ist eine Vereinbarung, in der ökologie üblicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranlässt. \marginnote{Wenn p<0.05, haben wir signifikante Beweise für ein Abweisen der Nullhypothese.} 
 
-Ein Problem der Hypothesentests und der p-Werte ist die notorische Fehlinterpretation der Ergebnisse. Der p-Wert ist NICHT die Wahrscheinlichkeit, dass die Nullhypothese wahr, oder die Alternativhypothese falsch ist; auch wenn viele Autoren diesen Fehler bei ihrer Interpretation gemacht haben, wie z.B. \citep[][]{Cohen-earthisround-1994}. Eher kann man den p-Wert als eine Kontrolle der Falsch-Positiven-Rate ansehen (Typ I-Fehler). Wenn man Hypothesentests mit einem $\alpha$ -Level von 0.05 auf Zufallsdaten anwendet, erh"alt man exakt 5\% Falsch-Positive. Nicht mehr und auch nicht weniger.  
+Ein Problem der Hypothesentests und der p-Werte ist die notorische Fehlinterpretation der Ergebnisse. Der p-Wert ist NICHT die Wahrscheinlichkeit, dass die Nullhypothese wahr, oder die Alternativhypothese falsch ist; auch wenn viele Autoren diesen Fehler bei ihrer Interpretation gemacht haben, wie z.B. \citep[][]{Cohen-earthisround-1994}. Eher kann man den p-Wert als eine Kontrolle der Falsch-Positiven-Rate ansehen (Typ I-Fehler). Wenn man Hypothesentests mit einem $\alpha$ -Level von 0.05 auf Zufallsdaten anwendet, erhält man exakt 5\% Falsch-Positive. Nicht mehr und auch nicht weniger.  
 
-\subsection{Maximum-Likelihood-Sch"atzwert}
+\subsection{Maximum-Likelihood-Schätzwert}
 
-Eine zweite Variante der Ergebnisdarstellung, welche bei den meisten statistischen Methoden verwendet wird, ist das Sch"atzen von Maximum-Likelihood Parametern. Zusammenfassend kann man sagen, dass die Maximum-Likelihood-Sch"atzung (maximum-likelihood estimate (MLE)) die beste Sch"atzung f"ur Parameter in unserem Modell ist (z.B. Unterschiede zwischen den Behandlungsarten und der Kontrolle, wie in unserem Beispiel).
+Eine zweite Variante der Ergebnisdarstellung, welche bei den meisten statistischen Methoden verwendet wird, ist das Schätzen von Maximum-Likelihood Parametern. Zusammenfassend kann man sagen, dass die Maximum-Likelihood-Schätzung (maximum-likelihood estimate (MLE)) die beste Schätzung für Parameter in unserem Modell ist (z.B. Unterschiede zwischen den Behandlungsarten und der Kontrolle, wie in unserem Beispiel).
 
 
 Genauer gesagt wird die Wahrscheinlichkeit in der Statistik als Funktion der Modellparameter $\theta$ beschrieben als
@@ -471,30 +471,30 @@ Genauer gesagt wird die Wahrscheinlichkeit in der Statistik als Funktion der Mod
 L(\theta) := p(dD_{obs} | M(\theta))
 \end{equation}
 
-, z.B. als die Funktion die man erh"alt, wenn man die Wahrscheinlichkeit der erhaltenen beobachteten Daten bei ver"anderten Modellparameter berechnet.
+, z.B. als die Funktion die man erhält, wenn man die Wahrscheinlichkeit der erhaltenen beobachteten Daten bei veränderten Modellparameter berechnet.
 
-Der Maximum-Likelihood-Sch"atzwert\marginnote{Hier ist zu beachten, dass die Maximum-Likelihood-Sch"atzung ein Parametersatz ist, f"ur den die Daten am Wahrscheinlichsten sind, nicht jedoch der wahrscheinlichste Parametersatz!} ist weiterhin definiert als eine Kombination von Parametern oder Modellannahmen, f"ur welche die Wahrscheinlichkeit maximal ist. W"ahrend der p-Wert die Wahrscheinlichkeit der beobachteten 
-oder extremeren Daten unter einer festgelegten (Null-) Hypothese beschreibt, gibt uns der Maximum-Likelihood-Sch"atzwert die "`Hypothese"' mit der h"ochsten Wahrscheinlichkeit an unsere beobachteten Daten zu erhalten.
+Der Maximum-Likelihood-Schätzwert\marginnote{Hier ist zu beachten, dass die Maximum-Likelihood-Schätzung ein Parametersatz ist, für den die Daten am Wahrscheinlichsten sind, nicht jedoch der wahrscheinlichste Parametersatz!} ist weiterhin definiert als eine Kombination von Parametern oder Modellannahmen, für welche die Wahrscheinlichkeit maximal ist. Während der p-Wert die Wahrscheinlichkeit der beobachteten 
+oder extremeren Daten unter einer festgelegten (Null-) Hypothese beschreibt, gibt uns der Maximum-Likelihood-Schätzwert die "`Hypothese"' mit der höchsten Wahrscheinlichkeit an unsere beobachteten Daten zu erhalten.
 
-Die Maximum-Likelihood-Sch"atzung ist nur ein einzelner Parameterwert.\marginnote{Eine Punktsch"atzung ist vergleichbar mit einer einzelnen besten Sch"atzung.} Diese Art Sch"atzung wird oft Punktsch"atzung genannt. Jedoch ist eine Punktsch"atzung oft unbrauchbar, wenn wir nicht wissen wie genau sie ist.\marginnote{Konfidenzintervalle bieten einen Unsicherheitssch"atzwert um die Punktsch"atzung herum.} Deswegen werden Parametersch"atzungen immer mit Konfidenzintervallen angegeben. Salopp kann man sagen, dass das 95\% Konfidenzintervall eines Parameters eine wahrscheinliche Reichweite f"ur diesen Bereich ist. Verwirrend ist hier, dass dies nicht das Intervall ist, in dem der richtige Parameter mit 95\% Wahrscheinlichkeit liegt. Vielmehr beinhaltet das Standard 95\% Konfidenzintervall bei wiederholten Experimenten zu 95\% aller F"alle den richtigen Wert. Dies ist ein kleiner, aber entscheidender Unterschied. Jedoch machen wir uns hier"uber nun keine weiteren Gedanken. Das Konfidenzintervall ist der ungef"ahre Bereich, in dem wir den korrekten Parameter erwarten. 
+Die Maximum-Likelihood-Schätzung ist nur ein einzelner Parameterwert.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Diese Art Schätzung wird oft Punktschätzung genannt. Jedoch ist eine Punktschätzung oft unbrauchbar, wenn wir nicht wissen wie genau sie ist.\marginnote{Konfidenzintervalle bieten einen Unsicherheitsschätzwert um die Punktschätzung herum.} Deswegen werden Parameterschätzungen immer mit Konfidenzintervallen angegeben. Salopp kann man sagen, dass das 95\% Konfidenzintervall eines Parameters eine wahrscheinliche Reichweite für diesen Bereich ist. Verwirrend ist hier, dass dies nicht das Intervall ist, in dem der richtige Parameter mit 95\% Wahrscheinlichkeit liegt. Vielmehr beinhaltet das Standard 95\% Konfidenzintervall bei wiederholten Experimenten zu 95\% aller Fälle den richtigen Wert. Dies ist ein kleiner, aber entscheidender Unterschied. Jedoch machen wir uns hierüber nun keine weiteren Gedanken. Das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
 
 \subsection{Bayes Verfahren}
 
-Um unsere\marginnote{Bayes'sche Verfahren berechnen eine dritte Gr"o"se, die posteriore Wahrscheinlichkeit. Auch wenn man diese auf jedes Modell anwenden kann, benutzt man sie "ublicherweise bei erweiterten statistischen Berechnungen.} "Ubersicht der schlussfolgernden Methoden zu komplettieren, fehlt noch eine, die erw"ahnt werden sollte - Bayes'sche Methoden berechnen eine Gr"o"se, die sich die posteriore Parametersch"atzung (posterior parameter estimate) nennt. Diese ist "ahnlich, jedoch nicht identisch zu der vorherigen Parametersch"atzung. N"aheres ist hier nicht von N"oten, bei Bedarf und Interesse kann jedoch meine Seite weiterhelfen \citep{Gelman-BayesianDataAnalysis-2003} \href{http://florianhartig.github.io/LearningBayes/}{Learning Bayes}.
+Um unsere\marginnote{Bayes'sche Verfahren berechnen eine dritte Größe, die posteriore Wahrscheinlichkeit. Auch wenn man diese auf jedes Modell anwenden kann, benutzt man sie üblicherweise bei erweiterten statistischen Berechnungen.} übersicht der schlussfolgernden Methoden zu komplettieren, fehlt noch eine, die erwähnt werden sollte - Bayes'sche Methoden berechnen eine Größe, die sich die posteriore Parameterschätzung (posterior parameter estimate) nennt. Diese ist ähnlich, jedoch nicht identisch zu der vorherigen Parameterschätzung. Näheres ist hier nicht von Nöten, bei Bedarf und Interesse kann jedoch meine Seite weiterhelfen \citep{Gelman-BayesianDataAnalysis-2003} \href{http://florianhartig.github.io/LearningBayes/}{Learning Bayes}.
 
 \subsection{Verschiedene Methoden != verschiedene Modelle}
 
-Wir wissen nun, dass es drei verschiedene Gr"o"sen gibt, die Statistiker typischerweise berechnen: p-Werte, Maximum-Likelihood und die Posteriori. Man kann bei gegebenen datenerzeugenden Prozessen immer jede einzelne davon berechnen.
+Wir wissen nun, dass es drei verschiedene Größen gibt, die Statistiker typischerweise berechnen: p-Werte, Maximum-Likelihood und die Posteriori. Man kann bei gegebenen datenerzeugenden Prozessen immer jede einzelne davon berechnen.
 
-Ich\marginnote{ANOVA , T-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} formuliere diesen Punkt konkreter, da f"alschlicherweise viele Menschen glauben sie benutzen unterschiedliche Modelle, wobei sie lediglich unterschiedliche Wege nutzen, um diese zu begutachten. Ein Beispiel hierf"ur sind ANOVA, T-Tests und die lineare Regression. Alle basieren auf ein und dem selben datenerzeugenden Prozess - einige festgelegte Auswirkungen zwischen Gruppen und obendrein ein unabh"angiger und identischer normalverteilter Fehler. ANOVA und T-Tests legen verschiedenste Nullhypothesen fest und die lineare Regression sucht nach dem Maximum-Likelihood-Sch"atzwert. Hier k"onnte man bei Bedarf noch die Bayes'sche Posteriori berechnen. 
+Ich\marginnote{ANOVA , T-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} formuliere diesen Punkt konkreter, da fälschlicherweise viele Menschen glauben sie benutzen unterschiedliche Modelle, wobei sie lediglich unterschiedliche Wege nutzen, um diese zu begutachten. Ein Beispiel hierfür sind ANOVA, T-Tests und die lineare Regression. Alle basieren auf ein und dem selben datenerzeugenden Prozess - einige festgelegte Auswirkungen zwischen Gruppen und obendrein ein unabhängiger und identischer normalverteilter Fehler. ANOVA und T-Tests legen verschiedenste Nullhypothesen fest und die lineare Regression sucht nach dem Maximum-Likelihood-Schätzwert. Hier könnte man bei Bedarf noch die Bayes'sche Posteriori berechnen. 
 
 \section{Wichtige Hypothesentests}
 
-Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis "uber, um die zwei wohl h"aufigsten Hypothesentests kennen zu lernen - den T-Test und ANOVA. Wie bereits erw"ahnt, basieren sie beide auf dem selben datenerzeugenden Prozess, legen jedoch geringf"ugig unterschiedliche Nullhypothesen fest.
+Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennen zu lernen - den T-Test und ANOVA. Wie bereits erwähnt, basieren sie beide auf dem selben datenerzeugenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
 
 \subsection{T-Test}
 
-Ein T-Test testet die Unterschiede der Mittelwerte von zwei normalverteilten Stichproben; oder im Falle einer einzigen Stichprobe zwischen 0 und den Mittelwert der Stichprobe.\marginnote{Um bei unserer vorhergehenden Einteilung zu bleiben, w"urden wir unsere Response-Variable als stetig und den Pr"adiktor als kategorisch bezeichnen (Gruppe 1 oder Gruppe 2); oder im Falle einer einzelnen Gruppe gibt es keinen Pr"adiktor.} Erneut ist hier das zugrundelegende Modell das einer Normalverteilung mit der Nullhypothese, dass es keine Unterschiede zwischen den Mittelwerten der zwei normalverteilten Gruppen gibt, bzw. dass der Stichproben Mittelwert 0 ist, wenn wir nur eine Gruppe betrachten. Desweiteren sind Software-abh"angig oft eine Reihe an Anpassungen m"oglich, z.B. eine Lockerung der Annahme, dass die zwei Gruppen die selbe Varianz aufweisen. Hier folgt nun ein Beispiel in R, mit klassischen Daten von \citet{Student-probableerrormean-1908}. Die Daten zeigen die Wirkung von zwei Schlafmitteln (gesteigerte Anzahl an Schlafstunden verglichen mit der Kontrolle) an 10 Patienten. 
+Ein T-Test testet die Unterschiede der Mittelwerte von zwei normalverteilten Stichproben; oder im Falle einer einzigen Stichprobe zwischen 0 und den Mittelwert der Stichprobe.\marginnote{Um bei unserer vorhergehenden Einteilung zu bleiben, würden wir unsere Response-Variable als stetig und den Prädiktor als kategorisch bezeichnen (Gruppe 1 oder Gruppe 2); oder im Falle einer einzelnen Gruppe gibt es keinen Prädiktor.} Erneut ist hier das zugrundelegende Modell das einer Normalverteilung mit der Nullhypothese, dass es keine Unterschiede zwischen den Mittelwerten der zwei normalverteilten Gruppen gibt, bzw. dass der Stichproben Mittelwert 0 ist, wenn wir nur eine Gruppe betrachten. Desweiteren sind Software-abhängig oft eine Reihe an Anpassungen möglich, z.B. eine Lockerung der Annahme, dass die zwei Gruppen die selbe Varianz aufweisen. Hier folgt nun ein Beispiel in R, mit klassischen Daten von \citet{Student-probableerrormean-1908}. Die Daten zeigen die Wirkung von zwei Schlafmitteln (gesteigerte Anzahl an Schlafstunden verglichen mit der Kontrolle) an 10 Patienten. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -533,17 +533,17 @@ mean in group 1 mean in group 2
 \end{Soutput}
 \end{Schunk}
 
-Beachte, dass die Datenausgabe einen p-Wert (H0 = kein Unterschied), aber auch einen Maximum-Likelihood-Sch"atzwert der Mittelwertsvergleiche, zusammen mit den Konfidenzintervallen bietet. Dies geht weit "uber den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zus"atzlich den besten Sch"atzwert f"ur die Mittelwertsunterschiede haben m"ochte.
+Beachte, dass die Datenausgabe einen p-Wert (H0 = kein Unterschied), aber auch einen Maximum-Likelihood-Schätzwert der Mittelwertsvergleiche, zusammen mit den Konfidenzintervallen bietet. Dies geht weit über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
 
-Vorschlag f"ur das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert f"ur die Unterschiede eines T-Tests mit X). 
+Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert für die Unterschiede eines T-Tests mit X). 
 
 \subsection{Varianzanalyse (ANOVA)}
 
-ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grunds"atzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch f"ur mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene Response (z.B. eine abh"angige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung: eine Variable ver"andert die Auswirkung einer anderen Variablen} zwischen zweier Variablen bedeutet, dass sich der Wert einer erl"auternden Variable darauf auswirkt, wie sehr eine andere erl"auternde Variable die Response beeintr"achtigt.
+ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene Response (z.B. eine abhängige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung: eine Variable verändert die Auswirkung einer anderen Variablen} zwischen zweier Variablen bedeutet, dass sich der Wert einer erläuternden Variable darauf auswirkt, wie sehr eine andere erläuternde Variable die Response beeinträchtigt.
 
-W"ahrend der Begriff ANOVA meist mit der oben genannten Erkl"arung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe n"achstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell (engl. Generalized Linear Models, glm) erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (nat"urlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
+Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe nächstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell (engl. Generalized Linear Models, glm) erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (natürlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
 
-Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von H"uhnern) von ihrer Ern"ahrung abh"angt, wobei 'Ern"ahrung' ein variabler Faktor mit vier Stufen ist:
+Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein variabler Faktor mit vier Stufen ist:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -559,33 +559,33 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-Wir erhalten einen p-Wert von 6.43e-07, welcher mit einem $\alpha$ Level von 0.05 h"ochst signifikant ist. Somit k"onnen wir die Nullhypothese abweisen, dass die Ern"ahrung keinen Einfluss auf die Response "`Gewicht"' habe. Beachte hier, dass wir keine Parametersch"atzwerte erhalten und wir keine Aussagen dar"uber machen k"onnen, welche Ern"ahrung sich von welcher unterscheidet. Hierf"ur gibt es zwei M"oglichkeiten:
+Wir erhalten einen p-Wert von 6.43e-07, welcher mit einem $\alpha$ Level von 0.05 höchst signifikant ist. Somit können wir die Nullhypothese abweisen, dass die Ernährung keinen Einfluss auf die Response "`Gewicht"' habe. Beachte hier, dass wir keine Parameterschätzwerte erhalten und wir keine Aussagen darüber machen können, welche Ernährung sich von welcher unterscheidet. Hierfür gibt es zwei Möglichkeiten:
 
 \begin{itemize}
-\item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Ern"ahrungsweisen testet (Bsp. mit einem T-Test).
+\item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Ernährungsweisen testet (Bsp. mit einem T-Test).
 \item Oder man wechselt zu einer Regression, die im folgenden Kapitel genauer beschrieben wird.
 \end{itemize}
 
-Mit einem Post-Hoc-Test wendet man multiple Tests auf die gleichen Daten an. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist eine Wahrscheinlichkeitkalkulation f"ur das Betrachtet der Daten bez"uglich EINER Nullhypothese. Nach einer solchen Durchf"uhrung erh"alt mal allenfalls einen  5\% Fehler bei einem $\alpha$ Level von 0.05. \marginnote{Beim Anwenden multipler Tests auf die selben Daten ben"otigt man eine Korrektur des p-Werts f"ur multiples Testen.} Wenn wir jedoch multiple Tests durchf"uhren, testen wir auch multiple Nullhypothesen und es ergeben sich mehr M"oglichkeiten f"ur die Testgr"o"sen ein Signifikanzlevel nur durch Zufall zu erreichen. Deswegen m"ussen wir den p-Wert f"ur multiples Testen korrigieren. Um hierzu mehr Informationen zu erhalten, ist Google dein bester Freund. 
+Mit einem Post-Hoc-Test wendet man multiple Tests auf die gleichen Daten an. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist eine Wahrscheinlichkeitkalkulation für das Betrachtet der Daten bezüglich EINER Nullhypothese. Nach einer solchen Durchführung erhält mal allenfalls einen  5\% Fehler bei einem $\alpha$ Level von 0.05. \marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} Wenn wir jedoch multiple Tests durchführen, testen wir auch multiple Nullhypothesen und es ergeben sich mehr Möglichkeiten für die Testgrößen ein Signifikanzlevel nur durch Zufall zu erreichen. Deswegen müssen wir den p-Wert für multiples Testen korrigieren. Um hierzu mehr Informationen zu erhalten, ist Google dein bester Freund. 
 
 \subsection{Weitere wichtige Tests}
 
-T-Tests und ANOVA sind sehr h"aufig verwendete Tests, wobei es noch viele weitere gibt. Eine Liste mit Tests kann man beispielsweise im Wikipedia-Artikel unter diesem \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Link} finden.
+T-Tests und ANOVA sind sehr häufig verwendete Tests, wobei es noch viele weitere gibt. Eine Liste mit Tests kann man beispielsweise im Wikipedia-Artikel unter diesem \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Link} finden.
 
 
 \section{Regression}
 
-Wie schon zuvor beschrieben, bedeutet Regression nicht zwingend, dass man ein anderes statistisches Modell wie bei Hypothesentests verwendet (ANOVA und das lineare Regressionsmodell verwenden in R die gleichen Annahmen). Nichtsdestotrotz ist das Ziel einer Regression ein anderes. W"ahrend Hypothesentests nur "uberpr"ufen, ob die Daten mit einer Nullhypothese vereinbar sind, sucht eine Regression nach einer am besten passenden Hypothese oder Parametern (Maximum-Likelihood-Sch"atzwert). Somit sucht ein Regressionsmodell nach einer Parameterkombination, die mit der h"ochsten Wahrscheinlichkeit die beobachteten Daten, mit vorgegebenen Modellannahmen, ausgibt.
+Wie schon zuvor beschrieben, bedeutet Regression nicht zwingend, dass man ein anderes statistisches Modell wie bei Hypothesentests verwendet (ANOVA und das lineare Regressionsmodell verwenden in R die gleichen Annahmen). Nichtsdestotrotz ist das Ziel einer Regression ein anderes. Während Hypothesentests nur überprüfen, ob die Daten mit einer Nullhypothese vereinbar sind, sucht eine Regression nach einer am besten passenden Hypothese oder Parametern (Maximum-Likelihood-Schätzwert). Somit sucht ein Regressionsmodell nach einer Parameterkombination, die mit der höchsten Wahrscheinlichkeit die beobachteten Daten, mit vorgegebenen Modellannahmen, ausgibt.
 
 \subsection{Lineare Regression}
 
-Das grundlegendste Regressionsmodell ist die lineare Regression. Hier lautet die Annahme, dass wir eine Response haben, die von einem Pr"adiktor wie folgt abh"angt:
+Das grundlegendste Regressionsmodell ist die lineare Regression. Hier lautet die Annahme, dass wir eine Response haben, die von einem Prädiktor wie folgt abhängt:
 
 \begin{equation} \label{eq: linear regression}
 y \sim a \cdot x + b + \epsilon 
 \end{equation}
 
-wobei y die Response, x der Pr"adiktor ist; a ist der Parameter, wie sehr der Pr"adiktor die Response beeinflusst, b ist der Schnittpunkt und $\epsilon$ ist die Zufallsvariation, welche in einer linearen Regression als normalverteilt angenommen wird.
+wobei y die Response, x der Prädiktor ist; a ist der Parameter, wie sehr der Prädiktor die Response beeinflusst, b ist der Schnittpunkt und $\epsilon$ ist die Zufallsvariation, welche in einer linearen Regression als normalverteilt angenommen wird.
 
 In R wird solch eine Regression durch folgenden Befehl erreicht
 
@@ -622,24 +622,24 @@ F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-13-1} \end{Schunk}
-\caption{Luftqualit"ats Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
+\caption{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
 \label{fig: LR}
 \end{center}
 \end{figure}
 
-Dieser Code kann unabh"angig davon verwendet werden, ob der Pr"adiktor stetig oder kategorisch ist. Im Falle einer stetigen Variable entsteht eine Linie anhand der Daten. Im Falle einer kategorischen Variable mit n Stufen ist die erste Stufe als Referenz gesetzt (Schnittpunkt), und n-1 Faktoren entsprechen den folgenden Stufen, die den Unterschied zur Referenz beschreiben.
+Dieser Code kann unabhängig davon verwendet werden, ob der Prädiktor stetig oder kategorisch ist. Im Falle einer stetigen Variable entsteht eine Linie anhand der Daten. Im Falle einer kategorischen Variable mit n Stufen ist die erste Stufe als Referenz gesetzt (Schnittpunkt), und n-1 Faktoren entsprechen den folgenden Stufen, die den Unterschied zur Referenz beschreiben.
 
-Die entsprechenden Parameter erscheinen in der Spalte "`Estimate"'. Dies zeigt uns, wie sehr der Pr"adiktor, in diesem Fall Ozon, die Response, hier Temperatur, beeinflusst: F"ur jede Einheit Ozon mehr steigt die Temperatur um 0.201 Einheiten, mit einem Standardfehler (Konfidenzintervall) von 0.019. Abgesehen davon, wie ein Regressions-Output aussieht, lehrt uns dies etwas anderes Wichtiges: Die Tatsache, dass wir die Temperatur als Response und Ozon als Pr"adiktor benutzt haben, bedeutet nicht, dass Ozon urs"achlich die Temperatur beeinflusst. \marginnote{Korrelation ist nicht Kausalit"at.}Tats"achlich ist es genau anders herum: wenn wir mehr Sonne haben, wird es w"armer und wir haben tendenziell mehr Ozon. Regression schafft nicht, wie die meisten anderen statistischen Analysen, Kausalit"at. Es schafft Korrelation. Was wir hier ausdr"ucken ist, dass wenn unsere Ozonmessungen steigen, wir ziemlich sicher davon ausgehen k"onnen, dass es auch gleichzeitig w"armer wird. Was wiederum nicht bedeutet, dass Ozon Hitze erschafft. Korrelation ist nicht Kausalit"at.
+Die entsprechenden Parameter erscheinen in der Spalte "`Estimate"'. Dies zeigt uns, wie sehr der Prädiktor, in diesem Fall Ozon, die Response, hier Temperatur, beeinflusst: Für jede Einheit Ozon mehr steigt die Temperatur um 0.201 Einheiten, mit einem Standardfehler (Konfidenzintervall) von 0.019. Abgesehen davon, wie ein Regressions-Output aussieht, lehrt uns dies etwas anderes Wichtiges: Die Tatsache, dass wir die Temperatur als Response und Ozon als Prädiktor benutzt haben, bedeutet nicht, dass Ozon ursächlich die Temperatur beeinflusst. \marginnote{Korrelation ist nicht Kausalität.}Tatsächlich ist es genau anders herum: wenn wir mehr Sonne haben, wird es wärmer und wir haben tendenziell mehr Ozon. Regression schafft nicht, wie die meisten anderen statistischen Analysen, Kausalität. Es schafft Korrelation. Was wir hier ausdrücken ist, dass wenn unsere Ozonmessungen steigen, wir ziemlich sicher davon ausgehen können, dass es auch gleichzeitig wärmer wird. Was wiederum nicht bedeutet, dass Ozon Hitze erschafft. Korrelation ist nicht Kausalität.
 
-Die Regressionsergebnisse geben uns ebenfalls einige p-Werte aus. Das sind die Ergebnisse von mehreren Hypothesentests, die automatisch nach der Regression geschaltet sind. Beispielsweise erh"alt man einen p-Wert f"ur jeden Parameter. Dieser p-Wert basiert auf einem bestimmten Typ von T-Test, wobei das vollst"andige Modell gegen ein Modell mit auf 0 gesetzten Parametern getestet wird. Zus"atzlich gibt es noch einen weiteren p-Wert, welcher auf einer anderen Testgr"o"se am Ende der Regressionsausgabe beruht. Dieser testet die Nullhypothese mit allen Parametern gleich 0.
+Die Regressionsergebnisse geben uns ebenfalls einige p-Werte aus. Das sind die Ergebnisse von mehreren Hypothesentests, die automatisch nach der Regression geschaltet sind. Beispielsweise erhält man einen p-Wert für jeden Parameter. Dieser p-Wert basiert auf einem bestimmten Typ von T-Test, wobei das vollständige Modell gegen ein Modell mit auf 0 gesetzten Parametern getestet wird. Zusätzlich gibt es noch einen weiteren p-Wert, welcher auf einer anderen Testgröße am Ende der Regressionsausgabe beruht. Dieser testet die Nullhypothese mit allen Parametern gleich 0.
 
 \vspace{1cm}
 \begin{fullwidth}
 \begin{mdframed}
     
-\textbf{Pr"azisieren von verschiedenen Modellannahmen in R:} 
+\textbf{Präzisieren von verschiedenen Modellannahmen in R:} 
 
-Response y h"angt linear von Variable a (stetig oder kategorisch) ab
+Response y hängt linear von Variable a (stetig oder kategorisch) ab
 
 \begin{Schunk}
 \begin{Sinput}
@@ -648,7 +648,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y h"angt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die Response hat (keine Interaktion)
+Response y hängt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die Response hat (keine Interaktion)
 
 \begin{Schunk}
 \begin{Sinput}
@@ -657,7 +657,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y h"angt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die Response (Interaktion)
+Response y hängt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die Response (Interaktion)
 
 \begin{Schunk}
 \begin{Sinput}
@@ -666,7 +666,7 @@ summary(fit)
 \end{Sinput}
 \end{Schunk}
 
-Response y ist von einer Variablen a (stetig oder kategorisch) wie in $a + a^2$ abh"angig
+Response y ist von einer Variablen a (stetig oder kategorisch) wie in $a + a^2$ abhängig
 
 \begin{Schunk}
 \begin{Sinput}
@@ -681,35 +681,35 @@ die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel.
 \end{fullwidth}
 
 
-\subsection{"Uberpr"ufen der Annahmen}
+\subsection{überprüfen der Annahmen}
 
-Formal gesehen kann man jegliche Datens"atze auf lineare Modelle "ubertragen. Jedoch sind hier wie bei jeder statistischen Folgerung die Ergebnisse (z.B. Parametersch"atzungen, p-Werte) von den getroffenen Annahmen abh"angig. Dementsprechend ist der p-Wert, den wir erhalten, von der Annahme abh"angig, dass die Daten auch tats"achlich mit der Formel ~\ref{eq: linear regression} "ubereinstimmen. Wenn dies nicht der Fall ist, k"onnte der p-Wert v"ollig falsch sein. Somit muss man pr"ufen, ob diese Annahmen auch tats"achlich erf"ullt wurden.
+Formal gesehen kann man jegliche Datensätze auf lineare Modelle übertragen. Jedoch sind hier wie bei jeder statistischen Folgerung die Ergebnisse (z.B. Parameterschätzungen, p-Werte) von den getroffenen Annahmen abhängig. Dementsprechend ist der p-Wert, den wir erhalten, von der Annahme abhängig, dass die Daten auch tatsächlich mit der Formel ~\ref{eq: linear regression} übereinstimmen. Wenn dies nicht der Fall ist, könnte der p-Wert völlig falsch sein. Somit muss man prüfen, ob diese Annahmen auch tatsächlich erfüllt wurden.
 
-Also was genau waren die Annahmen einer linearen Regression? Ein Problem ist, dass sich Studenten an die Annahme der Normalverteilung erinnern. Deswegen "uberpr"ufen sie, ob die Response-Variable normalverteilt ist. Wenn man jedoch die Formel ~\ref{eq: linear regression} genauer betrachtet, erkennt man, dass dies nicht entscheidend ist. Wenn man die Terme in der Formel ~\ref{eq: linear regression} verschiebt,
+Also was genau waren die Annahmen einer linearen Regression? Ein Problem ist, dass sich Studenten an die Annahme der Normalverteilung erinnern. Deswegen überprüfen sie, ob die Response-Variable normalverteilt ist. Wenn man jedoch die Formel ~\ref{eq: linear regression} genauer betrachtet, erkennt man, dass dies nicht entscheidend ist. Wenn man die Terme in der Formel ~\ref{eq: linear regression} verschiebt,
 sehen wir das, was eigentlich normalverteilt sein soll
 
 \begin{equation} \label{eq: linear regression}
 y - (a \cdot x + b ) \sim \epsilon 
 \end{equation}
 
-n"amlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen. Diese Unterschiede werden Residuen genannt und sollten, entsprechend unserer Modellannahmen, normalverteilt sein. Um zu "uberpr"ufen, ob dies wirklich der Fall ist, sollten einige Tests durchgef"uhrt werden. Der einfachste Test ist das Erstellen eines Plots mit den Residuen gegen die angepassten Werte UND gegen alle Pr"adiktoren im Modell. Der daraus entstehende Plot erlaubt es dann viele m"ogliche Probleme zu erkennen (Fig.~\ref{fig: ResidualPatterns})
+nämlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen. Diese Unterschiede werden Residuen genannt und sollten, entsprechend unserer Modellannahmen, normalverteilt sein. Um zu überprüfen, ob dies wirklich der Fall ist, sollten einige Tests durchgeführt werden. Der einfachste Test ist das Erstellen eines Plots mit den Residuen gegen die angepassten Werte UND gegen alle Prädiktoren im Modell. Der daraus entstehende Plot erlaubt es dann viele mögliche Probleme zu erkennen (Fig.~\ref{fig: ResidualPatterns})
 
 \begin{figure}[htbp]
 \begin{center}
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-18-1} \end{Schunk}
-\caption{Eine Sammlung m"oglicher Muster, wenn die Residuen gegen den angepassten Wert (voreingestellt in R) oder einen Pr"adiktor geplottet werden.}
+\caption{Eine Sammlung möglicher Muster, wenn die Residuen gegen den angepassten Wert (voreingestellt in R) oder einen Prädiktor geplottet werden.}
 \label{fig: ResidualPatterns}
 \end{center}
 \end{figure}
 
-"Ubliche Probleme und ihre L"osungen sind  
+übliche Probleme und ihre Lösungen sind  
 
 \begin{itemize}
-  \item Heteroskedastizit"at (Varianzver"anderungen) --> Ver"andere die Response, oder verwende ein Regressionsmodell, das Heteroskedastizit"at ber"ucksichtigen kann
-  \item Muster in den Residuen -> Falsche Funktionsform des Regressionsmodells. Versuche Pr"adiktoren, quadratische Effekte, Interaktionen oder andere Dinge hinzuzuf"ugen, die die funktionale Form "andern
-  \item Verteilung nicht normal -> Angenommen, es liegt nicht an einem der fr"uheren Probleme (kein Muster / keine Heteroskedastizit"at), kann man noch eine Variablentransformation ausprobieren oder eine Regression mit einer anderen Verteilungsannahme durchf"uhren (siehe n"achsten Abschnitt)
+  \item Heteroskedastizität (Varianzveränderungen) --> Verändere die Response, oder verwende ein Regressionsmodell, das Heteroskedastizität berücksichtigen kann
+  \item Muster in den Residuen -> Falsche Funktionsform des Regressionsmodells. Versuche Prädiktoren, quadratische Effekte, Interaktionen oder andere Dinge hinzuzufügen, die die funktionale Form ändern
+  \item Verteilung nicht normal -> Angenommen, es liegt nicht an einem der früheren Probleme (kein Muster / keine Heteroskedastizität), kann man noch eine Variablentransformation ausprobieren oder eine Regression mit einer anderen Verteilungsannahme durchführen (siehe nächsten Abschnitt)
 \end{itemize}  
 
 Es gibt weitere spezialisierte Plots, um mit der Diagnose dieser Probleme zu helfen. Diese erfolgen bei der Anwendung des Befehls plot()
@@ -721,14 +721,14 @@ Sie erhalten grundlegende Residuendiagnosen durch Eingabe von plot(fit), wobei f
 
 \section{Allgemeine lineare Regressionsmodelle (GLM)}
 
-Die allgemeine Vorstellung einer linearen Regression war, dass 1) die Response stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen "uber Responsegr"o"sen von - bis + unendlich und die Normalit"at zu lockern. Dazu m"ussen wir zwei Dinge tun
+Die allgemeine Vorstellung einer linearen Regression war, dass 1) die Response stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen über Responsegrößen von - bis + unendlich und die Normalität zu lockern. Dazu müssen wir zwei Dinge tun
 
 \begin{itemize}
   \item Um die Ausgabewerte in dem Bereich zu erhalten, den wir wollen, wickeln wir das lineare Modell in eine Transformationsfunktion, die die Response ins rechte Intervall zwingt (typische Intervalle sind positiv oder zwischen 0 und 1). Diese Transformation wird als Link-Funktion bezeichnet
-  \item Um andere Verteilungen anzupassen, m"ussen wir dem Modell sagen, dass es etwas anderes als die Gau"ssche Fehlerfunktion verwenden soll.
+  \item Um andere Verteilungen anzupassen, müssen wir dem Modell sagen, dass es etwas anderes als die Gaußsche Fehlerfunktion verwenden soll.
 \end{itemize}    
    
-Wir werden "uber diese Punkte nun etwas mehr ins Detail gehen.
+Wir werden über diese Punkte nun etwas mehr ins Detail gehen.
 
 \subsection{Die Link-Funktion}
 
@@ -738,21 +738,21 @@ Wir haben gesagt, dass eine lineare Regression folgende Form annimmt
 y \sim a \cdot x + b 
 \end{equation}
 
-Das hei"st, wenn x gro"s wird, k"onnte y jeden Wert einnehmen, positiv oder negativ. Ein Trick, um sicherzustellen, dass alle Vorhersagen f"ur y positiv sind oder innerhalb eines bestimmten Bereichs liegen, ist eine Link-Funktion der Form
+Das heißt, wenn x groß wird, könnte y jeden Wert einnehmen, positiv oder negativ. Ein Trick, um sicherzustellen, dass alle Vorhersagen für y positiv sind oder innerhalb eines bestimmten Bereichs liegen, ist eine Link-Funktion der Form
 
 \begin{equation}
 y \sim f^{link}(a \cdot x + b )
 \end{equation}
 
-Jede Funktion ist m"oglich, aber wie wir sp"ater sehen werden, sind typische Alternativen die Exponentialfunktion, die positive Ergebnisse garantiert, und die inverse Logit, die Bereich zwischen 0 und 1 garantiert.
+Jede Funktion ist möglich, aber wie wir später sehen werden, sind typische Alternativen die Exponentialfunktion, die positive Ergebnisse garantiert, und die inverse Logit, die Bereich zwischen 0 und 1 garantiert.
 
 \subsection{Andere Verteilungen}
 
-Nun, das ist konzeptionell der einfache Teil, aber vielleicht ist noch nicht klar, welche Art von Distributionen neben der normalen vorhanden sind. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung f"ur das M"unzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere M"oglichkeiten zur Verf"ugung. Vielleicht wird es deutlicher, wenn wir uns in den n"achsten Abschnitten zu den konkreten Beispielen bewegen.
+Nun, das ist konzeptionell der einfache Teil, aber vielleicht ist noch nicht klar, welche Art von Distributionen neben der normalen vorhanden sind. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird es deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
 
 \subsection{0/1 Daten - logistische Regression}
 
-Logistische Regression ist die h"aufigste Analyse f"ur bin"are Daten (Pr"asenz / Abwesenheit, "uberlebt / tot, infiziert / nicht infiziert). Logistische Regression geht davon aus, dass die Verteilung binomial ist (M"unzwurf-Modell). Um den linearen Pr"adiktor auf einer Skala zwischen 0 und 1 zu erhalten, die f"ur die Binomialverteilung erforderlich ist, verwenden wir die logistische Linkfunktion (oder inverse Logit).
+Logistische Regression ist die häufigste Analyse für binäre Daten (Präsenz / Abwesenheit, überlebt / tot, infiziert / nicht infiziert). Logistische Regression geht davon aus, dass die Verteilung binomial ist (Münzwurf-Modell). Um den linearen Prädiktor auf einer Skala zwischen 0 und 1 zu erhalten, die für die Binomialverteilung erforderlich ist, verwenden wir die logistische Linkfunktion (oder inverse Logit).
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -760,7 +760,7 @@ Logistische Regression ist die h"aufigste Analyse f"ur bin"are Daten (Pr"asenz /
     
 \textbf{In R:} 
 
-Hier ein Beispiel mit den Daten der Titanik-"Uberlebenden. Beachte, dass die Logit-Link automatisch ausgew"ahlt wird, wenn in R die Binomialverteilung verwendet wird. Bei Bedarf k"onnte man diese Wahl "uberschreiben.
+Hier ein Beispiel mit den Daten der Titanik-überlebenden. Beachte, dass die Logit-Link automatisch ausgewählt wird, wenn in R die Binomialverteilung verwendet wird. Bei Bedarf könnte man diese Wahl überschreiben.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -805,9 +805,9 @@ Number of Fisher Scoring iterations: 4
 
 
 
-\subsection{Z"ahldaten - Poisson-Regression}
+\subsection{Zähldaten - Poisson-Regression}
 
-Die Poisson-Regression ist die Standard-Wahl f"ur die Arbeit mit Z"ahldaten, obwohl ein paar andere Optionen zur Verf"ugung stehen. In der Poisson-Regression wird standardisiert eine Exponentialfunktion gew"ahlt, um alle Werte positiv zu machen. Das Inverse des Exponentials ist der Log, also nennen wir das den Log-Link. Nach wie vor w"ahlt R diese automatisch aus, wenn man angibt die Verteilung zu "`poissonieren"'.
+Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obwohl ein paar andere Optionen zur Verfügung stehen. In der Poisson-Regression wird standardisiert eine Exponentialfunktion gewählt, um alle Werte positiv zu machen. Das Inverse des Exponentials ist der Log, also nennen wir das den Log-Link. Nach wie vor wählt R diese automatisch aus, wenn man angibt die Verteilung zu "`poissonieren"'.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -815,10 +815,10 @@ Die Poisson-Regression ist die Standard-Wahl f"ur die Arbeit mit Z"ahldaten, obw
     
 \textbf{In R:} 
 
-Ein Beispiel hierf"ur zeigt einige Daten "uber die F"utterung von Nesthockern in Bezug auf ihre Attraktivit"at:
+Ein Beispiel hierfür zeigt einige Daten über die Fütterung von Nesthockern in Bezug auf ihre Attraktivität:
 \begin{Schunk}
 \begin{Sinput}
-schnaepper <- read.csv("schnaepper.txt", sep="")
+schnaepper <- read.csv(ßchnaepper.txt", sep="")
 fm <- glm(stuecke ~ attrakt, family=poisson, data = schnaepper)
 summary(fm)
 \end{Sinput}
@@ -852,206 +852,206 @@ Number of Fisher Scoring iterations: 4
 \end{fullwidth} 
 
 
-\subsection{Residuen-"Uberpr"ufungen in allgemeinen linearen Regressionsmodellen}
+\subsection{Residuen-überprüfungen in allgemeinen linearen Regressionsmodellen}
 
-Residuen in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen f"ur Normalit"at wie normale Quantile-Quantile-Plots, um auf die Angemessenheit der Residuen zu "uberpr"ufen. F"ur nicht zu komplizierte Modelle gibt es eine M"oglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R kann man die Option Pearson in vielen Funktionen angeben, einschlie"slich der Residual()-Funktion, die man auf ein angepasstes Objekt anwenden kann}
+Residuen in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen für Normalität wie normale Quantile-Quantile-Plots, um auf die Angemessenheit der Residuen zu überprüfen. Für nicht zu komplizierte Modelle gibt es eine Möglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R kann man die Option Pearson in vielen Funktionen angeben, einschließlich der Residual()-Funktion, die man auf ein angepasstes Objekt anwenden kann}
 
-Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zuf"allige Teil durch eine Normalverteilung modelliert wird, die einen Parameter f"ur die Varianz aufweist. Ein Problem, das sehr h"aufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine "Uberdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf "Uberdispersion pr"ufen, indem man die angepasste Abweichung betrachtet oder einen "uberdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verf"ugbar sind. Diese Modelle bringen einen zus"atzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
+Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen überdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
 
 
-\chapter{Vorhersagende Statistik - maschinelles Lernen}
+\chapter{prädiktive Statistik - maschinelles Lernen}
 
-Eine dritte Klasse statistischer Verfahren, die in den letzten Jahren sehr wichtig geworden sind, sind pr"adiktive Verfahren, die oft maschinelle Lernalgorithmen genannt werden. Das grundlegende Ziel dieser Methoden besteht darin, Vorhersagen aus einem gegebenen Datensatz mit dem geringstm"oglichen Fehler treffen zu k"onnen. Dabei verwenden sie typischerweise relativ komplizierte, oft nicht parametrische Verfahren, die typischerweise keine Berechnung von Inferenz-Ergebnissen, wie Maximum-Likelihood-Sch"atzwert oder p-Werten, erlauben.
+Eine dritte Klasse statistischer Verfahren, die in den letzten Jahren sehr wichtig geworden sind, sind prädiktive Verfahren, die oft maschinelle Lernalgorithmen genannt werden. Das grundlegende Ziel dieser Methoden besteht darin, Vorhersagen aus einem gegebenen Datensatz mit dem geringstmöglichen Fehler treffen zu können. Dabei verwenden sie typischerweise relativ komplizierte, oft nicht parametrische Verfahren, die typischerweise keine Berechnung von Inferenz-Ergebnissen, wie Maximum-Likelihood-Schätzwert oder p-Werten, erlauben.
 
-Es besteht eine betr"achtliche Spannung zwischen dem eher klassischen Feld der Inferenzstatistik und dem moderneren Bereich des maschinellen Lernens. F"ur klassische, inferentielle Statistiker haben maschinelle Lernmethoden die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben. Ein Statistiker, der sich auf das maschinelle Lernen konzentriert, w"urde darauf antworten, dass es in vielen angewandten Problemen nichts zu lernen gibt\footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Zuordnung funktionsreicher Satellitendaten zu Bodensignalen oder Sprach/Gesichtserkennung.}. Maschinen-lernende Experten sind derzeit bei Technologie-Unternehmen wie Google, Facebook etc sehr begehrt. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. Die Unterscheidung zwischen den Zielen der Inferenzstatistik und der Vorhersagestatistik sowie die Spannungen zwischen diesen Bereichen sind in der Zusammenfassung des "au"serst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001} nachzulesen:
+Es besteht eine beträchtliche Spannung zwischen dem eher klassischen Feld der Inferenzstatistik und dem moderneren Bereich des maschinellen Lernens. Für klassische, inferentielle Statistiker haben maschinelle Lernmethoden die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben. Ein Statistiker, der sich auf das maschinelle Lernen konzentriert, würde darauf antworten, dass es in vielen angewandten Problemen nichts zu lernen gibt\footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Zuordnung funktionsreicher Satellitendaten zu Bodensignalen oder Sprach/Gesichtserkennung.}. Maschinen-lernende Experten sind derzeit bei Technologie-Unternehmen wie Google, Facebook etc sehr begehrt. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. Die Unterscheidung zwischen den Zielen der Inferenzstatistik und der Vorhersagestatistik sowie die Spannungen zwischen diesen Bereichen sind in der Zusammenfassung des äußerst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001} nachzulesen:
 
 \begin{quote}
-Es gibt zwei Kulturen in der Verwendung der statistischen Modellierung, um Schlussfolgerungen aus Daten zu erreichen. Man geht davon aus, dass die Daten durch ein gegebenes stochastisches Datenmodell erzeugt werden. Die andere verwendet algorithmische Modelle und behandelt den Datenmechanismus als unbekannt. Die statistische Gemeinschaft hat sich der nahezu ausschlie"slichen Nutzung von Datenmodellen verschrieben. Dieses Engagement hat zu irrelevanten Theorien, fragw"urdigen Schlussfolgerungen gef"uhrt und hat die Statistiker daran gehindert, an einer Vielzahl interessanter aktueller Probleme zu arbeiten. Die algorithmische Modellierung, sowohl in Theorie und Praxis, hat sich schnell in Bereichen au"serhalb der Statistik entwickelt. Es kann sowohl auf gro"sen komplexen Datens"atzen als auch als genauere und lehrreichere Alternative zur Datenmodellierung auf kleineren Datens"atzen verwendet werden. Wenn es unser Ziel ist Daten zu nutzen, um Probleme zu l"osen, dann m"ussen wir uns von der exklusiven Abh"angigkeit von Datenmodellen entfernen und ein breiteres Spektrum an Tools annehmen.
+Es gibt zwei Kulturen in der Verwendung der statistischen Modellierung, um Schlussfolgerungen aus Daten zu erreichen. Man geht davon aus, dass die Daten durch ein gegebenes stochastisches Datenmodell erzeugt werden. Die andere verwendet algorithmische Modelle und behandelt den Datenmechanismus als unbekannt. Die statistische Gemeinschaft hat sich der nahezu ausschließlichen Nutzung von Datenmodellen verschrieben. Dieses Engagement hat zu irrelevanten Theorien, fragwürdigen Schlussfolgerungen geführt und hat die Statistiker daran gehindert, an einer Vielzahl interessanter aktueller Probleme zu arbeiten. Die algorithmische Modellierung, sowohl in Theorie und Praxis, hat sich schnell in Bereichen außerhalb der Statistik entwickelt. Es kann sowohl auf großen komplexen Datensätzen als auch als genauere und lehrreichere Alternative zur Datenmodellierung auf kleineren Datensätzen verwendet werden. Wenn es unser Ziel ist Daten zu nutzen, um Probleme zu lösen, dann müssen wir uns von der exklusiven Abhängigkeit von Datenmodellen entfernen und ein breiteres Spektrum an Tools annehmen.
 \end{quote}
 
 
-Ich habe dieses kurze Kapitel wegen der Bedeutung der pr"adiktiven Methoden in der modernen Statistik aufgenommen. Eine detaillierte Erl"auterung der Methoden des maschinellen Lernens ist jedoch jenseits dieser Einf"uhrung. Bei bestehendem Interesse mehr "uber pr"adiktive Methoden zu lernen, w"urde ich empfehlen mit dem Lehrbuch von \citet{James-IntroductiontoStatistical-2013} zu beginnen, das ich auch am Ende dieses einf"uhrenden Skripts f"ur die weitere Lesung empfehle.
+Ich habe dieses kurze Kapitel wegen der Bedeutung der prädiktiven Methoden in der modernen Statistik aufgenommen. Eine detaillierte Erläuterung der Methoden des maschinellen Lernens ist jedoch jenseits dieser Einführung. Bei bestehendem Interesse mehr über prädiktive Methoden zu lernen, würde ich empfehlen mit dem Lehrbuch von \citet{James-IntroductiontoStatistical-2013} zu beginnen, das ich auch am Ende dieses einführenden Skripts für die weitere Lesung empfehle.
 
 \chapter{Versuchsplanung}\label{cha: design of experiments}
 
-Kommen wir zur"uck zu einem der ersten Punkte in diesem Skript: die Daten. Wenn wir selbst Daten sammeln m"ussen, m"ussen wir eine Reihe von Fragen beantworten. Welche Variablen sollten wir sammeln? Bei welchen Werten sollten wir Daten sammeln? Und wie viele Replikate brauchen wir?
+Kommen wir zurück zu einem der ersten Punkte in diesem Skript: die Daten. Wenn wir selbst Daten sammeln müssen, müssen wir eine Reihe von Fragen beantworten. Welche Variablen sollten wir sammeln? Bei welchen Werten sollten wir Daten sammeln? Und wie viele Replikate brauchen wir?
 
 
 \section{Auswahl der Variablen}
 
-In einem praxisbezogenem Setting sind wir typischerweise daran interessiert, wie eine Response von einer Anzahl von Pr"adiktor-Variablen beeinflusst wird. Es ist klar, dass wir sowohl die Response als auch die Pr"adiktoren unseren Interesses durch einige dieser Pr"adiktorwerte messen m"ussen, um etwas "uber die Wirkung der Pr"adiktoren zu sagen. \marginnote{Korrelation ist keine Kausalit"at.}Wenn wir nur wissen wollten, ob es eine Korrelation zwischen Pr"adiktoren und Response gibt, w"are unsere Variablenliste zu diesem Zeitpunkt vollst"andig. Normalerweise wollen wir aber nicht nur wissen, ob es eine Korrelation gibt, sondern auch, ob wir mit einiger Sicherheit sagen k"onnen, dass diese Korrelation kausal ist. Wenn wir diesen Anspruch geltend machen wollen, m"ussen wir ausschlie"sen, dass es auch gegens"atzliche Faktoren gibt, die auch als St"orvariablen bezeichnet werden.
+In einem praxisbezogenem Setting sind wir typischerweise daran interessiert, wie eine Response von einer Anzahl von Prädiktor-Variablen beeinflusst wird. Es ist klar, dass wir sowohl die Response als auch die Prädiktoren unseren Interesses durch einige dieser Prädiktorwerte messen müssen, um etwas über die Wirkung der Prädiktoren zu sagen. \marginnote{Korrelation ist keine Kausalität.}Wenn wir nur wissen wollten, ob es eine Korrelation zwischen Prädiktoren und Response gibt, wäre unsere Variablenliste zu diesem Zeitpunkt vollständig. Normalerweise wollen wir aber nicht nur wissen, ob es eine Korrelation gibt, sondern auch, ob wir mit einiger Sicherheit sagen können, dass diese Korrelation kausal ist. Wenn wir diesen Anspruch geltend machen wollen, müssen wir ausschließen, dass es auch gegensätzliche Faktoren gibt, die auch als Störvariablen bezeichnet werden.
 
-\subsection{Was ist eine St"orvariable?}
+\subsection{Was ist eine Störvariable?}
 
-Man stelle sich vor, wir sind an einer Response A interessiert und wir haben angenommen, dass A \~{} B. Man stelle sich vor, dass es eine zweite Pr"adiktorvariable C gibt, die einen Einfluss auf A hat, an der wir aber f"ur den Zweck der betrachteten Frage nicht interessiert sind. Eine solche Variable, die f"ur die Frage nicht von Interesse ist, wird auch als "`Fremdvariablen"' bezeichnet\marginnote{Eine Fremdvariable ist eine Variable, die die Response beeinflussen kann, aber f"ur den Experimentator nicht von Interesse ist.}. So haben wir auch A \~{} C, aber wir sind nicht an dieser Beziehung interessiert. Wenn wir nun Daten erfassen und nicht C messen, ist es normalerweise kein Problem, solange C mit B unkorreliert ist - es k"onnte ein bisschen mehr Variabilit"at in der Response erzeugen, aber im Gro"sen und Ganzen sollte der Effekt von C durchschnittlich sein und wir sollten die Auswirkung von B noch feststellen k"onnen.
+Man stelle sich vor, wir sind an einer Response A interessiert und wir haben angenommen, dass A \~{} B. Man stelle sich vor, dass es eine zweite Prädiktorvariable C gibt, die einen Einfluss auf A hat, an der wir aber für den Zweck der betrachteten Frage nicht interessiert sind. Eine solche Variable, die für die Frage nicht von Interesse ist, wird auch als "`Fremdvariablen"' bezeichnet\marginnote{Eine Fremdvariable ist eine Variable, die die Response beeinflussen kann, aber für den Experimentator nicht von Interesse ist.}. So haben wir auch A \~{} C, aber wir sind nicht an dieser Beziehung interessiert. Wenn wir nun Daten erfassen und nicht C messen, ist es normalerweise kein Problem, solange C mit B unkorreliert ist - es könnte ein bisschen mehr Variabilität in der Response erzeugen, aber im Großen und Ganzen sollte der Effekt von C durchschnittlich sein und wir sollten die Auswirkung von B noch feststellen können.
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{Confounding}
-\caption{Diagramm, das eine St"orvariable darstellt. Eine wichtige Voraussetzung f"ur einen St"orfaktor ist, dass die Variable sowohl mit der Response korreliert als auch mit den Pr"adiktorvariablen, die unsere urspr"ungliche Hypothese bilden. Wenn die zweite Verbindung nicht vorhanden ist, ist die Variable nicht st"orend und kann ignoriert werden.}
+\caption{Diagramm, das eine Störvariable darstellt. Eine wichtige Voraussetzung für einen Störfaktor ist, dass die Variable sowohl mit der Response korreliert als auch mit den Prädiktorvariablen, die unsere ursprüngliche Hypothese bilden. Wenn die zweite Verbindung nicht vorhanden ist, ist die Variable nicht störend und kann ignoriert werden.}
 \label{fig: Confounding}
 \end{center}
 \end{figure}
 
-Das Problem des St"orfaktors tritt auf, wenn die Fremdvariable C aus irgendeinem Grund mit der zu betrachtenden Pr"adiktorvariable B korreliert. \marginnote{Eine St"orvariable ist eine externe Variable, die sowohl mit der Response als auch mit einer zu betrachtenden Pr"adiktorvariable korreliert.}In dem Fall, wenn wir nur B messen, sehen wir die Auswirkungen von B und C. In diesem Fall schreiben wir die Auswirkung von C auf A f"alschlicherweise der Auswirkung von B auf A zu. \marginnote{Eine Scheinkorrelation ist eine Korrelation, die durch eine St"orvariable verursacht wird.} Eine Korrelation, die durch eine nicht gemessene St"orvariable verursacht wird, wird als Scheinkorrelation bezeichnet.
+Das Problem des Störfaktors tritt auf, wenn die Fremdvariable C aus irgendeinem Grund mit der zu betrachtenden Prädiktorvariable B korreliert. \marginnote{Eine Störvariable ist eine externe Variable, die sowohl mit der Response als auch mit einer zu betrachtenden Prädiktorvariable korreliert.}In dem Fall, wenn wir nur B messen, sehen wir die Auswirkungen von B und C. In diesem Fall schreiben wir die Auswirkung von C auf A fälschlicherweise der Auswirkung von B auf A zu. \marginnote{Eine Scheinkorrelation ist eine Korrelation, die durch eine Störvariable verursacht wird.} Eine Korrelation, die durch eine nicht gemessene Störvariable verursacht wird, wird als Scheinkorrelation bezeichnet.
 
-\subsection{Was macht man mit St"orvariablen}
+\subsection{Was macht man mit Störvariablen}
 
-Wenn wir denken, es gibt einen Faktor, der gest"ort werden k"onnte, haben wir grunds"atzlich drei Optionen
+Wenn wir denken, es gibt einen Faktor, der gestört werden könnte, haben wir grundsätzlich drei Optionen
 
 \begin{enumerate}
-\item Am besten: steuert man den Wert dieser Faktoren. Entweder durch Fixieren des Wertes (bevorzugt, wenn wir nicht an diesem Faktor interessiert sind), oder durch "Andern des Wertes in einer kontrollierten Weise (siehe unten).
-\item Zweitens: zuf"allig anordnen und messen
-\item Drittens: Nur zuf"allig anordnen oder nur messen
+\item Am besten: steuert man den Wert dieser Faktoren. Entweder durch Fixieren des Wertes (bevorzugt, wenn wir nicht an diesem Faktor interessiert sind), oder durch ändern des Wertes in einer kontrollierten Weise (siehe unten).
+\item Zweitens: zufällig anordnen und messen
+\item Drittens: Nur zufällig anordnen oder nur messen
 \end{enumerate}
 
-Die Randomisierung bedeutet, dass wir versuchen, sicherzustellen, dass der St"orfaktor nicht systematisch mit der Variablen von Interesse korreliert (kann jedoch potentiell noch immer Probleme mit Wechselwirkungen und nichtlinearen Beziehungen hervorrufen).
+Die Randomisierung bedeutet, dass wir versuchen, sicherzustellen, dass der Störfaktor nicht systematisch mit der Variablen von Interesse korreliert (kann jedoch potentiell noch immer Probleme mit Wechselwirkungen und nichtlinearen Beziehungen hervorrufen).
 
 
-Das Messen\marginnote{Variablen, die wir einbeziehen, aber f"ur uns nicht interessant sind, werden oft als St"orungsvariablen bezeichnet.} erlaubt es uns, die Auswirkungen in einer statistischen Analyse zu ber"ucksichtigen, aber es kostet Kraft (siehe unten) und wir k"onnen nicht alles messen.
+Das Messen\marginnote{Variablen, die wir einbeziehen, aber für uns nicht interessant sind, werden oft als Störungsvariablen bezeichnet.} erlaubt es uns, die Auswirkungen in einer statistischen Analyse zu berücksichtigen, aber es kostet Kraft (siehe unten) und wir können nicht alles messen.
 \section{Definition und Bias von Variablen}
 
-Ein h"aufiger Fehler bei diesem Schritt des Versuchsentwurfs ist es, die Variablendefinition und die Messungen f"ur selbstverst"andlich zu erachten und sich eher mit Entscheidungen "uber Wiederholungen usw. auseinander zu setzen. Der fehlende Schritt ist jedoch "uber die folgenden zwei Fragen nachzudenken. \marginnote{Die Betrachtung dieser beiden Fragen wird oft als Konstruktvalidit"at bezeichnet.}
+Ein häufiger Fehler bei diesem Schritt des Versuchsentwurfs ist es, die Variablendefinition und die Messungen für selbstverständlich zu erachten und sich eher mit Entscheidungen über Wiederholungen usw. auseinander zu setzen. Der fehlende Schritt ist jedoch über die folgenden zwei Fragen nachzudenken. \marginnote{Die Betrachtung dieser beiden Fragen wird oft als Konstruktvalidität bezeichnet.}
 
 \begin{enumerate}
-  \item Messen meine Variablen, was ich messen m"ochte
-  \item Was ist der erwartete statistische (stochastische) Fehler in meinen Messungen und was ist der m"ogliche systematische Fehler in meinen Messungen
+  \item Messen meine Variablen, was ich messen möchte
+  \item Was ist der erwartete statistische (stochastische) Fehler in meinen Messungen und was ist der mögliche systematische Fehler in meinen Messungen
 \end{enumerate}
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 10cm]{RandomizedBlockDesign}
-\caption{Illustration eines randomisierten Blockdesigns, der wohl am h"aufigsten verwendeten Anordnung bei (Beobachtungs)-Experimente zur Randomisierung der Auswirkung unbekannter und nicht gemessener verwandter Variablen. Die Idee dieses Entwurfs ist, dass die unbekannten Variablen wahrscheinlich im Raum korrelieren. Indem wir alle experimentell ver"andernden Variablen zu einem Block zusammenfassen, vermeiden wir, dass sie von den unbekannten r"aumlichen Variablen gest"ort werden k"onnen.}
+\caption{Illustration eines randomisierten Blockdesigns, der wohl am häufigsten verwendeten Anordnung bei (Beobachtungs)-Experimente zur Randomisierung der Auswirkung unbekannter und nicht gemessener verwandter Variablen. Die Idee dieses Entwurfs ist, dass die unbekannten Variablen wahrscheinlich im Raum korrelieren. Indem wir alle experimentell verändernden Variablen zu einem Block zusammenfassen, vermeiden wir, dass sie von den unbekannten räumlichen Variablen gestört werden können.}
 \label{fig: RandomizedBlockDesign}
 \end{center}
 \end{figure}
 
 
-Der erste Punkt mag ein wenig seltsam erscheinen, weil man denken w"urde man wisse was man misst. Doch in vielen F"allen der "okologischen Statistik und dar"uber hinaus messen wir nicht direkt die Variable an der wir interessiert sind, sondern einen Stellvertreter. Zum Beispiel, wollen wir die Temperatur an einer bestimmten Stelle wissen und verwenden dabei die Temperatur von einer Wetterstation 5 km entfernt. Oder wir wollen die funktionale Vielfalt untersuchen, aber wie k"onnen wir dies in Form von Variablen ausdr"ucken, die wir im Feld messen?
+Der erste Punkt mag ein wenig seltsam erscheinen, weil man denken würde man wisse was man misst. Doch in vielen Fällen der ökologischen Statistik und darüber hinaus messen wir nicht direkt die Variable an der wir interessiert sind, sondern einen Stellvertreter. Zum Beispiel, wollen wir die Temperatur an einer bestimmten Stelle wissen und verwenden dabei die Temperatur von einer Wetterstation 5 km entfernt. Oder wir wollen die funktionale Vielfalt untersuchen, aber wie können wir dies in Form von Variablen ausdrücken, die wir im Feld messen?
 
-Die zweite Frage bezieht sich darauf, wie sehr sich zwei Messungen voneinander unterscheiden w"urden, wenn wir sie wiederholt (stochastisch) durchf"uhren und wie viele Messungen systematisch ausfallen k"onnten (z.B. weil eine Methode oder ein Instrument systematisch falsch ist oder weil der Mensch bestimmte Einfl"usse (Bias) zeigt).
+Die zweite Frage bezieht sich darauf, wie sehr sich zwei Messungen voneinander unterscheiden würden, wenn wir sie wiederholt (stochastisch) durchführen und wie viele Messungen systematisch ausfallen könnten (z.B. weil eine Methode oder ein Instrument systematisch falsch ist oder weil der Mensch bestimmte Einflüsse (Bias) zeigt).
 
 
-\section{Auswahl der Werte f"ur die unabh"angigen (Pr"adiktor-) Variablen}
+\section{Auswahl der Werte für die unabhängigen (Prädiktor-) Variablen}
 
-Wenn wir entschieden haben, welche Variablen zu messen sind/variieren, m"ussen wir uns f"ur die Gr"o"sen entscheiden, an denen wir sie messen wollen.
+Wenn wir entschieden haben, welche Variablen zu messen sind/variieren, müssen wir uns für die Größen entscheiden, an denen wir sie messen wollen.
 
-In\marginnote{Die experimentelle Einheit ist die Einheit, die einer bestimmten Variablenkombination (z.B. Behandlung oder Kontrolle) zugewiesen werden kann. Beispiel: eine einzelne Pflanze oder ein Topf.} einer experimentellen Studie ver"andern wir in der Regel Variablen systematisch f"ur eine bestimmte Einheit, z.B. eine Pflanze, ein Topf oder ein Grundst"uck. Diese Einheit hei"st die experimentelle Einheit. Auch Beobachtungsstudien haben experimentelle Einheiten (die Einheiten, f"ur die Messungen durchgef"uhrt werden), aber es ist meist nicht m"oglich, die Variablen vollst"andig zu kontrollieren. Allerdings hat man in der Regel die M"oglichkeit bestimmte Selektionen vorzunehmen. Auch in Beobachtungsstudien ist es entscheidend eine ausreichende Variation der Pr"adiktorvariablen "uber die experimentellen Einheiten zu gew"ahrleisten, um eine aussagekr"aftige statistische Analyse zu erm"oglichen.
+In\marginnote{Die experimentelle Einheit ist die Einheit, die einer bestimmten Variablenkombination (z.B. Behandlung oder Kontrolle) zugewiesen werden kann. Beispiel: eine einzelne Pflanze oder ein Topf.} einer experimentellen Studie verändern wir in der Regel Variablen systematisch für eine bestimmte Einheit, z.B. eine Pflanze, ein Topf oder ein Grundstück. Diese Einheit heißt die experimentelle Einheit. Auch Beobachtungsstudien haben experimentelle Einheiten (die Einheiten, für die Messungen durchgeführt werden), aber es ist meist nicht möglich, die Variablen vollständig zu kontrollieren. Allerdings hat man in der Regel die Möglichkeit bestimmte Selektionen vorzunehmen. Auch in Beobachtungsstudien ist es entscheidend eine ausreichende Variation der Prädiktorvariablen über die experimentellen Einheiten zu gewährleisten, um eine aussagekräftige statistische Analyse zu ermöglichen.
 
 Hier sind ein paar Punkte, die zu beachten sind
 
-\subsection{Variieren aller Variablen unabh"angig voneinander}
+\subsection{Variieren aller Variablen unabhängig voneinander}
 
-Ein "ubliches Problem in der Praxis ist, dass wir zwei Variablen haben, ihre Werte sich jedoch in einer korrelierten Weise "andern. Man stelle sich vor, wir testen auf das Vorhandensein einer Art, aber wir haben nur warme trockene und kalte nasse Stellen. Wir behaupten die beiden Variablen seien kollinear. In diesem Fall wissen wir nicht, ob der beobachtete Effekt auf Temperatur oder Wasserverf"ugbarkeit zur"uckzuf"uhren ist. Das Fazit: Wenn man zwei Effekte trennen m"ochte, darf die Korrelation zwischen ihnen nicht "ubereinstimmend sein - idealerweise w"are es Null oder so niedrig wie m"oglich. 
+Ein übliches Problem in der Praxis ist, dass wir zwei Variablen haben, ihre Werte sich jedoch in einer korrelierten Weise ändern. Man stelle sich vor, wir testen auf das Vorhandensein einer Art, aber wir haben nur warme trockene und kalte nasse Stellen. Wir behaupten die beiden Variablen seien kollinear. In diesem Fall wissen wir nicht, ob der beobachtete Effekt auf Temperatur oder Wasserverfügbarkeit zurückzuführen ist. Das Fazit: Wenn man zwei Effekte trennen möchte, darf die Korrelation zwischen ihnen nicht übereinstimmend sein - idealerweise wäre es Null oder so niedrig wie möglich. 
 
 \subsection{Interaktionen}
 
-Um Wechselwirkungen zwischen Variablen erkennen zu k"onnen, gen"ugt es nicht, alle zu ver"andern, sondern es bedarf bestimmter Kombinationen. Das Schlagwort hier ist (fraktionierte) faktorielle Versuchsplanung. Google wird hier weiterhelfen.
+Um Wechselwirkungen zwischen Variablen erkennen zu können, genügt es nicht, alle zu verändern, sondern es bedarf bestimmter Kombinationen. Das Schlagwort hier ist (fraktionierte) faktorielle Versuchsplanung. Google wird hier weiterhelfen.
 
 \subsection{Nichtlineare Effekte}
 
-Die Verbindung von zwei Punkten ist eine Linie. Wenn man herausfinden m"ochte, ob die Response auf eine Variable nichtlinear ist, ben"otigt man daher mehr als zwei Werte f"ur jede Variable. 
+Die Verbindung von zwei Punkten ist eine Linie. Wenn man herausfinden möchte, ob die Response auf eine Variable nichtlinear ist, benötigt man daher mehr als zwei Werte für jede Variable. 
 
 
 \section{Wie viele Replikate?}
 
-Wir haben bereits erw"ahnt, dass das Signifikanzniveau $\alpha$ die Wahrscheinlichkeit ist, falsch Positives zu finden. Dies wird als Typ-I-Fehler bezeichnet. Es gibt einen weiteren Fehler, den man machen kann: es wird keine Signifikanz f"ur einen wahren Effekt erkannt. Dies wird als Typ-II-Fehler bezeichnet und die Wahrscheinlichkeit, einen Effekt zu finden, wird als Testst"arke (engl. power) bezeichnet\marginnote{Testst"arke ist die Wahrscheinlichkeit, Signifikanz f"ur einen Effekt zu finden, wenn es welche gibt}. F"ur statistische Standardverfahren kann die St"arke berechnet werden. Man muss f"ur jede einzelne Methode nachsehen, aber im Allgemeinen geht man davon aus, dass 
+Wir haben bereits erwähnt, dass das Signifikanzniveau $\alpha$ die Wahrscheinlichkeit ist, falsch Positives zu finden. Dies wird als Typ-I-Fehler bezeichnet. Es gibt einen weiteren Fehler, den man machen kann: es wird keine Signifikanz für einen wahren Effekt erkannt. Dies wird als Typ-II-Fehler bezeichnet und die Wahrscheinlichkeit, einen Effekt zu finden, wird als Teststärke (engl. power) bezeichnet\marginnote{Teststärke ist die Wahrscheinlichkeit, Signifikanz für einen Effekt zu finden, wenn es welche gibt}. Für statistische Standardverfahren kann die Stärke berechnet werden. Man muss für jede einzelne Methode nachsehen, aber im Allgemeinen geht man davon aus, dass 
 
 \begin{enumerate}
-\item die Testst"arke mit zunehmender Einflussgr"o"se steigt 
-\item die Testst"arke mit zunehmender Variabilit"at in der Response sinkt
+\item die Teststärke mit zunehmender Einflussgröße steigt 
+\item die Teststärke mit zunehmender Variabilität in der Response sinkt
 \end{enumerate}
 
-Das bedeutet, dass, im Gegensatz zum festgelegten Typ-I-Fehler, die Berechnung der Testst"arke Kenntnisse "uber den erwarteten Effekt und die Variabilit"at erfordert. Das klingt nicht gut, jedoch kann man in den meisten F"allen aus Erfahrung absch"atzen, wie viel Variation es geben wird und in den meisten F"allen wei"s man auch, wie gro"s der Effekt mindestens sein muss, um relevant zu sein. Danach kann man berechnen, wie viele Proben man ben"otigt.
+Das bedeutet, dass, im Gegensatz zum festgelegten Typ-I-Fehler, die Berechnung der Teststärke Kenntnisse über den erwarteten Effekt und die Variabilität erfordert. Das klingt nicht gut, jedoch kann man in den meisten Fällen aus Erfahrung abschätzen, wie viel Variation es geben wird und in den meisten Fällen weiß man auch, wie groß der Effekt mindestens sein muss, um relevant zu sein. Danach kann man berechnen, wie viele Proben man benötigt.
 
 \newpage
 \begin{mdframed}
     
-\textbf{Checkliste f"ur die Versuchsplanung}
+\textbf{Checkliste für die Versuchsplanung}
 
 \begin{description}
 
-\item[( )] Eindeutige, logisch einheitliche Frage? Schreib es auf. Lesen des Kapitels "uber g"ultige/gute wissenschaftliche Fragen in den Vorlesungsunterlagen.
+\item[( )] Eindeutige, logisch einheitliche Frage? Schreib es auf. Lesen des Kapitels über gültige/gute wissenschaftliche Fragen in den Vorlesungsunterlagen.
 
-\item[( )] Stelle sicher, dass alle Fragen der Richtigkeit, wie im Haupt-Skript besprochen, gelesen und ber"ucksichtigt wurden. Gehen Sie durch die Checkliste Richtigkeit am Ende des Abschnitts im Haupt-Skript.
+\item[( )] Stelle sicher, dass alle Fragen der Richtigkeit, wie im Haupt-Skript besprochen, gelesen und berücksichtigt wurden. Gehen Sie durch die Checkliste Richtigkeit am Ende des Abschnitts im Haupt-Skript.
 
 \item[( )] Entwerfe einen Versuchsaufbau.
 
   \begin{description}
 
-  \item[( )] Ver"andere die Variablen, die zu messen sind, um die Fragen beantworten zu k"onnen. Entscheide, ob man an linearen Hauptauswirkungen oder auch an nichtlinearen Effekten oder Interaktionen interessiert ist.
+  \item[( )] Verändere die Variablen, die zu messen sind, um die Fragen beantworten zu können. Entscheide, ob man an linearen Hauptauswirkungen oder auch an nichtlinearen Effekten oder Interaktionen interessiert ist.
   
-  \item[( )] Schreibe potenzielle St"orvariablen auf. Entscheide, ob sie besser kontrolliert, randomisiert oder gemessen werden sollten? Sind diese sicher st"orend (korreliert mit Response UND einem oder mehreren der Pr"adiktoren)?
+  \item[( )] Schreibe potenzielle Störvariablen auf. Entscheide, ob sie besser kontrolliert, randomisiert oder gemessen werden sollten? Sind diese sicher störend (korreliert mit Response UND einem oder mehreren der Prädiktoren)?
   
-  \item[( )] Definiere die zu testende statistische Hypothese, einschlie"slich der St"orgr"o"se. Schreibe es auf, wie in $height  \sim age + soil * precipitation + precipitation^2$. 
+  \item[( )] Definiere die zu testende statistische Hypothese, einschließlich der Störgröße. Schreibe es auf, wie in $height  \sim age + soil * precipitation + precipitation^2$. 
   
-  \item[( )] W"ahle aus, wie die Variablen im Experiment variiert werden. Ziehe die Verwendung von Software daf"ur in Betracht, z.B. f"ur fraktielle faktorielle Versuchsplanungen (in Beobachtungsstudien hat man manchmal begrenzte Kontrolle, aber man kann vielleicht sch"atzen, welche Variablenkombinationen beobachtet werden).
+  \item[( )] Wähle aus, wie die Variablen im Experiment variiert werden. Ziehe die Verwendung von Software dafür in Betracht, z.B. für fraktielle faktorielle Versuchsplanungen (in Beobachtungsstudien hat man manchmal begrenzte Kontrolle, aber man kann vielleicht schätzen, welche Variablenkombinationen beobachtet werden).
   
   \item[( )] Blocking - versuche, verschiedene Behandlungen / verschiedenste Kombinationen zusammen zu gruppieren. Das Ziel ist, dass unbekannte / nicht gemessene Variablen nicht mit experimentellen Variablen korrelieren (siehe Pseudoreplikation).
   
-  \item[( )] Bestimme die Anzahl der Replikate. Mache eine Vermutung f"ur Effektgr"o"se und Variabilit"at der Daten, und berechne oder errate die Anzahl der notwendigen Wiederholungen, um gen"ugend Testst"arke zu erhalten. Was gen"ugend bedeutet, h"angt vom Sachgebiet ab, aber ich w"urde behaupten, dass du eine hohe Chance haben m"ochtest, einen Effekt zu sehen, wenn einer da ist, also w"are eine Testst"arke von $>80\%$ gut.
+  \item[( )] Bestimme die Anzahl der Replikate. Mache eine Vermutung für Effektgröße und Variabilität der Daten, und berechne oder errate die Anzahl der notwendigen Wiederholungen, um genügend Teststärke zu erhalten. Was genügend bedeutet, hängt vom Sachgebiet ab, aber ich würde behaupten, dass du eine hohe Chance haben möchtest, einen Effekt zu sehen, wenn einer da ist, also wäre eine Teststärke von $>80\%$ gut.
   
   \end{description}
   
-\item[( )] Versuchsaufbau pr"ufen.
+\item[( )] Versuchsaufbau prüfen.
   
   \begin{description}
   
-  \item[( )] Spiele die Abl"aufe des Datenerhalts durch: simuliere es im Geiste oder in R, mache einige Daten, schreibe es auf. Scheint alles in Ordnung?
+  \item[( )] Spiele die Abläufe des Datenerhalts durch: simuliere es im Geiste oder in R, mache einige Daten, schreibe es auf. Scheint alles in Ordnung?
   
-  \item[( )] Spiele die Abl"aufe der Datenanalyse durch. Welche Methode? Kannst du deine Frage beantworten? Mach eine Testst"arken-Analyse!
+  \item[( )] Spiele die Abläufe der Datenanalyse durch. Welche Methode? Kannst du deine Frage beantworten? Mach eine Teststärken-Analyse!
 
   \end{description}
 
 
-\item[( )] "Uberarbeite alles, wenn n"otig
+\item[( )] überarbeite alles, wenn nötig
 
 \end{description}
 
 \end{mdframed}
 
 
-\chapter{Wissenswertes und weiterf"uhrende Lekt"uren}
+\chapter{Wissenswertes und weiterführende Lektüren}
 
 \section{Reproduzierbarkeit und gute wissenschaftliche Vorgehensweise}
 
-Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Die Erfahrung zeigt, dass es nicht so trivial ist, wie man denkt, die Reproduzierbarkeit zu gew"ahrleisten. Hier einige Hinweise, wie man Datenanalyse reproduzierbar machen kann
+Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Die Erfahrung zeigt, dass es nicht so trivial ist, wie man denkt, die Reproduzierbarkeit zu gewährleisten. Hier einige Hinweise, wie man Datenanalyse reproduzierbar machen kann
 
 \begin{itemize}
 
-\item{Sobald man Rohdaten produziert hat, "andert man sie NIE. Man speichert sie an einem Speicherort, erstellt eine Sicherung und ber"uhrt sie niemals erneut}
+\item{Sobald man Rohdaten produziert hat, ändert man sie NIE. Man speichert sie an einem Speicherort, erstellt eine Sicherung und berührt sie niemals erneut}
 
-\item{In der Regel muss man einige Aufwertungen, Umbenennung etc. vor der Datenanalyse erledigen. Wenn m"oglich, macht man dies durch ein Skript (z. B. R, Python, perl). Man speichert das Skript zusammen mit der Analyse ab.}
+\item{In der Regel muss man einige Aufwertungen, Umbenennung etc. vor der Datenanalyse erledigen. Wenn möglich, macht man dies durch ein Skript (z. B. R, Python, perl). Man speichert das Skript zusammen mit der Analyse ab.}
 
-\item{Verwende ein Versionskontrollsystem f"ur den Code und notiere f"ur jede Ausgabe die Revisionsnummer, mit der die Ausgabe erstellt wurde.}
+\item{Verwende ein Versionskontrollsystem für den Code und notiere für jede Ausgabe die Revisionsnummer, mit der die Ausgabe erstellt wurde.}
 
-\item{Wenn die Analyse durchgef"uhrt wird, speichere die random-seed und die Einstellungen des Computers, um die Reproduzierbarkeit sicherzustellen. In R ist der einfachste Weg dies zu tun, die random-seed auf random.seed(123) zu setzen und die Ergebnisse von sessionInfo(), welche die Versionsnummern aller verwendeten Pakete enth"alt, zu speichern.}
+\item{Wenn die Analyse durchgeführt wird, speichere die random-seed und die Einstellungen des Computers, um die Reproduzierbarkeit sicherzustellen. In R ist der einfachste Weg dies zu tun, die random-seed auf random.seed(123) zu setzen und die Ergebnisse von sessionInfo(), welche die Versionsnummern aller verwendeten Pakete enthält, zu speichern.}
 
-\item{Denke dar"uber nach, den Code in einer Reporting-Umgebung wie z.B. Rmd oder sweave auszuf"uhren.}
+\item{Denke darüber nach, den Code in einer Reporting-Umgebung wie z.B. Rmd oder sweave auszuführen.}
 
 
-%\footnote{Siehe auch die R-Task-Ansicht "uber \href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{reproduzierbare Forschung}
+%\footnote{Siehe auch die R-Task-Ansicht über \href{https://cran.r-project.org/web/views/ReproducibleResearch.html}{reproduzierbare Forschung}
 
 \end{itemize}
 
-\section{Wie man mehr "uber die Statistik lernen kann}\label{sec: further readings}
+\section{Wie man mehr über die Statistik lernen kann}\label{sec: further readings}
 
 
 \begin{itemize}
 
-\item Um dieses einf"uhrende Skript zu vervollst"andigen, w"urde ich empfehlen die \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics}{Praxis des Skripts} durchzugehen.
+\item Um dieses einführende Skript zu vervollständigen, würde ich empfehlen die \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics}{Praxis des Skripts} durchzugehen.
 
-\item Wenn man ein weiteres praktisches Lehrbuch f"ur Anf"anger m"ochte, empfehle ich \citet{Dormann-ParametrischeStatistik-2013} f"ur Deutschsprachige (eBook Kostenlos f"ur Studenten aus Freiburg, kontaktieren Sie mich) und \citet{Gotelli-PrimerEcologicalStatistics-2004} f"ur Englischsprechende. 
+\item Wenn man ein weiteres praktisches Lehrbuch für Anfänger möchte, empfehle ich \citet{Dormann-ParametrischeStatistik-2013} für Deutschsprachige (eBook Kostenlos für Studenten aus Freiburg, kontaktieren Sie mich) und \citet{Gotelli-PrimerEcologicalStatistics-2004} für Englischsprechende. 
 
-\item F"ur die technisch etwas Ehrgeizigeren (es ist immer noch sehr elementar), empfehle ich \citet{James-IntroductiontoStatistical-2013}. Man kann die PDF kostenlos herunterladen und es gibt ein MOOC f"ur das Buch mit Vortr"agen und "Ubungen.
+\item Für die technisch etwas Ehrgeizigeren (es ist immer noch sehr elementar), empfehle ich \citet{James-IntroductiontoStatistical-2013}. Man kann die PDF kostenlos herunterladen und es gibt ein MOOC für das Buch mit Vorträgen und übungen.
 
-\item Weitere Hilfe und Hinweise kann man in der Statistik-Hilfe unserer Abteilung  \href{http://biometry.github.io/APES/}{hier} finden; insbesondere die Empfehlungen zu R-Skripten und statistischen Lehrb"uchern.
+\item Weitere Hilfe und Hinweise kann man in der Statistik-Hilfe unserer Abteilung  \href{http://biometry.github.io/APES/}{hier} finden; insbesondere die Empfehlungen zu R-Skripten und statistischen Lehrbüchern.
 
 \end{itemize}
 
 
 \bibliographystyle{chicago}
-\bibliography{/Users/Katrin/Documents/GitHub/Statistics/EssentialStatistics/flo}
+\bibliography{/Users/Florian/Home/Bibliography/Databases/flo}
 
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
@@ -1060,12 +1060,12 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 
 \chapter{R und Rstudio}
 
-R selbst ist ein Befehlszeilenprogramm, d.h. man kommuniziert damit "uber schriftliche Befehle in der R-Konsole. Im Prinzip kann man also den R-Code in einem Editor (auch Microsoft Word) schreiben und f"ugt es dann in die R-Konsole ein.
+R selbst ist ein Befehlszeilenprogramm, d.h. man kommuniziert damit über schriftliche Befehle in der R-Konsole. Im Prinzip kann man also den R-Code in einem Editor (auch Microsoft Word) schreiben und fügt es dann in die R-Konsole ein.
 
-F"ur die t"agliche Arbeit ist dies jedoch nicht sehr praktisch. Man m"ochte ein Programm, das die Kern-R-Konsole und den Editor kombiniert, und vielleicht einige andere Optionen beinhaltet, wie z.B. die M"oglichkeit graphische Ausgaben aus R, eingelesene Daten etc. anzuzeigen. 
+Für die tägliche Arbeit ist dies jedoch nicht sehr praktisch. Man möchte ein Programm, das die Kern-R-Konsole und den Editor kombiniert, und vielleicht einige andere Optionen beinhaltet, wie z.B. die Möglichkeit graphische Ausgaben aus R, eingelesene Daten etc. anzuzeigen. 
 
 
-R bietet einen einfachen Editor, der grundlegende Funktionen dieser Art zur Verf"ugung stellt (beachte, dass es auf einem Mac etwas anders aussieht als die Windows-Version, die wir hier zeigen). Dieser Editor hei"st RGui. Um das RGui zu starten, startet man das Programm R aus den Programmen in Windows. Betrachte das sich "offnende Fenster und gebe 2 + 2 im Hauptfenster ein. Nach dr"ucken der Enter-Taste, wird folgendes zu sehen sein:
+R bietet einen einfachen Editor, der grundlegende Funktionen dieser Art zur Verfügung stellt (beachte, dass es auf einem Mac etwas anders aussieht als die Windows-Version, die wir hier zeigen). Dieser Editor heißt RGui. Um das RGui zu starten, startet man das Programm R aus den Programmen in Windows. Betrachte das sich öffnende Fenster und gebe 2 + 2 im Hauptfenster ein. Nach drücken der Enter-Taste, wird folgendes zu sehen sein:
 
 \begin{figure}[]
 \begin{center}
@@ -1076,9 +1076,9 @@ R bietet einen einfachen Editor, der grundlegende Funktionen dieser Art zur Verf
 \end{figure}
 
 
-Das Fenster, das man hier sieht, wird die R-Konsole genannt. Durch die Konsole interagiert man mit dem Kern-R-Programm, das die gesamte Kommunikation ausf"uhrt.
+Das Fenster, das man hier sieht, wird die R-Konsole genannt. Durch die Konsole interagiert man mit dem Kern-R-Programm, das die gesamte Kommunikation ausführt.
 
-Nun schreiben wir etwas anderes: R hat einige Standarddatens"atze, die automatisch geladen werden. Wir werden den airmiles-Datensatz verwenden, der die Anzahl der vergebenen Luftmeilen anzeigt. Wir werden nun kurz erl"autern, wie man ein Diagramm mit diesem Datensatz erstellt. Tippe:
+Nun schreiben wir etwas anderes: R hat einige Standarddatensätze, die automatisch geladen werden. Wir werden den airmiles-Datensatz verwenden, der die Anzahl der vergebenen Luftmeilen anzeigt. Wir werden nun kurz erläutern, wie man ein Diagramm mit diesem Datensatz erstellt. Tippe:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1096,24 +1096,24 @@ Das Ergebnis sollte wie in Fig.~\ref{fig: Rgui2} aussehen:
 \end{center}
 \end{figure}
 
-Wie man erkennen kann, "offnet dies anscheinend ein neues Fenster (eine Grafik-Ausgabe) und plottet die Luft-Meilen gegen die Zeit. Wir werden diskutieren, warum und wie das funktioniert. Bevor man sich nun an RGui gew"ohnt, sehen wir uns zuerst RStudio an, ein alternatives Programm, um mit R zu interagieren.
+Wie man erkennen kann, öffnet dies anscheinend ein neues Fenster (eine Grafik-Ausgabe) und plottet die Luft-Meilen gegen die Zeit. Wir werden diskutieren, warum und wie das funktioniert. Bevor man sich nun an RGui gewöhnt, sehen wir uns zuerst RStudio an, ein alternatives Programm, um mit R zu interagieren.
 
 \section{Der Rstudio Editor}
  
-RStudio bietet grunds"atzlich die gleichen Funktionen wie RGui, aber man kann vieles einfacher machen oder bequemer handhaben. So sieht es aus:
+RStudio bietet grundsätzlich die gleichen Funktionen wie RGui, aber man kann vieles einfacher machen oder bequemer handhaben. So sieht es aus:
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 9cm]{rst_interface.png}
-\caption{Der RStudio Editor, der wohl beliebteste Editor f"ur R}
+\caption{Der RStudio Editor, der wohl beliebteste Editor für R}
 \label{fig: Rstudio}
 \end{center}
 \end{figure}
 
 
-\paragraph{Konsole:} Die Konsole, die wir bereits gesehen haben, befindet sich im linken unteren Bereich. Man kann nachweisen, dass sie sich gleich verh"alt, indem man die gleichen Befehle wie zuvor eingibt, d.h. 2 + 2, oder das Diagramm erneut grafisch darstellt.
+\paragraph{Konsole:} Die Konsole, die wir bereits gesehen haben, befindet sich im linken unteren Bereich. Man kann nachweisen, dass sie sich gleich verhält, indem man die gleichen Befehle wie zuvor eingibt, d.h. 2 + 2, oder das Diagramm erneut grafisch darstellt.
 
-\paragraph{Editor:} "Uber der Konsole (oben links) werden R Skriptdateien angezeigt und k"onnen im Editor ge"andert werden. Die Idee einer Skriptdatei ist, dass man alle Befehle sammelt, die man an die Konsole in einer Datei sendet, sodass man sie sp"ater erneut ausf"uhren kann.  
+\paragraph{Editor:} über der Konsole (oben links) werden R Skriptdateien angezeigt und können im Editor geändert werden. Die Idee einer Skriptdatei ist, dass man alle Befehle sammelt, die man an die Konsole in einer Datei sendet, sodass man sie später erneut ausführen kann.  
 
 Ein typisches Skript kann so aussehen:
 
@@ -1130,7 +1130,7 @@ rm(list=ls(all=TRUE))  # this command means all variables in the memory are eras
 \end{Sinput}
 \end{Schunk}
 
-Um einen Teil des Skripts an die Konsole zu senden, kann man den run-Button am oberen rechten Rand des Editorfensters verwenden. F"ur alles, was wir von nun an tun, w"urde ich dringend empfehlen, es in das Skript zu schreiben und es dann von dort aus an die Konsole zu senden.
+Um einen Teil des Skripts an die Konsole zu senden, kann man den run-Button am oberen rechten Rand des Editorfensters verwenden. Für alles, was wir von nun an tun, würde ich dringend empfehlen, es in das Skript zu schreiben und es dann von dort aus an die Konsole zu senden.
 
 \chapter{Verarbeitung von Daten in R}
 \label{HandlingDataInR}
@@ -1155,7 +1155,7 @@ VariableX
 \end{Soutput}
 \end{Schunk}
 
-Wir k"onnen alle Variablen, die wir in der globalen Umgebung oder in R angegeben haben, in der oberen rechten Ecke oder in RStudio sehen. Wie man sieht haben wir hier die Variable "?VariableX"' zusammen mit ihrem Wert.
+Wir können alle Variablen, die wir in der globalen Umgebung oder in R angegeben haben, in der oberen rechten Ecke oder in RStudio sehen. Wie man sieht haben wir hier die Variable "?VariableX"' zusammen mit ihrem Wert.
 
 
 \begin{figure}[]
@@ -1170,29 +1170,29 @@ Wir k"onnen alle Variablen, die wir in der globalen Umgebung oder in R angegeben
 
 Eine Variable kann verschiedene Dinge speichern: eine Zahl, ein Wort, eine Liste oder eine ganze Datenmenge.
 
-Der einfachste Fall sind Variablen, die nur einen **einzigen Wert** enthalten. Hier ist die Frage, welche Art von Werten die Variable enth"alt. Die verschiedenen Datentypen, die ein einzelner Wert haben kann, hei"sen die **atomic types** - sie entsprechen den grundlegenden Datentypen in R. Wichtige atomic types sind:
+Der einfachste Fall sind Variablen, die nur einen **einzigen Wert** enthalten. Hier ist die Frage, welche Art von Werten die Variable enthält. Die verschiedenen Datentypen, die ein einzelner Wert haben kann, heißen die **atomic types** - sie entsprechen den grundlegenden Datentypen in R. Wichtige atomic types sind:
 
   \begin{itemize}
 		\item boolean (TRUE / FALSE)
 		\item ganzzahlig (1, 2, 3, 5)
 		\item numerisch (1.1, 2.5, 3.456)
-		\item Faktor ("`rot"', "`gr"un"', "`blau"')
+		\item Faktor ("`rot"', "`grün"', "`blau"')
 		\item Subjekt ("`ein Wort"', "`ein weiteres Wort"')
 	\end{itemize}
 
-Wenn wir eine Sammlung von mehreren "atomic types" haben, sprechen wir von einer Datenstruktur oder einem Objekt (es gibt einen Unterschied, der hier aber keine Rolle spielt). Wichtige Beispiele hierf"ur sind:
+Wenn wir eine Sammlung von mehreren ätomic types" haben, sprechen wir von einer Datenstruktur oder einem Objekt (es gibt einen Unterschied, der hier aber keine Rolle spielt). Wichtige Beispiele hierfür sind:
 
   \begin{itemize}
 		\item **Vektor** (Eine Reihe der gleichen 'atomic types', z.B. [1,2,3,4,5] )
 		\item **Liste** (Im Grunde wie ein Vektor, kann aber verschiedene Typen enthalten, Bsp. [1, "`rot"', FALSE] )
-		\item **data.frame** (Eine Liste von Vektoren; dies ist das Standardformat f"ur Daten in R. Man stellt sich dies wie eine Tabelle vor - jede Spalte ist ein Vektor und kann einen anderen Typ haben)
+		\item **data.frame** (Eine Liste von Vektoren; dies ist das Standardformat für Daten in R. Man stellt sich dies wie eine Tabelle vor - jede Spalte ist ein Vektor und kann einen anderen Typ haben)
 	\end{itemize}
 
-Eine vollst"andige Liste der Datentypen findet man \href{http://www.statmethods.net/input/datatypes.html}{hier}. 
+Eine vollständige Liste der Datentypen findet man \href{http://www.statmethods.net/input/datatypes.html}{hier}. 
  
-\subsection{Pr"ufung von Datentypen und Strukturen}
+\subsection{Prüfung von Datentypen und Strukturen}
 
-Besonders nach dem Einlesen der Daten ist es wichtig zu pr"ufen, welchen Typ die Daten haben. Die Funktionen in R reagieren je nach atomic type unterschiedlich.
+Besonders nach dem Einlesen der Daten ist es wichtig zu prüfen, welchen Typ die Daten haben. Die Funktionen in R reagieren je nach atomic type unterschiedlich.
 
 Wenn man wissen will, welchen Typ oder Struktur eine Variable hat, verwendet man den str-Befehl:
 
@@ -1202,7 +1202,7 @@ str(object)
 \end{Sinput}
 \end{Schunk}
 
-Um eine Zusammenfassung der Struktur (z.B. Mittelwert pro Spalte; was genau zusammengefasst wird, ist abh"angig von Datenstruktur und Typ) zu erhalten, verwenden man:
+Um eine Zusammenfassung der Struktur (z.B. Mittelwert pro Spalte; was genau zusammengefasst wird, ist abhängig von Datenstruktur und Typ) zu erhalten, verwenden man:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1210,7 +1210,7 @@ summary(object)
 \end{Sinput}
 \end{Schunk}
 
-Um eine automatischen Plot zu erstellen (R wird selbst entscheiden, welcher am meisten f"ur diese Struktur/Typ geeignet ist), tippt man:
+Um eine automatischen Plot zu erstellen (R wird selbst entscheiden, welcher am meisten für diese Struktur/Typ geeignet ist), tippt man:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1218,13 +1218,13 @@ plot(object)
 \end{Sinput}
 \end{Schunk}
 
-Probiere dies mit dem Objekt Luftqualit"at.
+Probiere dies mit dem Objekt Luftqualität.
 
 \subsection{Zugriff auf Spalten, Zeilen und Elemente in einem Datenframe oder einer Matrix}
 
-Wie bereits erw"ahnt, ist die h"aufigste Struktur in R der Datenframe. Grunds"atzlich werden Spalten als eine Liste von Vektoren gespeichert, sodass jede Spalte ein anderer Datentyp sein kann.
+Wie bereits erwähnt, ist die häufigste Struktur in R der Datenframe. Grundsätzlich werden Spalten als eine Liste von Vektoren gespeichert, sodass jede Spalte ein anderer Datentyp sein kann.
 
-Man kann Spalten auf verschiedenste Weisen ausw"ahlen:
+Man kann Spalten auf verschiedenste Weisen auswählen:
 
 - Nach Name:
 \begin{Schunk}
@@ -1241,11 +1241,11 @@ airquality[,1]
 \end{Sinput}
 \end{Schunk}
 
-Zu beachten sei hier, dass die erste Spalte durch [,1] ausgedr"uckt wird. Die erste Reihe erh"alt man durch [1,].
+Zu beachten sei hier, dass die erste Spalte durch [,1] ausgedrückt wird. Die erste Reihe erhält man durch [1,].
 
-\section{Daten ausw"ahlen}
+\section{Daten auswählen}
 
-Die letzte Art des Datenzugriffs ist ein Beispiel f"ur das "`Slicen"'. Slicing ist eine sehr leistungsf"ahige Technik, die in den meisten wissenschaftlichen Programmiersprachen verf"ugbar ist. Das bedeutet, dass man auf seine Daten zugreifen kann, indem man Spalten, Zeilen oder bestimmte Elemente eingibt. Man schaue sich hierf"ur die folgenden Befehle an (Erl"auterung immer unterhalb):
+Die letzte Art des Datenzugriffs ist ein Beispiel für das "`Slicen"'. Slicing ist eine sehr leistungsfähige Technik, die in den meisten wissenschaftlichen Programmiersprachen verfügbar ist. Das bedeutet, dass man auf seine Daten zugreifen kann, indem man Spalten, Zeilen oder bestimmte Elemente eingibt. Man schaue sich hierfür die folgenden Befehle an (Erläuterung immer unterhalb):
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1273,7 +1273,7 @@ airquality[c(1,2,3,4,7,8),1]
 
 verschafft die Reihen 1,2,3,4,7,8 in Spalte 1. 
 
-So k"onnen wir eine beliebige Kombination von gew"unschten Elementen sehr bequem aus dem Datenframe ausw"ahlen. Noch einfacher ist das Erstellen von Selektionen.
+So können wir eine beliebige Kombination von gewünschten Elementen sehr bequem aus dem Datenframe auswählen. Noch einfacher ist das Erstellen von Selektionen.
 
 
 \begin{Schunk}
@@ -1290,9 +1290,9 @@ c(1,5,6)
 \end{Sinput}
 \end{Schunk}
 
-Die c() - Funktion kombiniert Werte in einem Vektor (f"ur das Slicen ist es notwendig die Werte in einem Vektor zu haben)
+Die c() - Funktion kombiniert Werte in einem Vektor (für das Slicen ist es notwendig die Werte in einem Vektor zu haben)
 
-Wir k"onnen aber auch Selektionen mit logischen Operatoren erzeugen
+Wir können aber auch Selektionen mit logischen Operatoren erzeugen
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1300,7 +1300,7 @@ airquality$Temp > 80
 \end{Sinput}
 \end{Schunk}
 
-Erstellt einen Vektor mit True auf allen Temperaturwerten, die >80 sind. Ich kann diesen speichern und f"ur eine Selektion, oder auch sofort verwenden
+Erstellt einen Vektor mit True auf allen Temperaturwerten, die >80 sind. Ich kann diesen speichern und für eine Selektion, oder auch sofort verwenden
 
 
 \begin{Schunk}
@@ -1309,14 +1309,14 @@ airquality[airquality$Temp > 80 , ]
 \end{Sinput}
 \end{Schunk}
 
-W"ahlt alle Zeilen mit einer Temperatur >80 aus.
+Wählt alle Zeilen mit einer Temperatur >80 aus.
 
 
 \section{Laden von Daten in R}
 
-Bisher hatten wir die Daten schon im R Programm. Nun werden wir demonstrieren, wie einige Daten geladen werden (wir verwenden die airquality.txt-Datei, die zur Verf"ugung gestellt wird)
+Bisher hatten wir die Daten schon im R Programm. Nun werden wir demonstrieren, wie einige Daten geladen werden (wir verwenden die airquality.txt-Datei, die zur Verfügung gestellt wird)
 
-Es gibt grunds"atzlich zwei M"oglichkeiten Daten zu laden
+Es gibt grundsätzlich zwei Möglichkeiten Daten zu laden
 
 - mit RStudio (Punkt und Klick) - gehe zu Environment (oben rechts), importiere den Datensatz und folge den Anweisungen
 
@@ -1331,11 +1331,11 @@ data = read.table("airquality.txt", header = T)
 \end{Sinput}
 \end{Schunk}
 
-In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise vorbereitet habe. Wenn man andere Datenformate (Kommas, Semikolons, "Uberschriften / keine "Uberschriften) hat, befragt man die Hilfe-Option mit dem Befehl read.table. Siehe auch http://www.statmethods.net/input/importingdata.html f"ur weitere Optionen, z.B. Excel oder Datenbankimport.
+In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise vorbereitet habe. Wenn man andere Datenformate (Kommas, Semikolons, überschriften / keine überschriften) hat, befragt man die Hilfe-Option mit dem Befehl read.table. Siehe auch http://www.statmethods.net/input/importingdata.html für weitere Optionen, z.B. Excel oder Datenbankimport.
 
-\subsection{"uberpr"ufen der Daten}
+\subsection{überprüfen der Daten}
 
-"Uberpr"ufe nach dem Laden der Daten immer, ob das Datenformat korrekt ist
+überprüfe nach dem Laden der Daten immer, ob das Datenformat korrekt ist
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1347,7 +1347,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
 \end{Soutput}
 \end{Schunk}
 
-Hier sieht man den atomic type jeder S"aule. Stelle sicher, dass es dem entspricht, was man m"ochte (manchmal wird numerisch als Faktor eingelesen , oder umgekehrt). Wenn eine Spalte den falschen Typ haben w"urde, m"ussen wir das manuell "andern durch:
+Hier sieht man den atomic type jeder Säule. Stelle sicher, dass es dem entspricht, was man möchte (manchmal wird numerisch als Faktor eingelesen , oder umgekehrt). Wenn eine Spalte den falschen Typ haben würde, müssen wir das manuell ändern durch:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1376,7 +1376,7 @@ Davor einige wichtige Hinweise
 \end{itemize}
 
 
-\marginnote{Ein "uberblick "uber die Farben in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
+\marginnote{Ein überblick über die Farben in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1393,7 +1393,7 @@ plot(airquality$Ozone, airquality$Temp)
 
 \begin{Schunk}
 \begin{Sinput}
-hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "Ozone ")
+hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "ozone ")
 \end{Sinput}
 
 
@@ -1468,7 +1468,7 @@ boxplot(mpg~cyl,data=mtcars, main="Car Milage Data",
 \end{Schunk}
 
 Gekerbter Boxplot des Zahnwachstums gegen 2 gekreuzte Faktoren aufgetragen;
-Boxen f"ur eine leichtere Interpretation eingef"arbt
+Boxen für eine leichtere Interpretation eingefärbt
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1490,7 +1490,7 @@ Warning in bxp(structure(list(stats = structure(c(8.2, 9.7, 12.25, 16.5, : some 
 %See http://www.statmethods.net/graphs/index.html 
 
 
-Korrelations-Heatmap. Die Heatmap visualisiert die Korrelation zwischen Variablen. Eine praktische Eigenschaft dieser Funktion ist, dass Variablen neu angeordnet werden k"onnen, sodass eng korrelierte Variablen nahe beieinander liegen. Dies ist oft n"utzlich, wenn man nicht korrelierte Variablen f"ur eine Analyse ausw"ahlen m"ochte.
+Korrelations-Heatmap. Die Heatmap visualisiert die Korrelation zwischen Variablen. Eine praktische Eigenschaft dieser Funktion ist, dass Variablen neu angeordnet werden können, sodass eng korrelierte Variablen nahe beieinander liegen. Dies ist oft nützlich, wenn man nicht korrelierte Variablen für eine Analyse auswählen möchte.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1537,7 +1537,7 @@ heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
 
 \section{Stetige Response - lineare Regression}
 
-Die lineare Regression ist die einfachste Form der Regression. Wir k"onnen diese bei einer stetigen Response verwenden. Die Annahme hierbei ist, dass die Response von den Pr"adiktoren wie folgt abh"angt:
+Die lineare Regression ist die einfachste Form der Regression. Wir können diese bei einer stetigen Response verwenden. Die Annahme hierbei ist, dass die Response von den Prädiktoren wie folgt abhängt:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1545,7 +1545,7 @@ y ~ par1 * pred1 +  par2 * pred2 +  par3 * pred2^2 + ... + residual Error
 \end{Sinput}
 \end{Schunk}
 
-Wobei die Parameter par1 ... par3 gesch"atzt werden und der Residuenfehler normalverteilt ist.
+Wobei die Parameter par1 ... par3 geschätzt werden und der Residuenfehler normalverteilt ist.
 
 Werfen wir einen Blick auf einige Beispiele, mit den Daten von Montag. Wir sehen, dass es eine Korrelation zwischen Ozon und Temperatur gibt.
 
@@ -1556,7 +1556,7 @@ plot(airquality$Temp~airquality$Ozone)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
 
-Mit dem Befehl lm() k"onnen wir R versuchen lassen, eine bestm"oglich passende Gerade zwischen den beiden Variablen zu finden.
+Mit dem Befehl lm() können wir R versuchen lassen, eine bestmöglich passende Gerade zwischen den beiden Variablen zu finden.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1603,13 +1603,13 @@ F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
 \end{Soutput}
 \end{Schunk}
 
-In der Ausgabe sehen wir die Parameter f"ur die Auswirkung von Ozon (genannt Regressionssteigung) und den Schnittpunkt.
+In der Ausgabe sehen wir die Parameter für die Auswirkung von Ozon (genannt Regressionssteigung) und den Schnittpunkt.
 
-R erkennt, dass die Linie gerade ist, weil wir dem Programm sagen, dass "`airquality$Temp~airquality$Ozone"'. Wir werden sp"ater sehen, wie wir das "andern k"onnen, wenn wir andere Funktionen anpassen wollen. 
+R erkennt, dass die Linie gerade ist, weil wir dem Programm sagen, dass "`airquality$Temp~airquality$Ozone"'. Wir werden später sehen, wie wir das ändern können, wenn wir andere Funktionen anpassen wollen. 
 
 \subsection{Residuenanalyse}
 
-Mit plot(fit) erhalten wir die Residuen (die Abweichung von der Geraden). Wie bereits gesagt, geht die lineare Regression davon aus, dass diese normal verteilt sind, also sollten wir "uberpr"ufen, ob dies wirklich der Fall ist.
+Mit plot(fit) erhalten wir die Residuen (die Abweichung von der Geraden). Wie bereits gesagt, geht die lineare Regression davon aus, dass diese normal verteilt sind, also sollten wir überprüfen, ob dies wirklich der Fall ist.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1619,7 +1619,7 @@ plot(fit)
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
 
-Hier sind die Residuen nicht wirklich homogen um den vorhergesagten Wert gestreut, was darauf hindeutet, dass das Modell nicht sehr gut passt. Dies h"atte man schon erahnen k"onnen, weil die Korrelation nicht sehr linear aussieht. Wir k"onnen einen quadratischen Term hinzuf"ugen durch
+Hier sind die Residuen nicht wirklich homogen um den vorhergesagten Wert gestreut, was darauf hindeutet, dass das Modell nicht sehr gut passt. Dies hätte man schon erahnen können, weil die Korrelation nicht sehr linear aussieht. Wir können einen quadratischen Term hinzufügen durch
 
 
 \begin{Schunk}
@@ -1671,7 +1671,7 @@ points(fit2$model[,2], predict(fit2), col = "blue")
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-58-1} \end{Schunk}
 
-\subsection{Kategorische Pr"adiktoren}
+\subsection{Kategorische Prädiktoren}
 
 Wenn wir kategoriale Variablen wie in diesem Datensatz haben
 
@@ -1712,12 +1712,12 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591
 \end{Soutput}
 \end{Schunk}
 
-Eine Sache, die viele Menschen jetzt verwirrt, ist, dass wir zwei Parameter-Sch"atzungen f"ur die eine Pr"adiktor-Variable haben. Der Grund daf"ur ist, dass es 3 Gruppen in der Datenmenge gibt. Die erste Gruppe wird in diesem Fall automatisch als Referenz gesetzt, und f"ur die anderen Gruppen werden Pr"adiktoren gesch"atzt. Die p-Werte f"ur diese Pr"adiktoren sind also gegen die Referenz (wenn ich Pr"adiktor trt1 herausnehme, erh"alt er den Wert von ctrl). Daher h"angen diese p-Werte f"ur kategoriale Variablen von der Reihenfolge der Variablen ab (man kann die Reihenfolge von trt1 als Referenz "andern.)
+Eine Sache, die viele Menschen jetzt verwirrt, ist, dass wir zwei Parameter-Schätzungen für die eine Prädiktor-Variable haben. Der Grund dafür ist, dass es 3 Gruppen in der Datenmenge gibt. Die erste Gruppe wird in diesem Fall automatisch als Referenz gesetzt, und für die anderen Gruppen werden Prädiktoren geschätzt. Die p-Werte für diese Prädiktoren sind also gegen die Referenz (wenn ich Prädiktor trt1 herausnehme, erhält er den Wert von ctrl). Daher hängen diese p-Werte für kategoriale Variablen von der Reihenfolge der Variablen ab (man kann die Reihenfolge von trt1 als Referenz ändern.)
 
 
 \subsection{ANOVA}
 
-Eine Frage, die oft in diesem Zusammenhang auftaucht, ist: Gibt es "uberhaupt Unterschiede zwischen den Gruppen? Die Regression zeigt uns nur, ob es einen signifikanten Unterschied zwischen dem ersten Faktor und den zwei anderen gibt. Wenn wir auf allgemeine Differenzen testen wollen, k"onnen wir eine ANOVA des angepassten Objekts machen
+Eine Frage, die oft in diesem Zusammenhang auftaucht, ist: Gibt es überhaupt Unterschiede zwischen den Gruppen? Die Regression zeigt uns nur, ob es einen signifikanten Unterschied zwischen dem ersten Faktor und den zwei anderen gibt. Wenn wir auf allgemeine Differenzen testen wollen, können wir eine ANOVA des angepassten Objekts machen
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1733,18 +1733,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{Soutput}
 \end{Schunk}
 
-Beachte, dass wir jetzt Signifikanz f"ur einen allgemeinen Unterschied erhalten, obwohl wir keine Signifikanz in der Regression zuvor hatten.
+Beachte, dass wir jetzt Signifikanz für einen allgemeinen Unterschied erhalten, obwohl wir keine Signifikanz in der Regression zuvor hatten.
 
-Wir k"onnen nun sogenannte Post-Hoc-Tests verwenden, um herauszufinden, welche Unterschiede signifikant sind.
+Wir können nun sogenannte Post-Hoc-Tests verwenden, um herauszufinden, welche Unterschiede signifikant sind.
 
 Weitere Beispiele mit weiteren Faktoren findt man \href{http://www.statmethods.net/stats/anova.html}{hier}.
 
 
-Anmerkung: Eine Varianzanalyse ist f"ur ausgeglichene Versuchsanordnungen ausgelegt und die Ergebnisse k"onnen schwer ohne Abgleich interpretiert werden: Achte darauf, dass fehlende Werte in der Response wahrscheinlich den Ausgleich kosten. Wenn es zwei oder mehr Fehler in den Stichprobenschichten gibt, sind die verwendeten Methoden ohne Ausgleich statistisch ineffizient und es kann vorteilhaft sein lme in Paket nlme zu verwenden.
+Anmerkung: Eine Varianzanalyse ist für ausgeglichene Versuchsanordnungen ausgelegt und die Ergebnisse können schwer ohne Abgleich interpretiert werden: Achte darauf, dass fehlende Werte in der Response wahrscheinlich den Ausgleich kosten. Wenn es zwei oder mehr Fehler in den Stichprobenschichten gibt, sind die verwendeten Methoden ohne Ausgleich statistisch ineffizient und es kann vorteilhaft sein lme in Paket nlme zu verwenden.
 
 \subsection{T-Test}
 
-Eine einfache Option f"ur das Testen von nur zwei Gruppen gegeneinander ist der T-Test. Er nimmt eine normale Verteilung innerhalb der Gruppen an. Wir k"onnen dies verwenden, um Post-Hoc-Tests f"ur das obige Beispiel durchzuf"uhren:
+Eine einfache Option für das Testen von nur zwei Gruppen gegeneinander ist der T-Test. Er nimmt eine normale Verteilung innerhalb der Gruppen an. Wir können dies verwenden, um Post-Hoc-Tests für das obige Beispiel durchzuführen:
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1790,7 +1790,7 @@ detach(PlantGrowth)
 \end{Sinput}
 \end{Schunk}
 
-Aber wenn wir wirklich beide Tests ausgef"uhrt h"atten, m"ussten wir f"ur multiple Tests korrigieren
+Aber wenn wir wirklich beide Tests ausgeführt hätten, müssten wir für multiple Tests korrigieren
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1805,7 +1805,7 @@ Wie funktioniert das? Schreibe ?p.adjust in die Konsole. Lese auch \href{das hie
 
 \section{Allgemeine lineare Modell-Rahmenbedingung}
 
-Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir k"onnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "`identity"')), aber mit dem Vorteil, dass GLM mehr Optionen hat; darunter die folgenden Vorgaben
+Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir könnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "`identity"')), aber mit dem Vorteil, dass GLM mehr Optionen hat; darunter die folgenden Vorgaben
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1820,7 +1820,7 @@ quasipoisson(link = "log")
 \end{Sinput}
 \end{Schunk}
 
-Aber Schritt f"ur Schritt ... schauen wir uns ein Beispiel f"ur binomische Daten an
+Aber Schritt für Schritt ... schauen wir uns ein Beispiel für binomische Daten an
 
 
 \section{0/1 Response - die logistische Regression}
@@ -1860,7 +1860,7 @@ attach(TitanicSurvival)
 
 Veranschaulichen wir uns dies. Informationen zur Visualisierung von Assoziationen findet man unter \href{http://www.statmethods.net/advgraphs/mosaic.html}{diesem Link}.
 
-Wir benutzen das Mosaikplot. M"oglicherweise muss man zuvor das dazu ben?tigte Paket installieren: install.packages ("vcd")
+Wir benutzen das Mosaikplot. Möglicherweise muss man zuvor das dazu ben?tigte Paket installieren: install.packages ("vcd")
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1881,7 +1881,7 @@ surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
 
 Wie analysieren wir diese Daten? Die Response ist eindeutig nicht normal, jedoch 1/0. Das GLM ist im Grunde das gleiche wie lm (), nur dass wir die Familie angeben.
 
-Wir werden zuerst testen, ob das "uberleben mit dem Alter korreliert
+Wir werden zuerst testen, ob das überleben mit dem Alter korreliert
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1968,9 +1968,9 @@ Number of Fisher Scoring iterations: 4
 \end{Soutput}
 \end{Schunk}
 
-\subsection{ANOVA f"ur GLM}
+\subsection{ANOVA für GLM}
 
-Wenn eine ANOVA erw"unscht ist
+Wenn eine ANOVA erwünscht ist
 
 
 \begin{Schunk}
@@ -2005,9 +2005,9 @@ detach(TitanicSurvival)
 \end{Sinput}
 \end{Schunk}
 
-\section{Z"ahldaten - Poisson's Regression}
+\section{Zähldaten - Poisson's Regression}
 
-F"ur Z"ahldaten verwenden wir den GLM mit der Poisson'schen-Fehlerverteilung. Hier sind einige Beobachtungen der Verteilung von Futterst"ucke an junge V"ogel und ihre wahrgenommene Attraktivit"at.
+Für Zähldaten verwenden wir den GLM mit der Poisson'schen-Fehlerverteilung. Hier sind einige Beobachtungen der Verteilung von Futterstücke an junge Vögel und ihre wahrgenommene Attraktivität.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2097,9 +2097,9 @@ detach(cfc)
 
 \section{Multinomiale Daten - multinomiale Regression}
 
-Wenn man mehrere Optionen f"ur die Response habt (rot, gr"un, blau), passt dies zu einer multinomialen Regression. Dies ist nicht im Standard-GLM-Paket. Das Standardpaket dazu w"are mlogit. Ich gebe dazu unten ein Beispiel an. Das Problem mit mlogit ist, dass es Daten in einer bestimmten Weise erfordert, d.h. dass f"ur jede Beobachtung jede Auswahl eine einzelne Zeile ist. Zus"atzlich gibt es eine Spalte, die sagt, welche Wahl getroffen wurde (ja / nein). Um mlogit verwenden zu k"onnen, m"ussen Sie die Daten in dieses Format umwandeln.
+Wenn man mehrere Optionen für die Response habt (rot, grün, blau), passt dies zu einer multinomialen Regression. Dies ist nicht im Standard-GLM-Paket. Das Standardpaket dazu wäre mlogit. Ich gebe dazu unten ein Beispiel an. Das Problem mit mlogit ist, dass es Daten in einer bestimmten Weise erfordert, d.h. dass für jede Beobachtung jede Auswahl eine einzelne Zeile ist. Zusätzlich gibt es eine Spalte, die sagt, welche Wahl getroffen wurde (ja / nein). Um mlogit verwenden zu können, müssen Sie die Daten in dieses Format umwandeln.
 
-Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren m"ochte, ist eine weniger leistungsstarke, aber einfacher zu bedienende Alternative die multinomiale Funktion aus dem nnet-Paket. Im Folgenden finden Sie ein Beispiel f"ur die Verwendung dieser Funktion oder \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{hier}.
+Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren möchte, ist eine weniger leistungsstarke, aber einfacher zu bedienende Alternative die multinomiale Funktion aus dem nnet-Paket. Im Folgenden finden Sie ein Beispiel für die Verwendung dieser Funktion oder \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{hier}.
 
 \subsection{mlogit Beispiel}
 
@@ -2166,7 +2166,7 @@ Fish <- mlogit.data(Fishing, varying = c(2:9), shape = "wide", choice = "mode")
 \end{Schunk}
 
 
-Variation zeigt dem Modell an, dass es sich um Variablen handelt, die f"ur die alternativen Outputs der Response spezifisch sind, z.B. der Preis des Bootes; w"ahrend Variablen, die nicht variieren, unabh"angig vom Output sind, z.B. Einkommen.
+Variation zeigt dem Modell an, dass es sich um Variablen handelt, die für die alternativen Outputs der Response spezifisch sind, z.B. der Preis des Bootes; während Variablen, die nicht variieren, unabhängig vom Output sind, z.B. Einkommen.
 
 
 \begin{Schunk}
@@ -2205,9 +2205,9 @@ Likelihood ratio test : chisq = 533.88 (p.value = < 2.22e-16)
 \end{Soutput}
 \end{Schunk}
 
-F"ur jeden Outcome passt die Erh"ohung der "choice" zu "price" und "catch". Daher erhalten wir die Schnittpunkte f"ur jeden Outcome und ein Parameter pro Variable, was die Auswirkung von "price" / "choice" auf die Wahrscheinlichkeit ist, eines der 4 Ergebnisse zu w"ahlen.
+Für jeden Outcome passt die Erhöhung der "choice" zu "price" und "catch". Daher erhalten wir die Schnittpunkte für jeden Outcome und ein Parameter pro Variable, was die Auswirkung von "price" / "choice" auf die Wahrscheinlichkeit ist, eines der 4 Ergebnisse zu wählen.
 
-Wenn wir die Variable "income" korrelieren, ist dies anders. Das Einkommen ist nicht spezifisch f"ur "choice" (nicht als variabel ausgew"ahlt, als wir die Daten eingelesen haben). In diesem Fall fragen wir uns, wie sich "choice" ver"andert, wenn wir Menschen mit unterschiedlichen Einkommen haben. Daher erhalten wir einen Intervallwert pro Parameter und eine Sch"atzung, ob diese Wahl durch eine Erh"ohung des Einkommens, bezogen auf die Grundlinie (Pier), beeinflusst wird.
+Wenn wir die Variable "income" korrelieren, ist dies anders. Das Einkommen ist nicht spezifisch für "choice" (nicht als variabel ausgewählt, als wir die Daten eingelesen haben). In diesem Fall fragen wir uns, wie sich "choice" verändert, wenn wir Menschen mit unterschiedlichen Einkommen haben. Daher erhalten wir einen Intervallwert pro Parameter und eine Schätzung, ob diese Wahl durch eine Erhöhung des Einkommens, bezogen auf die Grundlinie (Pier), beeinflusst wird.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -2246,7 +2246,7 @@ Likelihood ratio test : chisq = 41.145 (p.value = 6.0931e-09)
 \end{Soutput}
 \end{Schunk}
 
-Wenn wir die Parameterwerte interpretieren wollen, m"ussen wir die Response mit der relativ komplizierten Linkfunktion der multinomialen logistischen Regression zur"uck transformieren, siehe \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{hier}. Mehr Beispiele \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{hier} und ein mlogit Tutorial findet man \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{hier}.
+Wenn wir die Parameterwerte interpretieren wollen, müssen wir die Response mit der relativ komplizierten Linkfunktion der multinomialen logistischen Regression zurück transformieren, siehe \href{http://en.wikipedia.org/wiki/Multinomial_logistic_regression}{hier}. Mehr Beispiele \href{http://www.inside-r.org/packages/cran/mlogit/docs/suml}{hier} und ein mlogit Tutorial findet man \href{http://cran.r-project.org/web/packages/mlogit/vignettes/Exercises.pdf}{hier}.
 
 \subsection{mlogit Beispiel}
 
@@ -2256,7 +2256,7 @@ require(nnet)
 \end{Sinput}
 \end{Schunk}
 
-Wir verwenden die urspr"unglichen fishing- Daten (ohne Umformung), wie f"ur das mlogit Beispiel siehe oben.
+Wir verwenden die ursprünglichen fishing- Daten (ohne Umformung), wie für das mlogit Beispiel siehe oben.
 Und auch die gleiche Modellstruktur
 
 \begin{Schunk}
