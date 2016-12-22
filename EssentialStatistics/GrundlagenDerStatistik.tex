@@ -478,6 +478,18 @@ oder extremeren Daten unter einer festgelegten (Null-) Hypothese beschreibt, gib
 
 Die Maximum-Likelihood-Schätzung ist nur ein einzelner Parameterwert.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Diese Art Schätzung wird oft Punktschätzung genannt. Jedoch ist eine Punktschätzung oft unbrauchbar, wenn wir nicht wissen wie genau sie ist.\marginnote{Konfidenzintervalle bieten einen Unsicherheitsschätzwert um die Punktschätzung herum.} Deswegen werden Parameterschätzungen immer mit Konfidenzintervallen angegeben. Salopp kann man sagen, dass das 95\% Konfidenzintervall eines Parameters eine wahrscheinliche Reichweite für diesen Bereich ist. Verwirrend ist hier, dass dies nicht das Intervall ist, in dem der richtige Parameter mit 95\% Wahrscheinlichkeit liegt. Vielmehr beinhaltet das Standard 95\% Konfidenzintervall bei wiederholten Experimenten zu 95\% aller Fälle den richtigen Wert. Dies ist ein kleiner, aber entscheidender Unterschied. Jedoch machen wir uns hierüber nun keine weiteren Gedanken. Das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
 
+\vspace{1cm}
+\begin{fullwidth}
+%\begin{mdframed}
+    
+\textbf{Übungsfragen MLE:} 
+\textbf{4.1} Wie ist die Likelihood der beobachteten Daten D für ein gegebenes Modell M mit Parameter x definiert?
+\textbf{4.2} In einem Experiment wurde der Effekt von Stickstoff auf das Wachstum von Pflanzen getestet - der Likelihood ist maximal für eine Verdoppelung des Wachstums. Die Autoren schreiben: “Die Wahrscheinlichkeit die beobachteten Daten zu erhalten ist maximal wenn man annimmt dass Stickstoff das Wachstum von den beobachteten Pflanzen verdoppelt” - ist diese Aussage Korrekt?
+\textbf{4.3} Weiter unten schreiben die Autoren: “Der wahrscheinlichste Wert für den Effekt von Stickstoff ist 2 (verdoppelung)” - ist diese Aussage korrekt?
+
+%\end{mdframed}
+\end{fullwidth}
+
 \subsection{Bayes Verfahren}
 
 Um unsere\marginnote{Bayes'sche Verfahren berechnen eine dritte Größe, die posteriore Wahrscheinlichkeit. Auch wenn man diese auf jedes Modell anwenden kann, benutzt man sie üblicherweise bei erweiterten statistischen Berechnungen.} übersicht der schlussfolgernden Methoden zu komplettieren, fehlt noch eine, die erwähnt werden sollte - Bayes'sche Methoden berechnen eine Größe, die sich die posteriore Parameterschätzung (posterior parameter estimate) nennt. Diese ist ähnlich, jedoch nicht identisch zu der vorherigen Parameterschätzung. Näheres ist hier nicht von Nöten, bei Bedarf und Interesse kann jedoch meine Seite weiterhelfen \citep{Gelman-BayesianDataAnalysis-2003} \href{http://florianhartig.github.io/LearningBayes/}{Learning Bayes}.
@@ -536,6 +548,34 @@ mean in group 1 mean in group 2
 Beachte, dass die Datenausgabe einen p-Wert (H0 = kein Unterschied), aber auch einen Maximum-Likelihood-Schätzwert der Mittelwertsvergleiche, zusammen mit den Konfidenzintervallen bietet. Dies geht weit über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
 
 Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert für die Unterschiede eines T-Tests mit X). 
+
+\vspace{1cm}
+\begin{fullwidth}
+%\begin{mdframed}
+    
+\textbf{Übungsfragen Hypothesentests:} 
+\textbf{4.4} Definieren Sie den p-Wert.
+\textbf{4.5} Wie ist in der vorherigen Definition “extremer” (also >=) definiert?
+\textbf{4.6} Stellen Sie sich vor Sie leben in Venedig, und es gibt 3 Taxibootfirmen. Sie wollen wissen ob es Unterschiede in der Beförderungsgeschwindigkeit gibt und machen deshalb 300 Fahrten mit jeder Firma und stoppen die Zeit. Was wäre eine geignete Nullhypothese H0, um auf einen Unterschied zu testen?
+\textbf{4.7} Bonusfrage: Nennen Sie eine der vielen möglichen sinnvollen Teststatistiken
+\textbf{4.8} In der Physik gibt es das sogenannte Standardmodell, dass die Eigenschaften und Interaktionen der Material beschreibt. In den letzten 20 Jahren wurde das Standardmodell immer und immer wieder getestet, so “erfolgreich” dass die Physiker schon ein bisschen deprimiert sind weil Sie nichts neues entdecken. Was ist die Nullhypothese die bei diesen Tests angewandt wird?
+\textbf{4.9} Sie lesen einen Artikel über ein medizinisches Experiment. Getestet wurde ein Medikament gegen eine Kontrolle, und der p-Wert ist 0.03. Die Studie schreibt: “Die Wahrscheinlichkeit dass das Medikament nicht wirkt ist 3\%” - stimmen Sie zu?
+\textbf{4.10} Schreiben Sie eine korrekte Interpretation des obigen Ergebnis auf.
+\textbf{4.11} Definierent Sie den Typ I Fehler (falschen positive).
+\textbf{4.12} Wie viel Typ I Fehler erwarten Sie bei einen Signifikanzlevel von 7\%?
+\textbf{4.13} Definieren Sie den Typ II Fehler (falsche negative).
+\textbf{4.14} Wie viel Typ II Fehler erwarten Sie bei einen Signifikanzlevel von 7\%?
+\textbf{4.15} Nennen Sie 2 Faktoren die Typ II Fehler beeinflussen, und die Richtung des Einflusses (negativ = Typ II nimmt ab wenn Faktor hoch geht).
+\textbf{4.16} Definieren Sie die Teststärke / Power.
+\textbf{4.17} Sie testen 100 Gene auf eine Assoziation mit Krebs. Bei 5 Genen zeigt der Test Signifikanz an. Wie bewerten Sie dieses Ergebnis?
+\textbf{4.18} Sie bekommen von einer allwissenden Macht die Zusatzinformation dass Sie in dem oben genannten Test eine Teststärke von 99\% hatte. Sind Sie nun zuversichtlicher dass Sie einen Effekt gefunden haben?
+\textbf{4.19} Definieren Sie die False Discovery Rate (FDR).
+\textbf{4.20} Wovon hängt die FDR ab?
+\textbf{4.21}  In einer Reihe von Experimenten testen Sie Medikamente auf eine Wirkung. Ihre Power ist 100\%. Sie schätzen dass jedes 20. Medikament das Sie testen eine Wirkung haben solte. Wie ist ihre FDR bei einem Signifikanzlevel von 5\%? Es reicht wenn Sie den Rechenweg aufschreiben, Sie müssen den Wert nicht ausrechnen.
+
+%\end{mdframed}
+\end{fullwidth}
+
 
 \subsection{Varianzanalyse (ANOVA)}
 
@@ -681,6 +721,7 @@ die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel.
 \end{fullwidth}
 
 
+
 \subsection{überprüfen der Annahmen}
 
 Formal gesehen kann man jegliche Datensätze auf lineare Modelle übertragen. Jedoch sind hier wie bei jeder statistischen Folgerung die Ergebnisse (z.B. Parameterschätzungen, p-Werte) von den getroffenen Annahmen abhängig. Dementsprechend ist der p-Wert, den wir erhalten, von der Annahme abhängig, dass die Daten auch tatsächlich mit der Formel ~\ref{eq: linear regression} übereinstimmen. Wenn dies nicht der Fall ist, könnte der p-Wert völlig falsch sein. Somit muss man prüfen, ob diese Annahmen auch tatsächlich erfüllt wurden.
@@ -765,6 +806,11 @@ Hier ein Beispiel mit den Daten der Titanik-überlebenden. Beachte, dass die Log
 \begin{Schunk}
 \begin{Sinput}
 library(effects)
+\end{Sinput}
+\begin{Soutput}
+Warning: package 'effects' was built under R version 3.3.2
+\end{Soutput}
+\begin{Sinput}
 fmt <- glm(survived ~ age + I(age^2) + I(age^3), family=binomial, data = TitanicSurvival)
 summary(fmt)
 \end{Sinput}
@@ -857,6 +903,18 @@ Number of Fisher Scoring iterations: 4
 Residuen in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen für Normalität wie normale Quantile-Quantile-Plots, um auf die Angemessenheit der Residuen zu überprüfen. Für nicht zu komplizierte Modelle gibt es eine Möglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R kann man die Option Pearson in vielen Funktionen angeben, einschließlich der Residual()-Funktion, die man auf ein angepasstes Objekt anwenden kann}
 
 Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen überdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
+
+\vspace{1cm}
+\begin{fullwidth}
+%\begin{mdframed}
+    
+\textbf{Übungsfragen Regression:} 
+\textbf{4.22} Was sind die Annahmen der linearen Regression?
+\textbf{4.23} Wie werden die Parameter in der linearen Regression bestimmt?
+\textbf{4.24} Welche H0 steckt hinter den p-Werten der Parameter der linearen Regression?
+
+%\end{mdframed}
+\end{fullwidth}
 
 
 \chapter{prädiktive Statistik - maschinelles Lernen}
@@ -1057,6 +1115,41 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
 \begin{appendices}
+
+\vspace{1cm}
+\begin{fullwidth}
+%\begin{mdframed}
+
+\chapter{Lösungen zu den Übungsfragen}
+
+\textbf{4.1} p(D|M,x) - in Worten: die Wahrscheinlichkeits(dichte) für D, gegeben M und x.
+\textbf{4.2} Ja.
+\textbf{4.3} Nein. Der MLE gibt den Wert für den die Wahrscheinlichkeit der Daten maximual ist. Um die Aussage umzudrehen müssen wir Zusatzannahmen machen (alle Parameter gleich wahrscheinlich).
+\textbf{4.4} p(d >= D | H0), in Worten: Wahrscheinlickhkeit die beobachteten oder extremere Daten zu bekommen wenn H0 wahr ist.
+\textbf{4.5} Extremer bezieht sich auf die Teststatistik - diese ist ein Abstandsmaß dass der “Erfinder” des Testes wählt. Weil es hierfür unterschiedliche Möglichkeiten gibt gibt durchaus verschiedene Tests mit gleichen H0, aber anderen Teststatistiken.
+\textbf{4.6} H0: Die durchschnittliche Zeit aller 3 Firmen ist gleich.
+\textbf{4.7} Mögliche Antworten: Varian der 3 Mittelwerte, Unterschied größter / kleinster Mittelwert, Durchschnitt der Differenzen der Mittelwerte, … [alles womit man die Firmen vergleichen könnte .. natürlich könnten Sie auch Mittewert durch Median ersetzen].
+\textbf{4.8} H0 = das Standardmodell.
+Anmerkung: ich wollte Ihnen mit diesem Beispiel zeigen dass es 2 Möglichkeiten gibt Nullhypothesen aufzustellen: Wenn wir einen Effekt bestätigen wollen, stellen wir die umgekehrte Nullhypothese auf, also dass es keinen Effekt gibt (das ist der Normalfall in der Analyse von biologischen Daten). Der Hintergrund hier ist dass wir einen Effekt vermuten, aber nicht sicher sind oder: Wenn der Effekt / das Modell aber schon gut bekannt ist, d.h. es eine feste Theorie gibt, wäre das normale Vorgehen diesen Effekt / Theorie als H0 aufzustellen, und zu schauen ob es eine Abweichung von dem gibt was wir gerade als wahr ansehen.
+\textbf{4.9} Nein, der p-Wert gibt die Wahrscheinlichkeit der Daten gegeben H0 an, nicht die Wahrscheinlichkeit von H0.
+\textbf{4.10}“Die Wahrscheinlichkeit dass die beobachteten Effekte oder stärker unter H0 (d.h. ohne Wirkung des Medikaments) auftreten ist 3\%. Der Unterschied zwischen Kontrolle und Behandlung ist deshalb signifikant bei einen Signifikanzlevel von 5\%.”
+\textbf{4.11} Wahrscheinlichkeit dass der p-Wert signifikant wird wenn H0 wahr ist.
+\textbf{4.12} 7\%.
+\textbf{4.13} Wahrscheinlichkeit dass der p-Wert nicht signifikant wird wenn H0 nicht wahr ist.
+\textbf{4.14} Nur mit dieser Information kann man das nicht sagen, weil der Typ II von mehreren Faktoren abhängt.
+\textbf{4.15} Mögliche Antworten: Sigifikanzlevel - negativ; Varianz - positiv; Effektstärke: negativ; power / Stichprobengröße: negativ.
+\textbf{4.16} power = 1 - Typ I Fehler / in Worten: also Wahrscheinlichkeit dass der p-Wert signifikant wird wenn H0 nicht wahr ist.
+\textbf{4.17} 5 von 100 signifikante Tests sind zu erwarten wenn keines der Gene eine Wirkung hat (wir machen hier multiples Testen). Das Ergebnis zeigt keine besondere Evidenz für einen Effekt an. Bemerkung: Trotzdem würde man natürlich die 5 signifikanten mit einen weiteren Experiment noch mal nachtesten, man weiß ja nie. Aber statistisch ist so ein Ergebnis zu erwarten, auch wenn keines der Gene eine Wirkung hat.
+\textbf{4.18} Nein, denn wenn Ihre Teststärke fast 100\% ist und Sie wirklich Assoziationen in den Datensatz hätten dann müssten Sie ja trotzdem MEHR als 5\% positive sehen.
+\textbf{4.19} Die Rate an Experimenten die Signifikanz anzeigt obwohl kein Effekt da ist wenn man viele Experimente macht.
+\textbf{4.20} FDR hängt ab von Typ I und II Fehlerrate und der Wahrscheinlichkeit dass H0 wahr ist (bzw. dass die in den Experimente getesteten Effekt da sind).
+\textbf{4.21} 0.95 * 0.05 / (0.95 * 0.05 + 0.05 * 1) - Rate an Typ I / Rate an signifikante Ergebnissen.
+\textbf{4.22} Abh. Variable beschreibbar durch Polynom der unabhängigen Variable(n) + normalverteilte Streuung.
+\textbf{4.23} Man sucht den MLE für die Annnahmen der linearen Regresion.
+\textbf{4.24} H0 = Parameter ist 0.
+
+%\end{mdframed}
+\end{fullwidth}
 
 \chapter{R und Rstudio}
 
@@ -1867,6 +1960,9 @@ Wir benutzen das Mosaikplot. Möglicherweise muss man zuvor das dazu ben?tigte P
 library(vcd)
 \end{Sinput}
 \begin{Soutput}
+Warning: package 'vcd' was built under R version 3.3.2
+\end{Soutput}
+\begin{Soutput}
 Loading required package: grid
 \end{Soutput}
 \begin{Sinput}
@@ -1977,6 +2073,9 @@ Wenn eine ANOVA erwünscht ist
 \begin{Sinput}
 library(car)
 \end{Sinput}
+\begin{Soutput}
+Warning: package 'car' was built under R version 3.3.2
+\end{Soutput}
 \begin{Soutput}
 
 Attaching package: 'car'
@@ -2108,7 +2207,20 @@ Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren möchte,
 \begin{Schunk}
 \begin{Sinput}
 library(mlogit)
- 
+\end{Sinput}
+\begin{Soutput}
+Warning: package 'mlogit' was built under R version 3.3.2
+\end{Soutput}
+\begin{Soutput}
+Warning: package 'Formula' was built under R version 3.3.2
+\end{Soutput}
+\begin{Soutput}
+Warning: package 'maxLik' was built under R version 3.3.2
+\end{Soutput}
+\begin{Soutput}
+Warning: package 'miscTools' was built under R version 3.3.2
+\end{Soutput}
+\begin{Sinput}
 data("Fishing", package = "mlogit")
 head(Fishing)
 \end{Sinput}
