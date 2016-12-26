@@ -1,6 +1,8 @@
 # Statistics
 
-Teaching material for statistics by Florian Hartig. Lecture notes are licenced [CC-BY-ND-NC 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). Exercises and examples are licenced [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+Teaching material for statistics by [Florian Hartig](http://www.uni-regensburg.de/biologie-vorklinische-medizin/theoretische-oekologie/mitarbeiter/hartig/index.html). 
+
+Note: lecture notes are licenced [CC-BY-ND-NC 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). Exercises and examples are licenced [CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ### Lecture notes
 
