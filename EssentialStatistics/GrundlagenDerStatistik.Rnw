@@ -84,6 +84,11 @@ set.seed(123)
 \thispagestyle{empty}
 \null
 
+
+\href{http://www.uni-regensburg.de/biologie-vorklinische-medizin/theoretische-oekologie/mitarbeiter/hartig/index.html}{Prof. Dr. Florian Hartig}\\
+University of Regensburg\\
+Germany\\[0.5cm]
+
 \begin{fullwidth}
 Vorlesungsunterlagen für Studierende der
 
@@ -94,19 +99,14 @@ Vorlesungsunterlagen für Studierende der
 
 \vspace{0.5cm}
 
-Anmerkungen / Fragen an:\\[0.5cm]
-\href{https://florianhartig.wordpress.com/}{Florian Hartig}\\
-Universität Regensburg\\
-Germany\\[0.5cm]
-
-Probleme oder Unklarheiten bei dieser Vorlesung können mittels \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} der \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} gemeldet werden. 
+Fehler oder Verbesserungsvorschläge bitte über \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} des \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} melden. 
 
 \end{fullwidth}
 
 
 \vfill
 \begin{fullwidth}
-Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Attribution-NonCommercial- NoDerivatives 4.0 International' Lizenz.
+Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Updated 2016, University of Regensburg, and translated to German with the help of Katrin Pohl. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 \end{fullwidth}
 
 
@@ -117,43 +117,84 @@ Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Att
 
 	\section{Ziel und Zielgruppe diese Textes}
 	
-	Dieses Dokument beinhaltet eine kurze Einführung in die Statistik und in statistische Analysen, welcher es in elementaren Experimenten und beobachteten Situationen häufig bedarf~\ref{sec: further readings}.
+	Das Skript "Grundlagen der Statistik" hat das Ziel, eine kurze, aber präzise Einführung in die Grundlegenden Methoden und die Philosophie der modernen Statistik zu liefern, sowie in die statistischen Analysen die typischerweise in einfachen Experimenten und beobachtenden Studien benutzt werden.
 	
 	\section{Themen der Statistik und Datenwissenschaften}
-	Statistik, oder auch Datenwissenschaften, behandelt die Visualisierung, Zusammenfassung und Interpretation von Daten. Dieses Skript beinhaltet eine Einführung in die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
 	
-	\paragraph{Deskriptive Statistik:} Deskriptive Statistik\marginnote{Deskriptive Statistik = Plots, Kennzahlen der Statistik} beinhaltet die Kennzahlen der Statistik, wie beispielsweise der Mittel- oder Medianwert, aber auch weitere Optionen, um Daten zu visualisieren.
+	Die Statistik, oder der moderne, etwas weiter gefasst Begriff "Data Science", befasst sich mit der Visualisierung, Beschreibung und Interpretation von Daten, sowie mit dem Erstellen von datenbasierten Vorhersagen. Dieses Skript beinhaltet eine Einführung in die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
 	
-	\paragraph{Inferenzstatistik:} Inferenzstatistik\marginnote{Inferenzstatistik = Parameterschätzungen, p-Werte, Tests} behandelt das Testen von Hypothesen und Schätzen von Parametern. Inferenz basiert typischerweise auf Annahmen, welche in einem statistischen Modell zusammengefasst sind.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = Datenerzeugender Prozess} Ein statistisches Modell wird auch als "`datenerzeugender Prozess"' bezeichnet, da es Annahmen über einen Prozess beschreibt, die zu einer Variation an Daten führt (systematisch und stochastisch).
+	\paragraph{Deskriptive Statistik:} Die Deskriptive Statistik\marginnote{Deskriptive Statistik = Abbildungen, Visualisierung, Kennzahlen der Statistik} beinhaltet beschreibende Analysen (Kennzahlen), wie beispielsweise Mittel- oder Medianwert, Korrelation, oder Assoziation, aber auch die Beschreibung von Daten durch visuelle Methoden (Abbildungen, interaktive Visualisierung).
 	
-	\paragraph{Prädiktive Statistik und maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Vorhersagende Modelle. Große Dateien = umfangreiche Datensätze, z.\,B. von Amazon-Endkunden} arbeiten mit herleitenden Vorhersagen aus v.\,A. sehr "`großen Datensätzen"'. Der Hauptunterschied zur Inferenzstatistik ist, dass der Fokus auf der entstehenden Methode liegt, um gute Vorhersagen treffen zu können ohne ein vorhergehendes Beschreiben, Folgern oder Testen von Annahmen über den Datenerzeugenden Prozess.
+	\paragraph{Schließende Statistik:} Die schließende Statistik\marginnote{Schließende Statistik = Parameterschätzer, Hypothesentests, p-Werte, Modellvergleiche} (auch: induktive oder inferentielle Statistik) befasst sich damit, wie man aus Beobachtungen allgemeine Schlussfolgerungen ziehen kann. Das Problem hierbei ist, dass Beobachtungen immer ein gewisses Maß an zufälligen "Rauschen" aufweisen, ohne dass dies notwendigerweise auf einen systematischen Effekt zurückzuführen ist.\marginnote{Systematischer Effekt ist z.B. die Tatsache dass Patienten schneller heilen wenn Sie ein bestimmtes Medikament bekommen. Unterschiede können aber auch aus zufälligen Unterschieden (jeder Patient unterscheidet sich, unabhängig vom Medikament) kommen.} Um herauszufinden ob Effekt in den Daten systematische oder zufällige Ursachen haben, macht man in der schließenden Statistik typischerweise eine Reihe von Annahmen, die in einem statistischen Modell zusammengefasst werden. Man sagt das statistisches Modell beschreibt den "`datengenerierender Prozess"', indem es unsere Annahmen darüber zusammenfasst wie Variation und Muster in den Daten erstehen.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = datengenerierender Prozess}Auf Grundlage des Modells kann die schließende Statistik dann Wahrscheinlichkeitsaussagen für bestimmte Fragestellungen machen (z.B. wie wahrscheinlich wäre es die beobachteten Daten zu sehen, wenn man annimmt dass kein systematischer Effekt da ist). 
 	
-	\paragraph{Experimentelle Planung:} Experimentelle Planung\marginnote{Experimentelle Planung oder Analysenplanung = das Erhalten und Erzeugen von Daten} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden benötigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?"'
+	\paragraph{Prädiktive Statistik und Maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Modelle deren Zweck vor allem Vorhersagen sind} bezeichnet Methoden die nicht auf Erkenntnis von Zusammenhängen, sondern auf Vorhersagen optimiert sind. Diese Methoden sind besonders wichtig im kommerziell sehr wichtigen Feld der "Big Data". Big Data bezeichnet Methoden um Statistik auf sehr großen Datensätzen zu betreiben, wie  z.B. die Datensätze die von vielen Internetfirmen (Google, Amazon) gesammelt werden.\marginnote{Big Data = Methoden für große Datensätze, wie sie z.B. von vielen Internetfirmen (Google, Amazon) gesammelt werden} Viele Methoden der prädiktiven Statistik benutzen komplexe Algorithmen, die automatisch tausende von möglichen erklärenden Variable in einem Modell kombinieren. Diese Algorithmen machen oft hervorragende Vorhersagen, aber die Modell sind so komplex dass sich schwer verstehen lässt warum. Für wissenschaftliche Grundlagenforschung, in der man normalerweise an einem bestimmten Zusammenhang interessiert ist, werden daher eher schließende statistische Methoden verwendet. Firmen wie Amazon und Google konzentrieren sich jedoch eher auf prädiktive Methoden, da es hier darum geht aus großen Datenmengen möglichst genaue Vorhersagen zu machen, z.B. was Kunden interessiert, ohne dass das "`warum"' im Vordergrund steht. 
 	
+	\paragraph{Versuchsplanung:} Versuchsplanung oder experimentelles Design\marginnote{Versuchsplanung oder experimentelles Design = wie erzeugt man gute Daten?} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "`Welche Variablen sollten erfasst werden?"', "`Wie viele Replikate werden benötigt?"', "`Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?"'. Versuchsplanung ist offensichtlich von großer Wichtigkeit für die empirisch arbeitenden Wissenschaften (sowohl die Naturwissenschaften, als auch die empirischen Sozialwissenschaften). 
 	
-	\section{Die Umgebung R für statistische Berechnungen}
+	\section{Die R Umgebung für wissenschaftliches Rechnen}
 	
-	Die Zeiten als Statistik noch mit Stift, Papier und Taschenrechner durchgeführt wurde sind nun mehr oder weniger vorbei. Heutzutage werden statistische Analysen am Computer durchgeführt, wofür es eine Reihe von Software-Umgebungen gibt.
+	Die Zeiten als man statistische Analysen mit Papier und Bleistift, oder später mit einem Taschenrechner durchführen konnte sind vorbei. Heute werden statistische Analysen praktische ausschließlich am Computer durchgeführt. Hierfür gibt es eine Reihe von wichtigen Programmen, die alle verschieden Stärken und Schwächen haben \marginnote{Eine Aufstellung von verschiedenen Statistikprogrammen finden sie \href{hier}{https://www.inwt-statistics.de/blog-artikel-lesen/Statistik-Software-R_SAS_SPSS_STATA_im_Vergleich.html}}.
 	
-	In diesem Skript werden alle Beispiele mit Hilfe von R berechnet werden; wobei der Fokus jedoch nicht auf einer Einführung in R an sich liegen wird. Bei Bedarf führt  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{dieser Link} zu einer Einführung, inklusive Hilfestellungen für die Installation der Software.
+	In diesem Text weden alle Beispiele mit dem Statistikprogramm R berechnet. Die Vorteile von R sind:
+	
+		\begin{itemize}
+		\item Es ist kostenlos (open source)
+		\item Es ist eine Skriptsprache 
+		\item Im Bereich Biologie / Ökologie hat R mit Abstand den größten Funktionsumfang aller verfügbaren Programme
+		\item Außerdem ist es in diesem Bereiche das mit Abstand am weitesten verbreitete Programm
+	\end{itemize}
+	
+
+Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie es nicht schon kennen. Wir werden in diesem Text immer wieder Beispiele mit R sehen, und mehrere Appendices zeigen wie man die hier behandelten Inhalt in R berechnen würde. Trotzdem will dieser Text keine Einführung in die Spezifika der Sprache R geben. Hierzu gibt es schon viele andere Anleitungen. Ein Übersicht ist  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{hier} verfügbar, inklusive Hilfestellungen zur Installation von R und zusätzlicher Software wir RStudio.
 	
 	\begin{figure}[]
 		\begin{center}
 			\includegraphics[width = 10cm]{rst_interface.png}
-			\caption{Der RStudio Editor ist der wohl beliebteste Editor für R. R ist eine Script-basierende Sprache. Hier kommuniziert man nicht durch Klicken mit dem Computer, sondern gibt Anweisungen anhand von direkten Befehlen in der R Konsole, oder durch das vorhergehende Anlegen eines Text-Dokuments, welches dann die Befehle auswertet. Wenn man diese Herangehensweise nicht gewöhnt ist, kann es eine Weile dauern, bis man sich damit zurrecht findet. Wenn man sich jedoch damit angefreundet hat, wird man bald merken, wie komfortabel und vorteilhaft es ist, alle Schritte der Analyse in einem Textdokument aufgelistet wiederzufinden und somit alles zu jeder Zeit nachvollziehen zu können.}
-			\label{fig: Rstudio}
+			\caption{RStudio ist der wohl beliebteste Editor für R. R ist eine script-basierende Sprache. Das heißt man kommuniziert nicht über Mauseingaben mit dem Computer, sondern anhand von schriftlichen Befehlen in der R Konsole, bzw. über ein Textdokuments, welches dann an die R Konsole geschickt wird. Nach kurzer Eingewöhnungszeit merkt man, wie komfortabel und vorteilhaft diese Vorgehensweise ist - so sind alle Schritte der Analyse in einem Textdokument aufgelistet, und man kann leicht die komplette Analyse nachvollziehen, oder wiederholen wenn Änderungen gemacht werden müssen.}
+			\label{fig: Rstudio1}
 		\end{center}
 	\end{figure}
 	
+
+Der Rest dieser Einführung befasst sich mit den vier Grundthemen der Statistik, die in der Einführung genannt wurden: deskriptive Statistik, schließende Statistik, prädiktive Statistik und Versuchsplanung. Bevor wir uns diesen Themen widmen wollen wir uns aber erst noch einmal genauer mit dem befassen worum sich in der Statistik alles dreht: die Daten.
+	
+	\chapter{Datentypen, Stichprobe und Population, und der datengenerierende Prozess}
+	
+		\section{Darstellung und Datenklassen}
+	
+	Ein typisches Experiment oder eine typische Beobachtungsstudie (mehr zu dem Unterschied später) liefert wiederholte Beobachtungen mehrerer Variablen (beispielhaft: Temperatur, Niederschlag, Produktivität der Vegetation an verschiedenen Standorten). Man kann sich einen solchen Datensatz als eine Tabelle vorstellen, in der jede Variable eine Spalte einnimmt, und jede Zeile einer Beobachtung entspricht. Natürlich gibt es noch viele andere mögliche Datenstrukturen (z.B. hierarchische Beziehungen / Netzwerke), aber die Tabellenform ist mit Abstand das häufigste Ergebnis von einfachen Experimenten.
+	
+Üblicherweise wird eine wissenschaftliche Studie durchgeführt um eine bestimmte Frage zu untersuchen. Das heist es gibt eine Variable die uns besonders interessiert, und von der wir wissen wollen wie sie von anderen Variablen beeinflusst wird. \marginnote{Abhängige Variable = unser Fokus, wollen wiessen wie diese Variable von anderen Faktoren beeinflusst wird.}  Diese Variable wird als ``abhängige Variable'' bezeichnet (auch Antwort- oder Responsevariable), da wir wissen wollen, ob und wie sie von anderen Variablen abhängt. Anderen Variablen, die unsere Antwortvariable beeinflussen, nennt man "`erklärende Variablen"' (auch: Prädiktoren, Kovariaten oder unabhängige Variablen).\marginnote{Erklärende Variablen sind variable die potentiell einen Einfluss auf die abhängige Variable ausüben.} Ein Beispiel: in einer medizinischen Studie ist der Heilungserfolg typischerweise die abhängige Variable, während die Information ob ein Medikament gegeben wurde (Behandlung) oder nicht (Kontrolle) die erklärende Variable ist. 
+
+Normalerweise \marginnote{Die Methoden der multivariaten Statistik befassen sich mit Situationen, in denen wir mehrere Variablen als abhängig betrachten} sind wir daran interessiert, wie eine Variable von externen Bedingungen abhängt. Es gibt aber auch Fälle in denen man gerne die Abhängigkeit von mehreren Variablen mit sich selbst, oder externen Faktoren betrachten will. Ein Beispiel wäre wie sich Arteigenschaften (Gewicht, Physiologie, ...) mit der Umwelt verändern. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Wir werden solche Methoden nur am Rande erwähnen - weitere Informationen über multivariate Statistik ist \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{hier} verfügbar.
+
+Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden sich Variable außerdem in ihrem Typ. Eine numerische Variable (z.B. Gewicht) ist konzeptionell anders als eine Variable, die nur entweder rot, grün, oder blau wird. Der Fachbegriff in der Statistik für den Typ ist das Wort "`Skalenniveau"'.\marginnote{Skalenniveau = Variablentyp. Wichtige Typen: ungeordnte (nominal), geordnet (ordinal), numerisch (metrisch)} Man unterscheidet die folgenden Typen:
+	
+	\begin{itemize}
+	  \item Numerische (metrische) Variablen - metrische Variablen erkennt man daran dass sie sich wie Distanzen verhalten, z.B. können Sie in sinnvoller Weise addiert werden. Die meisten Messgrößen im Labor (Temperatur, Konzentration, Zeit, Längen etc. sind metrisch). Zwei für die Statistik wichtige Untertypen sind
+		\begin{itemize}
+  		\item Kontinuierliche metrische Variablen, z.B. Temperatur
+  		\item Ganzzahlig metrische Variablen. Hierzu zählt der wichtige Spezialfall der Zähldaten, z.B. 0,1,2,3, ...
+		\end{itemize}	  
+		\item Geordnete (ordinale) Variablen (klein, mittel, groß)
+		\item Ungeordnete (nominale) Variablen (z.B. rot, grün, blau). Ein Spezialfall sind die binären (dichotome) Variablen (z.B. verstorben / überlebt) die oft durch 0/1 codiert werden,
+	\end{itemize}
+	
+	Ordinale und nominal Variable werden manchmal auch als "kategorial" bezeichnet, weil sie sie nur eine feste Auswahl von Werten (Kategorien) annehmen. 
+	
+	Bei statistischen Auswertungen ist es äußerst wichtig sich klarzumachen, welches Skalenniveau die verschieden Variable haben. Wie wir später lernen werden, bestimmt das Skalenniveau welche Methoden der deskriptiven und schließenden Statistik angewandt werden können. Falls Sie ein Statistikprogramm (z.B. R) benutzen, wird dieses Programm typischerweise versuchen automatisch festzustellen, welches Skalenniveau vorliegt (wenn es eine Spalte mit "rot", "grün" gibt kann das offensichtlich nicht numerisch sein), und je nach Skalenniveau automatisch bestimmte Entscheidungen für Abbildungen und statistisch Verfahren treffen.\marginnote{Bei der Arbeit am Computer muss man immer prüfen, ob den Variablen das richtige Skalenniveau zugewiesen wurde.} In vielen Fällen ist es aber nicht möglich automatisch zu erkennen ob sie, z.B., eine Variable nominal oder ordinal behandeln wollen. Nach dem Einlesen der Daten in ein Statistikprogramm müssen Sie deshalb immer kontrollieren, ob das Skalenniveau jeder Variable korrekt kodiert ist. 
+	
+	Ein weitere Tip: die Erfahrung zeigt, dass viele Studenten dazu neigen, Variablen die eigentlich numerisch sind kategorial zu codieren. Als Beispiel: gemessen wird das Gewicht eines Tieres, aufgeschrieben als leicht, mittel und schwer.\marginnote{Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind!} Die Idee die ich oft als Erklärung höre ist dass die Messung ungenau war und die kategoriale Einteilung dem Rechnung tragen würde. Kurz gesagt: Das tut es ganz und gar nicht. Die kategoriale Einteilung erzeugt nur zusätzliche Probleme. Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind, egal wie groß der Messfehler ist!
+
+	\section{Stichprobe, Populationen und der datengenerierende Prozess}
+	
+	Nachdem 
+	
+	Der Grund warum wir überhaupt Statistik brauchen ist dass 
 	
 	
-	\chapter{Daten, Proben und Populationen}
 	
-	Die folgenden vier Kapitel sind den vier Typen der statistischen Analyse zugewiesen, die in der Einleitung bereits genannt wurden: deskriptive Statistik, Inferenzstatistik, prädiktive Statistik und Versuchsplanung. 
-	
-	\section{Stichproben, Populationen und der Vorgang der Datenerzeugung}
-	
-	Der eigentliche Grund der für statistische Berechnungen spricht, ist, dass die Daten, die wir erhalten, sehr zufällig erscheinen. Aber wie entsteht diese Zufälligkeit?
+	die Daten, die wir erhalten, sehr zufällig erscheinen. Aber wie entsteht diese Zufälligkeit?
 	
 	Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man hätte machen können. Eine Stichprobe ist die Beobachtung, die man tatsächlich gemacht hat.} man wäre in die durchschnittliche Wachstumsrate der Bäumen in Deutschland während zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle Bäume per Hand messen und wäre somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuführen. Um die durchschnittliche Rate ermitteln zu können, muss man nun eine Auswahl an Bäumen treffen und die Wachstumsrate aller dieser gewählten Bäume ermitteln. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "`Population"' und die Bezeichnung der ausgewählten gemessenen Bäume ist "`Stichprobe"'.
 	
@@ -163,32 +204,9 @@ Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Att
 	
 	\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verrät, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zufällig gewählten Stichprobe entsteht und dabei zusätzlich systematische und stochastische Prozesse mit einbezieht.}  Dafür bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenerhebung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausmaß, indem es all die anderen Vorgänge, die systematische und zufällige Muster im Datensatz entstehen lassen können, einschließt. In diesem Fall schlussfolgert man nicht die Umstände der Population aus der Stichprobe, sondern wir würden die Umstände des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schließen. 
 	
-	Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zustände (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich möchte man lediglich die Umstände der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im nächsten Abschnitt der Inferenzstatistik. Davor müssen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
+	Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zustände (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich möchte man lediglich die Umstände der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im nächsten Abschnitt der Schließende Statistik. Davor müssen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
 	
-	\section{Darstellung und Datenklassen}
-	
-	Ein typischer Datensatz beinhaltet meist mehrere Beobachtungen von verschiedensten Variablen (z.B. Temperatur, Niederschlag, Wachstum). Man kann sich dabei eine Tabelle vorstellen, in der die Spalten die Variablen bezeichnen und die Reihen die unterschiedlichen Beobachtungen. Natürlich gibt es auch andere Datenstrukturen, jedoch ist diese die wohl Häufigste.
-	
-	üblicherweise enthalten die Daten eine Variable auf der unser Fokus liegt, d.h. wir möchten herausfinden, wie sehr unsere Variable von den anderen Variablen beeinflusst wird. \marginnote{Die Response-Variable ist die Variable, für die wir herausfinden wollen, inwiefern sie von anderen Faktoren abhängt.}  Diese Variable wird als ``Response-Variable'' bezeichnet (manchmal auch abhängige Variable oder Ergebnisvariable), da wir wissen wollen, ob und wie diese untersuchte Variable variiert (Reaktion, Abhängigkeit) wenn sich etwas anderes verändert. Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, können unter anderem Umweltfaktoren (z.B. Temperatur) oder Behandlungen (befruchtet vs. unbefruchtet) sein. \marginnote{Einflussvariablen sind solche, die die Response-Variable beeinflussen.} Diese anderen Variablen, die unsere untersuchte Variable beeinflussen, nennt man "`Einflussvariablen"' (Synonyme hierfür wären erklärende Variablen, Kovariaten oder unabhängige Variablen). 
-	
-	In den \marginnote{Multivariate Statistik behandelt Response-Variablen mit mehreren Dimensionen, wie z.B. Artenzusammensetzungen} meisten Fällen ist unsere Response-Variable eine einzelne Variable (beispielsweise eine einfache Zahl oder ein kategorisches Ergebnis), worauf wir uns nun konzentrieren. Manchmal gibt es jedoch Fälle, bei denen eine Response mehr als nur eine Dimension einnimmt, oder wenn man an einer Veränderung von mehreren Variablen gleichzeitig interessiert ist. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Diese Methoden werden jedoch hier nicht weiter aufgeführt, können aber bei Bedarf unter diesem \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{Link} nachgelesen werden.
-	
-	Weiterhin ist zu beachten, dass man die Variablenart unterscheiden muss; unabhängig davon, ob wir von Response- oder Einflussvariablen sprechen. Man unterscheidet hier: \marginnote{Variablen können stetig, unstetig oder kategorisch sein. Kategorische Variablen können geordnet, ungeordnet oder binär sein.}
-	
-	\begin{itemize}
-		\item Stetig numerische Variablen (geordnet und stetig / real), z.B. Temperatur
-		\item Ganzzahlig numerische Variablen (geordnet, ganzzahlig). Hierzu zählt der wichtige Spezialfall der Zähldaten, z.B. 0,1,2,3, ...
-		\item Kategorische Variablen (z.B. eine feststehende Auswahlmöglichkeit wie beispielsweise rot, grün, blau), welche dann weiterhin unterteilt werden können in 
-		\begin{itemize}
-			\item Ungeordnete kategorische Variablen (nominal) wie beispielsweise rot, grün, blau
-			\item Binäre (dichotome) Variablen (verstorben / überlebt, 0/1)
-			\item Geordnete kategorische Variablen (klein, mittel, groß)
-		\end{itemize}
-	\end{itemize}
-	
-	Hier ist es äußerst wichtig die Variablen ihren entsprechendem "`Typ"' zuzuweisen.\marginnote{Man muss überprüfen, ob die Variablen zum richtigen Typ zugewiesen wurden, nachdem man sie in das Statistikprogramm eingegeben habt.} Und falls man eine Statistik-Software benutzt, muss man sicher stellen, dass der Typ auch korrekt erkannt wurde, nachdem die Daten eingegeben wurden, da viele Methoden die Variablen unterschiedlich behandeln, wenn sie numerischem oder kategorischem Typs sind.
-	
-	Aus Erfahrung weiß man, dass Anfänger eher dazu neigen, Variablen als kategorisch einzuordnen, obwohl diese eigentlich stetig wären, z.B. beim Einteilen von Körpergewicht von Tieren in leicht, mittel und schwer.\marginnote{Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden können!} Eine Rechtfertigung dafür ist meist, dass es ein ungewisses Messen vermeidet. Kurz gesagt: Das tut es ganz und gar nicht.Es ruft nur zusätzliche Probleme hervor. Verwende nie kategorische Variablen für Dinge, die ebenso als numerisch eingestuft werden können!
+
 	
 	
 	\vspace{1cm}
@@ -233,7 +251,7 @@ Erstellt 2014. Updated 2015. Diese Arbeit fällt unter die 'Creative Commons Att
 \begin{Schunk}
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} \end{Schunk}
-\caption{Eine Verteilung von beobachteten zunehmenden Durchmessergrößen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datenerzeugender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
+\caption{Eine Verteilung von beobachteten zunehmenden Durchmessergrößen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datengenerierender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
 \label{fig: data distribution}
 \end{center}
 \end{figure}
@@ -392,18 +410,18 @@ Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier ni
 \end{fullwidth} 
 
 
-\chapter{Inferenzstatistik}
+\chapter{Schließende Statistik}
 
-\marginnote{Inferenzstatistik ist das Ziehen von Schlüssen aus Beobachtungen durch statistische Methoden} 
+\marginnote{Schließende Statistik ist das Ziehen von Schlüssen aus Beobachtungen durch statistische Methoden} 
 
-Inferenzstatistik behandelt das Schlussfolgern, z.B. das Rückschlüsse ziehen aus Beobachtungen. Ein Beispiel einer solchen Folgerung wäre beispielsweise die Beobachtung, dass 15 von 20 Testobjekte, die eine bestimmte Medikation erhielten (Behandlungsgruppe), eine Verbesserung ihres Zustandes zeigten --> Statistische Folge: Wir können davon ausgehen, dass es eine Wahrscheinlichkeit von X gibt, dass die Medikation einen positiven Effekt hat.
+Schließende Statistik behandelt das Schlussfolgern, z.B. das Rückschlüsse ziehen aus Beobachtungen. Ein Beispiel einer solchen Folgerung wäre beispielsweise die Beobachtung, dass 15 von 20 Testobjekte, die eine bestimmte Medikation erhielten (Behandlungsgruppe), eine Verbesserung ihres Zustandes zeigten --> Statistische Folge: Wir können davon ausgehen, dass es eine Wahrscheinlichkeit von X gibt, dass die Medikation einen positiven Effekt hat.
 
 
 \section{Datenerzeugendes Modell}
 
-\marginnote{Inferenzstatistik ist nicht immer, aber meist mit dem Prinzip des datenerzeugenden Modells verknüpft}
+\marginnote{Schließende Statistik ist nicht immer, aber meist mit dem Prinzip des datenerzeugenden Modells verknüpft}
 
-Eine zentrale Idee von vielen Methoden der Inferenzstatistik ist das Prinzip des datenerzeugenden Modells. Kurz gesagt beinhaltet unser datenerzeugendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abhängig unserer festgelegten Annahme die unbekannten Größen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
+Eine zentrale Idee von vielen Methoden der Schließende Statistik ist das Prinzip des datenerzeugenden Modells. Kurz gesagt beinhaltet unser datenerzeugendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abhängig unserer festgelegten Annahme die unbekannten Größen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
 
 \marginnote{In der Statistik verwendet man oft das Wort "`behandelt"' um Veränderungen in experimentellen Einheiten zu beschreiben. Hier wären die zwei Musikarten "`Behandlung"' und das "`Nichts-tun"' die Kontrolle} 
 
@@ -820,7 +838,7 @@ Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obw
 Ein Beispiel hierfür zeigt einige Daten über die Fütterung von Nesthockern in Bezug auf ihre Attraktivität:
 \begin{Schunk}
 \begin{Sinput}
-schnaepper <- read.csv(ßchnaepper.txt", sep="")
+schnaepper <- read.csv("schnaepper.txt", sep="")
 fm <- glm(stuecke ~ attrakt, family=poisson, data = schnaepper)
 summary(fm)
 \end{Sinput}
@@ -873,11 +891,11 @@ Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsm
 \end{fullwidth}
 
 
-\chapter{prädiktive Statistik - maschinelles Lernen}
+\chapter{Prädiktive Statistik und Maschinelles Lernen}
 
 Eine dritte Klasse statistischer Verfahren, die in den letzten Jahren sehr wichtig geworden sind, sind prädiktive Verfahren, die oft maschinelle Lernalgorithmen genannt werden. Das grundlegende Ziel dieser Methoden besteht darin, Vorhersagen aus einem gegebenen Datensatz mit dem geringstmöglichen Fehler treffen zu können. Dabei verwenden sie typischerweise relativ komplizierte, oft nicht parametrische Verfahren, die typischerweise keine Berechnung von Inferenz-Ergebnissen, wie Maximum-Likelihood-Schätzwert oder p-Werten, erlauben.
 
-Es besteht eine beträchtliche Spannung zwischen dem eher klassischen Feld der Inferenzstatistik und dem moderneren Bereich des maschinellen Lernens. Für klassische, inferentielle Statistiker haben maschinelle Lernmethoden die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben. Ein Statistiker, der sich auf das maschinelle Lernen konzentriert, würde darauf antworten, dass es in vielen angewandten Problemen nichts zu lernen gibt\footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Zuordnung funktionsreicher Satellitendaten zu Bodensignalen oder Sprach/Gesichtserkennung.}. Maschinen-lernende Experten sind derzeit bei Technologie-Unternehmen wie Google, Facebook etc sehr begehrt. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. Die Unterscheidung zwischen den Zielen der Inferenzstatistik und der Vorhersagestatistik sowie die Spannungen zwischen diesen Bereichen sind in der Zusammenfassung des äußerst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001} nachzulesen:
+Es besteht eine beträchtliche Spannung zwischen dem eher klassischen Feld der Schließende Statistik und dem moderneren Bereich des maschinellen Lernens. Für klassische, inferentielle Statistiker haben maschinelle Lernmethoden die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben. Ein Statistiker, der sich auf das maschinelle Lernen konzentriert, würde darauf antworten, dass es in vielen angewandten Problemen nichts zu lernen gibt\footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Zuordnung funktionsreicher Satellitendaten zu Bodensignalen oder Sprach/Gesichtserkennung.}. Maschinen-lernende Experten sind derzeit bei Technologie-Unternehmen wie Google, Facebook etc sehr begehrt. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. Die Unterscheidung zwischen den Zielen der Schließende Statistik und der Vorhersagestatistik sowie die Spannungen zwischen diesen Bereichen sind in der Zusammenfassung des äußerst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001} nachzulesen:
 
 \begin{quote}
 Es gibt zwei Kulturen in der Verwendung der statistischen Modellierung, um Schlussfolgerungen aus Daten zu erreichen. Man geht davon aus, dass die Daten durch ein gegebenes stochastisches Datenmodell erzeugt werden. Die andere verwendet algorithmische Modelle und behandelt den Datenmechanismus als unbekannt. Die statistische Gemeinschaft hat sich der nahezu ausschließlichen Nutzung von Datenmodellen verschrieben. Dieses Engagement hat zu irrelevanten Theorien, fragwürdigen Schlussfolgerungen geführt und hat die Statistiker daran gehindert, an einer Vielzahl interessanter aktueller Probleme zu arbeiten. Die algorithmische Modellierung, sowohl in Theorie und Praxis, hat sich schnell in Bereichen außerhalb der Statistik entwickelt. Es kann sowohl auf großen komplexen Datensätzen als auch als genauere und lehrreichere Alternative zur Datenmodellierung auf kleineren Datensätzen verwendet werden. Wenn es unser Ziel ist Daten zu nutzen, um Probleme zu lösen, dann müssen wir uns von der exklusiven Abhängigkeit von Datenmodellen entfernen und ein breiteres Spektrum an Tools annehmen.
@@ -885,6 +903,9 @@ Es gibt zwei Kulturen in der Verwendung der statistischen Modellierung, um Schlu
 
 
 Ich habe dieses kurze Kapitel wegen der Bedeutung der prädiktiven Methoden in der modernen Statistik aufgenommen. Eine detaillierte Erläuterung der Methoden des maschinellen Lernens ist jedoch jenseits dieser Einführung. Bei bestehendem Interesse mehr über prädiktive Methoden zu lernen, würde ich empfehlen mit dem Lehrbuch von \citet{James-IntroductiontoStatistical-2013} zu beginnen, das ich auch am Ende dieses einführenden Skripts für die weitere Lesung empfehle.
+
+
+\href{kaggle.com}{https://www.kaggle.com/}
 
 \chapter{Versuchsplanung}\label{cha: design of experiments}
 
