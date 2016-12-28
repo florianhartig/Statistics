@@ -1249,19 +1249,13 @@ You see, we can select any combination of elements we want very conveniently fro
 1:10
 @
 
-gives us the values of 1 to 10
+gives us the values of 1 to 10, and the c() function combines values in one vector (it is necessary to have the values in one vector for slicing)
 
 <<eval=F>>=
-c(1,5,6)
+c(1:5,7)
 @
 
-the c() function combines values in one vector (it is necessary to have the values in one vector for slicing)
-
-<<eval=F>>=
-c(1,5,6)
-@
-
-But we can also create selections with logical operators
+We can also create selections with logical operators
 
 <<eval=F>>=
 airquality$Temp > 80
@@ -1346,7 +1340,7 @@ hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "Ozone ")
 plot(airquality)
 @
 
-pairs(airquality)
+The last plot uses the fact that plot() on a data.frame object calls the pairs() function, so actually what is done is pairs(airquality).
 
 
 Simple Bar Plot 
