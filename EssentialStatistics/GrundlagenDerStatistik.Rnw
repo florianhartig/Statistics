@@ -238,15 +238,31 @@ Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden 
 	
 	Eine übliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 Bäume gemessen und anschließend erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
 
+
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo=FALSE>>=
+seed = (123)
+parameter = seq(-2,8,len=500)
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} \end{Schunk}
+mix <- rbinom(2000,1,0.5)
+samples = mix * rnorm(2000, mean = 3) + (1-mix)*rnorm(2000, mean = 0.5, sd=0.5)
+
+distr = (dnorm(parameter, mean = 3) + dnorm(parameter, mean = 0.5, sd=0.5)) /2
+
+plot(parameter,distr, type = "l", ylab = "Frequency", xlab = "Diameter growth [cm]", main = "Tree diameter growth data", col = "red", lwd = 2, ylim = c(0,0.5), lty = 2)
+hist(samples, breaks = 40, add = T,freq = F, col = "#99999930")
+# polygon(parameter, distr, border=NA, col="darksalmon")
+
+MLEEstimate <- parameter[which.max(distr)]
+# abline(v=MLEEstimate, col = "red")
+#text(3.1,0.4, "Mode", col = "red", cex = 1.5)
+@
 \caption{Eine Verteilung von beobachteten zunehmenden Durchmessergrößen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datengenerierender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
 \label{fig: data distribution}
 \end{center}
 \end{figure}
+
 
 Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften wären beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der höchsten Beobachtungsdichte). Außerdem  gibt es zwei weitere Kennzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
 
@@ -522,8 +538,7 @@ boxplot(weight ~ group, data = PlantGrowth, main = "Plant Growth",
         notch = F, names = c("control", "classical music", "heavy metal"))
 
 @
-\caption{Wachstumsmessungen unter verschiedenen Behandlungsweisen}
-\label{fig: plant growth music}
+\caption{Wachstumsmessungen unter verschiedenen Behandlungsweisen}\label{fig: plant growth music}
 \end{center}
 \end{figure}
 
@@ -714,7 +729,7 @@ summary(fit)
 plot(airquality$Temp ~ airquality$Ozone, ylab = "Temperature", xlab = "Ozone")
 abline(fit)
 @
-\caption{{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
+\caption{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
 \label{fig: LR}
 \end{center}
 \end{figure}
@@ -1514,8 +1529,6 @@ Werfen wir einen Blick auf einige Beispiele, mit den Daten von Montag. Wir sehen
 plot(airquality$Temp~airquality$Ozone)
 @
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
-
 Mit dem Befehl lm() können wir R versuchen lassen, eine bestmöglich passende Gerade zwischen den beiden Variablen zu finden.
 
 <<>>=
@@ -1529,9 +1542,6 @@ Lassen Sie uns das Ergebnis zuerst visuell betrachten
 plot(airquality$Ozone, airquality$Temp)
 abline(fit, col = "blue")
 @
-
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} \end{Schunk}
 
 Hier ist die Ausgabe im Detail
 
@@ -1551,8 +1561,6 @@ Mit plot(fit) erhalten wir die Residuen (die Abweichung von der Geraden). Wie be
 par(mfrow=c(2,2))
 plot(fit)
 @
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
 
 Hier sind die Residuen nicht wirklich homogen um den vorhergesagten Wert gestreut, was darauf hindeutet, dass das Modell nicht sehr gut passt. Dies hätte man schon erahnen können, weil die Korrelation nicht sehr linear aussieht. Wir können einen quadratischen Term hinzufügen durch
 
@@ -1730,8 +1738,6 @@ attach(cfc)
 plot(stuecke ~ attrakt)
 @
 
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-72-1} \end{Schunk}
 
 So wird der Poisson angegeben
 
