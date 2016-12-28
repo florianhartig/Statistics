@@ -125,7 +125,7 @@ Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Upda
 	
 	\paragraph{Deskriptive Statistik:} Die Deskriptive Statistik\marginnote{Deskriptive Statistik = Abbildungen, Visualisierung, Kennzahlen der Statistik} beinhaltet beschreibende Analysen (Kennzahlen), wie beispielsweise Mittel- oder Medianwert, Korrelation, oder Assoziation, aber auch die Beschreibung von Daten durch visuelle Methoden (Abbildungen, interaktive Visualisierung).
 	
-	\paragraph{Schließende Statistik:} Die schließende Statistik\marginnote{Schließende Statistik = Parameterschätzer, Hypothesentests, p-Werte, Modellvergleiche} (auch: induktive oder inferentielle Statistik) befasst sich damit, wie man aus Beobachtungen allgemeine Schlussfolgerungen ziehen kann. Das Problem hierbei ist, dass Beobachtungen immer ein gewisses Maß an zufälligen "Rauschen" aufweisen, ohne dass dies notwendigerweise auf einen systematischen Effekt zurückzuführen ist.\marginnote{Systematischer Effekt ist z.B. die Tatsache dass Patienten schneller heilen wenn Sie ein bestimmtes Medikament bekommen. Unterschiede können aber auch aus zufälligen Unterschieden (jeder Patient unterscheidet sich, unabhängig vom Medikament) kommen.} Um herauszufinden ob Effekt in den Daten systematische oder zufällige Ursachen haben, macht man in der schließenden Statistik typischerweise eine Reihe von Annahmen, die in einem statistischen Modell zusammengefasst werden. Man sagt das statistisches Modell beschreibt den "`datengenerierender Prozess"', indem es unsere Annahmen darüber zusammenfasst wie Variation und Muster in den Daten erstehen.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = datengenerierender Prozess}Auf Grundlage des Modells kann die schließende Statistik dann Wahrscheinlichkeitsaussagen für bestimmte Fragestellungen machen (z.B. wie wahrscheinlich wäre es die beobachteten Daten zu sehen, wenn man annimmt dass kein systematischer Effekt da ist). 
+	\paragraph{Schließende Statistik:} Die schließende Statistik\marginnote{Schließende Statistik = Parameterschätzer, Hypothesentests, p-Werte, Modellvergleiche} (auch: induktive oder inferentielle Statistik) befasst sich damit, wie man aus Beobachtungen allgemeine Schlussfolgerungen ziehen kann. Das Problem hierbei ist, dass Beobachtungen immer ein gewisses Maß an zufälligen "Rauschen" aufweisen, ohne dass dies notwendigerweise auf einen systematischen Effekt zurückzuführen ist.\marginnote{Systematischer Effekt ist z.B. die Tatsache dass Patienten schneller heilen wenn Sie ein bestimmtes Medikament bekommen. Unterschiede können aber auch aus zufälligen Unterschieden (jeder Patient unterscheidet sich, unabhängig vom Medikament) kommen.} Um herauszufinden ob Effekt in den Daten systematische oder zufällige Ursachen haben, macht man in der schließenden Statistik typischerweise eine Reihe von Annahmen, die in einem statistischen Modell zusammengefasst werden. Man sagt das statistisches Modell beschreibt den "`datengenerierenden Prozess"', indem es unsere Annahmen darüber zusammenfasst wie Variation und Muster in den Daten erstehen.\marginnote{Ein statistisches Modell beschreibt, wie Daten erstellt werden = datengenerierender Prozess} Auf Grundlage des Modells kann die schließende Statistik dann Wahrscheinlichkeitsaussagen für bestimmte Fragestellungen machen (z.B. wie wahrscheinlich wäre es die beobachteten Daten zu sehen, wenn man annimmt dass kein systematischer Effekt da ist). 
 	
 	\paragraph{Prädiktive Statistik und Maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Modelle deren Zweck vor allem Vorhersagen sind} bezeichnet Methoden die nicht auf Erkenntnis von Zusammenhängen, sondern auf Vorhersagen optimiert sind. Diese Methoden sind besonders wichtig im kommerziell sehr wichtigen Feld der "Big Data". Big Data bezeichnet Methoden um Statistik auf sehr großen Datensätzen zu betreiben, wie  z.B. die Datensätze die von vielen Internetfirmen (Google, Amazon) gesammelt werden.\marginnote{Big Data = Methoden für große Datensätze, wie sie z.B. von vielen Internetfirmen (Google, Amazon) gesammelt werden} Viele Methoden der prädiktiven Statistik benutzen komplexe Algorithmen, die automatisch tausende von möglichen erklärenden Variable in einem Modell kombinieren. Diese Algorithmen machen oft hervorragende Vorhersagen, aber die Modell sind so komplex dass sich schwer verstehen lässt warum. Für wissenschaftliche Grundlagenforschung, in der man normalerweise an einem bestimmten Zusammenhang interessiert ist, werden daher eher schließende statistische Methoden verwendet. Firmen wie Amazon und Google konzentrieren sich jedoch eher auf prädiktive Methoden, da es hier darum geht aus großen Datenmengen möglichst genaue Vorhersagen zu machen, z.B. was Kunden interessiert, ohne dass das "`warum"' im Vordergrund steht. 
 	
@@ -133,9 +133,9 @@ Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Upda
 	
 	\section{Die R Umgebung für wissenschaftliches Rechnen}
 	
-	Die Zeiten als man statistische Analysen mit Papier und Bleistift, oder später mit einem Taschenrechner durchführen konnte sind vorbei. Heute werden statistische Analysen praktische ausschließlich am Computer durchgeführt. Hierfür gibt es eine Reihe von wichtigen Programmen, die alle verschieden Stärken und Schwächen haben \marginnote{Eine Aufstellung von verschiedenen Statistikprogrammen finden sie \href{hier}{https://www.inwt-statistics.de/blog-artikel-lesen/Statistik-Software-R_SAS_SPSS_STATA_im_Vergleich.html}}.
+	Die Zeiten als man statistische Analysen mit Papier und Bleistift, oder später mit einem Taschenrechner durchführen konnte sind vorbei. Heute werden statistische Analysen praktische ausschließlich am Computer durchgeführt. Hierfür gibt es eine Reihe von wichtigen Programmen, die alle verschieden Stärken und Schwächen haben \marginnote{Eine Aufstellung von verschiedenen Statistikprogrammen finden sie \href{https://www.inwt-statistics.de/blog-artikel-lesen/Statistik-Software-R_SAS_SPSS_STATA_im_Vergleich.html}{hier}}.
 	
-	In diesem Text weden alle Beispiele mit dem Statistikprogramm R berechnet. Die Vorteile von R sind:
+	In diesem Text werden alle Beispiele mit dem Statistikprogramm R berechnet. Die Vorteile von R sind:
 	
 		\begin{itemize}
 		\item Es ist kostenlos (open source)
@@ -145,7 +145,7 @@ Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Upda
 	\end{itemize}
 	
 
-Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie es nicht schon kennen. Wir werden in diesem Text immer wieder Beispiele mit R sehen, und mehrere Appendices zeigen wie man die hier behandelten Inhalt in R berechnen würde. Trotzdem will dieser Text keine Einführung in die Spezifika der Sprache R geben. Hierzu gibt es schon viele andere Anleitungen. Ein Übersicht ist  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{hier} verfügbar, inklusive Hilfestellungen zur Installation von R und zusätzlicher Software wir RStudio.
+Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie es nicht schon kennen. Wir werden in diesem Text immer wieder Beispiele mit R sehen, und mehrere Appendices am Ende zeigen, wie man die hier behandelten Inhalt in R berechnen würde. Trotzdem will dieser Text keine Einführung in die Spezifika der Sprache R geben. Hierzu gibt es schon viele andere Anleitungen. Ein Übersicht ist  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{hier} verfügbar, inklusive Hilfestellungen zur Installation von R und zusätzlicher Software wir RStudio.
 	
 	\begin{figure}[]
 		\begin{center}
@@ -158,17 +158,17 @@ Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie e
 
 Der Rest dieser Einführung befasst sich mit den vier Grundthemen der Statistik, die in der Einführung genannt wurden: deskriptive Statistik, schließende Statistik, prädiktive Statistik und Versuchsplanung. Bevor wir uns diesen Themen widmen wollen wir uns aber erst noch einmal genauer mit dem befassen worum sich in der Statistik alles dreht: die Daten.
 	
-	\chapter{Datentypen, Stichprobe und Population, und der datengenerierende Prozess}
+	\chapter{Daten, Zufall, und der datengenerierende Prozess}
 	
-		\section{Darstellung und Datenklassen}
+		\section{Die Daten: Darstellung und Skalenniveaus}
 	
 	Ein typisches Experiment oder eine typische Beobachtungsstudie (mehr zu dem Unterschied später) liefert wiederholte Beobachtungen mehrerer Variablen (beispielhaft: Temperatur, Niederschlag, Produktivität der Vegetation an verschiedenen Standorten). Man kann sich einen solchen Datensatz als eine Tabelle vorstellen, in der jede Variable eine Spalte einnimmt, und jede Zeile einer Beobachtung entspricht. Natürlich gibt es noch viele andere mögliche Datenstrukturen (z.B. hierarchische Beziehungen / Netzwerke), aber die Tabellenform ist mit Abstand das häufigste Ergebnis von einfachen Experimenten.
 	
-Üblicherweise wird eine wissenschaftliche Studie durchgeführt um eine bestimmte Frage zu untersuchen. Das heist es gibt eine Variable die uns besonders interessiert, und von der wir wissen wollen wie sie von anderen Variablen beeinflusst wird. \marginnote{Abhängige Variable = unser Fokus, wollen wiessen wie diese Variable von anderen Faktoren beeinflusst wird.}  Diese Variable wird als ``abhängige Variable'' bezeichnet (auch Antwort- oder Responsevariable), da wir wissen wollen, ob und wie sie von anderen Variablen abhängt. Anderen Variablen, die unsere Antwortvariable beeinflussen, nennt man "`erklärende Variablen"' (auch: Prädiktoren, Kovariaten oder unabhängige Variablen).\marginnote{Erklärende Variablen sind variable die potentiell einen Einfluss auf die abhängige Variable ausüben.} Ein Beispiel: in einer medizinischen Studie ist der Heilungserfolg typischerweise die abhängige Variable, während die Information ob ein Medikament gegeben wurde (Behandlung) oder nicht (Kontrolle) die erklärende Variable ist. 
+Üblicherweise wird eine wissenschaftliche Studie durchgeführt um eine bestimmte Frage zu untersuchen. Das heißt es gibt eine Variable die uns besonders interessiert, und von der wir wissen wollen wie sie von anderen Variablen beeinflusst wird. \marginnote{Abhängige Variable = unser Fokus, Frage ist wie diese Variable von anderen Faktoren beeinflusst wird.}  Diese Variable wird als ``abhängige Variable'' bezeichnet (auch Antwort- oder Responsevariable), da wir wissen wollen, ob und wie sie von anderen Variablen abhängt. Anderen Variablen, die unsere Antwortvariable beeinflussen, nennt man "`erklärende Variablen"' (auch: Prädiktoren, Kovariaten oder unabhängige Variablen).\marginnote{Erklärende Variablen sind variable die potentiell einen Einfluss auf die abhängige Variable ausüben.} Ein Beispiel: in einer medizinischen Studie ist der Heilungserfolg typischerweise die abhängige Variable, während die Information ob ein Medikament gegeben wurde (Behandlung) oder nicht (Kontrolle) die erklärende Variable ist. 
 
 Normalerweise \marginnote{Die Methoden der multivariaten Statistik befassen sich mit Situationen, in denen wir mehrere Variablen als abhängig betrachten} sind wir daran interessiert, wie eine Variable von externen Bedingungen abhängt. Es gibt aber auch Fälle in denen man gerne die Abhängigkeit von mehreren Variablen mit sich selbst, oder externen Faktoren betrachten will. Ein Beispiel wäre wie sich Arteigenschaften (Gewicht, Physiologie, ...) mit der Umwelt verändern. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Wir werden solche Methoden nur am Rande erwähnen - weitere Informationen über multivariate Statistik ist \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{hier} verfügbar.
 
-Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden sich Variable außerdem in ihrem Typ. Eine numerische Variable (z.B. Gewicht) ist konzeptionell anders als eine Variable, die nur entweder rot, grün, oder blau wird. Der Fachbegriff in der Statistik für den Typ ist das Wort "`Skalenniveau"'.\marginnote{Skalenniveau = Variablentyp. Wichtige Typen: ungeordnte (nominal), geordnet (ordinal), numerisch (metrisch)} Man unterscheidet die folgenden Typen:
+Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden sich Variable außerdem in ihrem Typ. Eine numerische Variable (z.B. Gewicht) ist konzeptionell anders als eine Variable, die nur entweder rot, grün, oder blau wird. Der Fachbegriff in der Statistik für den Typ ist das Wort "`Skalenniveau"'.\marginnote{Skalenniveau = Variablentyp. Wichtige Typen: ungeordnet (nominal), geordnet (ordinal), numerisch (metrisch)} Man unterscheidet die folgenden Typen:
 	
 	\begin{itemize}
 	  \item Numerische (metrische) Variablen - metrische Variablen erkennt man daran dass sie sich wie Distanzen verhalten, z.B. können Sie in sinnvoller Weise addiert werden. Die meisten Messgrößen im Labor (Temperatur, Konzentration, Zeit, Längen etc. sind metrisch). Zwei für die Statistik wichtige Untertypen sind
@@ -186,61 +186,53 @@ Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden 
 	
 	Ein weitere Tip: die Erfahrung zeigt, dass viele Studenten dazu neigen, Variablen die eigentlich numerisch sind kategorial zu codieren. Als Beispiel: gemessen wird das Gewicht eines Tieres, aufgeschrieben als leicht, mittel und schwer.\marginnote{Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind!} Die Idee die ich oft als Erklärung höre ist dass die Messung ungenau war und die kategoriale Einteilung dem Rechnung tragen würde. Kurz gesagt: Das tut es ganz und gar nicht. Die kategoriale Einteilung erzeugt nur zusätzliche Probleme. Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind, egal wie groß der Messfehler ist!
 
-	\section{Stichprobe, Populationen und der datengenerierende Prozess}
+	\section{Der Zufall: Stichprobe, Populationen und der datengenerierende Prozess}
 	
-	Nachdem 
+	Daten sind der eine Grundpfeiler der Statistik. Der andere ist der Zufall.\marginnote{Daten entstehen aus einer Mischung von systematischen und zufälligen Prozessen.} Die Idee ist dass es systematische Beziehungen in und zwischen Variablen in den Daten gibt, über die wir gerne etwas lernen würden. Diese Beziehungen sind aber von zufälliger Variabilität in den beobachteten Variablen überdeckt. Um die systematischen von den zufälligen Prozessen zu trennen brauchen wir die Methoden der Statistik, insbesondere der schließenden Statistik. Mehr dazu später. Jetzt wollen wir uns zuerst mit der Frage beschäftigen: wie entsteht überhaupt der Zufall in den Daten?
 	
-	Der Grund warum wir überhaupt Statistik brauchen ist dass 
+	Stellen Sie sich vor,\marginnote{Die Population ist die Menge aller Beobachtungen, die man machen können. Die Stichprobe sind die Beobachtungen, die tatsächlich gemacht wurden.} dass wir gerne wissen würden wie schnell ein Baum in Deutschland im Durchschnitt wächst. Um diese Frage so exakt wie möglich zu beantworten würde man idealerweise alle Bäume in Deutschland wiederholt messen. Dies ist aber offensichtlich unpraktikabel. Also misst man nur eine kleine Menge von normalerweise zufällig ausgewählten Bäumen, und hofft dass die Eigenschaften dieser Bäume ähnlich (=repräsentativ) für die Eigenschaften aller deutschen Bäume sind. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "`Population"' und die Bezeichnung der ausgewählten gemessenen Bäume ist die "`Stichprobe"'.
+		
+	Ich hoffe es ist einsichtig, dass sich die Stichprobe\marginnote{Stichproben erzeugt Zufälligkeit.} bei repräsentativer Auswahl (mehr dazu im Kapitel zur Versuchsplanung) ähnlich verhält wie die ganze Population. Das heißt wenn wir statistische Berechnungen auf der Stichprobe ausführen können wir erwarten, dass die resultierenden Werte der Population ähnlich. Die Vorstellung ist dass die Werte der Stichproben um den wahren Wert der Population schwanken. Um ein Beispiel zu geben kehren wir zu den Bäumen zurück: aus logistischen Gründen können wir jedes Jahr nur eine Stichprobe von 1000 Bäumen untersuchen. Wenn wir die Wachstumsrate dieser 1000 Bäume berechnen wird sie ähnlich, aber nicht gleich der Wachstumsrate der Population aller Bäume in Deutschland sein, und wenn wir das jedes Jahr wiederholen wird der Wert der Stichprobe in einem Jahr über, und in einem anderen Jahr unter der Rate der ganzen Population sein. 
+	
+	Der Prozess der\marginnote{Die Stichprobe ist nur einer der vielen Prozesse die Zufälligkeit erzeugen.} Stichprobe ist eine Erklärung wie der Zufall in unsere Daten entsteht. Viele klassische statistische Lehrbücher konzentrieren sich ausschließlich auf diesen Prozess, wodurch sich das Problem der Statistik auf das Problem reduziert die Eigenschaften der Population aus den Eigenschaften der Stichprobe zu schätzen. Leider stößt diese relativ einfache Denkmodell bei vielen komplexeren statistischen Problem an seine Grenzen. Stellen Sie sich z.B. vor Sie erhalten Daten die durch den folgenden Prozess erstellt wurden: eine Person geht zu zufällig ausgewählten Punkten in einem Wald und ermittelt die Strahlung die von der Vegetation absorbiert wird. Beim Messprozess entsteht Variation durch die innerhalb von Minuten wechselnde Bewölkung, der Fehler des Messinstruments, und dadurch dass die messende Person manchmal Ablesefehler macht. Man kann sich die Erzeugung dieser Daten natürlich trotzdem als das Ziehen aus einer abstrakten Population vorstellen, aber meiner Erfahrung nach führt diese Idealisierung oft zu Verwirrung. 
 	
 	
+	Eine moderneres und allgemeineres Gedankenmodell für die Entstehung von Daten ist der "`datengenerierende Prozess"'.\marginnote{Der datengenerierende Prozess beschreibt, wie Zufälligkeit in einer Stichprobe entsteht.} Der datengenerierende Prozess beschreibt, wie die Beobachtungen aus einer Reihe systematischer oder zufälliger Prozesse entstehen. Dies beinhaltet den Prozess der Stichprobenerhebung, aber auch die vielen anderen Vorgänge, die zu systematische und zufällige Mustern in den Daten führen. Mit dieser Vorstellung können wir jetzt sagen: das Ziel der Statistik ist es, aus den Daten auf die Eigenschaften des datengenerierenden Prozesses zu schließen. 
 	
-	die Daten, die wir erhalten, sehr zufällig erscheinen. Aber wie entsteht diese Zufälligkeit?
-	
-	Man stelle sich vor, \marginnote{Eine Population ist die Zusammenstellung aller Beobachtungen, die man hätte machen können. Eine Stichprobe ist die Beobachtung, die man tatsächlich gemacht hat.} man wäre in die durchschnittliche Wachstumsrate der Bäumen in Deutschland während zwei aufeinanderfolgenden Jahren interessiert. Idealerweise sollte man alle Bäume per Hand messen und wäre somit ohne statistische Berechnungen ausgekommen. In der Praxis ist man jedoch kaum in der Lage dies durchzuführen. Um die durchschnittliche Rate ermitteln zu können, muss man nun eine Auswahl an Bäumen treffen und die Wachstumsrate aller dieser gewählten Bäume ermitteln. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "`Population"' und die Bezeichnung der ausgewählten gemessenen Bäume ist "`Stichprobe"'.
-	
-	Die \marginnote{Das Wählen von Stichproben erzeugt Zufälligkeit.} Population an sich ist definiert und ändert sich nicht, jedoch könnte man bei jeder Untersuchung einer zufällig gewählten Stichprobe aus der Population andere Teilbereiche mit minimal unterschiedlichen Eigenschaften erhalten. Ein konkretes Beispiel: Man habe nur die Möglichkeiten um 1000 Bäume in Deutschland zu untersuchen. Man wird bei jeder zufällig gewählten Stichprobe mit 1000 Bäumen aus der gesamten Population unterschiedliche durchschnittliche Wachstumsraten erhalten.
-	
-	Der\marginnote{Jedoch kommt nicht jede Zufälligkeit durch das Wählen von Stichproben aus einer Population.} Vorgang des Stichproben-Festlegens aus einer Population erklärt, wie die Zufälligkeit in unseren Daten entsteht. Jedoch gibt es ein kleines Problem bei dieser überlegung, da dies nicht immer zutrifft, wenn man beispielsweise komplexere Zufallsprozesse betrachtet. Man gehe exemplarisch davon aus, dass man Daten z.B. durch eine Person erhält, welche zu zufällig ausgewählten Punkten geht und daraus die Ausbreitung ermitteln möchte (welche innerhalb von Minuten durch wechselnde Bewölkung variieren kann). Man verwendet dazu ein Messgerät, das mit zufälliger Abweichung misst. Macht es da wirklich Sinn auf Daten zu vertrauen, die durch das Stichproben-Wählen aus einer Gesamtpopulation mit verschiedenst möglichen Beobachtungen entstanden sind?
-	
-	\marginnote{Eine modernere und allgemeinere Idee, welche das potentielle Entstehen von Daten beschreibt, ist das Konzept des "`datenerzeugenden Vorgangs"', wobei der Name bereits verrät, was dahinter steckt: der datenerzeugende Vorgangs beschreibt, wie die Beobachtung einer zufällig gewählten Stichprobe entsteht und dabei zusätzlich systematische und stochastische Prozesse mit einbezieht.}  Dafür bezieht es die Eigenschaften mit ein, welche typischerweise als "`Stichprobenerhebung aus der Population"' bezeichnet werden, jedoch dies in umfassenderen Ausmaß, indem es all die anderen Vorgänge, die systematische und zufällige Muster im Datensatz entstehen lassen können, einschließt. In diesem Fall schlussfolgert man nicht die Umstände der Population aus der Stichprobe, sondern wir würden die Umstände des datenerzeugenden Prozesses aus den Stichproben-Beobachtungen, die durch diesen Prozess entstanden sind, schließen. 
-	
-	Egal, ob man in Populationen oder datenerzeugenden Prozessen denkt: Das Essenzielle aus diesem Abschnitt ist, dass es zwei Objekte gibt, die man strikt unterscheiden soll: zum Einen gibt es unsere Stichprobe. Man beschreibt sie meist durch ihre Zustände (Mittelwert, Minimum, Maximum), jedoch ist eine Stichprobe nicht das eigentliche Ziel. Letztendlich möchte man lediglich die Umstände der Population / des datenerzeugenden Prozesses aus der Stichprobe schlussfolgern. Dazu kommen wir im nächsten Abschnitt der Schließende Statistik. Davor müssen wir jedoch noch einen genaueren Blick auf die Darstellung von Stichproben, beziehungsweise auf die Tatsachen, die wir beobachten, werfen.
-	
-
+	Egal ob man die klassische Vorstellung der Stichprobe, oder die flexiblere Vorstellung des datengenerierenden Prozesses präferiert: die Grundidee ist, dass die Daten / Stichprobe durch eine Mischung aus systematischen und zufälligen Prozessen entstehend. Man muss deshalb gedanklich zwei Objekte strikt trennen:\marginnote{Die deskriptive Statistik beschreibt die Daten / Stichprobe, während die schließende Statistik die Eigenschaften der unterliegenden Population / des datengenerierenden Prozesses beschreibt.} die Eigenschaften der Daten / Stichprobe (z.B. Mittelwert, Minimum, Maximum), und die Eigenschaften der Population oder des datengenerierenden Prozesses. Daten / Stichprobe sind uns vollständig bekannt. Was zu tun bleibt ist diese Information möglichst kompakt darzustellen. Dies ist die Aufgabe der deskriptiven Statistik, mit der wir uns im nächsten Kapitel beschäftigen werden (siehe Kapitel~\ref{ch: deskriptive Statistik}). Die Eigenschaften der Population / des datengenerierenden Prozesses aber sind uns nicht direkt bekannt. Wir müssen sie aus den Daten schätzen. Dies ist die Aufgabe der schließenden Statistik (siehe Kapitel~\ref{ch: inductive statistics}). Die prädiktive Statistik ist eine Mischung von beiden Standpunkten: Ziel hier ist es aus einer Stichprobe die Eigenschaften der nächsten Stichprobe vorherzusagen, ohne aber notwendigerweise explizit die Population oder der datengenerierenden Prozess zu schätzen. 
 	
 	
 	\vspace{1cm}
 	\begin{fullwidth}
 		\begin{mdframed}
 			
-			\textbf{In R:} 
+			\textbf{Anwendung in R:} 
 			
-			Um Daten darzustellen besitzt R eine grundlegende Datenstruktur, den Daten-Frame (data.frame). Ein Daten-Frame ist gleichzusetzen mit einer Tabelle mit Spalten, wobei jede Spalte einen anderen Typ haben kann. Möglichkeiten hier sind
+			Die grundlegende Datenstruktur in R ist der "data.frame". Ein data.frame ist eine Datentabelle, wobei jede Spalte einen anderen Datentyp (Skalenniveau) haben kann. Mögliche Typen sind:
 			
 			\begin{itemize*}
-				\item ganzzahlig - selbsterklärend
-				\item numerisch - kontinuierliche Nummern (Gleitkommazahl)
-				\item boolean (=aussagenlogisch) - true / false
-				\item Faktor - normalerweise ungeordnet, z.B. rot, grün, blau. Kann auch geordnet sein (klein, mittel, groß), wobei es hier manchmal ratsam wäre, diese als ganzzahlig einzustufen
+				\item integer - ganzzahlig
+				\item numeric - kontinuierliche Zahlen (Gleitkommazahl)
+				\item boolean - wahr / falsch
+				\item factor - faktoriale Variablen. Der Standard ist ungeordnet (z.B. rot, grün, blau), aber man kann angeben dass die Variable geordnet behandelt werden soll (z.B. klein, mittel, groß).
 			\end{itemize*}
 			
-			Desweiteren gibt es den Fall der ausbleibenden Beobachtung einer Variablen, auch wenn dies nicht wirklich ein Datentyp ist. Dies wird dann typischerweise mit "`NA"' betitelt. ähnlich, jedoch nicht identisch ist "`NaN"' (not a number), was bei einer nicht ausführbaren Rechnung als Ergebnis auftreten kann.
+			Außerdem taucht in realen Datensätzen oft der Wert "NA" auf. Dies ist die Bezeichnung für eine fehlende Beobachtung. Ähnlich, jedoch nicht identisch, ist "`NaN"' (not a number), was bei einer nicht ausführbaren Rechnung als Ergebnis auftreten kann.
 			
-			Um Daten als data.frame in R-studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R " im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{der Seite hier} nachgelesen werden.
+			Um Daten als data.frame in R-Studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R " im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{der Seite hier} nachgelesen werden.
 			
-			Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu überprüfen. Dies wird ausgeführt durch str(TheNameOfMyData), womit man kann die Spalten auf ihre Typen checken kann.
-			
+			Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu überprüfen. Dies kann, z.B. durch die R Funktion str(), also str(TheNameOfMyData) erfolgen. Der str Befehl steht für "structure", und zeigt dem Benutzer die Struktur inklusive Typ eines Datenobjektes an. 			
 		\end{mdframed}
 	\end{fullwidth}
 	
 	
-	\chapter{Deskriptive Statistik und Visualisierung}
+	\chapter{Deskriptive Statistik und Visualisierung}\label{ch: deskriptive Statistik}
 	
-	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird später noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von (die durch Stichproben gewählten) Daten
+	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird später noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von Daten.
 	
 	\section{Kennzahlen der Statistik}
 	
-	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten zusammen} sind numerische Berechnungen, die Datensätze zusammenfassen. Dies dient zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
+	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten numerisch zusammen} (z.B. Mittelwert oder Standardabweichung) sind numerische Berechnungen, die Datensätze zusammenfassen. Kennzahlen dienen zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
 	
 	\subsection{Zusammenfassen einer einzelnen stetigen Variable}
 	
@@ -268,10 +260,10 @@ Der Begriff "`Moment"' mag vielleicht nicht jedem geläufig sein, vermutlich wur
 oder, für eine endliche Anzahl an Beobachtungen 
 
 \begin{equation}
-\mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n dx
+\mu_n(c) = \frac{1}{N}\sum_{i=1}^N (x_i - c)^n
 \end{equation}
 
-Das erste Moment mit c=0, ist der Mittelwert. Für die folgenden höheren Momente ist es üblich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erhält, da ihre Werte einfacher als Indikatoren für die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzuschätzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei höheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgröße der Streuung), Schiefe (n=3, Messgröße für die Asymmetrie in der Verteilung) und Wölbung (n=4) genannt. 
+Das erste Moment mit $c=0$, ist der Mittelwert. Für die folgenden höheren Momente ist es üblich die Zentralmomente zu betrachten, die man durch das Setzen von c auf den Mittelwert erhält, da ihre Werte einfacher als Indikatoren für die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzuschätzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei höheren Zentralmomente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgröße der Streuung), Schiefe (n=3, Messgröße für die Asymmetrie in der Verteilung) und Wölbung (n=4) genannt. 
 
 Quantilen stellen die zweite Zentralklasse der Kennzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei Hälften trennt, sodass eine Hälfte der beobachten Daten kleiner und die andere Hälfte größer als dieser Wert ist?\marginnote{Eine Hälfte der Daten ist kleiner und die andere Hälfte ist größer als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
 
@@ -288,21 +280,81 @@ Ein weiterer wichtiger Bereich der Kennzahlen-Statistik ist die Korrelation. Kor
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-\begin{Soutput}
-Error in library(mvtnorm): there is no package called 'mvtnorm'
-\end{Soutput}
-\begin{Soutput}
-Error: konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
-\begin{Soutput}
-Error in RotNormal(200, c(0, pi/12, pi/6, pi/4, pi/2 - pi/6, pi/2 - pi/12, : konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
-\begin{Soutput}
-Error in Others(800): konnte Funktion "rmvnorm" nicht finden
-\end{Soutput}
+<<echo = F>>=
+# From https://en.wikipedia.org/wiki/File:Correlation_examples2.svg
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-3-1} \end{Schunk}
+#Title: An example of the correlation of x and y for various distributions of (x,y) pairs
+#Tags: Mathematics; Statistics; Correlation
+#Author: Denis Boigelot
+#Packets needed : mvtnorm (rmvnorm), RSVGTipsDevice (devSVGTips)
+#How to use: output()
+#
+#This is an translated version in R of an Matematica 6 code by Imagecreator.
+
+library(mvtnorm)
+
+MyPlot <- function(xy, xlim = c(-4, 4), ylim = c(-4, 4), eps = 1e-15) {
+   title = round(cor(xy[,1], xy[,2]), 1)
+   if (sd(xy[,2]) < eps) title = "" # corr. coeff. is undefined
+   plot(xy, main = title, xlab = "", ylab = "",
+        col = "darkblue", pch = 16, cex = 0.2,
+        xaxt = "n", yaxt = "n", bty = "n",
+        xlim = xlim, ylim = ylim)
+}
+
+MvNormal <- function(n = 1000, cor = 0.8) {
+   for (i in cor) {
+      sd = matrix(c(1, i, i, 1), ncol = 2)
+      x = rmvnorm(n, c(0, 0), sd)
+      MyPlot(x)
+   }
+}
+
+rotation <- function(t, X) return(X %*% matrix(c(cos(t), sin(t), -sin(t), cos(t)), ncol = 2))
+
+RotNormal <- function(n = 1000, t = pi/2) {
+   sd = matrix(c(1, 1, 1, 1), ncol = 2)
+   x = rmvnorm(n, c(0, 0), sd)
+   for (i in t)
+      MyPlot(rotation(i, x))
+}
+
+Others <- function(n = 1000) {
+   x = runif(n, -1, 1)
+   y = 4 * (x^2 - 1/2)^2 + runif(n, -1, 1)/3
+   MyPlot(cbind(x,y), xlim = c(-1, 1), ylim = c(-1/3, 1+1/3))
+
+   y = runif(n, -1, 1)
+   xy = rotation(-pi/8, cbind(x,y))
+   lim = sqrt(2+sqrt(2)) / sqrt(2)
+   MyPlot(xy, xlim = c(-lim, lim), ylim = c(-lim, lim))
+
+   xy = rotation(-pi/8, xy)
+   MyPlot(xy, xlim = c(-sqrt(2), sqrt(2)), ylim = c(-sqrt(2), sqrt(2)))
+   
+   y = 2*x^2 + runif(n, -1, 1)
+   MyPlot(cbind(x,y), xlim = c(-1, 1), ylim = c(-1, 3))
+
+   y = (x^2 + runif(n, 0, 1/2)) * sample(seq(-1, 1, 2), n, replace = TRUE)
+   MyPlot(cbind(x,y), xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5))
+
+   y = cos(x*pi) + rnorm(n, 0, 1/8)
+   x = sin(x*pi) + rnorm(n, 0, 1/8)
+   MyPlot(cbind(x,y), xlim = c(-1.5, 1.5), ylim = c(-1.5, 1.5))
+
+   xy1 = rmvnorm(n/4, c( 3,  3))
+   xy2 = rmvnorm(n/4, c(-3,  3))
+   xy3 = rmvnorm(n/4, c(-3, -3))
+   xy4 = rmvnorm(n/4, c( 3, -3))
+   MyPlot(rbind(xy1, xy2, xy3, xy4), xlim = c(-3-4, 3+4), ylim = c(-3-4, 3+4))
+}
+
+ par(mfrow = c(3, 7), oma = c(0,0,0,0), mar=c(2,2,2,0))
+ MvNormal(800, c(1.0, 0.8, 0.4, 0.0, -0.4, -0.8, -1.0));
+ RotNormal(200, c(0, pi/12, pi/6, pi/4, pi/2-pi/6, pi/2-pi/12, pi/2));
+ Others(800)
+
+@
 \caption{Beispiele einer möglichen Korrelation mit dem Pearson'schen Korrelationskoeffizienten. Beachte, dass viele Datensätze, die eine klare Abhängigkeit zwischen Variablen aufweisen, einen Pearson'schen Korrelationskoeffizienten von 0 aufweisen, da die Abhängigkeit nicht linear ist.}
 \label{fig: correlation}
 \end{center}
@@ -311,19 +363,10 @@ Error in Others(800): konnte Funktion "rmvnorm" nicht finden
 \subsection{Kreuztabellen - Erläuterung unstetiger Ergebnisse mehrerer Variablen}
 
 Zu guter Letzt\marginnote{Dieser Datensatz von Berkeley ist ein berühmtes Beispiel für das Simpson-Paradoxon. Weitere Informationen auf Wikipedia über diese wichtige statistische Falle.} gibt es noch die klassischen Kreuztabellen, um binäre oder kategorische Daten zu beschreiben. Hier ist ein Auszug eines üblichen Datensatzes aus R über Sammeldaten von Hochschulbewerber in Berkeley aus dem sechst-größten Departments im Jahre 1973, geordnet nach Zulassung und Geschlecht. Hier wird nur das erste Department gezeigt.
-.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 UCBAdmissions[,,1]
-\end{Sinput}
-\begin{Soutput}
-          Gender
-Admit      Male Female
-  Admitted  512     89
-  Rejected  313     19
-\end{Soutput}
-\end{Schunk}
+@
 
 
 \vspace{1cm}
@@ -344,23 +387,50 @@ Für die vielseitigen Berechnungsmöglichkeiten der deskriptiven Statistik in R,
 
 Kennzahlen sind sehr nützlich, können aber auch zum Problem werden. Ein bekanntes Beispiel dafür ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es äußerst nützlich zusätzlich eine graphische übersicht zu den berechneten Kennzahlen der Daten zu erhalten.
 
+
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo = F, results="hide">>=
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-5-1} \end{Schunk}
-\caption{ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
+require(stats); require(graphics)
+##-- now some "magic" to do the 4 regressions in a loop:
+ff <- y ~ x
+mods <- setNames(as.list(1:4), paste0("lm", 1:4))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  ## or   ff[[2]] <- as.name(paste0("y", i))
+  ##      ff[[3]] <- as.name(paste0("x", i))
+  mods[[i]] <- lmi <- lm(ff, data = anscombe)
+  print(anova(lmi))
+}
+
+## See how close they are (numerically!)
+sapply(mods, coef)
+lapply(mods, function(fm) coef(summary(fm)))
+
+## Now, do what you should have done in the first place: PLOTS
+op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
+       xlim = c(3, 19), ylim = c(3, 13))
+  abline(mods[[i]], col = "blue")
+}
+mtext("Anscombe's 4 Regression data sets", outer = TRUE, cex = 1.5)
+par(op)
+
+@
+\caption{Anscombe's Quartet, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
 \label{fig: Anscombes Quartet}
 \end{center}
 \end{figure}
-
 
 \subsection{Grundsätze der Visualisierung}
 
 Ein Grundsatz\marginnote{Beispiele für verzerrte Grafiken \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Grafiken und Darstellungen ist, die Daten so einsehbar und wahr wie möglich darzustellen. Der Leser sollte einen bestmöglichen überblick in kürzester Zeit über die Daten erhalten. Zusätzlich sollten die Graphen natürlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen könnten:
 
 \begin{itemize}
-\item Einfach ist besser, als kompliziert
+\item Einfach ist besser als kompliziert
 \item Vermeide übertriebene Farben. Graphen sollten wenn möglich auch in schwarz-weiß leserlich sein (benutze einen Farbgradienten, der gleichzeitig ein Intensitätsgradient ist; benutze zusätzlich zu Farben auch gestrichelte Linien). Wenn dein Graph auf Farben basiert, achte darauf welche zu verwenden, die auch Menschen mit einer Rot-Grün-Schwäche erkennen können.
 \item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, außer es gibt besondere Gründe. Achsen sollten bei 0 beginnen, außer es gibt gute Gründe, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Grafiken, wenn es keine Gründe gibt, die dagegen sprechen. 
 \item Manipuliere deine Grafiken nicht!
@@ -371,9 +441,22 @@ Ein Grundsatz\marginnote{Beispiele für verzerrte Grafiken \href{https://en.wiki
 \begin{center}
 
 \setkeys{Gin}{width=\textwidth}
-\begin{Schunk}
+<<echo = FALSE>>=
+par(mfrow = c(2,2))
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-6-1} \end{Schunk}
+plot(co2, ylab = expression("Atmospheric concentration of CO"[2]),
+     las = 1)
+title(main = "a) Athmospheric CO2 Hawai")
+
+plot(airquality$Temp, airquality$Ozone, xlab = "Temperature", ylab = "Ozone", main = "b) Temperature vs. Ozone")
+
+barplot(table(mtcars$gear, mtcars$cyl), beside=T, xlab = "cylinders", main = "c) Gears / cylinders of cars")
+legend("top", legend = c("3 gears", "4 gears", "5 gears"), pch = 15, col = gray.colors(3, end = 0.7), bg = "#FFFFFF66", bty = "n")
+
+boxplot(weight ~ group, data = PlantGrowth, main = "d) Plant Growth",
+        ylab = "Dried weight of plants", col = "lightgray",
+        notch = F, names = c("control", "classical music", "heavy metal"), las = 1)
+@
 \caption{Vier typische Plot-Typen, von oben links nach unten rechts: a) Liniendiagramm, repräsentiert stetige Messungen einer Variablen; b) Streudiagramm, repräsentiert eine Beziehung zwischen zweier stetigen Variablen; c) Balkendiagramm, repräsentiert Messungen in unstetigen Gruppen / Variablen; d) Boxplot, repräsentiert stetige Messungen in unstetigen Gruppen.}
 \label{fig: exaple plots}
 \end{center}
@@ -410,7 +493,7 @@ Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier ni
 \end{fullwidth} 
 
 
-\chapter{Schließende Statistik}
+\chapter{Schließende Statistik}\label{ch: inductive statistics}
 
 \marginnote{Schließende Statistik ist das Ziehen von Schlüssen aus Beobachtungen durch statistische Methoden} 
 
@@ -419,9 +502,9 @@ Schließende Statistik behandelt das Schlussfolgern, z.B. das Rückschlüsse zie
 
 \section{Datenerzeugendes Modell}
 
-\marginnote{Schließende Statistik ist nicht immer, aber meist mit dem Prinzip des datenerzeugenden Modells verknüpft}
+\marginnote{Schließende Statistik ist nicht immer, aber meist mit dem Prinzip des datengenerierenden Modells verknüpft}
 
-Eine zentrale Idee von vielen Methoden der Schließende Statistik ist das Prinzip des datenerzeugenden Modells. Kurz gesagt beinhaltet unser datenerzeugendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abhängig unserer festgelegten Annahme die unbekannten Größen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
+Eine zentrale Idee von vielen Methoden der Schließende Statistik ist das Prinzip des datengenerierenden Modells. Kurz gesagt beinhaltet unser datengenerierendes Modell unsere festgelegte Annahme, wie die Daten entstehen (normalverteiltes Rauschen, lineare Reaktion). Daraus kann man dann abhängig unserer festgelegten Annahme die unbekannten Größen (Unterschiede zwischen Behandlungsgruppe und Kontrollgruppe) berechnen (schlussfolgern).
 
 \marginnote{In der Statistik verwendet man oft das Wort "`behandelt"' um Veränderungen in experimentellen Einheiten zu beschreiben. Hier wären die zwei Musikarten "`Behandlung"' und das "`Nichts-tun"' die Kontrolle} 
 
@@ -429,11 +512,16 @@ Man stelle sich vor man möchte herausfinden, ob das Pflanzenwachstum von Musik 
 
 Somit bedarf es mehrerer Wiederholungen. Nun nehmen wir im unten aufgeführten Beispiel 30 Töpfe.
 
+
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<<echo = FALSE>>=
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-7-1} \end{Schunk}
+boxplot(weight ~ group, data = PlantGrowth, main = "Plant Growth",
+        ylab = "Dried weight of plants", col = "lightgray",
+        notch = F, names = c("control", "classical music", "heavy metal"))
+
+@
 \caption{Wachstumsmessungen unter verschiedenen Behandlungsweisen}
 \label{fig: plant growth music}
 \end{center}
@@ -442,18 +530,18 @@ Somit bedarf es mehrerer Wiederholungen. Nun nehmen wir im unten aufgeführten B
 \marginnote{Beachte die Interpretation eines Boxplots - die dickere Linie in der Mitte der Box ist der Medianwert. Die Box bedeckt die zentrale 0,5 Quantile der Verteilung}
 Es scheint Unterschiede zwischen den drei Fällen zu geben, jedoch gab es auch Abweichungen in den Wachstumsraten innerhalb der einzelnen Behandlungsguppen (durchschnittlich haben wir hier sieben Beobachtungen pro Behandlung). Somit ist es immer noch möglich, dass die Unterschiede in den Beobachtungen durch Zufall entstanden sind.
 
-Wenn wir genaue Aussagen über die Wahrscheinlichkeit der Unterschiede zwischen den zwei behandelten und der Kontrollgruppe treffen möchten, müssen wir ein Modell erstellen, welches die stochastische Abweichung in den Daten beschreibt. Dies erlaubt uns wiederum Eigenschaften, wie z.B. die Zufallswahrscheinlichkeit der beobachteten Unterschiede berechnen zu können. Diese Annahmen sind das, was wir als statistisches Modell bezeichnen (oder auch: stochastische Verfahren, datenerzeugendes Modell). 
+Wenn wir genaue Aussagen über die Wahrscheinlichkeit der Unterschiede zwischen den zwei behandelten und der Kontrollgruppe treffen möchten, müssen wir ein Modell erstellen, welches die stochastische Abweichung in den Daten beschreibt. Dies erlaubt uns wiederum Eigenschaften, wie z.B. die Zufallswahrscheinlichkeit der beobachteten Unterschiede berechnen zu können. Diese Annahmen sind das, was wir als statistisches Modell bezeichnen (oder auch: stochastische Verfahren, datengenerierendes Modell). 
 
 Die üblichere Modellart für solche Zwecke ist das parametrische statistische Modell. Für die Daten, die wir hier haben, würde das parametrische statistische Modell annehmen, dass es eine durchschnittliche Wachstumsrate für jede Behandlungsart (Kontrolle, klassische und Heavy Metal Musik) gibt, jedoch das Wachstum jeder individuellen Pflanze mit einer normalverteilten Abweichung um ihre behandlungsspezifische durchschnittliche Wachstumsrate variiert. Die Parameter dieses Modells sind die unbekannten durchschnittlichen Wachstumsraten und die Abweichung der Normalverteilung. Diese Parameter werden dann mit Methoden, die hier in diesem Kapitel erklärt werden, an die Daten angepasst und basieren auf der Berechnung für z.B. die Wahrscheinlichkeit der Datenresultate, wenn keine Unterschiede zwischen den Gruppen wären.
 
-Eine andere Möglichkeit, um datenerzeugende Modelle zu erstellen, sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datenerzeugende Prozesse zu vermeiden. Normalerweise entsteht der datenerzeugende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit einer Annahme z.B. über die Streuung der Daten durch das Randomisieren (zufälliges Anordnen) oder das wiederholte Prüfen des Datensatzes. Wie funktioniert das? Für das Pflanzenwachstum beispielsweise lässt sich diese Frage wie folgt beantworten: Wie wahrscheinlich wäre das erneute Erhalten der beobachteten Ergebnisse, wenn keine Unterschiede zwischen den Gruppen wären und ohne das Anstellen von Vermutungen über die Streuung? Hierfür werfen wir einfach alle Beobachtungen ungeachtet ihrer Behandlungsart in einen Topf und verteilt sie erneut zufällig in die drei Behandlungsgruppen. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
+Eine andere Möglichkeit, um datengenerierende Modelle zu erstellen, sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datengenerierende Prozesse zu vermeiden. Normalerweise entsteht der datengenerierende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit einer Annahme z.B. über die Streuung der Daten durch das Randomisieren (zufälliges Anordnen) oder das wiederholte Prüfen des Datensatzes. Wie funktioniert das? Für das Pflanzenwachstum beispielsweise lässt sich diese Frage wie folgt beantworten: Wie wahrscheinlich wäre das erneute Erhalten der beobachteten Ergebnisse, wenn keine Unterschiede zwischen den Gruppen wären und ohne das Anstellen von Vermutungen über die Streuung? Hierfür werfen wir einfach alle Beobachtungen ungeachtet ihrer Behandlungsart in einen Topf und verteilt sie erneut zufällig in die drei Behandlungsgruppen. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
 
 Nicht-parametrische Methoden sind ein wichtiger Bestandteil moderner Statistik.\marginnote{Die Feinsinnigkeit der parametrischen Methoden baut auf das Treffen von Annahmen, was in einer Art und Weise zusätzliche Daten darstellt. Natürlich basieren dann alle Ergebnisse auf der Richtigkeit dieser Vermutungen. Wie man parametrische Vermutungen überprüft werden wir später in diesem Kapitel behandeln.} Ihr Vorteil liegt wohl in der Tatsache, dass sie keine Vermutungen anstellen. Andererseits sind parametrische Methoden meist viel schneller und sind, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten viel aussagekräftiger und feinfühliger, wodurch sie viel wahrscheinlicher einen Effekt, falls vorhanden, erkennen können. Aufgrund der letzten beiden Argumente sind momentan parametrische Methoden die Grundlage der meisten statistischen Analysen.
 
 
 \section{Inferentielle Outputs}
 
-Auf dem datenerzeugendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzwerte. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzwerte. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
 
 \subsection{p-Werte}
 
@@ -505,54 +593,39 @@ Um unsere\marginnote{Bayes'sche Verfahren berechnen eine dritte Größe, die pos
 
 \subsection{Verschiedene Methoden != verschiedene Modelle}
 
-Wir wissen nun, dass es drei verschiedene Größen gibt, die Statistiker typischerweise berechnen: p-Werte, Maximum-Likelihood und die Posteriori. Man kann bei gegebenen datenerzeugenden Prozessen immer jede einzelne davon berechnen.
+Wir wissen nun, dass es drei verschiedene Größen gibt, die Statistiker typischerweise berechnen: p-Werte, Maximum-Likelihood und die Posteriori. Man kann bei gegebenen datengenerierenden Prozessen immer jede einzelne davon berechnen.
 
-Ich\marginnote{ANOVA , T-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} formuliere diesen Punkt konkreter, da fälschlicherweise viele Menschen glauben sie benutzen unterschiedliche Modelle, wobei sie lediglich unterschiedliche Wege nutzen, um diese zu begutachten. Ein Beispiel hierfür sind ANOVA, T-Tests und die lineare Regression. Alle basieren auf ein und dem selben datenerzeugenden Prozess - einige festgelegte Auswirkungen zwischen Gruppen und obendrein ein unabhängiger und identischer normalverteilter Fehler. ANOVA und T-Tests legen verschiedenste Nullhypothesen fest und die lineare Regression sucht nach dem Maximum-Likelihood-Schätzwert. Hier könnte man bei Bedarf noch die Bayes'sche Posteriori berechnen. 
+Ich\marginnote{ANOVA , T-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} formuliere diesen Punkt konkreter, da fälschlicherweise viele Menschen glauben sie benutzen unterschiedliche Modelle, wobei sie lediglich unterschiedliche Wege nutzen, um diese zu begutachten. Ein Beispiel hierfür sind ANOVA, T-Tests und die lineare Regression. Alle basieren auf ein und dem selben datengenerierenden Prozess - einige festgelegte Auswirkungen zwischen Gruppen und obendrein ein unabhängiger und identischer normalverteilter Fehler. ANOVA und T-Tests legen verschiedenste Nullhypothesen fest und die lineare Regression sucht nach dem Maximum-Likelihood-Schätzwert. Hier könnte man bei Bedarf noch die Bayes'sche Posteriori berechnen. 
 
 \section{Wichtige Hypothesentests}
 
-Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennen zu lernen - den T-Test und ANOVA. Wie bereits erwähnt, basieren sie beide auf dem selben datenerzeugenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
+Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennen zu lernen - den T-Test und ANOVA. Wie bereits erwähnt, basieren sie beide auf dem selben datengenerierenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
 
 \subsection{T-Test}
 
 Ein T-Test testet die Unterschiede der Mittelwerte von zwei normalverteilten Stichproben; oder im Falle einer einzigen Stichprobe zwischen 0 und den Mittelwert der Stichprobe.\marginnote{Um bei unserer vorhergehenden Einteilung zu bleiben, würden wir unsere Response-Variable als stetig und den Prädiktor als kategorisch bezeichnen (Gruppe 1 oder Gruppe 2); oder im Falle einer einzelnen Gruppe gibt es keinen Prädiktor.} Erneut ist hier das zugrundelegende Modell das einer Normalverteilung mit der Nullhypothese, dass es keine Unterschiede zwischen den Mittelwerten der zwei normalverteilten Gruppen gibt, bzw. dass der Stichproben Mittelwert 0 ist, wenn wir nur eine Gruppe betrachten. Desweiteren sind Software-abhängig oft eine Reihe an Anpassungen möglich, z.B. eine Lockerung der Annahme, dass die zwei Gruppen die selbe Varianz aufweisen. Hier folgt nun ein Beispiel in R, mit klassischen Daten von \citet{Student-probableerrormean-1908}. Die Daten zeigen die Wirkung von zwei Schlafmitteln (gesteigerte Anzahl an Schlafstunden verglichen mit der Kontrolle) an 10 Patienten. 
 
+
+
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-8-1} \end{Schunk}
+<< echo = F>>=
+boxplot(extra ~ group, data = sleep, col = "lightgrey", xlab = "treatment", ylab = "Extra hours sleep")
+@
 \caption{Daten von \citet{Student-probableerrormean-1908}}
 \label{fig: Student Sleep Data}
 \end{center}
 \end{figure}
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=FALSE>>=
 ## Traditional interface
 with(sleep, t.test(sleep$extra[sleep$group == 1], extra[group == 2]))
-\end{Sinput}
-\end{Schunk}
+@
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 ## Formula interface
 t.test(extra ~ group, data = sleep)
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  extra by group
-t = -1.8608, df = 17.776, p-value = 0.07939
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -3.3654832  0.2054832
-sample estimates:
-mean in group 1 mean in group 2 
-           0.75            2.33 
-\end{Soutput}
-\end{Schunk}
+@
 
 Beachte, dass die Datenausgabe einen p-Wert (H0 = kein Unterschied), aber auch einen Maximum-Likelihood-Schätzwert der Mittelwertsvergleiche, zusammen mit den Konfidenzintervallen bietet. Dies geht weit über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
 
@@ -594,19 +667,10 @@ Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung
 
 Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein variabler Faktor mit vier Stufen ist:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 aovresult <- aov(weight~Diet, ChickWeight)
 summary(aovresult)
-\end{Sinput}
-\begin{Soutput}
-             Df  Sum Sq Mean Sq F value   Pr(>F)    
-Diet          3  155863   51954   10.81 6.43e-07 ***
-Residuals   574 2758693    4806                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-\end{Soutput}
-\end{Schunk}
+@
 
 Wir erhalten einen p-Wert von 6.43e-07, welcher mit einem $\alpha$ Level von 0.05 höchst signifikant ist. Somit können wir die Nullhypothese abweisen, dass die Ernährung keinen Einfluss auf die Response "`Gewicht"' habe. Beachte hier, dass wir keine Parameterschätzwerte erhalten und wir keine Aussagen darüber machen können, welche Ernährung sich von welcher unterscheidet. Hierfür gibt es zwei Möglichkeiten:
 
@@ -638,40 +702,19 @@ wobei y die Response, x der Prädiktor ist; a ist der Parameter, wie sehr der Pr
 
 In R wird solch eine Regression durch folgenden Befehl erreicht
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
+@
 
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--22.147  -4.858   1.828   4.342  12.328 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      69.41072    1.02971   67.41   <2e-16 ***
-airquality$Ozone  0.20081    0.01928   10.42   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.819 on 114 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.4877,	Adjusted R-squared:  0.4832 
-F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
 
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-13-1} \end{Schunk}
-\caption{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
+<< echo = F>>=
+plot(airquality$Temp ~ airquality$Ozone, ylab = "Temperature", xlab = "Ozone")
+abline(fit)
+@
+\caption{{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
 \label{fig: LR}
 \end{center}
 \end{figure}
@@ -690,39 +733,31 @@ Die Regressionsergebnisse geben uns ebenfalls einige p-Werte aus. Das sind die E
 
 Response y hängt linear von Variable a (stetig oder kategorisch) ab
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y hängt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die Response hat (keine Interaktion)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a+b)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y hängt linear von zwei Variablen a und b (stetig oder kategorisch) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die Response (Interaktion)
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a*b)
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 Response y ist von einer Variablen a (stetig oder kategorisch) wie in $a + a^2$ abhängig
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = FALSE>>=
 fit = lm(y~a + I(a^2))
 summary(fit)
-\end{Sinput}
-\end{Schunk}
+@
 
 die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel. 
 
@@ -744,11 +779,28 @@ y - (a \cdot x + b ) \sim \epsilon
 
 nämlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen. Diese Unterschiede werden Residuen genannt und sollten, entsprechend unserer Modellannahmen, normalverteilt sein. Um zu überprüfen, ob dies wirklich der Fall ist, sollten einige Tests durchgeführt werden. Der einfachste Test ist das Erstellen eines Plots mit den Residuen gegen die angepassten Werte UND gegen alle Prädiktoren im Modell. Der daraus entstehende Plot erlaubt es dann viele mögliche Probleme zu erkennen (Fig.~\ref{fig: ResidualPatterns})
 
+
+
 \begin{figure}[htbp]
 \begin{center}
-\begin{Schunk}
+<< echo = F>>=
+oldpar <- par(mfrow = c(2,2))
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-18-1} \end{Schunk}
+plot(rnorm(1000), ylim = c(-4,4), main = "Perfekt Normal", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+plot(rnorm(1000, sd = seq(0.01,2, len = 1000)), ylim = c(-4,4), main = "Heteroscedasticity", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+
+plot(rnorm(1000, mean = seq(-2,2, len = 1000)), ylim = c(-4,4), main = "Pattern in the residuals", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+plot(ifelse(runif(1000) <0.5, rnorm(1000, mean = 2, sd = 0.3), rnorm(1000, mean = -2, sd = 0.3)) , ylim = c(-4,4), main = "Distribution not normal", ylab = "Residual", xlab = "Fitted value or predictor")
+abline(h=0, col = "red", lwd = 3)
+
+par(oldpar)
+@
 \caption{Eine Sammlung möglicher Muster, wenn die Residuen gegen den angepassten Wert (voreingestellt in R) oder einen Prädiktor geplottet werden.}
 \label{fig: ResidualPatterns}
 \end{center}
@@ -836,37 +888,13 @@ Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obw
 \textbf{In R:} 
 
 Ein Beispiel hierfür zeigt einige Daten über die Fütterung von Nesthockern in Bezug auf ihre Attraktivität:
-\begin{Schunk}
-\begin{Sinput}
+
+
+<<>>=
 schnaepper <- read.csv("schnaepper.txt", sep="")
 fm <- glm(stuecke ~ attrakt, family=poisson, data = schnaepper)
 summary(fm)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-glm(formula = stuecke ~ attrakt, family = poisson, data = schnaepper)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--1.55377  -0.72834   0.03699   0.59093   1.54584  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  1.47459    0.19443   7.584 3.34e-14 ***
-attrakt      0.14794    0.05437   2.721  0.00651 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for poisson family taken to be 1)
-
-    Null deviance: 25.829  on 24  degrees of freedom
-Residual deviance: 18.320  on 23  degrees of freedom
-AIC: 115.42
-
-Number of Fisher Scoring iterations: 4
-\end{Soutput}
-\end{Schunk}
+@
 
 \end{mdframed}
 \end{fullwidth} 
@@ -1150,11 +1178,10 @@ Das Fenster, das man hier sieht, wird die R-Konsole genannt. Durch die Konsole i
 
 Nun schreiben wir etwas anderes: R hat einige Standarddatensätze, die automatisch geladen werden. Wir werden den airmiles-Datensatz verwenden, der die Anzahl der vergebenen Luftmeilen anzeigt. Wir werden nun kurz erläutern, wie man ein Diagramm mit diesem Datensatz erstellt. Tippe:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 plot(airmiles, col = 4)
-\end{Sinput}
-\end{Schunk}
+@
+
 
 Das Ergebnis sollte wie in Fig.~\ref{fig: Rgui2} aussehen:
 
@@ -1187,8 +1214,7 @@ RStudio bietet grundsätzlich die gleichen Funktionen wie RGui, aber man kann vi
 
 Ein typisches Skript kann so aussehen:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 # the hash means this is treated as a comment
 # this file is written by FH, 25.10.13
 
@@ -1197,8 +1223,8 @@ rm(list=ls(all=TRUE))  # this command means all variables in the memory are eras
 # load some data
 
 # do some plots
-\end{Sinput}
-\end{Schunk}
+
+@
 
 Um einen Teil des Skripts an die Konsole zu senden, kann man den run-Button am oberen rechten Rand des Editorfensters verwenden. Für alles, was wir von nun an tun, würde ich dringend empfehlen, es in das Skript zu schreiben und es dann von dort aus an die Konsole zu senden.
 
@@ -1209,21 +1235,16 @@ Um einen Teil des Skripts an die Konsole zu senden, kann man den run-Button am o
 
 Wer hat jemals mit einer Programmiersprache gearbeitet? In einer Programmiersprache werden die Daten in Variablen/Objekten gespeichert. So weisen wir der Variablen "?VariableX"' das Wort "`test"' zu,
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 VariableX = "test"
-\end{Sinput}
-\end{Schunk}
+@
+
 
 Ich kann jetzt auf die Variable zugreifen, indem ich seinen Namen in der Konsole eingebe und es wird den Wert ausgeben, den es gespeichert hat.
-\begin{Schunk}
-\begin{Sinput}
+
+<<>>=
 VariableX
-\end{Sinput}
-\begin{Soutput}
-[1] "test"
-\end{Soutput}
-\end{Schunk}
+@
 
 Wir können alle Variablen, die wir in der globalen Umgebung oder in R angegeben haben, in der oberen rechten Ecke oder in RStudio sehen. Wie man sieht haben wir hier die Variable "?VariableX"' zusammen mit ihrem Wert.
 
@@ -1266,27 +1287,22 @@ Besonders nach dem Einlesen der Daten ist es wichtig zu prüfen, welchen Typ die
 
 Wenn man wissen will, welchen Typ oder Struktur eine Variable hat, verwendet man den str-Befehl:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 str(object)
-\end{Sinput}
-\end{Schunk}
+@
 
 Um eine Zusammenfassung der Struktur (z.B. Mittelwert pro Spalte; was genau zusammengefasst wird, ist abhängig von Datenstruktur und Typ) zu erhalten, verwenden man:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 summary(object)
-\end{Sinput}
-\end{Schunk}
+@
+
 
 Um eine automatischen Plot zu erstellen (R wird selbst entscheiden, welcher am meisten für diese Struktur/Typ geeignet ist), tippt man:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 plot(object)
-\end{Sinput}
-\end{Schunk}
+@
 
 Probiere dies mit dem Objekt Luftqualität.
 
@@ -1297,19 +1313,15 @@ Wie bereits erwähnt, ist die häufigste Struktur in R der Datenframe. Grundsät
 Man kann Spalten auf verschiedenste Weisen auswählen:
 
 - Nach Name:
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality$Ozone
-\end{Sinput}
-\end{Schunk}
+@
 
 - Nach Spaltenindex: 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[,1]
-\end{Sinput}
-\end{Schunk}
+@
 
 Zu beachten sei hier, dass die erste Spalte durch [,1] ausgedrückt wird. Die erste Reihe erhält man durch [1,].
 
@@ -1317,67 +1329,52 @@ Zu beachten sei hier, dass die erste Spalte durch [,1] ausgedrückt wird. Die er
 
 Die letzte Art des Datenzugriffs ist ein Beispiel für das "`Slicen"'. Slicing ist eine sehr leistungsfähige Technik, die in den meisten wissenschaftlichen Programmiersprachen verfügbar ist. Das bedeutet, dass man auf seine Daten zugreifen kann, indem man Spalten, Zeilen oder bestimmte Elemente eingibt. Man schaue sich hierfür die folgenden Befehle an (Erläuterung immer unterhalb):
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[,1:2]
-\end{Sinput}
-\end{Schunk}
+@
 
 verschafft die ersten Spalten 1 und 2.
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[4:6,1]]
-\end{Sinput}
-\end{Schunk}
+@
 
-verschafft die Reihen 4 bis 6 in Spalte 1
+selektiert die Reihen 4 bis 6 in Spalte 1, und
 
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[c(1,2,3,4,7,8),1]
-\end{Sinput}
-\end{Schunk}
-
-verschafft die Reihen 1,2,3,4,7,8 in Spalte 1. 
-
-So können wir eine beliebige Kombination von gewünschten Elementen sehr bequem aus dem Datenframe auswählen. Noch einfacher ist das Erstellen von Selektionen.
+@
 
 
-\begin{Schunk}
-\begin{Sinput}
+selektiert die Reihen 1,2,3,4,7,8 in Spalte 1. So können wir eine beliebige Kombination von gewünschten Elementen sehr bequem aus dem Datenframe auswählen. 
+
+Man muss übrigens nicht immer alle Zahlen von Hand eintippen. Die Kombination 
+
+<<eval=F>>=
 1:10
-\end{Sinput}
-\end{Schunk}
+@
 
-verschafft uns die Werte von 1 bis 10
+verschafft uns zum Beispiel die Werte von 1 bis 10, und
 
-\begin{Schunk}
-\begin{Sinput}
-c(1,5,6)
-\end{Sinput}
-\end{Schunk}
+<<eval=F>>=
+c(1:5,7)
+@
 
-Die c() - Funktion kombiniert Werte in einem Vektor (für das Slicen ist es notwendig die Werte in einem Vektor zu haben)
+erzeugt die Werte 1 bis 5 und 7. Die c() - Funktion kombiniert Werte in einem Vektor (für das Slicen ist es notwendig die Werte in einem Vektor zu haben)
 
 Wir können aber auch Selektionen mit logischen Operatoren erzeugen
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality$Temp > 80
-\end{Sinput}
-\end{Schunk}
+@
 
 Erstellt einen Vektor mit True auf allen Temperaturwerten, die >80 sind. Ich kann diesen speichern und für eine Selektion, oder auch sofort verwenden
 
-
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 airquality[airquality$Temp > 80 , ]
-\end{Sinput}
-\end{Schunk}
+@
 
 Wählt alle Zeilen mit einer Temperatur >80 aus.
 
@@ -1394,12 +1391,9 @@ Es gibt grundsätzlich zwei Möglichkeiten Daten zu laden
 
 Das funktioniert so
 
-
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 data = read.table("airquality.txt", header = T)
-\end{Sinput}
-\end{Schunk}
+@
 
 In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise vorbereitet habe. Wenn man andere Datenformate (Kommas, Semikolons, überschriften / keine überschriften) hat, befragt man die Hilfe-Option mit dem Befehl read.table. Siehe auch http://www.statmethods.net/input/importingdata.html für weitere Optionen, z.B. Excel oder Datenbankimport.
 
@@ -1407,30 +1401,21 @@ In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise 
 
 überprüfe nach dem Laden der Daten immer, ob das Datenformat korrekt ist
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 str(data)
-\end{Sinput}
-\begin{Soutput}
-function (..., list = character(), package = NULL, lib.loc = NULL, 
-    verbose = getOption("verbose"), envir = .GlobalEnv)  
-\end{Soutput}
-\end{Schunk}
+@
 
 Hier sieht man den atomic type jeder Säule. Stelle sicher, dass es dem entspricht, was man möchte (manchmal wird numerisch als Faktor eingelesen , oder umgekehrt). Wenn eine Spalte den falschen Typ haben würde, müssen wir das manuell ändern durch:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval=F>>=
 as.factor(x)
-\end{Sinput}
-\end{Schunk}
-oder 
-\begin{Schunk}
-\begin{Sinput}
-as.numeric(x)
-\end{Sinput}
-\end{Schunk}
+@
 
+oder
+
+<<eval=F>>=
+as.numeric(x)
+@
 
 Hinweis: Diese Datei ist bereits in R enthalten. Wenn man es nicht schafft den Datensatz zu laden, kann man trotzdem fortfahren.
 
@@ -1448,159 +1433,67 @@ Davor einige wichtige Hinweise
 
 \marginnote{Ein überblick über die Farben in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 plot(airquality$Ozone, airquality$Temp)
-\end{Sinput}
+@
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-42-1} 
-
-}
-
-\end{Schunk}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
+hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "Ozone ")
+@
 
 
-\begin{Schunk}
-\begin{Sinput}
-hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "ozone ")
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-43-1} 
-
-}
-
-\end{Schunk}
-
-
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 plot(airquality)
-\end{Sinput}
+@
 
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-44-1} 
-
-}
-
-\end{Schunk}
 
 pairs(airquality)
 
 
 Einfaches Balkendiagramm
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 counts <- table(mtcars$gear)
 barplot(counts, main="Car Distribution", 
    xlab="Number of Gears")
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-45-1} 
-
-}
-
-\end{Schunk}
+@
 
 Gruppiertes Balkendiagramm
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 counts <- table(mtcars$vs, mtcars$gear)
 barplot(counts, main="Car Distribution by Gears and VS",
   xlab="Number of Gears", col=c("darkblue","red"),
   legend = rownames(counts), beside=TRUE)
-\end{Sinput}
+@
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-46-1} 
-
-}
-
-\end{Schunk}
-
-
-
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 boxplot(mpg~cyl,data=mtcars, main="Car Milage Data", 
    xlab="Number of Cylinders", ylab="Miles Per Gallon")
-\end{Sinput}
+@
 
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-47-1} 
-
-}
-
-\end{Schunk}
 
 Gekerbter Boxplot des Zahnwachstums gegen 2 gekreuzte Faktoren aufgetragen;
 Boxen für eine leichtere Interpretation eingefärbt
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 4, fig.width=4, fig.align='center'>>=
 boxplot(len~supp*dose, data=ToothGrowth, notch=TRUE, 
   col=(c("gold","darkgreen")),
   main="Tooth Growth", xlab="Suppliment and Dose")
-\end{Sinput}
-\begin{Soutput}
-Warning in bxp(structure(list(stats = structure(c(8.2, 9.7, 12.25, 16.5, : some notches went outside hinges ('box'): maybe set notch=FALSE
-\end{Soutput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-48-1} 
-
-}
-
-\end{Schunk}
+@
 
 %See http://www.statmethods.net/graphs/index.html 
 
 
 Korrelations-Heatmap. Die Heatmap visualisiert die Korrelation zwischen Variablen. Eine praktische Eigenschaft dieser Funktion ist, dass Variablen neu angeordnet werden können, sodass eng korrelierte Variablen nahe beieinander liegen. Dies ist oft nützlich, wenn man nicht korrelierte Variablen für eine Analyse auswählen möchte.
 
-\begin{Schunk}
-\begin{Sinput}
+<<fig.height = 6, fig.width=6, fig.align='center'>>=
 round(Ca <- cor(attitude), 2)
-\end{Sinput}
-\begin{Soutput}
-           rating complaints privileges learning raises critical advance
-rating       1.00       0.83       0.43     0.62   0.59     0.16    0.16
-complaints   0.83       1.00       0.56     0.60   0.67     0.19    0.22
-privileges   0.43       0.56       1.00     0.49   0.45     0.15    0.34
-learning     0.62       0.60       0.49     1.00   0.64     0.12    0.53
-raises       0.59       0.67       0.45     0.64   1.00     0.38    0.57
-critical     0.16       0.19       0.15     0.12   0.38     1.00    0.28
-advance      0.16       0.22       0.34     0.53   0.57     0.28    1.00
-\end{Soutput}
-\begin{Sinput}
 symnum(Ca) # simple graphic
-\end{Sinput}
-\begin{Soutput}
-           rt cm p l rs cr a
-rating     1                
-complaints +  1             
-privileges .  .  1          
-learning   ,  .  . 1        
-raises     .  ,  . , 1      
-critical             .  1   
-advance          . . .     1
-attr(,"legend")
-[1] 0 ' ' 0.3 '.' 0.6 ',' 0.8 '+' 0.9 '*' 0.95 'B' 1
-\end{Soutput}
-\begin{Sinput}
 heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
-\end{Sinput}
-
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-49-1} 
-
-}
-
-\end{Schunk}
+@
 
 \chapter{Regression in R}
 
@@ -1609,69 +1502,42 @@ heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
 
 Die lineare Regression ist die einfachste Form der Regression. Wir können diese bei einer stetigen Response verwenden. Die Annahme hierbei ist, dass die Response von den Prädiktoren wie folgt abhängt:
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = F>>=
 y ~ par1 * pred1 +  par2 * pred2 +  par3 * pred2^2 + ... + residual Error
-\end{Sinput}
-\end{Schunk}
+@
 
 Wobei die Parameter par1 ... par3 geschätzt werden und der Residuenfehler normalverteilt ist.
 
 Werfen wir einen Blick auf einige Beispiele, mit den Daten von Montag. Wir sehen, dass es eine Korrelation zwischen Ozon und Temperatur gibt.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Temp~airquality$Ozone)
-\end{Sinput}
+@
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
 
 Mit dem Befehl lm() können wir R versuchen lassen, eine bestmöglich passende Gerade zwischen den beiden Variablen zu finden.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
-\end{Sinput}
-\end{Schunk}
+@
+
 
 Lassen Sie uns das Ergebnis zuerst visuell betrachten
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Ozone, airquality$Temp)
 abline(fit, col = "blue")
-\end{Sinput}
+@
+
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} \end{Schunk}
 
 Hier ist die Ausgabe im Detail
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--22.147  -4.858   1.828   4.342  12.328 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(>|t|)    
-(Intercept)      69.41072    1.02971   67.41   <2e-16 ***
-airquality$Ozone  0.20081    0.01928   10.42   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.819 on 114 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.4877,	Adjusted R-squared:  0.4832 
-F-statistic: 108.5 on 1 and 114 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
+@
 
 In der Ausgabe sehen wir die Parameter für die Auswirkung von Ozon (genannt Regressionssteigung) und den Schnittpunkt.
 
@@ -1681,106 +1547,48 @@ R erkennt, dass die Linie gerade ist, weil wir dem Programm sagen, dass "`airqua
 
 Mit plot(fit) erhalten wir die Residuen (die Abweichung von der Geraden). Wie bereits gesagt, geht die lineare Regression davon aus, dass diese normal verteilt sind, also sollten wir überprüfen, ob dies wirklich der Fall ist.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 par(mfrow=c(2,2))
 plot(fit)
-\end{Sinput}
+@
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
 
 Hier sind die Residuen nicht wirklich homogen um den vorhergesagten Wert gestreut, was darauf hindeutet, dass das Modell nicht sehr gut passt. Dies hätte man schon erahnen können, weil die Korrelation nicht sehr linear aussieht. Wir können einen quadratischen Term hinzufügen durch
 
-
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit2 = lm(airquality$Temp~airquality$Ozone + I(airquality$Ozone^2))
 summary(fit2)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = airquality$Temp ~ airquality$Ozone + I(airquality$Ozone^2))
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--16.1553  -3.9374   0.9296   4.0393  12.9195 
-
-Coefficients:
-                        Estimate Std. Error t value Pr(>|t|)    
-(Intercept)           63.8614538  1.3163562  48.514  < 2e-16 ***
-airquality$Ozone       0.4896669  0.0524715   9.332 1.07e-15 ***
-I(airquality$Ozone^2) -0.0023198  0.0003987  -5.818 5.64e-08 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.008 on 113 degrees of freedom
-  (37 observations deleted due to missingness)
-Multiple R-squared:  0.6058,	Adjusted R-squared:  0.5988 
-F-statistic: 86.83 on 2 and 113 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
+@
 
 Die Residuen sehen jetzt besser aus
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 par(mfrow=c(2,2))
 plot(fit2)
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-57-1} \end{Schunk}
+@
 
 Plotten der Ergebnisse
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 plot(airquality$Ozone, airquality$Temp)
 points(fit2$model[,2], predict(fit2), col = "blue")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-58-1} \end{Schunk}
+@
 
 \subsection{Kategorische Prädiktoren}
 
 Wenn wir kategoriale Variablen wie in diesem Datensatz haben
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 boxplot(PlantGrowth$weight~PlantGrowth$group, main = "growth of plants")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-59-1} \end{Schunk}
+@
 
 Funktioniert auch noch dies:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fit <- lm(weight~group, data = PlantGrowth)
 summary(fit)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-lm(formula = weight ~ group, data = PlantGrowth)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--1.0710 -0.4180 -0.0060  0.2627  1.3690 
-
-Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)   5.0320     0.1971  25.527   <2e-16 ***
-grouptrt1    -0.3710     0.2788  -1.331   0.1944    
-grouptrt2     0.4940     0.2788   1.772   0.0877 .  
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.6234 on 27 degrees of freedom
-Multiple R-squared:  0.2641,	Adjusted R-squared:  0.2096 
-F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591
-\end{Soutput}
-\end{Schunk}
+@
 
 Eine Sache, die viele Menschen jetzt verwirrt, ist, dass wir zwei Parameter-Schätzungen für die eine Prädiktor-Variable haben. Der Grund dafür ist, dass es 3 Gruppen in der Datenmenge gibt. Die erste Gruppe wird in diesem Fall automatisch als Referenz gesetzt, und für die anderen Gruppen werden Prädiktoren geschätzt. Die p-Werte für diese Prädiktoren sind also gegen die Referenz (wenn ich Prädiktor trt1 herausnehme, erhält er den Wert von ctrl). Daher hängen diese p-Werte für kategoriale Variablen von der Reihenfolge der Variablen ab (man kann die Reihenfolge von trt1 als Referenz ändern.)
 
@@ -1789,19 +1597,10 @@ Eine Sache, die viele Menschen jetzt verwirrt, ist, dass wir zwei Parameter-Sch�
 
 Eine Frage, die oft in diesem Zusammenhang auftaucht, ist: Gibt es überhaupt Unterschiede zwischen den Gruppen? Die Regression zeigt uns nur, ob es einen signifikanten Unterschied zwischen dem ersten Faktor und den zwei anderen gibt. Wenn wir auf allgemeine Differenzen testen wollen, können wir eine ANOVA des angepassten Objekts machen
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 aovresult <- aov(fit)
 summary(aovresult)
-\end{Sinput}
-\begin{Soutput}
-            Df Sum Sq Mean Sq F value Pr(>F)  
-group        2  3.766  1.8832   4.846 0.0159 *
-Residuals   27 10.492  0.3886                 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-\end{Soutput}
-\end{Schunk}
+@
 
 Beachte, dass wir jetzt Signifikanz für einen allgemeinen Unterschied erhalten, obwohl wir keine Signifikanz in der Regression zuvor hatten.
 
@@ -1816,60 +1615,23 @@ Anmerkung: Eine Varianzanalyse ist für ausgeglichene Versuchsanordnungen ausgel
 
 Eine einfache Option für das Testen von nur zwei Gruppen gegeneinander ist der T-Test. Er nimmt eine normale Verteilung innerhalb der Gruppen an. Wir können dies verwenden, um Post-Hoc-Tests für das obige Beispiel durchzuführen:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 attach(PlantGrowth)
 t.test(weight[group=='ctrl'], weight[group=="trt1"])
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  weight[group == "ctrl"] and weight[group == "trt1"]
-t = 1.1913, df = 16.524, p-value = 0.2504
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.2875162  1.0295162
-sample estimates:
-mean of x mean of y 
-    5.032     4.661 
-\end{Soutput}
-\end{Schunk}
+@
 
 Testen gegen Gruppe 2
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 t.test(weight[group=='ctrl'], weight[group=="trt2"])
-\end{Sinput}
-\begin{Soutput}
-
-	Welch Two Sample t-test
-
-data:  weight[group == "ctrl"] and weight[group == "trt2"]
-t = -2.134, df = 16.786, p-value = 0.0479
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.98287213 -0.00512787
-sample estimates:
-mean of x mean of y 
-    5.032     5.526 
-\end{Soutput}
-\begin{Sinput}
 detach(PlantGrowth)
-\end{Sinput}
-\end{Schunk}
+@
 
 Aber wenn wir wirklich beide Tests ausgeführt hätten, müssten wir für multiple Tests korrigieren
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 p.adjust(c(0.2504, 0.0479), method = "holm")
-\end{Sinput}
-\begin{Soutput}
-[1] 0.2504 0.0958
-\end{Soutput}
-\end{Schunk}
+  @
 
 Wie funktioniert das? Schreibe ?p.adjust in die Konsole. Lese auch \href{das hier}{http://webdev.cas.msu.edu/cas992/weeks/week10.html}.
 
@@ -1877,8 +1639,7 @@ Wie funktioniert das? Schreibe ?p.adjust in die Konsole. Lese auch \href{das hie
 
 Das GML ist eine Verallgemeinerung von linearen Modellen (lm) zu anderen Response-Typen. Wir könnten ein Modell erzeugen, das zu lm() identisch ist durch glm(formula, family = gaussian(link = "`identity"')), aber mit dem Vorteil, dass GLM mehr Optionen hat; darunter die folgenden Vorgaben
 
-\begin{Schunk}
-\begin{Sinput}
+<<eval = F>>=
 binomial(link = "logit")
 gaussian(link = "identity")
 Gamma(link = "inverse")
@@ -1887,15 +1648,13 @@ poisson(link = "log")
 quasi(link = "identity", variance = "constant")
 quasibinomial(link = "logit")
 quasipoisson(link = "log")
-\end{Sinput}
-\end{Schunk}
+@
+
 
 Aber Schritt für Schritt ... schauen wir uns ein Beispiel für binomische Daten an
 
 
 \section{0/1 Response - die logistische Regression}
-
-
 
 <<>>=
 library(effects) 
@@ -1962,90 +1721,46 @@ detach(TitanicSurvival)
 
 Für Zähldaten verwenden wir den GLM mit der Poisson'schen-Fehlerverteilung. Hier sind einige Beobachtungen der Verteilung von Futterstücke an junge Vögel und ihre wahrgenommene Attraktivität.
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 cfc <- data.frame(
   stuecke = c(3,6,8,4,2,7,6,8,10,3,5,7,6,7,5,6,7,11,8,11,13,11,7,7,6),
   attrakt = c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5) 
 )
 attach(cfc)
 plot(stuecke ~ attrakt)
-\end{Sinput}
+@
+
 
 \includegraphics[width=\maxwidth]{figure/unnamed-chunk-72-1} \end{Schunk}
 
 So wird der Poisson angegeben
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 fm <- glm(stuecke ~ attrakt, family=poisson)
 summary(fm)
-\end{Sinput}
-\begin{Soutput}
-
-Call:
-glm(formula = stuecke ~ attrakt, family = poisson)
-
-Deviance Residuals: 
-     Min        1Q    Median        3Q       Max  
--1.55377  -0.72834   0.03699   0.59093   1.54584  
-
-Coefficients:
-            Estimate Std. Error z value Pr(>|z|)    
-(Intercept)  1.47459    0.19443   7.584 3.34e-14 ***
-attrakt      0.14794    0.05437   2.721  0.00651 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-(Dispersion parameter for poisson family taken to be 1)
-
-    Null deviance: 25.829  on 24  degrees of freedom
-Residual deviance: 18.320  on 23  degrees of freedom
-AIC: 115.42
-
-Number of Fisher Scoring iterations: 4
-\end{Soutput}
-\end{Schunk}
+@
 
 Vorhersagen
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 newattrakt <- c(1,1.5,2,2.5,3,3.5,4,4.5,5)
 preds <- predict(fm, newdata=data.frame("attrakt"=newattrakt))
 plot(stuecke ~ attrakt)
 lines(newattrakt, exp(preds), lwd=2, col="green")
-\end{Sinput}
-
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-74-1} \end{Schunk}
+@
 
 Das gleiche mit 95\% Konfidenzinterval:
 
-\begin{Schunk}
-\begin{Sinput}
+<<>>=
 preds <- predict(fm, newdata=data.frame("attrakt"=newattrakt), se.fit=T)
 str(preds)
-\end{Sinput}
-\begin{Soutput}
-List of 3
- $ fit           : Named num [1:9] 1.62 1.7 1.77 1.84 1.92 ...
-  ..- attr(*, "names")= chr [1:9] "1" "2" "3" "4" ...
- $ se.fit        : Named num [1:9] 0.1459 0.1235 0.1034 0.0872 0.0775 ...
-  ..- attr(*, "names")= chr [1:9] "1" "2" "3" "4" ...
- $ residual.scale: num 1
-\end{Soutput}
-\begin{Sinput}
 plot(stuecke ~ attrakt)
 lines(newattrakt, exp(preds$fit), lwd=2, col="green")
 lines(newattrakt, exp(preds$fit+2*preds$se.fit), lwd=2, col="green", lty=2)
 lines(newattrakt, exp(preds$fit-2*preds$se.fit), lwd=2, col="green", lty=2)
-\end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-75-1} \begin{Sinput}
 detach(cfc)
-\end{Sinput}
-\end{Schunk}
-
+@
 
 
 \section{Multinomiale Daten - multinomiale Regression}
@@ -2055,8 +1770,6 @@ Wenn man mehrere Optionen für die Response habt (rot, grün, blau), passt dies 
 Wenn man die Daten nicht in diesem Format hat und nicht neu formatieren möchte, ist eine weniger leistungsstarke, aber einfacher zu bedienende Alternative die multinomiale Funktion aus dem nnet-Paket. Im Folgenden finden Sie ein Beispiel für die Verwendung dieser Funktion oder \href{http://www.ats.ucla.edu/stat/stata/dae/mlogit.htm}{hier}.
 
 \subsection{mlogit Beispiel}
-
-
 
 <<message=FALSE>>=
 library(mlogit)
