@@ -232,9 +232,13 @@ Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden 
 	
 	\section{Kennzahlen der Statistik}
 	
-	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen die Daten numerisch zusammen} (z.B. Mittelwert oder Standardabweichung) sind numerische Berechnungen, die Datensätze zusammenfassen. Kennzahlen dienen zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes.
+	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen Daten numerisch zusammen} bezeichnen Rechenvorschriften (z.B. Mittelwert oder Standardabweichung), die Eigenschaften von Datensätzen numerisch zusammenfassen. Kennzahlen dienen also zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes, oder zu derem Vergleich.
 	
-	\subsection{Zusammenfassen einer einzelnen stetigen Variable}
+	\subsection{Univariate Verteilungen - Kennzahlen einer Variable}
+	
+	Eine Verteilung beschreibt 
+	
+	
 	
 	Eine übliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 Bäume gemessen und anschließend erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
 
@@ -556,9 +560,20 @@ Nicht-parametrische Methoden sind ein wichtiger Bestandteil moderner Statistik.\
 
 \section{Inferentielle Outputs}
 
-Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzwerte. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzer. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width = 8cm]{InferenceDE}
+\caption{Aus dem datengenerierenden Modell (parametrisch oder nicht-parametrisch) können die drei "Produkte" der schließenden Statistik gewonnen werden: a) der p-Wert, b) der Maximum-Likelihood Schätzer, und c) die Bayes'sche Posterior.}
+\label{fig: InferenceMethods}
+\end{center}
+\end{figure}
+
 
 \subsection{p-Werte}
+
+Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. 
 
 Die Verwendung des p-Wertes ist eng mit der Inferenzmethode der Null-Hypothesen Signifikanzprüfung (null hypothesis significance testing, NHST) verbunden. Die Idee, die dahinter steckt, ist Folgende: wenn wir gewisse Daten beobachten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um eine vorgegebene Hypothese über das Entstehen der Daten zu präzisieren. Für das Beispiel der Pflanzen und der Musik könnte unsere Hypothese so lauten: "`Musik hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen."' Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} Auch wenn es üblich ist, die Annahme keinerlei Auswirkungen auf die beobachteten Objekte als Nullhypothese zu setzen, ist es tatsächlich die eigene Entscheidung und man könnte genauso gut die Vermutung "`klassische Musik verdoppelt die Wachstumsrate der Pflanzen"' als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
 
@@ -570,12 +585,46 @@ p := p(d >= D_{obs} | H_0)
 
 Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), spricht man von einem signifikantem Beweis, um die Nullhypothese abzuweisen. Die Schwelle $\alpha$ ist eine Vereinbarung, in der ökologie üblicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranlässt. \marginnote{Wenn p<0.05, haben wir signifikante Beweise für ein Abweisen der Nullhypothese.} 
 
+Ein 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width = 8cm]{ErrorTypes}
+\caption{E}
+\label{fig: Error Types}
+\end{center}
+\end{figure}
+
+
+Also, wichtig zu merken
+
+\begin{itemize}
+  \item H0 wahr: 
+\end{itemize}
+
+
+
+
+
+\begin{equation}
+FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)
+\end{equation}
+
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width = 8cm]{FDR}
+\caption{False Discovery Rate}
+\label{fig: Error Types}
+\end{center}
+\end{figure}
+
+
 Ein Problem der Hypothesentests und der p-Werte ist die notorische Fehlinterpretation der Ergebnisse. Der p-Wert ist NICHT die Wahrscheinlichkeit, dass die Nullhypothese wahr, oder die Alternativhypothese falsch ist; auch wenn viele Autoren diesen Fehler bei ihrer Interpretation gemacht haben, wie z.B. \citep[][]{Cohen-earthisround-1994}. Eher kann man den p-Wert als eine Kontrolle der Falsch-Positiven-Rate ansehen (Typ I-Fehler). Wenn man Hypothesentests mit einem $\alpha$ -Level von 0.05 auf Zufallsdaten anwendet, erhält man exakt 5\% Falsch-Positive. Nicht mehr und auch nicht weniger.  
 
 \subsection{Maximum-Likelihood-Schätzwert}
 
 Eine zweite Variante der Ergebnisdarstellung, welche bei den meisten statistischen Methoden verwendet wird, ist das Schätzen von Maximum-Likelihood Parametern. Zusammenfassend kann man sagen, dass die Maximum-Likelihood-Schätzung (maximum-likelihood estimate (MLE)) die beste Schätzung für Parameter in unserem Modell ist (z.B. Unterschiede zwischen den Behandlungsarten und der Kontrolle, wie in unserem Beispiel).
-
 
 Genauer gesagt wird die Wahrscheinlichkeit in der Statistik als Funktion der Modellparameter $\theta$ beschrieben als
 
@@ -1123,14 +1172,13 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 
 \item Für die technisch etwas Ehrgeizigeren (es ist immer noch sehr elementar), empfehle ich \citet{James-IntroductiontoStatistical-2013}. Man kann die PDF kostenlos herunterladen und es gibt ein MOOC für das Buch mit Vorträgen und übungen.
 
-\item Weitere Hilfe und Hinweise kann man in der Statistik-Hilfe unserer Abteilung  \href{http://biometry.github.io/APES/}{hier} finden; insbesondere die Empfehlungen zu R-Skripten und statistischen Lehrbüchern.
+\item Weitere Hilfe und Hinweise kann man in der Statistik-Hilfe unserer Abteilung \href{http://biometry.github.io/APES/}{hier} finden; insbesondere die Empfehlungen zu R-Skripten und statistischen Lehrbüchern.
 
 \end{itemize}
 
 
 \bibliographystyle{chicago}
 \bibliography{/Users/Florian/Home/Bibliography/Databases/flo}
-
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
@@ -1140,7 +1188,7 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 \begin{fullwidth}
 %\begin{mdframed}
 
-\chapter{Lösungen zu den Übungsfragen}
+\chapter{Lösungen der Übungsfragen}
 
 \textbf{4.1} p(D|M,x) - in Worten: die Wahrscheinlichkeits(dichte) für D, gegeben M und x.
 \textbf{4.2} Ja.
@@ -1173,12 +1221,9 @@ Anmerkung: ich wollte Ihnen mit diesem Beispiel zeigen dass es 2 Möglichkeiten 
 
 \chapter{R und Rstudio}
 
-R selbst ist ein Befehlszeilenprogramm, d.h. man kommuniziert damit über schriftliche Befehle in der R-Konsole. Im Prinzip kann man also den R-Code in einem Editor (auch Microsoft Word) schreiben und fügt es dann in die R-Konsole ein.
+R selbst ist ein Befehlszeilenprogramm, d.h. man kommuniziert mit R über schriftliche Befehle, die man in die R-Konsole eingibt. Also, entweder man schreibt direkt in die Konsole, oder man schreibt den R Code in einem Texteditor vor und fügt ihn dann in die R-Konsole ein.
 
-Für die tägliche Arbeit ist dies jedoch nicht sehr praktisch. Man möchte ein Programm, das die Kern-R-Konsole und den Editor kombiniert, und vielleicht einige andere Optionen beinhaltet, wie z.B. die Möglichkeit graphische Ausgaben aus R, eingelesene Daten etc. anzuzeigen. 
-
-
-R bietet einen einfachen Editor, der grundlegende Funktionen dieser Art zur Verfügung stellt (beachte, dass es auf einem Mac etwas anders aussieht als die Windows-Version, die wir hier zeigen). Dieser Editor heißt RGui. Um das RGui zu starten, startet man das Programm R aus den Programmen in Windows. Betrachte das sich öffnende Fenster und gebe 2 + 2 im Hauptfenster ein. Nach drücken der Enter-Taste, wird folgendes zu sehen sein:
+Für die tägliche Arbeit ist dies jedoch recht unpraktisch. Man hätte gerne ein Programm, dass einen Texteditor mit der Konsole und weiteren Optionen (z.B. die Möglichkeit graphische Ausgaben aus R anzuzeigen) kombiniert. R bietet eine einfache Version eines solchen Programms an, die RGui (ist ist zu beachaten, dass die Mac und Windows Versionen der RGui leicht unterschiedlich aussehen).  Um die RGui unter Windows zu starten, startet man einfach das Programm "R". Wenn man in der RGui 2 + 2 im Hauptfenster eintippt und Enter drückt, sollte Folgendes zu sehen sein:
 
 \begin{figure}[]
 \begin{center}
@@ -1188,15 +1233,13 @@ R bietet einen einfachen Editor, der grundlegende Funktionen dieser Art zur Verf
 \end{center}
 \end{figure}
 
-
-Das Fenster, das man hier sieht, wird die R-Konsole genannt. Durch die Konsole interagiert man mit dem Kern-R-Programm, das die gesamte Kommunikation ausführt.
+Das Fenster, das man hier sieht, ist die R-Konsole. Durch die Konsole interagiert man mit dem R Kern, der die statistischen Berechnungen ausführt.
 
 Nun schreiben wir etwas anderes: R hat einige Standarddatensätze, die automatisch geladen werden. Wir werden den airmiles-Datensatz verwenden, der die Anzahl der vergebenen Luftmeilen anzeigt. Wir werden nun kurz erläutern, wie man ein Diagramm mit diesem Datensatz erstellt. Tippe:
 
 <<eval=F>>=
 plot(airmiles, col = 4)
 @
-
 
 Das Ergebnis sollte wie in Fig.~\ref{fig: Rgui2} aussehen:
 
@@ -1446,7 +1489,7 @@ Davor einige wichtige Hinweise
 \end{itemize}
 
 
-\marginnote{Ein überblick über die Farben in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
+\marginnote{Ein Überblick über die Farbennamen in R \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
 
 <<fig.height = 4, fig.width=4, fig.align='center'>>=
 plot(airquality$Ozone, airquality$Temp)
