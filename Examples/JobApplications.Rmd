@@ -12,6 +12,7 @@ Problem / data from https://dynamicecology.wordpress.com/2017/01/04/you-cant-tel
 ## Reading in data 
 
 ```{r}
+set.seed(123)
 jobApplications <- read.csv2("jobApplications.csv")
 str(jobApplications)
 ```
@@ -23,7 +24,11 @@ str(jobApplications)
 ```{r, message=F, warning=F}
 # using MICE data imputation because of the many NAs in the number.of.applications 
 library(mice)
-jobApplications$number.of.applicationsI = complete(mice(jobApplications[,13:15], print=FALSE))[,1] 
+jobApplications$number.of.applicationsI = complete(mice(jobApplications[,13:15], m = 10, print=FALSE))[,1] 
+
+# I didn't impute the predictors for worry that this could bias the analysis, so checking here for complete cases
+comp = complete.cases(jobApplications[,c("gender", "number.of.grants.exceeding.100K", "h.index", "classes.taught.not.as.TA")])
+
 
 # preparing data for proportional glm (R convention is success / failure)
 jobApplications$success = cbind(jobApplications$number.of.phone.skype.interviews, jobApplications$number.of.applicationsI - jobApplications$number.of.phone.skype.interviews)
@@ -31,11 +36,26 @@ jobApplications$success = cbind(jobApplications$number.of.phone.skype.interviews
 
 ## Analysis
 
+### Fitting model
+
+
+```{r}
+m1 = glm(success ~ total.papers + gender + number.of.grants.exceeding.100K + h.index + classes.taught.not.as.TA, family = binomial,  data = jobApplications[comp,] , na.action = "na.exclude")
+```
+
+### Checking of model is appropriate
+
+```{r}
+library(DHARMa)
+plot(simulateResiduals(m1, n = 1000))
+```
+
+Looks all right. 
+
+### Summary and plots
 
 ```{r, fig.height=8, fig.width=10}
-m1 = glm(success ~ total.papers + gender + number.of.grants.exceeding.100K + h.index + classes.taught.not.as.TA, family = binomial,  data = jobApplications, na.action = "na.exclude")
 summary(m1)
 library(effects)
 plot(allEffects(m1))
 ```
-

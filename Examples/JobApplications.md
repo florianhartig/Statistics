@@ -8,6 +8,7 @@ Problem / data from https://dynamicecology.wordpress.com/2017/01/04/you-cant-tel
 
 
 ```r
+set.seed(123)
 jobApplications <- read.csv2("jobApplications.csv")
 str(jobApplications)
 ```
@@ -44,7 +45,11 @@ str(jobApplications)
 ```r
 # using MICE data imputation because of the many NAs in the number.of.applications 
 library(mice)
-jobApplications$number.of.applicationsI = complete(mice(jobApplications[,13:15], print=FALSE))[,1] 
+jobApplications$number.of.applicationsI = complete(mice(jobApplications[,13:15], m = 10, print=FALSE))[,1] 
+
+# I didn't impute the predictors for worry that this could bias the analysis, so checking here for complete cases
+comp = complete.cases(jobApplications[,c("gender", "number.of.grants.exceeding.100K", "h.index", "classes.taught.not.as.TA")])
+
 
 # preparing data for proportional glm (R convention is success / failure)
 jobApplications$success = cbind(jobApplications$number.of.phone.skype.interviews, jobApplications$number.of.applicationsI - jobApplications$number.of.phone.skype.interviews)
@@ -52,10 +57,30 @@ jobApplications$success = cbind(jobApplications$number.of.phone.skype.interviews
 
 ## Analysis
 
+### Fitting model
+
 
 
 ```r
-m1 = glm(success ~ total.papers + gender + number.of.grants.exceeding.100K + h.index + classes.taught.not.as.TA, family = binomial,  data = jobApplications, na.action = "na.exclude")
+m1 = glm(success ~ total.papers + gender + number.of.grants.exceeding.100K + h.index + classes.taught.not.as.TA, family = binomial,  data = jobApplications[comp,] , na.action = "na.exclude")
+```
+
+### Checking of model is appropriate
+
+
+```r
+library(DHARMa)
+plot(simulateResiduals(m1, n = 1000))
+```
+
+![](JobApplications_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+Looks all right. 
+
+### Summary and plots
+
+
+```r
 summary(m1)
 ```
 
@@ -63,30 +88,29 @@ summary(m1)
 ## 
 ## Call:
 ## glm(formula = success ~ total.papers + gender + number.of.grants.exceeding.100K + 
-##     h.index + classes.taught.not.as.TA, family = binomial, data = jobApplications, 
-##     na.action = "na.exclude")
+##     h.index + classes.taught.not.as.TA, family = binomial, data = jobApplications[comp, 
+##     ], na.action = "na.exclude")
 ## 
 ## Deviance Residuals: 
 ##     Min       1Q   Median       3Q      Max  
-## -2.0742  -1.0093  -0.4467   0.3443   2.4126  
+## -2.1824  -0.9261  -0.5290   0.3155   2.4439  
 ## 
 ## Coefficients:
-##                                 Estimate Std. Error z value Pr(>|z|)    
-## (Intercept)                     -2.71551    0.35292  -7.694 1.42e-14 ***
-## total.papers                    -0.01187    0.03131  -0.379    0.705    
-## genderM                         -0.27050    0.26422  -1.024    0.306    
-## number.of.grants.exceeding.100K -0.14350    0.16990  -0.845    0.398    
-## h.index                          0.04848    0.06195   0.783    0.434    
-## classes.taught.not.as.TA         0.03615    0.03961   0.913    0.361    
+##                                  Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)                     -2.661550   0.351449  -7.573 3.64e-14 ***
+## total.papers                    -0.018251   0.029947  -0.609    0.542    
+## genderM                         -0.194894   0.264813  -0.736    0.462    
+## number.of.grants.exceeding.100K -0.121025   0.169290  -0.715    0.475    
+## h.index                          0.061018   0.059922   1.018    0.309    
+## classes.taught.not.as.TA         0.005318   0.036337   0.146    0.884    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
-##     Null deviance: 76.261  on 66  degrees of freedom
-## Residual deviance: 72.381  on 61  degrees of freedom
-##   (5 observations deleted due to missingness)
-## AIC: 155.88
+##     Null deviance: 74.365  on 66  degrees of freedom
+## Residual deviance: 71.748  on 61  degrees of freedom
+## AIC: 155.19
 ## 
 ## Number of Fisher Scoring iterations: 5
 ```
@@ -96,5 +120,4 @@ library(effects)
 plot(allEffects(m1))
 ```
 
-![](JobApplications_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
-
+![](JobApplications_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
