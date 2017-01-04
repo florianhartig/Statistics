@@ -1,0 +1,41 @@
+---
+title: "Job Applications"
+author: "Florian Hartig"
+date: "4 Jan 2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+Problem / data from https://dynamicecology.wordpress.com/2017/01/04/you-cant-tell-much-about-your-odds-of-getting-an-interview-for-a-faculty-position-from-common-quantitative-metrics/
+
+## Reading in data 
+
+```{r}
+jobApplications <- read.csv2("jobApplications.csv")
+str(jobApplications)
+```
+
+
+## Preparing data
+
+
+```{r, message=F, warning=F}
+# using MICE data imputation because of the many NAs in the number.of.applications 
+library(mice)
+jobApplications$number.of.applicationsI = complete(mice(jobApplications[,13:15], print=FALSE))[,1] 
+
+# preparing data for proportional glm (R convention is success / failure)
+jobApplications$success = cbind(jobApplications$number.of.phone.skype.interviews, jobApplications$number.of.applicationsI - jobApplications$number.of.phone.skype.interviews)
+```
+
+## Analysis
+
+
+```{r, fig.height=8, fig.width=10}
+m1 = glm(success ~ total.papers + gender + number.of.grants.exceeding.100K + h.index + classes.taught.not.as.TA, family = binomial,  data = jobApplications, na.action = "na.exclude")
+summary(m1)
+library(effects)
+plot(allEffects(m1))
+```
+
