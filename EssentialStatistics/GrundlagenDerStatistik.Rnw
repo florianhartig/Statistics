@@ -553,14 +553,14 @@ Wenn wir genaue Aussagen über die Wahrscheinlichkeit der Unterschiede zwischen 
 
 Die üblichere Modellart für solche Zwecke ist das parametrische statistische Modell. Für die Daten, die wir hier haben, würde das parametrische statistische Modell annehmen, dass es eine durchschnittliche Wachstumsrate für jede Behandlungsart (Kontrolle, klassische und Heavy Metal Musik) gibt, jedoch das Wachstum jeder individuellen Pflanze mit einer normalverteilten Abweichung um ihre behandlungsspezifische durchschnittliche Wachstumsrate variiert. Die Parameter dieses Modells sind die unbekannten durchschnittlichen Wachstumsraten und die Abweichung der Normalverteilung. Diese Parameter werden dann mit Methoden, die hier in diesem Kapitel erklärt werden, an die Daten angepasst und basieren auf der Berechnung für z.B. die Wahrscheinlichkeit der Datenresultate, wenn keine Unterschiede zwischen den Gruppen wären.
 
-Eine andere Möglichkeit, um datengenerierende Modelle zu erstellen, sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datengenerierende Prozesse zu vermeiden. Normalerweise entsteht der datengenerierende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit einer Annahme z.B. über die Streuung der Daten durch das Randomisieren (zufälliges Anordnen) oder das wiederholte Prüfen des Datensatzes. Wie funktioniert das? Für das Pflanzenwachstum beispielsweise lässt sich diese Frage wie folgt beantworten: Wie wahrscheinlich wäre das erneute Erhalten der beobachteten Ergebnisse, wenn keine Unterschiede zwischen den Gruppen wären und ohne das Anstellen von Vermutungen über die Streuung? Hierfür werfen wir einfach alle Beobachtungen ungeachtet ihrer Behandlungsart in einen Topf und verteilt sie erneut zufällig in die drei Behandlungsgruppen. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
+Eine andere Möglichkeit datengenerierende Modelle zu erstellen sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datengenerierende Prozesse zu vermeiden. Normalerweise entsteht der datengenerierende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit Modellannahmen zu erstellen z.B. über Resamplingmethoden, in denen wiederholt Teile aus dem beobachteten Datensatz gezogen werden um so "künstlich" neue Daten zu generieren. Für Pflanzenwachstumsbeobachtungen unter drei verschiedenen Bedingungen (Behandlung) könnte man z.B. ein nichtparametrisches Modell für die Annahmen dass es keine Unterschiede in dem Wachstum gibt dadurch erstellen, dass man alle Beobachtungen ungeachtet der Behandlung in einen Topf wirft, sie dann zufällig den drei Gruppen zuweist, und ausrechnet wir groß die Unterschiede zwischen den Gruppen sind. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
 
-Nicht-parametrische Methoden sind ein wichtiger Bestandteil moderner Statistik.\marginnote{Die Feinsinnigkeit der parametrischen Methoden baut auf das Treffen von Annahmen, was in einer Art und Weise zusätzliche Daten darstellt. Natürlich basieren dann alle Ergebnisse auf der Richtigkeit dieser Vermutungen. Wie man parametrische Vermutungen überprüft werden wir später in diesem Kapitel behandeln.} Ihr Vorteil liegt wohl in der Tatsache, dass sie keine Vermutungen anstellen. Andererseits sind parametrische Methoden meist viel schneller und sind, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten viel aussagekräftiger und feinfühliger, wodurch sie viel wahrscheinlicher einen Effekt, falls vorhanden, erkennen können. Aufgrund der letzten beiden Argumente sind momentan parametrische Methoden die Grundlage der meisten statistischen Analysen.
+Nicht-parametrische Methoden sind inzwischen ein wichtiger Bestandteil der modernen Statistik.\marginnote{Parametrische Methoden haben normalerweise eine höhere "Teststärke" (das Konzept wird gleich erklärt, aber grob heißt das dass sie eher einen Effekt finden wenn er da ist). Allerdings basieren alle Ergebnisse der parameterischen Statistik auf der Richtigkeit des parametrischen Modells. Wie man die Modellannahmen überprüft kann werden wir später in diesem Kapitel behandeln.} Ihr Vorteil liegt darin dass sie weniger Annahmen über die Daten treffen. Andererseits sind parametrische Methoden meist wesentlich schneller zu berechnen, und, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten sensitiver (höhere Teststärke, siehe Kap.~\ref{ch: p-werte}), wodurch sie ehereinen vorhandenen Effekt erkennen. Deshalb sind die parametrische Methoden immer noch die Grundlage der meisten statistischen Analysen.
 
 
 \section{Inferentielle Outputs}
 
-Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Vorgehensweisen anwenden, um Rückschlüsse über unsere Daten (in unserem Fall: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht) zu ziehen. In der üblichen Statistik gibt es vorwiegend zwei inferentielle Vorgehensweisen, die auf alle möglichen Arten von Konfigurationen und Modelle angewendet werden. Die Outputs dieser zwei Vorgehensweisen sind: p-Werte und Maximum-Likelihood-Schätzer. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene inferentielle Methoden anwenden, um Schlüsse über unsere Daten zu ziehen (in unserem Beispiel: Um entscheiden zu können, ob Musik einen Unterschied macht, oder nicht). In der "normalen" Statistik sind hier vor allem zwei Methoden zu nennen, die fast universell auf jedes Problem angewandt werden: p-Werte und Maximum-Likelihood-Schätzer. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
 
 \begin{figure}[htb]
 \begin{center}
@@ -571,7 +571,7 @@ Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisc
 \end{figure}
 
 
-\subsection{p-Werte}
+\subsection{p-Werte}\label{ch: p-werte}
 
 Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. 
 
@@ -607,7 +607,7 @@ Also, wichtig zu merken
 
 
 \begin{equation}
-FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)
+FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)}
 \end{equation}
 
 
