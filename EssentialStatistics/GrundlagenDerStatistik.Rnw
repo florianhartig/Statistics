@@ -214,30 +214,29 @@ Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden 
 				\item integer - ganzzahlig
 				\item numeric - kontinuierliche Zahlen (Gleitkommazahl)
 				\item boolean - wahr / falsch
-				\item factor - faktoriale Variablen. Der Standard ist ungeordnet (z.B. rot, grün, blau), aber man kann angeben dass die Variable geordnet behandelt werden soll (z.B. klein, mittel, groß).
+				\item factor - kategoriale Variablen. Der Standard ist ungeordnet (z.B. rot, grün, blau), aber man kann auch einen geordneten factor (z.B. klein, mittel, groß) erzeugen.
 			\end{itemize*}
 			
 			Außerdem taucht in realen Datensätzen oft der Wert "NA" auf. Dies ist die Bezeichnung für eine fehlende Beobachtung. Ähnlich, jedoch nicht identisch, ist "`NaN"' (not a number), was bei einer nicht ausführbaren Rechnung als Ergebnis auftreten kann.
 			
-			Um Daten als data.frame in R-Studio einzulesen, findet man im oberen rechten Teil "Import Dataset". Genaueres kann unter "Handling data in R " im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{der Seite hier} nachgelesen werden.
+			Der einfachste Weg um Daten als data.frame in RStudio einzulesen ist der "Import Dataset" im oberen rechten Teil des RStudio Editors. Natürlich geht es aber auch per Skript. Genaueres kann unter "Handling data in R " im Anhang~\ref{HandlingDataInR}, oder auf \href{http://biometry.github.io/APES/R/R20-DataStructures.html}{der Seite hier} nachgelesen werden.
 			
-			Nachdem die Daten eingelesen wurden, ist es sehr wichtig die Spalten auf ihre richtigen Typen zu überprüfen. Dies kann, z.B. durch die R Funktion str(), also str(TheNameOfMyData) erfolgen. Der str Befehl steht für "structure", und zeigt dem Benutzer die Struktur inklusive Typ eines Datenobjektes an. 			
+			\textbf{Wichtig:} Nachdem die Daten eingelesen wurden muss man immer überprüfen ob die Werte und auch der Typ richtig eingelesen wurde. Ein häufiges Problem ist das numerische Werte als factor eingelesen werden (z.B. reicht ein versehentlicher Buchstabe in den Rohdaten so dass R die Spalte als Faktor interpretiert). Um die Daten zu überprüfen ist die R Funktion str(), also str(TheNameOfMyData) hilfreich. Der str Befehl steht für "structure", und zeigt dem Benutzer die Struktur inklusive Typ eines Datenobjektes an. 			
 		\end{mdframed}
 	\end{fullwidth}
 	
 	
 	\chapter{Deskriptive Statistik und Visualisierung}\label{ch: deskriptive Statistik}
 	
-	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird später noch detaillierter im Kapitel ~\ref{cha: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von Daten.
+	Deskriptive Statistik\marginnote{Wie man Daten erstellt wird später noch detaillierter im Kapitel ~\ref{ch: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von Daten.
 	
 	\section{Kennzahlen der Statistik}
 	
-	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen Daten numerisch zusammen} bezeichnen Rechenvorschriften (z.B. Mittelwert oder Standardabweichung), die Eigenschaften von Datensätzen numerisch zusammenfassen. Kennzahlen dienen also zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes, oder zu derem Vergleich.
+	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen Daten numerisch zusammen} bezeichnen Rechenvorschriften (z.B. Mittelwert oder Standardabweichung), die Eigenschaften von Datensätzen numerisch zusammenfassen. Kennzahlen dienen also zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes, oder zu deren Vergleich.
 	
 	\subsection{Univariate Verteilungen - Kennzahlen einer Variable}
 	
-	Eine Verteilung beschreibt 
-	
+	Ein Grundbegriff in diesem Zusammenhang ist die Verteilung. Die Verteilung einer oder mehrerer Variablen beschreibt die Häufigkeit des Vorkommens verschiedener Werte dieser Variablen. Genau genommen muss man zwei Verteilungen unterscheiden: die Verteilung der Population / des datengenerierenden Modells, und die Verteilung der Stichprobe. 	
 	
 	
 	Eine übliche Situation bei der wir von den Kennzahlen der Statistik Gebrauch machen, ist die wiederholte Beobachtung einer stetigen Variable. Als Beispiel kann man sich hier vorstellen, man habe 2000 Bäume gemessen und anschließend erneut vermessen. Man konnte eine Vorkommen an zunehmendem Durchmesser beobachten (siehe Abb.\ref{fig: data distribution}).
@@ -403,9 +402,9 @@ Für die vielseitigen Berechnungsmöglichkeiten der deskriptiven Statistik in R,
 
 \section{Visualisierung}
 
-\marginnote{Gebe ?anscombe in R ein, um den Code zu sehen, der diese Plots ausgibt und um die statistischen Eigenschaften des Datensatzes zu berechnen.}
+\marginnote{Gib ?anscombe in R ein, um den Code zu sehen, der diese Plots ausgibt und um die statistischen Eigenschaften des Datensatzes zu berechnen.}
 
-Kennzahlen sind sehr nützlich, können aber auch zum Problem werden. Ein bekanntes Beispiel dafür ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. \citep{Anscombe-Graphsinstatistical-1973}. Hier ist es äußerst nützlich zusätzlich eine graphische übersicht zu den berechneten Kennzahlen der Daten zu erhalten.
+Kennzahlen sind sehr nützlich, können aber auch zu Fehlinterpretationen führen. Ein bekanntes Beispiel dafür ist das Anscombe Quartett, ein hypothetischer Datensatz aus vier Stichproben, die identisch bzgl. üblicher Kennzahlen wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. sind, aber sehr unterschiedliche Verteilungen aufweisen \citep{Anscombe-Graphsinstatistical-1973}. Das Beispiel zeigt, dass die Berechnung von einfachen Kennzahlen kein vollständiger Ersatz für die graphische Darstellung der Daten darstellt.
 
 
 \begin{figure}[htbp]
@@ -440,20 +439,20 @@ mtext("Anscombe's 4 Regression data sets", outer = TRUE, cex = 1.5)
 par(op)
 
 @
-\caption{Anscombe's Quartet, ein hypothetischer Datensatz aus vier Beobachtungen, die identische übliche Kennzahlen aufweisen, wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc.}
+\caption{Anscombe's Quartet, ein hypothetischer Datensatz aus vier Beobachtungen, ein hypothetischer Datensatz aus vier Stichproben, die identisch bzgl. üblicher Kennzahlen wie z.B. Mittelwert, Varianz, Korrelation, Regressionslinie, etc. sind, aber sehr unterschiedliche Verteilungen aufweisen.}
 \label{fig: Anscombes Quartet}
 \end{center}
 \end{figure}
 
 \subsection{Grundsätze der Visualisierung}
 
-Ein Grundsatz\marginnote{Beispiele für verzerrte Grafiken \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Grafiken und Darstellungen ist, die Daten so einsehbar und wahr wie möglich darzustellen. Der Leser sollte einen bestmöglichen überblick in kürzester Zeit über die Daten erhalten. Zusätzlich sollten die Graphen natürlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen könnten:
+Ein Grundsatz\marginnote{Beispiele für missverständliche Abbildungen \href{https://en.wikipedia.org/wiki/Misleading_graph}{siehe}} von Abbildungen und Darstellungen ist, die Daten so einsehbar und wahr wie möglich darzustellen. Der Leser sollte einen bestmöglichen überblick in kürzester Zeit über die Daten erhalten. Zusätzlich sollten die Graphen natürlich auch anschaulich sein. Vorab ein paar generelle Tipps, die vielleicht helfen könnten:
 
 \begin{itemize}
 \item Einfach ist besser als kompliziert
 \item Vermeide übertriebene Farben. Graphen sollten wenn möglich auch in schwarz-weiß leserlich sein (benutze einen Farbgradienten, der gleichzeitig ein Intensitätsgradient ist; benutze zusätzlich zu Farben auch gestrichelte Linien). Wenn dein Graph auf Farben basiert, achte darauf welche zu verwenden, die auch Menschen mit einer Rot-Grün-Schwäche erkennen können.
-\item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, außer es gibt besondere Gründe. Achsen sollten bei 0 beginnen, außer es gibt gute Gründe, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Grafiken, wenn es keine Gründe gibt, die dagegen sprechen. 
-\item Manipuliere deine Grafiken nicht!
+\item Ehrlichkeit: vermeide Verzerrungen. Benutze quadratische Formen, außer es gibt besondere Gründe. Achsen sollten bei 0 beginnen, außer es gibt gute Gründe, die dagegen sprechen. Verwende die gleiche Skala bei der Darstellung mehrerer Abbildungen, wenn es keine Gründe gibt, die dagegen sprechen. 
+\item Manipuliere deine Abbildungen nicht!
 \item Ausgabe in einem Vektor-Format (pdf, eps, svg)
 \end{itemize}
 
@@ -573,23 +572,35 @@ Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisc
 
 \subsection{p-Werte}\label{ch: p-werte}
 
-Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. 
+Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. Die Verwendung des p-Wertes basiert auf dem Ansatz des Hypothesentests (englisch: null hypothesis significance testing, NHST). Die Idee dahinter ist Folgende: wenn wir Beobachtungsdaten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um zu testen ob die Daten zu einer festen, vorgegebenen Hypothese passen. Für das Beispiel der Pflanzen und der Musik könnte unsere Hypothese so lauten: "`Musik hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen."' Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} In der Praxis wird typischerweise wird als Nullhypothese ein Szenario von "keinem" Einfluss gewählt, so dass man dann zeigen kann das es einen Einfluss gibt. Technisch könnte man aber genauso die Vermutung "`klassische Musik verdoppelt die Wachstumsrate der Pflanzen"' als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, bzw. an der Fragestellung, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
 
-Die Verwendung des p-Wertes ist eng mit der Inferenzmethode der Null-Hypothesen Signifikanzprüfung (null hypothesis significance testing, NHST) verbunden. Die Idee, die dahinter steckt, ist Folgende: wenn wir gewisse Daten beobachten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um eine vorgegebene Hypothese über das Entstehen der Daten zu präzisieren. Für das Beispiel der Pflanzen und der Musik könnte unsere Hypothese so lauten: "`Musik hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen."' Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} Auch wenn es üblich ist, die Annahme keinerlei Auswirkungen auf die beobachteten Objekte als Nullhypothese zu setzen, ist es tatsächlich die eigene Entscheidung und man könnte genauso gut die Vermutung "`klassische Musik verdoppelt die Wachstumsrate der Pflanzen"' als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
+Nachdem\marginnote{Die Teststatstik beschreibt eine Eigenschaft des Datensatzes mit dem man die beobachteten Daten und H0 vergleichen will.} wir uns für eine Nullhypothese entschieden haben, wollen wir nun feststellen ob die Daten zu der Nullhypothese passen. Die Frage ist natürlich: wie definiert man denn "passen". Die Strategie der Hypothesentests ist sich zuerst eine Teststatistik zu definieren. Die Teststatistik ist irgendeine deskriptive Statistik die den Datensatz beschreibt (einfachstes Beispiel: der Mittelwert). Im Prinzip steht es jedem frei sein eigenes Maß zu wählen, aber es gibt natürlich Teststatistiken die sinnvoller sind als andere. Die Nullhypothese und die Teststatistik zusammen spezifizieren die Annahmen eines Hypothesentests. 
 
-Wenn wir uns für eine Nullhypothese entschieden haben, berechnen wir die Wahrscheinlichkeit für dieses oder ein extremeres Beobachten der Daten in diesem Szenario. \marginnote{Der p-Wert ist die Wahrscheinlichkeit die Daten oder extremere Daten unter unserer Nullhypothese beobachten zu können.} 
+Mit der Teststatistik gewappnet können wir jetzt die beobachteten Daten mit H0 vergleichen. Hierzu definieren wir den p-Wert 
 
 \begin{equation}
 p := p(d >= D_{obs} | H_0)
 \end{equation}
 
-Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), spricht man von einem signifikantem Beweis, um die Nullhypothese abzuweisen. Die Schwelle $\alpha$ ist eine Vereinbarung, in der ökologie üblicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranlässt. \marginnote{Wenn p<0.05, haben wir signifikante Beweise für ein Abweisen der Nullhypothese.} 
+als die Wahrscheinlichkeit die beobachteten Daten oder extremer (gemessen an der Teststatsitik) zu bekommen wenn H0 wahr ist (siehe Abb.~\ref{fig: teststatistik}).\marginnote{Der p-Wert ist die Wahrscheinlichkeit der beobachteten Daten oder extremer, gegeben H0.} 
 
-Ein 
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width = 8cm]{ErrorTypes}
+\includegraphics[width = 6cm]{Teststatistik}
+\caption{Eine visualisierung von p-Wert und Teststatistik. Gegen H0 erwarten wir eine gewisse Verteilung der Teststatistik. Wenn $D_obs$ die rote Linie ist, so ist der p-Wert die Wahrscheinlichkeit eine größere Teststatistik zu bekommen als der Wert für $D_obs$.}
+\label{fig: teststatistik}
+\end{center}
+\end{figure}
+
+Die Idee dieser Definition ist dass ein sehr kleiner p-Wert anzeigt, dass die Wahrscheinlichkeit die beobachteten Daten zu bekommen gegen H0 sehr klein ist. 
+Jetzt kommt ein Trick der erst mit der weiteren Erklärung richtig sinnvoll wird: Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), so sagt man die "Nullhypothese wird abgelehnt", "es gibt signifikante Evidenz gegen die Nullhypothese", oder einfach: "der Test / Effekt ist siginfikant". Der Wert von $\alpha$ ist eine Übereinkunft, in der Ökologie üblicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranlässt. \marginnote{Wenn p<0.05, haben wir signifikante Beweise für ein Abweisen der Nullhypothese.} 
+
+Warum diese Definition Sinn macht
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width = 9cm]{ErrorTypes}
 \caption{E}
 \label{fig: Error Types}
 \end{center}
@@ -603,9 +614,6 @@ Also, wichtig zu merken
 \end{itemize}
 
 
-
-
-
 \begin{equation}
 FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)}
 \end{equation}
@@ -613,7 +621,7 @@ FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)}
 
 \begin{figure}[htb]
 \begin{center}
-\includegraphics[width = 8cm]{FDR}
+\includegraphics[width = 11cm]{FDR}
 \caption{False Discovery Rate}
 \label{fig: Error Types}
 \end{center}
@@ -983,25 +991,47 @@ Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsm
 \end{fullwidth}
 
 
-\chapter{Prädiktive Statistik und Maschinelles Lernen}
+\chapter{Prädiktive Statistik und Maschinelles Lernen}\label{ch: Prädiktive Statistik}
 
-Eine dritte Klasse statistischer Verfahren, die in den letzten Jahren sehr wichtig geworden sind, sind prädiktive Verfahren, die oft maschinelle Lernalgorithmen genannt werden. Das grundlegende Ziel dieser Methoden besteht darin, Vorhersagen aus einem gegebenen Datensatz mit dem geringstmöglichen Fehler treffen zu können. Dabei verwenden sie typischerweise relativ komplizierte, oft nicht parametrische Verfahren, die typischerweise keine Berechnung von Inferenz-Ergebnissen, wie Maximum-Likelihood-Schätzwert oder p-Werten, erlauben.
+Prädiktive Statistik (auch: maschinelles Lernen) ist ein dritter Bereich der Statistik der in den letzten Jahren zunehmend an Bedeutung gewonnen hat. Das grundlegende Ziel dieser Methoden besteht darin, gute Vorhersagen aus einem komplexen Datensatz zu erzeugen. Dabei verwenden sie typischerweise relativ komplizierte, nicht-parametrische Verfahren, die typischerweise Vorhersagen ermöglichen, aber keine Berechnung klassischer Größen der schließenden Statistik, wie z.B. der p-Wert oder MLE. 
 
-Es besteht eine beträchtliche Spannung zwischen dem eher klassischen Feld der Schließende Statistik und dem moderneren Bereich des maschinellen Lernens. Für klassische, inferentielle Statistiker haben maschinelle Lernmethoden die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben. Ein Statistiker, der sich auf das maschinelle Lernen konzentriert, würde darauf antworten, dass es in vielen angewandten Problemen nichts zu lernen gibt\footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Zuordnung funktionsreicher Satellitendaten zu Bodensignalen oder Sprach/Gesichtserkennung.}. Maschinen-lernende Experten sind derzeit bei Technologie-Unternehmen wie Google, Facebook etc sehr begehrt. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. Die Unterscheidung zwischen den Zielen der Schließende Statistik und der Vorhersagestatistik sowie die Spannungen zwischen diesen Bereichen sind in der Zusammenfassung des äußerst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001} nachzulesen:
+Die vielleicht bekannteste Methode des maschinellen Lernens ist der sogenannte Random Forest Algorithmus. Genau zu erklären wie dieses Algorithmus funktioniert würde hier zu weit führen, aber um eine grobe Idee zu geben: die Idee ist die Daten durch sogenannten Entscheidungsbäume zu beschreiben. Die Entscheidungsbäume sagen: Daten mit Eigenschaft A führen zu Ergebnis X, und Eigenschaft B führt zu Y. Eine Strategie für Vorhersagen wäre jetzt einen sehr detaillierten Entscheidungsbaum zu bauen. Genau das mach der Random Forest nicht. Statt dessen baut er viele einfache (= schlechte) Entscheidungsbäume und kombiniert diese dann. Erstaunlicherweise führt die Kombination von vielen schlechten Modellen oft zu einer besseren Vorhersage als die eines guten Modells. Hier ein Beispiel des Algorithmus, in dem wir die Menge an Ozon in der Luft aus verschiedenen anderen Wetterparametern voraussagen 
+
+Mit der klassischen linearen Regression können wir ungefähr 60\% der Varianz in Ozon erklären
+
+<<>>=
+ozone.lm <- lm(Ozone ~ ., data=airquality, na.action=na.omit)
+summary(ozone.lm)
+@
+
+Random Forest schafft es auf 70\%. Wir haben hier keine Vorhersagen auf neue Daten getestet, aber typischerweise fällt der Unterschied zwischen lm und rf in diesem Fall noch deutlicher aus. 
+
+<<>>=
+library(randomForest)
+ozone.rf <- randomForest(Ozone ~ ., data=airquality, mtry=3,
+                         importance=TRUE, na.action=na.omit)
+print(ozone.rf)
+@
+
+Der Random Forest liefert keine p-Werte o.ä., aber man kann sich wenigsten die Wichtigkeit der verschiedenen Variablen anzeigen lassen, wobei sich hier Wichtigkeit auf die Wichtigkeit für die Vorhersage bezieht, eine kausale Annahme wird hier nicht gemacht. 
+
+<<>>=
+varImpPlot(ozone.rf)
+@
+
+Das Verhältnis zwischen den Anhängern der klassischen schließenden Statistik und den maschinellen Lernen ist seit langem von Spannungen geprägt. Klassische Statistiker bemängeln dass das maschinelle Lernen die Idee des "`Lernens von Daten"' im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben hat. Ein Anhänger des maschinellen Lernens würde darauf antworten, dass es bei vielen angewandten Problemen nicht um das Testen von kausalen Zusammenhängen, sondern nur um das Erkennen von Pattern geht. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. \footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Korrelation komplexer Satellitendaten mit Bodensignalen oder Sprach/Gesichtserkennung.} Der Erfolg ist auf der Seite des maschinellen Lernens: Experten in diesem Feld sind derzeit bei Technologieunternehmen wie Google, Facebook, etc. heiß begehrt, und der Markt scheint immer weiter zu wachsen. Der Unterschied zwischen der schließenden und der prädiktiven Statistik sowie die Spannung zwischen diesen Bereichen ist Inhalt des äußerst empfehlenswerten Artikels "`Statistical Modeling: The Two Cultures"' von \citet{Breiman-StatisticalModelingTwo-2001}, dem Erfinder des Random Forest Algorithms. Hier ein Auszug aus diesem Text:
 
 \begin{quote}
-Es gibt zwei Kulturen in der Verwendung der statistischen Modellierung, um Schlussfolgerungen aus Daten zu erreichen. Man geht davon aus, dass die Daten durch ein gegebenes stochastisches Datenmodell erzeugt werden. Die andere verwendet algorithmische Modelle und behandelt den Datenmechanismus als unbekannt. Die statistische Gemeinschaft hat sich der nahezu ausschließlichen Nutzung von Datenmodellen verschrieben. Dieses Engagement hat zu irrelevanten Theorien, fragwürdigen Schlussfolgerungen geführt und hat die Statistiker daran gehindert, an einer Vielzahl interessanter aktueller Probleme zu arbeiten. Die algorithmische Modellierung, sowohl in Theorie und Praxis, hat sich schnell in Bereichen außerhalb der Statistik entwickelt. Es kann sowohl auf großen komplexen Datensätzen als auch als genauere und lehrreichere Alternative zur Datenmodellierung auf kleineren Datensätzen verwendet werden. Wenn es unser Ziel ist Daten zu nutzen, um Probleme zu lösen, dann müssen wir uns von der exklusiven Abhängigkeit von Datenmodellen entfernen und ein breiteres Spektrum an Tools annehmen.
+There are two cultures in the use of statistical modeling to reach conclusions from data. One assumes that the data are generated by given stochastic data model. The other uses algorithmic models and treats the data mechanism as unknown. The statistical community has been committed to the almost exclusive use of data models. This commitment has led to irrelevant theory, questionable conclusions, and has kept statisticians from working on a large range of interesting current problems. Algorithmic modeling, both in theory and practice, has developed rapidly in fields outside statistics. It can be used both on large complex data sets and as a more accurate and informative alternative to data modeling on smaller data sets. If our goal as a field is to use data to solve problems, then we need to move away from exclusive dependence on data models and adopt a more diverse set of tools.
 \end{quote}
 
+Eine abschließende Bemerkung: Aufgrund der großen und wachsenden Bedeutung der prädiktiven Methoden in der modernen Statistik habe ich dieses kurze Kapitel in diesen Einführungstext aufgenommen. Natürlich gibt es wesentlich mehr zu diesem Thema zu sagen als der Platz hier erlaubt. Um mehr über prädiktive Methoden zu lernen würde ich das Lehrbuch von \citet{James-IntroductiontoStatistical-2013} empfehlen, das ich auch am Ende dieses für die weitere Lektüre empfehle. Es ist auch instruktiv zu sehen wie viel Interesse diesen Methoden im Internet entgegengebracht wird, und dass viele Firmen offene Wettbewerbe in prädikativer Statistik ausschreiben um Mitarbeiter zu gewinnen (siehe, z.B. \href{kaggle.com}{https://www.kaggle.com/}). 
 
-Ich habe dieses kurze Kapitel wegen der Bedeutung der prädiktiven Methoden in der modernen Statistik aufgenommen. Eine detaillierte Erläuterung der Methoden des maschinellen Lernens ist jedoch jenseits dieser Einführung. Bei bestehendem Interesse mehr über prädiktive Methoden zu lernen, würde ich empfehlen mit dem Lehrbuch von \citet{James-IntroductiontoStatistical-2013} zu beginnen, das ich auch am Ende dieses einführenden Skripts für die weitere Lesung empfehle.
 
 
-\href{kaggle.com}{https://www.kaggle.com/}
+\chapter{Versuchsplanung}\label{ch: design of experiments}
 
-\chapter{Versuchsplanung}\label{cha: design of experiments}
-
-Kommen wir zurück zu einem der ersten Punkte in diesem Skript: die Daten. Wenn wir selbst Daten sammeln müssen, müssen wir eine Reihe von Fragen beantworten. Welche Variablen sollten wir sammeln? Bei welchen Werten sollten wir Daten sammeln? Und wie viele Replikate brauchen wir?
+Kommen wir zurück zu einem der ersten Punkte in diesem Skript: die Daten. Wenn wir selbst Daten erheben wollen, müssen wir eine Reihe von Fragen beantworten: Welche Variablen sollten gemessen werden? Wie sollten wir die Variablen ändern die wir kontrollieren können. Und wie viele Replikate brauchen wir?
 
 
 \section{Auswahl der Variablen}
