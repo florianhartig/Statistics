@@ -865,6 +865,28 @@ One standard concern in Poisson or binomial glms is that the variance of the Poi
 
 A third class of statistical procedures that have become very important in recent years are predictive methods, often called machine-learning algorithms. The basic goal of this methods is to to be able to make predictions from a given dataset with the lowest possible error. In doing so, they typically use relatively complicated, often non-parametric methods that typically don't allow to calculate inferential products such as the MLE or p-values.
 
+The arguably most famous machine learning method is random forest. The idea of a random forest is to train a large number of simple decision trees to do good predictions. Here an example: A classical linear regression explains about 60\% of the variability in Ozon
+
+<<>>=
+ozone.lm <- lm(Ozone ~ ., data=airquality, na.action=na.omit)
+summary(ozone.lm)
+@
+
+random forest manages 70\%. The difference to lm would probably be even larger when looking at predictive error on new data.
+
+<<>>=
+library(randomForest)
+ozone.rf <- randomForest(Ozone ~ ., data=airquality, mtry=3,
+                         importance=TRUE, na.action=na.omit)
+print(ozone.rf)
+@
+
+The random forest does not deliver p-values, but one can display the importance of the different variables. Note that this is importance for prediction, there is no causality implied. 
+
+<<>>=
+varImpPlot(ozone.rf)
+@
+
 There is considerable tension between the more classical field of inferential statistics and the more modern field of machine-learning. For classical, inferential statisticians, machine learning methods have abandoned the idea of "learning from data", in the sense of comparing hypotheses to data, in favor of simply making predictions. A statistician concentrating on machine-learning would reply that in many applied problems, there is nothing to learn \footnote{Typical machine learning applications include predicting the interests of customers in web shops, the association of feature-rich satellite data with ground signals, or speech / face recognition. Machine-learning experts are currently sought-after by technology companies such as Google, Facebook and so on.}. The goal is to build an algorithm that is able to correctly predict given a complex dataset. The distinction between the goals of inferential statistics and predictive statistics, as well as the tension between these fields, are nicely summarized in the abstract of the extremely recommendable article "Statistical Modeling: The Two Cultures" by \citet{Breiman-StatisticalModelingTwo-2001}:
 
 \begin{quote}
@@ -885,12 +907,12 @@ In a practical setting, we are typically interested in how a response is affecte
 
 \subsection{What is a confounding variable?}
 
-Imagine we are interested in a response A, and we have hypothesized that A~B. Imagine there is a second predictor variable C that has an influence on A, but in which we are not interested in for the purpose of the question under consideration. Such a variable that is not of interest for the question is also called "extraneous variables". \marginnote{An extraneous variable is a variable that can influence the response, but is not of interest for the experimenter}. So we also have A~C, but we are not interested in this relationship. If we now take data, and don't measure C, it's usually not a bit problem as long as C is uncorrelated with B - it might create a bit more variability in the response, but by and large the effect of C should average out and we should still be able to detect the effect of B.
+Imagine we are interested in a response A, and we have hypothesized that $A~B$. Imagine there is a second predictor variable C that has an influence on A, but in which we are not interested in for the purpose of the question under consideration. Such a variable that is not of interest for the question is also called "extraneous variables". \marginnote{An extraneous variable is a variable that can influence the response, but is not of interest for the experimenter}. So we also have A~C, but we are not interested in this relationship. If we now take data, and don't measure C, it's usually not a bit problem as long as C is uncorrelated with B - it might create a bit more variability in the response, but by and large the effect of C should average out and we should still be able to detect the effect of B.
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{Confounding}
-\caption{Diagram illustrating a confounding variable. A key requirement for being a confounded is that the variable correlates both with the response, and with the predictor variables that form our original hypothesis. If the second link is not there, the variable is not confounding and can be disregarded.}
+\caption{Diagram illustrating a confounding variable. A key requirement for being a confounded is that the variable correlates both with the response, and with the predictor variables that form our original hypothesis. If the second link is not there, the variable is only extraneous and not confounding. If that is the case, disregarding it has usually only minor consequences on the statistical interpretation.}
 \label{fig: Confounding}
 \end{center}
 \end{figure}

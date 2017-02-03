@@ -75,8 +75,6 @@ literate={*}{{\char42}}1
 
 
 
-
-
 \title{Essential\\Statistics}
 \author{Florian Hartig}
 
@@ -109,6 +107,11 @@ Germany\\[0.5cm]
 Issues can be reported via the \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} of the \href{https://github.com/florianhartig/Statistics/tree/master/EssentialStatistics}{GitHub repository} of these lecture notes. 
 
 \end{fullwidth}
+
+\vspace{2cm}
+
+To run the practical examples in these lecture notes, you will need to install R - help on this available \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{here}
+
 
 
 \vfill
@@ -169,7 +172,7 @@ The \marginnote{Sampling creates randomness.} population as such is fixed and do
 
 The\marginnote{However, not all randomness comes from sampling from a population.} process of sampling from the population does explain how randomness arises in our data. However, a slight issue with this concept is that it does not match very well with more complex random processes. Imagine, for example, that data arises from a person going to randomly selected plots to measure radiation (which varies within minutes due to cloud cover), using a measurement instrument that measures with some random error. Does it really make sense to think of the data arising from sampling from a "population" of possible observations?
 
-\marginnote{A more modern concept that replaces the "population" is the "data-generating process". The data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes.} A more modern and general concept to describe how data is created is the concept of the "data-generating process", which is pretty self-explanatory: the data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes. It therefore includes the properties of what would classically be called "sampling from a population", but it is broader and includes all other processes that would create systematic and random patterns in our data. In this picture, instead of inferring properties of the population from a sample, we would say we want to infer the properties of the data-generating process from a sample of observations created by this process.
+\marginnote{A more modern concept that replaces the "population" is the "data-generating process" The data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes.} A more modern and general concept to describe how data is created is the concept of the "data-generating process", which is pretty self-explanatory: the data-generating process describes how the observations from a random sample arise, including systematic and stochastic processes. It therefore includes the properties of what would classically be called "sampling from a population", but it is broader and includes all other processes that would create systematic and random patterns in our data. In this picture, instead of inferring properties of the population from a sample, we would say we want to infer the properties of the data-generating process from a sample of observations created by this process.
 
 Whether you think in populations or data-generating processes: the important point to remember from this section is that there are two objects that we have to distinguish well: on the one hand, there is our sample. We may describe it in terms of it's properties (mean, minimum, maximum), but the sample is not the final goal. Ultimately, we want to infer the properties of the population / data-generating process from the sample. We will explain how to do this in the next sections, in particular in the section on inferential statistics. Before we come to that, however, let us talk in a bit more detail about the representation of the sample, i.e. the data that we observe.
 
@@ -845,6 +848,79 @@ One standard concern in Poisson or binomial glms is that the variance of the Poi
 
 A third class of statistical procedures that have become very important in recent years are predictive methods, often called machine-learning algorithms. The basic goal of this methods is to to be able to make predictions from a given dataset with the lowest possible error. In doing so, they typically use relatively complicated, often non-parametric methods that typically don't allow to calculate inferential products such as the MLE or p-values.
 
+The arguably most famous machine learning method is random forest. The idea of a random forest is to train a large number of simple decision trees to do good predictions. Here an example: A classical linear regression explains about 60\% of the variability in Ozon
+
+\begin{Schunk}
+\begin{Sinput}
+ozone.lm <- lm(Ozone ~ ., data=airquality, na.action=na.omit)
+summary(ozone.lm)
+\end{Sinput}
+\begin{Soutput}
+
+Call:
+lm(formula = Ozone ~ ., data = airquality, na.action = na.omit)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-37.014 -12.284  -3.302   8.454  95.348 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -64.11632   23.48249  -2.730  0.00742 ** 
+Solar.R       0.05027    0.02342   2.147  0.03411 *  
+Wind         -3.31844    0.64451  -5.149 1.23e-06 ***
+Temp          1.89579    0.27389   6.922 3.66e-10 ***
+Month        -3.03996    1.51346  -2.009  0.04714 *  
+Day           0.27388    0.22967   1.192  0.23576    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 20.86 on 105 degrees of freedom
+  (42 observations deleted due to missingness)
+Multiple R-squared:  0.6249,	Adjusted R-squared:  0.6071 
+F-statistic: 34.99 on 5 and 105 DF,  p-value: < 2.2e-16
+\end{Soutput}
+\end{Schunk}
+
+random forest manages 70\%. The difference to lm would probably be even larger when looking at predictive error on new data.
+
+\begin{Schunk}
+\begin{Sinput}
+library(randomForest)
+\end{Sinput}
+\begin{Soutput}
+randomForest 4.6-12
+\end{Soutput}
+\begin{Soutput}
+Type rfNews() to see new features/changes/bug fixes.
+\end{Soutput}
+\begin{Sinput}
+ozone.rf <- randomForest(Ozone ~ ., data=airquality, mtry=3,
+                         importance=TRUE, na.action=na.omit)
+print(ozone.rf)
+\end{Sinput}
+\begin{Soutput}
+
+Call:
+ randomForest(formula = Ozone ~ ., data = airquality, mtry = 3,      importance = TRUE, na.action = na.omit) 
+               Type of random forest: regression
+                     Number of trees: 500
+No. of variables tried at each split: 3
+
+          Mean of squared residuals: 276.6565
+                    % Var explained: 74.79
+\end{Soutput}
+\end{Schunk}
+
+The random forest does not deliver p-values, but one can display the importance of the different variables. Note that this is importance for prediction, there is no causality implied. 
+
+\begin{Schunk}
+\begin{Sinput}
+varImpPlot(ozone.rf)
+\end{Sinput}
+
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-23-1} \end{Schunk}
+
 There is considerable tension between the more classical field of inferential statistics and the more modern field of machine-learning. For classical, inferential statisticians, machine learning methods have abandoned the idea of "learning from data", in the sense of comparing hypotheses to data, in favor of simply making predictions. A statistician concentrating on machine-learning would reply that in many applied problems, there is nothing to learn \footnote{Typical machine learning applications include predicting the interests of customers in web shops, the association of feature-rich satellite data with ground signals, or speech / face recognition. Machine-learning experts are currently sought-after by technology companies such as Google, Facebook and so on.}. The goal is to build an algorithm that is able to correctly predict given a complex dataset. The distinction between the goals of inferential statistics and predictive statistics, as well as the tension between these fields, are nicely summarized in the abstract of the extremely recommendable article "Statistical Modeling: The Two Cultures" by \citet{Breiman-StatisticalModelingTwo-2001}:
 
 \begin{quote}
@@ -865,12 +941,12 @@ In a practical setting, we are typically interested in how a response is affecte
 
 \subsection{What is a confounding variable?}
 
-Imagine we are interested in a response A, and we have hypothesized that A~B. Imagine there is a second predictor variable C that has an influence on A, but in which we are not interested in for the purpose of the question under consideration. Such a variable that is not of interest for the question is also called "extraneous variables". \marginnote{An extraneous variable is a variable that can influence the response, but is not of interest for the experimenter}. So we also have A~C, but we are not interested in this relationship. If we now take data, and don't measure C, it's usually not a bit problem as long as C is uncorrelated with B - it might create a bit more variability in the response, but by and large the effect of C should average out and we should still be able to detect the effect of B.
+Imagine we are interested in a response A, and we have hypothesized that $A~B$. Imagine there is a second predictor variable C that has an influence on A, but in which we are not interested in for the purpose of the question under consideration. Such a variable that is not of interest for the question is also called "extraneous variables". \marginnote{An extraneous variable is a variable that can influence the response, but is not of interest for the experimenter}. So we also have A~C, but we are not interested in this relationship. If we now take data, and don't measure C, it's usually not a bit problem as long as C is uncorrelated with B - it might create a bit more variability in the response, but by and large the effect of C should average out and we should still be able to detect the effect of B.
 
 \begin{figure}[]
 \begin{center}
 \includegraphics[width = 6cm]{Confounding}
-\caption{Diagram illustrating a confounding variable. A key requirement for being a confounded is that the variable correlates both with the response, and with the predictor variables that form our original hypothesis. If the second link is not there, the variable is not confounding and can be disregarded.}
+\caption{Diagram illustrating a confounding variable. A key requirement for being a confounded is that the variable correlates both with the response, and with the predictor variables that form our original hypothesis. If the second link is not there, the variable is only extraneous and not confounding. If that is the case, disregarding it has usually only minor consequences on the statistical interpretation.}
 \label{fig: Confounding}
 \end{center}
 \end{figure}
@@ -1114,8 +1190,7 @@ rm(list=ls(all=TRUE))  # this command means all variables in the memory are eras
 
 To send a part of the script to the console, you can use the run button on the top right border of the editor window. For everything we do from now on, I would strongly recommend writing in the script, and then sending it to console from there. 
 
-\chapter{Handling data in R}
-\label{HandlingDataInR}
+\chapter{Handling data in R}\label{HandlingDataInR}
 
 \section{Variables}
 
@@ -1154,19 +1229,23 @@ A variable can store different things: a number, a word, a list, or a whole data
 
 The most simple case are variables that contain a **single value** only. Here, the only question is what kind of values the variable contains. The different data types a single value can have are called the **atomic types** - think of it as the basic data types in R. Important atomic types are: 
 
-- boolean (TRUE / FALSE)
-- integer (1, 2, 3, 5)
-- numeric (1.1, 2.5, 3.456)
-- factor ("red", "green", "blue")
-- character ("a word", "another word")
+\begin{description}
+  \item[boolean] (TRUE / FALSE)
+  \item[integer] (1, 2, 3, 5)
+  \item[numeric] (1.1, 2.5, 3.456)
+  \item[factor] ("red", "green", "blue")
+  \item[character]("a word", "another word")
+\end{description}
 
-If we have a collection of several atomic types, we speak of a data structure or an object (there is a difference but it doesn't matter here). Important examples of this are: 
+If we have a collection of several atomic types, we speak of a data structure or an object (technically, there is a difference but it doesn't matter here). Important data structures in R are: 
 
-- **vector** (a row of the same atomic types, e.g. [1,2,3,4,5] )
-- **list** (basically like a vector, but can contain different types such as [1, "red", FALSE] )
-- **data.frame** (a list of vectors, this is the standard format for data in R. Think of it as a spreadsheet - each column is a vector and can have a different type)
+\begin{itemize}
+  \item vector - (a row of the same atomic types, e.g. [1,2,3,4,5] )
+  \item list - (basically like a vector, but can contain different types such as [1, "red", FALSE] )
+  \item data.frame - (a list of vectors, this is the standard format for data in R. Think of it as a spreadsheet - each column is a vector and can have a different type)
+\end{itemize}
 
-A full list of data types is here http://www.statmethods.net/input/datatypes.html 
+These are the tree structures you really need to know because the appear again and again. A full list of data types and structures is available \href{http://www.statmethods.net/input/datatypes.html}{here}
  
 \subsection{Checking data types and structures}
 
@@ -1177,6 +1256,14 @@ If you want to see which type or structure a variable has, use the str command:
 \begin{Schunk}
 \begin{Sinput}
 str(object)
+\end{Sinput}
+\end{Schunk}
+
+The first line in the str() command will display the type / name of the structure. If you only want this, you can also just get the name by
+
+\begin{Schunk}
+\begin{Sinput}
+class(object)
 \end{Sinput}
 \end{Schunk}
 
@@ -1198,20 +1285,48 @@ plot(object)
 
 Try this with the object airquality. 
 
-\subsection{Accessing columns, rows and elements in a data.frame or matrix}
+\section{Selecting data (aka subsetting or slizing)}
 
-As said, the most common structure in R is the data frame. Basically, columns are stored as a list of vectors, so that each column can be a different data type.
+\subsection{Accessing a single element}
 
-You can select columns in a number of ways:
+Clearly, once we have stored out data in a list, vector, data.frame or matrix, we may want to access a particular value, e.g. the 5th-th element of a vector
 
-- By name:
+For a fector, access works via the [] operator, as in
+
+\begin{Schunk}
+\begin{Sinput}
+5thElement = vector[5]
+\end{Sinput}
+\end{Schunk}
+
+For a list, it is the same, only that [[]] is used
+
+\begin{Schunk}
+\begin{Sinput}
+5thElement = list[[5]]
+\end{Sinput}
+\end{Schunk}
+
+Entries in lists and vectors can also have names. If a name is provided, you can access ist via
+
+\begin{Schunk}
+\begin{Sinput}
+5thElement = vector["name"]
+5thElement = list$name
+\end{Sinput}
+\end{Schunk}
+
+As said, the most common structure in R is the data frame. Basically, a data.frame is a list of vectors, so that each column is a vector, potentially of a different data type.
+
+You can select columns in a number of ways. The most common ones are by name, as in
+
 \begin{Schunk}
 \begin{Sinput}
 airquality$Ozone
 \end{Sinput}
 \end{Schunk}
 
-- By column index: 
+or by column index 
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1219,9 +1334,9 @@ airquality[,1]
 \end{Sinput}
 \end{Schunk}
 
-Note that here [,1] means the first column. You could get the first row by [1,].
+here [,1] means the first column, and nothing before the comma means all elements. You could get the first row by [1,], and the first row, first column by [1,1]. So, the labeling is first row, then colums.
 
-\section{Selecting data}
+\subsection{Subsetting or slizing}
 
 The last type of accessing is an example of slizing. Slizing is a very powerful technique that is available in most scientific programming languages. What it means is that you can access your data by typing in columns, rows, or particular elements. Look at the following commands (explanation always below):
 
@@ -1260,23 +1375,15 @@ You see, we can select any combination of elements we want very conveniently fro
 \end{Sinput}
 \end{Schunk}
 
-gives us the values of 1 to 10
+gives us the values of 1 to 10, and the c() function combines values in one vector (it is necessary to have the values in one vector for slicing)
 
 \begin{Schunk}
 \begin{Sinput}
-c(1,5,6)
+c(1:5,7)
 \end{Sinput}
 \end{Schunk}
 
-the c() function combines values in one vector (it is necessary to have the values in one vector for slicing)
-
-\begin{Schunk}
-\begin{Sinput}
-c(1,5,6)
-\end{Sinput}
-\end{Schunk}
-
-But we can also create selections with logical operators
+We can also create selections with logical operators
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1286,8 +1393,6 @@ airquality$Temp > 80
 
 creates a vector with True on all temperature values that are > 80. I can store this and use it for selection, or use it immediately
 
-
-
 \begin{Schunk}
 \begin{Sinput}
 airquality[airquality$Temp > 80 , ]
@@ -1296,19 +1401,18 @@ airquality[airquality$Temp > 80 , ]
 
 selects all rows with temperature > 80.
 
-
-\section{loading data into R}
+\section{Loading data into R}
 
 So far, we had the data already in the R program. Now, we will demonstrate how to load some data (we will use the airquality.txt file provided to you)
 
 There are basically two options to load data
 
-- with RStudio (point and click) - go to Environment (top right), import dataset, and follow instructions
-
-- from the script with the read.table() command
+\begin{itemize}
+  \item with RStudio (point and click) - go to Environment (top right), import dataset, and follow instructions
+  \item from the script with the read.table() command
+\end{itemize}
 
 The latter works like that
-
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1316,7 +1420,7 @@ data = read.table("airquality.txt", header = T)
 \end{Sinput}
 \end{Schunk}
 
-In this case it works nice because I have prepared the data in the most easy way. If you have other data formats (commas, semicolons, header / no header), consult the help of the read.table command. See also http://www.statmethods.net/input/importingdata.html for more options, e.g. excel or database import. 
+In this case it works nice because I have prepared the data in the most easy way. If you have other data formats (commas, semicolons, header / no header), consult the help of the read.table command. \marginnote{See also \href{http://www.statmethods.net/input/importingdata.html}{here} for more options, e.g. excel or database import.} 
 
 \subsection{Checking the data}
 
@@ -1346,7 +1450,6 @@ as.numeric(x)
 \end{Sinput}
 \end{Schunk}
 
-
 Note: this data file is already included in R, so if you don't manage to load it, you can continue anyway. 
 
 \chapter{Plot commands in R}
@@ -1361,7 +1464,7 @@ Before that, a few important references
 \end{itemize}
 
 
-\marginnote{An overview or R colors \href{here}{http://research.stowers-institute.org/efg/R/Color/Chart/ }}
+\marginnote{An overview or R colors \href{http://research.stowers-institute.org/efg/R/Color/Chart/}{http://research.stowers-institute.org/efg/R/Color/Chart/}}
 
 \begin{Schunk}
 \begin{Sinput}
@@ -1369,7 +1472,7 @@ plot(airquality$Ozone, airquality$Temp)
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-42-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-48-1} 
 
 }
 
@@ -1382,7 +1485,7 @@ hist(airquality$Ozone, breaks = 30, col = "darkred", xlab = "Ozone ")
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-43-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-49-1} 
 
 }
 
@@ -1395,13 +1498,13 @@ plot(airquality)
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-44-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-50-1} 
 
 }
 
 \end{Schunk}
 
-pairs(airquality)
+The last plot uses the fact that plot() on a data.frame object calls the pairs() function, so actually what is done is pairs(airquality).
 
 
 Simple Bar Plot 
@@ -1414,7 +1517,7 @@ barplot(counts, main="Car Distribution",
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-45-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} 
 
 }
 
@@ -1431,7 +1534,7 @@ barplot(counts, main="Car Distribution by Gears and VS",
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-46-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-52-1} 
 
 }
 
@@ -1446,7 +1549,7 @@ boxplot(mpg~cyl,data=mtcars, main="Car Milage Data",
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-47-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} 
 
 }
 
@@ -1466,7 +1569,7 @@ Warning in bxp(structure(list(stats = structure(c(8.2, 9.7, 12.25, 16.5, : some 
 \end{Soutput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-48-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-54-1} 
 
 }
 
@@ -1511,7 +1614,7 @@ heatmap(Ca, symm = TRUE, margins = c(6,6)) # with reorder()
 \end{Sinput}
 
 
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-49-1} 
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} 
 
 }
 
@@ -1539,7 +1642,7 @@ Let's look at some example, using the data from Monday. We see that there is a c
 plot(airquality$Temp~airquality$Ozone)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-51-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-57-1} \end{Schunk}
 
 With the lm() command, we can ask R to try to get the best fitting straight line between the two variables. 
 
@@ -1557,7 +1660,7 @@ plot(airquality$Ozone, airquality$Temp)
 abline(fit, col = "blue")
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-53-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-59-1} \end{Schunk}
 
 Here's the detailed output
 
@@ -1602,7 +1705,7 @@ par(mfrow=c(2,2))
 plot(fit)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-55-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-61-1} \end{Schunk}
 
 Here, the residuals are not really homogeneously scattering around the predicted value, suggesting that the model doesn't fit very well. Well, one could have already guessed this, because the correlation doesn't look very linear. We can add a quadratic term by 
 
@@ -1644,7 +1747,7 @@ par(mfrow=c(2,2))
 plot(fit2)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-57-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-63-1} \end{Schunk}
 
 Plotting the results
 
@@ -1654,7 +1757,7 @@ plot(airquality$Ozone, airquality$Temp)
 points(fit2$model[,2], predict(fit2), col = "blue")
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-58-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-64-1} \end{Schunk}
 
 \subsection{Categorical predictors}
 
@@ -1665,7 +1768,7 @@ If we have categorical variables such as in this dataset
 boxplot(PlantGrowth$weight~PlantGrowth$group, main = "growth of plants")
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-59-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-65-1} \end{Schunk}
 
 This still works:
 
@@ -1854,7 +1957,7 @@ Loading required package: grid
 mosaic(~ sex + passengerClass + survived, shade=TRUE, legend=TRUE) 
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-67-1} \begin{Sinput}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-73-1} \begin{Sinput}
 surv <- as.numeric(survived)-1 # glm requires 0 / 1 not true false
 \end{Sinput}
 \end{Schunk}
@@ -1907,7 +2010,7 @@ lines(newage, plogis(preds$fit-2*preds$se.fit), col="purple", lwd=3, lty=2)
 lines(newage, plogis(preds$fit+2*preds$se.fit), col="purple", lwd=3, lty=2)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-69-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-75-1} \end{Schunk}
 
 Now, let's out all relevant variables in 
 
@@ -1997,7 +2100,7 @@ attach(cfc)
 plot(stuecke ~ attrakt)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-72-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-78-1} \end{Schunk}
 
 This is how you specify the Poisson
 
@@ -2042,7 +2145,7 @@ plot(stuecke ~ attrakt)
 lines(newattrakt, exp(preds), lwd=2, col="green")
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-74-1} \end{Schunk}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-80-1} \end{Schunk}
 
 same with 95\% confidence interval:
 
@@ -2066,7 +2169,7 @@ lines(newattrakt, exp(preds$fit+2*preds$se.fit), lwd=2, col="green", lty=2)
 lines(newattrakt, exp(preds$fit-2*preds$se.fit), lwd=2, col="green", lty=2)
 \end{Sinput}
 
-\includegraphics[width=\maxwidth]{figure/unnamed-chunk-75-1} \begin{Sinput}
+\includegraphics[width=\maxwidth]{figure/unnamed-chunk-81-1} \begin{Sinput}
 detach(cfc)
 \end{Sinput}
 \end{Schunk}
