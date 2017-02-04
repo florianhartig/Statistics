@@ -676,7 +676,11 @@ Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, g
 
 \subsection{t-Test}
 
-Ein t-Test testet die Unterschiede in den Mittelwerten zweier normalverteilter Stichproben; oder im Falle einer einzigen Stichprobe auf einen Unterschied des Mittelwerts der Stichprobe zu 0. Die Nullhypothese ist, dass es keine Unterschiede zwischen den Mittelwerten der zwei normalverteilten Gruppen gibt, bzw., wenn wir nur eine Gruppe betrachten, dass der Stichprobenmittelwert 0 ist. Desweiteren sind eine Reihe von Anpassungen möglich, z.B. eine Lockerung der Annahme, dass die zwei Gruppen die selbe Varianz aufweisen. Hier folgt nun ein Beispiel in R, mit klassischen Daten von \citet{Student-probableerrormean-1908}. Die Daten zeigen die Wirkung von zwei Schlafmitteln (gesteigerte Anzahl an Schlafstunden verglichen mit der Kontrolle) an 10 Patienten. 
+Der t-Test testet auf Unterschiede in den Mittelwerten zweier normalverteilter Stichproben; oder im Falle einer einzigen Stichprobe auf einen Unterschied des Mittelwerts der Stichprobe zu 0. Die Nullhypothese ist, dass es keine Unterschiede zwischen den Mittelwerten der zwei normalverteilten Gruppen gibt, bzw., wenn wir nur eine Gruppe betrachten, dass der Stichprobenmittelwert 0 ist. 
+
+In dem meisten Programmen gibt es eine Reihe von Optionen für den t-Test. Die wichtigsten sind a) ob die beiden Gruppen die gleiche Varianz haben, und b) Ob die Stichproben in Paaren gesammelt wurden, d.h. ob jeweils eine Beobachtung aus beiden Gruppen irgendwie verbunden sind (z.B. vorher / nachher). Diese Einstellungen können einen großen Effekt haben, es ist daher wichtig die Hilfe richtig zu lesen. 
+
+Hier ein Beispiel für den t-Test in R, mit klassischen Daten von \citet{Student-probableerrormean-1908}. Die Daten zeigen die Wirkung von zwei Schlafmitteln (gesteigerte Anzahl an Schlafstunden verglichen mit der Kontrolle) an 10 Patienten. 
 
 
 
@@ -700,9 +704,10 @@ with(sleep, t.test(sleep$extra[sleep$group == 1], extra[group == 2]))
 t.test(extra ~ group, data = sleep)
 @
 
-Beachte, dass die Datenausgabe einen p-Wert (H0 = kein Unterschied), aber auch einen Maximum-Likelihood-Schätzwert der Mittelwertsvergleiche, zusammen mit den Konfidenzintervallen bietet. Dies geht weit über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
+Beachte, dass die Funktion einen p-Wert (H0 = kein Unterschied), aber auch einen MLE mit Konfidenzinterval ausgibt. Dies geht also über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
 
-Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert für die Unterschiede eines T-Tests mit X). 
+Hier ein Vorschlag für die verbale Kommunikation der Ergebnisse: wenn p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. Wenn p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert für die Unterschiede eines T-Tests mit X). 
+
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -734,51 +739,81 @@ Vorschlag für das Anzeigen des Ergebnisses: p>0.05: Unterschiede zwischen den G
 
 \subsection{Varianzanalyse (ANOVA)}
 
-ANOVA (analysis of variance) oder Varianzanalyse kann von verschiedenen Personen unterschiedlich verstanden werden. Die Standard-ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet es, ob die gemessene abhängige Variable (z.B. eine abhängige Variable) von einem oder mehreren kategorischen Variablen mit zwei oder mehreren interagierenden Ebenen beeinflusst wird. Eine Wechselwirkung\marginnote{Eine Wechselwirkung: eine Variable verändert die Auswirkung einer anderen Variablen} zwischen zweier Variablen bedeutet, dass sich der Wert einer erläuternden Variable darauf auswirkt, wie sehr eine andere erläuternde Variable die abhängige Variable beeinträchtigt.
+Die Definition der ANOVA (analysis of variance) oder Varianzanalyse ist nicht ganz eindeutig. Die klassische ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet Sie, ob die gemessene abhängige Variable von einer oder mehrerer kategorialer Variablen beeinflusst wird, und wie sich der Einfluss auf die verschiedenen Variablen aufteilt. Es können auch Interaktionen beachtet werden. Eine Interaktion\marginnote{Interaktion: eine Variable verändert den Effekt der anderen Variablen} zwischen zwei erklärenden Variablen bedeutet, dass sich der Wert der einen auf den Effekt der anderen Variable auswirkt. Beispiel: die Variable Geschlecht könnte eine Auswirkung darauf haben wie gut ein Medikament wirkt. Es besteht also potentielle eine Interaktion zwischen Geschlecht und Behandlung. 
 
-Während der Begriff ANOVA meist mit der oben genannten Erklärung in Verbindung gebracht wird (welche der von T-Tests / linearer Regression entspricht, siehe nächstes Kapitel), kann die Auffassung der ANOVA in der gleichen Weise erweitert werden, wie ein lineares Regressionsmodell zu einem allgemeinen linearen Modell (engl. Generalized Linear Models, glm) erweitert werden kann etc. Dies erlaubt uns also, ANOVAs auf Modelle mit nicht-normalverteilten Fehlern anzuwenden (natürlich muss dies der Software gesagt werden, es geht nicht automatisch davon aus). Deswegen muss man besonders Acht darauf geben, von was andere ausgehen, wenn sie diesen Term benutzen.
+Als Warnung: wir werden später lernen dass die normale lineare Regression (die die gleichen Annahmen macht wie t-tests und klassische ANOVA) auf andere Verteilungsannahmen erweitert werden kann. Hierdurch gelangt man zu den sogenannten generalisierten linearen Modellen. Das Prinzip der ANOVA lässt sich auf auf diese Modelle anwenden, und wird oft auch einfach als ANOVA bezeichnen. Deshalb Vorsicht: normalerweise heißt ANOVA = Normalverteilung, aber oft wird der Begriff auch wesentlich weiter verwendet.
 
-Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein variabler Faktor mit vier Stufen ist:
+Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein Faktor mit vier Möglichkeiten ist:
 
 <<>>=
 aovresult <- aov(weight~Diet, ChickWeight)
 summary(aovresult)
 @
 
-Wir erhalten einen p-Wert von 6.43e-07, welcher mit einem $\alpha$ Level von 0.05 höchst signifikant ist. Somit können wir die Nullhypothese abweisen, dass die Ernährung keinen Einfluss auf die abhängige Variable "`Gewicht"' habe. Beachte hier, dass wir keine Parameterschätzwerte erhalten und wir keine Aussagen darüber machen können, welche Ernährung sich von welcher unterscheidet. Hierfür gibt es zwei Möglichkeiten:
+Wir erhalten einen p-Wert von 6.43e-07, welcher mit unseren normalen Signifikanzniveau $\alpha=0.05$ höchst signifikant ist. Somit können wir die Nullhypothese (H0: die Ernährung hat keinen Einfluss auf die abhängige Variable "`Gewicht"') ablehnen. 
+
+Ein Problem der ANOVA ist, dass wir keine Parameterschätzwerte erhalten und deshalb keine Aussagen darüber machen können, welche Ernährung nun am besten ist, oder welche sich von welcher Unterscheidet. an hat jetzt 2 Möglichkeiten
 
 \begin{itemize}
 \item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Ernährungsweisen testet (Bsp. mit einem T-Test).
 \item Oder man wechselt zu einer Regression, die im folgenden Kapitel genauer beschrieben wird.
 \end{itemize}
 
-Mit einem Post-Hoc-Test wendet man multiple Tests auf die gleichen Daten an. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist eine Wahrscheinlichkeitkalkulation für das Betrachtet der Daten bezüglich EINER Nullhypothese. Nach einer solchen Durchführung erhält mal allenfalls einen  5\% Fehler bei einem $\alpha$ Level von 0.05. \marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} Wenn wir jedoch multiple Tests durchführen, testen wir auch multiple Nullhypothesen und es ergeben sich mehr Möglichkeiten für die Testgrößen ein Signifikanzlevel nur durch Zufall zu erreichen. Deswegen müssen wir den p-Wert für multiples Testen korrigieren. Um hierzu mehr Informationen zu erhalten, ist Google dein bester Freund. 
+\subsection{Multiples Testen}
+
+Typischerweise macht man nicht einen, sondern mehrere Post-Hoc-Test. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist dass der Typ I Fehler fest ist, aber dass man nur einen Test macht. Wenn man nun mehrere Tests macht, aber gerne immer noch eine 5\% Typ I Fehlerrate bei einem $\alpha$ Level von 0.05 hätte, muss man für multiples Testen korrigieren. \marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} 
 
 \subsection{Weitere wichtige Tests}
 
-T-Tests und ANOVA sind sehr häufig verwendete Tests, wobei es noch viele weitere gibt. Eine Liste mit Tests kann man beispielsweise im Wikipedia-Artikel unter diesem \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Link} finden.
+Es gibt natürlich wesentlich mehr Hypothesentests als wir hier durchgenommen haben. Eine Liste mit wichtigen Tests gibt es beispielsweise auf \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Wikipedia}. Niemand kann alle Tests auswendig kennen. Der Trick ist sich genau zu überlegen welche Nullhypothese man testen will, und sich dann den entsprechenden Test zu suchen. 
+
+Eine hervorragende Resource ist die Liste von gebräuchlichen Tests auf  \href{http://www.ats.ucla.edu/stat/mult_pkg/whatstat/}{http://www.ats.ucla.edu/stat/mult_pkg/whatstat/}, zusammen mit der praktischen Anwendung in R auf \href{http://www.ats.ucla.edu/stat/r/whatstat/whatstat.htm}{www.ats.ucla.edu/stat/r/whatstat/}.
+
 
 
 \section{Regression}
 
-Wie schon zuvor beschrieben, bedeutet Regression nicht zwingend, dass man ein anderes statistisches Modell wie bei Hypothesentests verwendet (ANOVA und das lineare Regressionsmodell verwenden in R die gleichen Annahmen). Nichtsdestotrotz ist das Ziel einer Regression ein anderes. Während Hypothesentests nur überprüfen, ob die Daten mit einer Nullhypothese vereinbar sind, sucht eine Regression nach einer am besten passenden Hypothese oder Parametern (Maximum-Likelihood-Schätzwert). Somit sucht ein Regressionsmodell nach einer Parameterkombination, die mit der höchsten Wahrscheinlichkeit die beobachteten Daten, mit vorgegebenen Modellannahmen, ausgibt.
+Wie zuvor schon angedeutet liegt der Regression nicht unbedingt ein anderes statistisches Modell zugrunde als den Hypothesentests. Genauer gesagt: die lineare Regression, die wir als erstes kennenlernen, macht im Prinzip die gleichen Annahmen wir t-Test und ANOVA. 
+
+Der Unterschied besteht in der schließenden Methode. Während die Hypothesentests p-Werte berechnen, berechnet die Regression den Maximum-Likelihood-Schätzer für eine vom Nutzer vorgegebene potentielle Abhängigkeit zwischen der abhängigen Variable und den Prädiktoren.
 
 \subsection{Lineare Regression}
 
-Das grundlegendste Regressionsmodell ist die lineare Regression. Hier lautet die Annahme, dass wir eine abhängige Variable haben, die von einem Prädiktor wie folgt abhängt:
+Das einfachste Regressionsmodell ist die einfache lineare Regression. Das Wort "einfach" bedeutet in diesem Zusammenhang: es gibt nur einen Prädiktor. Wenn es mehr als einen Prädiktor gibt, spricht man von einer "multiplen" lineare Regression. 
+
+Bei der einfachen linearen Regression lautet die Annahme, dass wir eine abhängige Variable haben, die von einem Prädiktor wie folgt abhängt:
 
 \begin{equation} \label{eq: linear regression}
 y \sim a \cdot x + b + \epsilon 
 \end{equation}
 
-wobei y die abhängige Variable, x der Prädiktor ist; a ist der Parameter, wie sehr der Prädiktor die abhängige Variable beeinflusst, b ist der Schnittpunkt und $\epsilon$ ist die Zufallsvariation, welche in einer linearen Regression als normalverteilt angenommen wird.
+Hier ist y die abhängige Variable, x der Prädiktor, a, b sind die zu schätzenden Parameter die die Abhängigkeit zwischen y und x beschreiben, und  $\epsilon$ steht für eine normalverteilte Zufallsvariable 
 
-In R wird solch eine Regression durch folgenden Befehl erreicht
+In R führt man eine solche Regression durch den folgenden Befehl aus
 
 <<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
+@
+
+Die Funktion sucht den MLE, also die Parameterwerte (Achsenabschnit und Steigung für Temperatur), für die die Wahrscheinlichkeit der beobachteten Daten maximal wird. Das Ergebnis können wir uns mit der summary Funktion anschauen
+
+<<>>=
 summary(fit)
 @
+
+Diese MLEs werden unter "Estimate" ausgegeben. Dies zeigt uns, wie sehr der Prädiktor, in diesem Fall Ozon, die abhängige Variable, hier Temperatur, beeinflusst: Für jede Einheit Ozon mehr steigt die Temperatur um 0.201 Einheiten, mit einem Standardfehler (Konfidenzintervall) von 0.019. 
+
+Zusätzlich wird die Unsicherheit (Konfidenzinterval) für jeden Schätzer ausgegeben (Std. Error, 1.96*Std. Error entspricht dem 95\% Konfidenzinterval), und ein p-Wert für die Nullhypothese dass der Parameter 0 ist.  %Dieser p-Wert basiert auf einem bestimmten Typ von T-Test, wobei das vollständige Modell gegen ein Modell mit auf 0 gesetzten Parametern getestet wird. Zusätzlich gibt es noch einen weiteren p-Wert, welcher auf einer anderen Testgröße am Ende der Regressionsausgabe beruht. Dieser testet die Nullhypothese mit allen Parametern gleich 0.
+
+Die Regressionstabelle sagt uns also: 
+
+\begin{itemize}
+\item Was der "Best-Guess" für die Abhängigkeit ist (Estimate)
+\item Wie unsicher man ist (Std. Error)
+\item Ob es signifikante Evidenz gibt gegen H0: die Abhängigkeit ist 0 
+end{itemize}
+
+Fig~\ref{fig: lineareRegression} zeigt das Ergebnis auch noch mal visuell. Bei der Interpretation dieser Zahlen ist zu beachten: Korrelation ist nicht Kausalität. Wir haben hier die Temperatur als abhängige Variable und Ozon als Prädiktor benutzt haben, aber dies bedeutet nicht, dass Ozon ursächlich die Temperatur beeinflusst. \marginnote{Korrelation ist nicht Kausalität.}Tatsächlich ist es wohl eher anders herum: wenn wir mehr Sonne haben, wird es wärmer und wir haben tendenziell mehr Ozon. Was die Regression sagt ist: wenn unsere Ozonmessungen steigen, können wir ziemlich sicher davon ausgehen können, dass es auch gleichzeitig wärmer wird. Das bedeutet aber nicht zwingend, dass Ozon Hitze erschafft. Wie wir aus diesem Dilemma kommen besprechen wir in Kapitel~\ref{ch: design of experiments}. Für den Moment halten wir fest: Korrelation ist nicht Kausalität!
 
 
 \begin{figure}[htbp]
@@ -787,16 +822,13 @@ summary(fit)
 plot(airquality$Temp ~ airquality$Ozone, ylab = "Temperature", xlab = "Ozone")
 abline(fit)
 @
-\caption{Luftqualitäts Datensatz: Temperatur aufgetragen gegen Ozon. Zusammenhang durch die Regressionsgerade angegeben.}
-\label{fig: LR}
+\caption{Temperatur aufgetragen gegen Ozon, zusammen mit der gefitteten Regressionsgraden. }
+\label{fig: lineareRegression}
 \end{center}
 \end{figure}
 
-Dieser Code kann unabhängig davon verwendet werden, ob der Prädiktor stetig oder kategorisch ist. Im Falle einer stetigen Variable entsteht eine Linie anhand der Daten. Im Falle einer kategorischen Variable mit n Stufen ist die erste Stufe als Referenz gesetzt (Schnittpunkt), und n-1 Faktoren entsprechen den folgenden Stufen, die den Unterschied zur Referenz beschreiben.
 
-Die entsprechenden Parameter erscheinen in der Spalte "`Estimate"'. Dies zeigt uns, wie sehr der Prädiktor, in diesem Fall Ozon, die abhängige Variable, hier Temperatur, beeinflusst: Für jede Einheit Ozon mehr steigt die Temperatur um 0.201 Einheiten, mit einem Standardfehler (Konfidenzintervall) von 0.019. Abgesehen davon, wie ein Regressions-Output aussieht, lehrt uns dies etwas anderes Wichtiges: Die Tatsache, dass wir die Temperatur als abhängige Variable und Ozon als Prädiktor benutzt haben, bedeutet nicht, dass Ozon ursächlich die Temperatur beeinflusst. \marginnote{Korrelation ist nicht Kausalität.}Tatsächlich ist es genau anders herum: wenn wir mehr Sonne haben, wird es wärmer und wir haben tendenziell mehr Ozon. Regression schafft nicht, wie die meisten anderen statistischen Analysen, Kausalität. Es schafft Korrelation. Was wir hier ausdrücken ist, dass wenn unsere Ozonmessungen steigen, wir ziemlich sicher davon ausgehen können, dass es auch gleichzeitig wärmer wird. Was wiederum nicht bedeutet, dass Ozon Hitze erschafft. Korrelation ist nicht Kausalität.
-
-Die Regressionsergebnisse geben uns ebenfalls einige p-Werte aus. Das sind die Ergebnisse von mehreren Hypothesentests, die automatisch nach der Regression geschaltet sind. Beispielsweise erhält man einen p-Wert für jeden Parameter. Dieser p-Wert basiert auf einem bestimmten Typ von T-Test, wobei das vollständige Modell gegen ein Modell mit auf 0 gesetzten Parametern getestet wird. Zusätzlich gibt es noch einen weiteren p-Wert, welcher auf einer anderen Testgröße am Ende der Regressionsausgabe beruht. Dieser testet die Nullhypothese mit allen Parametern gleich 0.
+%Dieser Code kann unabhängig davon verwendet werden, ob der Prädiktor stetig oder kategorisch ist. Im Falle einer stetigen Variable entsteht eine Linie anhand der Daten. Im Falle einer kategorischen Variable mit n Stufen ist die erste Stufe als Referenz gesetzt (Schnittpunkt), und n-1 Faktoren entsprechen den folgenden Stufen, die den Unterschied zur Referenz beschreiben.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -841,16 +873,17 @@ die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel.
 
 \subsection{Überprüfen der Annahmen}
 
-Formal gesehen kann man jegliche Datensätze auf lineare Modelle übertragen. Jedoch sind hier wie bei jeder statistischen Folgerung die Ergebnisse (z.B. Parameterschätzungen, p-Werte) von den getroffenen Annahmen abhängig. Dementsprechend ist der p-Wert, den wir erhalten, von der Annahme abhängig, dass die Daten auch tatsächlich mit der Formel ~\ref{eq: linear regression} übereinstimmen. Wenn dies nicht der Fall ist, könnte der p-Wert völlig falsch sein. Somit muss man prüfen, ob diese Annahmen auch tatsächlich erfüllt wurden.
+Technisch kann man fast jeden Datensatz mit einer linearen Regression schätzen, ohne dass die Software zusammenbricht. Dies heißt allerdings nicht dass man das tun sollte. In der Statistik gilt immer: die Ergebnisse basieren auf den Annahmen der Methode. Wenn Sie diese Annahmen verletzten, kann alles passieren, im Zweifel sind die Ergebnisse wahrscheinlich falsch. Es ist also immer wichtig die Annahmen der Regression zu überprüfen.
 
-Also was genau waren die Annahmen einer linearen Regression? Ein Problem ist, dass sich Studenten an die Annahme der Normalverteilung erinnern. Deswegen überprüfen sie, ob die abhängige Variable-Variable normalverteilt ist. Wenn man jedoch die Formel ~\ref{eq: linear regression} genauer betrachtet, erkennt man, dass dies nicht entscheidend ist. Wenn man die Terme in der Formel ~\ref{eq: linear regression} verschiebt,
-sehen wir das, was eigentlich normalverteilt sein soll
+Also was genau waren die Annahmen einer linearen Regression? Richtig, Normalverteilung! Ein häufiger Fehler ist an diesem Punkt den Prädiktor oder die abhängige Variable auf Normalverteilung zu überprüfen. Das bring gar nichts. Schauen Sie auf die Formel ~\ref{eq: linear regression}. Wenn man die Formel umstellt, sieht man dass der folgende Ausdruck
 
 \begin{equation} \label{eq: linear regression}
-y - (a \cdot x + b ) \sim \epsilon 
+res_i = y_i - (a \cdot x_i + b ) \sim \epsilon 
 \end{equation}
 
-nämlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen. Diese Unterschiede werden Residuen genannt und sollten, entsprechend unserer Modellannahmen, normalverteilt sein. Um zu überprüfen, ob dies wirklich der Fall ist, sollten einige Tests durchgeführt werden. Der einfachste Test ist das Erstellen eines Plots mit den Residuen gegen die angepassten Werte UND gegen alle Prädiktoren im Modell. Der daraus entstehende Plot erlaubt es dann viele mögliche Probleme zu erkennen (Fig.~\ref{fig: ResidualPatterns})
+nämlich der Unterschied zwischen beobachtetem Wert und den Modellvorhersagen, normalverteilt sein sollte. Die Werte $res_i$, also der Unterschied zwischen Modellerwartung und Daten, heißen die Residuen. Jeder Datenpunkt hat sein Residuum. 
+
+Also, wir müssen die Residuen überprüfen. Da man nur Residuen erhält wenn man auch ein Modell fittet, heißt das: wir können nicht a priori sagen ob man einen Datensatz mit der linearen Regression fitten darf. Wir probieren es erst mal aus, und dann schauen wir uns im Nachhinein an den Residuen an ob das OK war. Die einfachste Methode hierfür ist die Residuen gegen die erwarteten Werte zu plotten. 
 
 
 
@@ -879,31 +912,29 @@ par(oldpar)
 \end{center}
 \end{figure}
 
-übliche Probleme und ihre Lösungen sind  
+In Fig.~\ref{fig: ResidualPatterns} sind typische Probleme dargestellt die in einen solchen Residuenplot auftreten können. Die wichtigsten sind:
 
 \begin{itemize}
-  \item Heteroskedastizität (Varianzveränderungen) --> Verändere die abhängige Variable, oder verwende ein Regressionsmodell, das Heteroskedastizität berücksichtigen kann
-  \item Muster in den Residuen -> Falsche Funktionsform des Regressionsmodells. Versuche Prädiktoren, quadratische Effekte, Interaktionen oder andere Dinge hinzuzufügen, die die funktionale Form ändern
-  \item Verteilung nicht normal -> Angenommen, es liegt nicht an einem der früheren Probleme (kein Muster / keine Heteroskedastizität), kann man noch eine Variablentransformation ausprobieren oder eine Regression mit einer anderen Verteilungsannahme durchführen (siehe nächsten Abschnitt)
+  \item Heteroskedastizität (Varianzinhomogenität): hier ändert sich die breite der Streuung, eine Verletzung der Regressionsannahme dass die Normalverteilung eine feste Varianz hat. 
+  \item Muster in den Residuen: wenn an ein Muster in den Residuen sieht heißt dass typischerweise, dass man die falsche Funktion fittet. 
+  \item Verteilung nicht normal: tja, wenn sie nicht normalverteilt ist, dann ist das natürlich schlecht, denn das ist die Annahme der linearen Regression. 
 \end{itemize}  
 
-Es gibt weitere spezialisierte Plots, um mit der Diagnose dieser Probleme zu helfen. Diese erfolgen bei der Anwendung des Befehls plot()
+Es gibt weitere spezialisierte Plots, um mit der Diagnose dieser Probleme zu helfen. Diese erfolgen bei der Anwendung des Befehls plot(fit). Weitere Details zur Residuendiagnose siehe \href{http://www.statmethods.net/stats/rdiagnostics.html}{hier}.
 
 
-Sie erhalten grundlegende Residuendiagnosen durch Eingabe von plot(fit), wobei fit das angepasste Modell ist. Weitere Details zur Residuendiagnose siehe \href{http://www.statmethods.net/stats/rdiagnostics.html}{hier}.
+\section{Generalisierte lineare Regressionsmodelle (GLM)}
 
+Die Annahmen der linearen Regression waren, dass 1) die abhängige Variable metrisch ist (Wertebereich im Prinzip von - unendlich bis + unendlich), und 2) dass die Residuen normalverteilt sind. 
 
-
-\section{Allgemeine lineare Regressionsmodelle (GLM)}
-
-Die allgemeine Vorstellung einer linearen Regression war, dass 1) die abhängige Variable stetig ist, theoretisch von - unendlich bis + unendlich, und 2) Residuen normal um die Modellvorhersagen verteilt sind. Der Grundgedanke der allgemeinen linearen Regressionsmodell-Rahmenbedingung ist, wie zuvor in dem linearen Regressionsbeispiel zu arbeiten, jedoch beide Annahmen über abhängige Variablegrößen von - bis + unendlich und die Normalität zu lockern. Dazu müssen wir zwei Dinge tun
+Die Idee der GLMs ist, das allgemeine Prinzip der LMs beizubehalten, den Wertebereich und die Verteilung aber zu modifizieren. Dazu geschehen zwei Dinge
 
 \begin{itemize}
-  \item Um die Ausgabewerte in dem Bereich zu erhalten, den wir wollen, wickeln wir das lineare Modell in eine Transformationsfunktion, die die abhängige Variable ins rechte Intervall zwingt (typische Intervalle sind positiv oder zwischen 0 und 1). Diese Transformation wird als Link-Funktion bezeichnet
-  \item Um andere Verteilungen anzupassen, müssen wir dem Modell sagen, dass es etwas anderes als die Gaußsche Fehlerfunktion verwenden soll.
+  \item Um den Wertebereich zu modifzieren wendet man auf die Erwartung der normalen linearen Regression eine Transformation, die sogenannte Link-Funktion, an. 
+  \item Und dann benutzen wir einfach eine andere Verteilung in der Berechnung der Likelihood für die Regression
 \end{itemize}    
    
-Wir werden über diese Punkte nun etwas mehr ins Detail gehen.
+Hier das ganze noch mal im Detail:
 
 \subsection{Die Link-Funktion}
 
@@ -913,21 +944,21 @@ Wir haben gesagt, dass eine lineare Regression folgende Form annimmt
 y \sim a \cdot x + b 
 \end{equation}
 
-Das heißt, wenn x groß wird, könnte y jeden Wert einnehmen, positiv oder negativ. Ein Trick, um sicherzustellen, dass alle Vorhersagen für y positiv sind oder innerhalb eines bestimmten Bereichs liegen, ist eine Link-Funktion der Form
+Das heißt, je nach Werten von a, x könnte y jeden Wert einnehmen, positiv oder negativ. Ein Trick, um sicherzustellen, dass alle Vorhersagen für y positiv sind oder innerhalb eines bestimmten Bereichs liegen, ist eine Link-Funktion der Form
 
 \begin{equation}
 y \sim f^{link}(a \cdot x + b )
 \end{equation}
 
-Jede Funktion ist möglich, aber wie wir später sehen werden, sind typische Alternativen die Exponentialfunktion, die positive Ergebnisse garantiert, und die inverse Logit, die Bereich zwischen 0 und 1 garantiert.
+Im Prinzip gibt es bei der Wahl kein Einschränkung, aber es gibt ein paar typische Funktione die benutzt werden, z.B. die Exponentialfunktion, die positive Ergebnisse garantiert, oder der inverse Logit, der Bereich zwischen 0 und 1 garantiert.
 
 \subsection{Andere Verteilungen}
 
-Nun, das ist konzeptionell der einfache Teil, aber vielleicht ist noch nicht klar, welche Art von Distributionen neben der normalen vorhanden sind. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird es deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
+Nachdem wir den Wertebereich modifiziert haben können wir jetzt auch über andere Verteilungen nachdenken. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird die Idee noch deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
 
 \subsection{0/1 Daten - logistische Regression}
 
-Logistische Regression ist die häufigste Analyse für binäre Daten (Präsenz / Abwesenheit, überlebt / tot, infiziert / nicht infiziert). Logistische Regression geht davon aus, dass die Verteilung binomial ist (Münzwurf-Modell). Um den linearen Prädiktor auf einer Skala zwischen 0 und 1 zu erhalten, die für die Binomialverteilung erforderlich ist, verwenden wir die logistische Linkfunktion (oder inverse Logit).
+Die logistische Regression ist die Standardoption für binäre Daten (1/0, Anwesend / Abwesend, überlebt / tot, infiziert / nicht infiziert). Logistische Regression geht davon aus, dass die Verteilung binomial ist (Münzwurf-Modell). Um den Wertebereich der linearen Regression auf eine Skala zwischen 0 und 1 zu transformieren, verwenden wir die logistische Linkfunktion (oder inverse Logit), und danach die Binominialverteilung.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -948,11 +979,9 @@ summary(fmt)
 \end{fullwidth} 
 
 
-
-
 \subsection{Zähldaten - Poisson-Regression}
 
-Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obwohl ein paar andere Optionen zur Verfügung stehen. In der Poisson-Regression wird standardisiert eine Exponentialfunktion gewählt, um alle Werte positiv zu machen. Das Inverse des Exponentials ist der Log, also nennen wir das den Log-Link. Nach wie vor wählt R diese automatisch aus, wenn man angibt die Verteilung zu "`poissonieren"'.
+Die Poisson-Regression ist die Standardoption für Zähldaten. Zähldaten sind immer positiv. In der Poisson-Regression wird deshalb normalerweise eine Exponentialfunktion gewählt, um alle Werte positiv zu machen. Das Inverse des Exponentials ist der Log, also nennen wir das den Log-Link. R wählt diesen Link wieder automatisch aus, wenn als Verteilung "`family = poisson"' angibt.
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -960,7 +989,7 @@ Die Poisson-Regression ist die Standard-Wahl für die Arbeit mit Zähldaten, obw
     
 \textbf{In R:} 
 
-Ein Beispiel hierfür zeigt einige Daten über die Fütterung von Nesthockern in Bezug auf ihre Attraktivität:
+Als Beispiel, hier ein Test ob Vogeleltern ihren Kindern mehr Futter geben wenn sie attraktiver sind. 
 
 
 <<>>=
@@ -973,11 +1002,13 @@ summary(fm)
 \end{fullwidth} 
 
 
-\subsection{Residuen-überprüfungen in allgemeinen linearen Regressionsmodellen}
+%\subsection{Residuen-überprüfungen in allgemeinen linearen Regressionsmodellen}
 
-Residuen in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen für Normalität wie normale Quantile-Quantile-Plots, um auf die Angemessenheit der Residuen zu überprüfen. Für nicht zu komplizierte Modelle gibt es eine Möglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R kann man die Option Pearson in vielen Funktionen angeben, einschließlich der Residual()-Funktion, die man auf ein angepasstes Objekt anwenden kann}
+%Residuen in generalisierten linearen Modellen sind per Definition nicht normalverteilt, deshalb bringt es wenig die 
 
-Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen überdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
+%in allgemeinen linearen Regressionsmodellen sollten nicht normalverteilt sein, deswegen verwendet man keine Standard-Kontrollen für Normalität wie normale Quantile-Quantile-Plots, um auf die Angemessenheit der Residuen zu überprüfen. Für nicht zu komplizierte Modelle gibt es eine Möglichkeit dieses Problem zu umgehen, indem man die sogenannten Pearsons-Residuen verwendet, die die beobachteten Unterschiede zwischen Modell und Daten durch die erwartete Varianz des Modells normiert \footnote{In R kann man die Option Pearson in vielen Funktionen angeben, einschließlich der Residual()-Funktion, die man auf ein angepasstes Objekt anwenden kann}
+
+%Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen überdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
 
 \vspace{1cm}
 \begin{fullwidth}
