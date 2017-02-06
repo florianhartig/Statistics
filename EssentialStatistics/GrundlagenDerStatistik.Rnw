@@ -98,14 +98,14 @@ Vorlesungsunterlagen für Studierende der
 
 \vspace{0.5cm}
 
-Fehler oder Verbesserungsvorschläge bitte über \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} melden. 
+Fehler oder Verbesserungsvorschläge bitte über den \href{https://github.com/florianhartig/Statistics/issues}{issue tracker} melden. 
 
 \end{fullwidth}
 
 
 \vfill
 \begin{fullwidth}
-Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Updated 2016, University of Regensburg, and translated to German. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+Grundlagen der Statistik version 0.1.0. Translated into German 2017, based on the lecture notes: Essential Statistics, created 2014-2016 at Uni Freiburg. This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. Which means that You are free to share (copy and redistribute the material in any medium or format), as long as you give appropriate credit, you do not use the material for commercial purposes, and if you remix, transform, or build upon the material, you may not distribute the modified material. More details under \href{https://creativecommons.org/licenses/by-nc-nd/4.0/}{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
 \end{fullwidth}
 
 
@@ -120,13 +120,13 @@ Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Upda
 	
 	\section{Themen der Statistik und Datenwissenschaften}
 	
-	Statistik, oder etwas weiter gefasste modernere Begriff "Data Science" = Datenwissenschaften, befasst sich mit der Visualisierung, Beschreibung und Interpretation von Daten, sowie mit dem Erstellen von datenbasierten Vorhersagen. Dieses Skript beinhaltet eine Einführung in die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
+	Statistik, oder der etwas weiter gefasste modernere Begriff "Data Science" = Datenwissenschaften, befasst sich mit der Visualisierung, Beschreibung und Interpretation von Daten, sowie mit dem Erstellen von datenbasierten Vorhersagen. Dieses Skript beinhaltet eine Einführung in die vier wichtigsten Säulen der statistischen Methodik für einen quantitativen Wissenschaftler:
 	
-	\paragraph{Deskriptive Statistik:} Die deskriptive Statistik\marginnote{Deskriptive Statistik = Abbildungen, Visualisierung, Kennzahlen der Statistik} beinhaltet beschreibende Analysen (Kennzahlen), beispielsweise Mittel- oder Medianwert, Korrelation, Assoziation, und die Visualisierung von Daten (Abbildungen, interaktive Visualisierung).
+	\paragraph{Deskriptive Statistik:} Die deskriptive Statistik\marginnote{Deskriptive Statistik = Abbildungen, Visualisierung, Kennzahlen} beinhaltet beschreibende Analysen (Kennzahlen, beispielsweise Mittel- oder Medianwert, Korrelation, Assoziation), und die Visualisierung von Daten (Abbildungen, interaktive Visualisierung).
 	
-	\paragraph{Schließende Statistik:} Die schließende Statistik\marginnote{Schließende Statistik = Parameterschätzer, Hypothesentests, p-Werte, Modellvergleiche} (auch: induktive oder inferentielle Statistik) befasst sich damit, wie man aus Beobachtungen allgemeine Schlussfolgerungen ziehen kann. Das Problem hierbei ist systematische Abhängigkeiten von zufälligem "Rauschen"  zu trennen.\marginnote{Ein systematischer Effekt wäre z.B. dass Patienten schneller heilen, wenn sie ein bestimmtes Medikament bekommen. Unterschiede in der Heilung eines einzelnen Patienten können aber auch aus anderen (zufälligen) Faktoren entstehen. Die Beobachtungen entstehen aus eine Mischung beider Prozesse. } Um herauszufinden ob Abhängigkeiten in den Daten systematische oder zufällige Ursachen haben, macht man in der schließenden Statistik typischerweise eine Reihe von Annahmen, die in einem statistischen Modell zusammengefasst werden. Man sagt das statistisches Modell beschreibt den "datengenerierenden Prozess", indem es unsere Annahmen darüber zusammenfasst wie Variation und Muster in den Daten erstehen.\marginnote{Ein statistisches Modell beschreibt, wie Daten entstehen = datengenerierender Prozess} Auf Grundlage dieses Modells kann die schließende Statistik dann Wahrscheinlichkeitsaussagen für bestimmte Fragestellungen machen (z.B. wie wahrscheinlich wäre es die beobachteten Daten zu sehen, wenn man annimmt dass kein systematischer Effekt da ist). 
+	\paragraph{Schließende Statistik:} Die schließende Statistik\marginnote{Schließende Statistik = Parameterschätzer, Hypothesentests, p-Werte, Modellvergleiche} (auch: induktive oder inferentielle Statistik) befasst sich damit, wie man aus Beobachtungen allgemeine Schlussfolgerungen ziehen kann. Das Problem hierbei ist systematische Abhängigkeiten von zufälligem "Rauschen"  zu trennen.\marginnote{Ein systematischer Effekt wäre z.B. dass Patienten schneller heilen, wenn sie ein bestimmtes Medikament bekommen. Unterschiede in der Heilung eines einzelnen Patienten können aber auch durch zufällige Effekte entstehen. Die Beobachtungen sind eine Mischung beider Prozesse.} Um herauszufinden ob Abhängigkeiten in den Daten systematische oder zufällige Ursachen haben, macht man in der schließenden Statistik typischerweise eine Reihe von Annahmen, die in einem statistischen Modell zusammengefasst werden. Diese Annamhen darüberwie Variation und Muster in den Daten erstehen nennt man den "datengenerierenden Prozess".\marginnote{Ein statistisches Modell beschreibt, wie Daten entstehen = datengenerierender Prozess} Auf Grundlage dieses Modells kann die schließende Statistik dann Wahrscheinlichkeitsaussagen für bestimmte Fragestellungen machen (z.B. wie wahrscheinlich wäre es die beobachteten Daten zu sehen, wenn man annimmt dass kein systematischer Effekt da ist). 
 	
-	\paragraph{Prädiktive Statistik und Maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Modelle deren Zweck vor allem Vorhersagen sind} bezeichnet Methoden, die nicht auf Erkenntnis von Zusammenhängen, sondern auf Vorhersagen optimiert sind. Diese Methoden sind besonders wichtig im kommerziell immer wichtiger werdenden Feld der "künstlichen Intelligenz" und "Big Data". Big Data bezeichnet statistische Methoden für sehr große und komplexe Datensätze, wie  z.B. die Datensätze die von vielen Internetfirmen (Google, Amazon) gesammelt werden.\marginnote{Big Data = Methoden für große Datensätze, wie sie z.B. von vielen Internetfirmen (Google, Amazon) gesammelt werden} Viele Methoden der prädiktiven Statistik benutzen komplexe Algorithmen, die automatisch tausende von möglichen erklärenden Variable in einem Modell kombinieren. Diese Algorithmen machen oft hervorragende Vorhersagen, aber die Modell sind so komplex dass sich schwer verstehen lässt warum. Für wissenschaftliche Grundlagenforschung, in der man normalerweise an einem bestimmten Zusammenhang interessiert ist, werden daher eher schließende statistische Methoden verwendet. Firmen wie Amazon und Google konzentrieren sich jedoch eher auf prädiktive Methoden, da es hier darum geht aus großen Datenmengen möglichst genaue Vorhersagen zu machen, z.B. was Kunden interessiert, ohne dass das "warum" im Vordergrund steht. 
+	\paragraph{Prädiktive Statistik und Maschinelles Lernen:} Prädiktive Statistik und maschinelles Lernen\marginnote{Maschinelles Lernen = Modelle deren Zweck vor allem Vorhersagen sind} bezeichnet Methoden, die nicht auf Erkenntnis von Zusammenhängen, sondern auf Vorhersagen optimiert sind. Diese Methoden sind besonders wichtig im kommerziell immer bedeutender werdenden Feld der "künstlichen Intelligenz" und "Big Data". Big Data bezeichnet statistische Methoden für sehr große und komplexe Datensätze,  z.B. die Datensätze die von vielen Internetfirmen (Google, Amazon) gesammelt werden.\marginnote{Big Data = Methoden für große Datensätze, wie sie z.B. von vielen Internetfirmen (Google, Amazon) gesammelt werden} Viele Methoden der prädiktiven Statistik benutzen komplexe Algorithmen, die automatisch tausende von möglichen erklärenden Variable in einem Modell kombinieren. Diese Algorithmen machen oft hervorragende Vorhersagen, aber die Modell sind so komplex dass sich schwer verstehen lässt warum. Für wissenschaftliche Grundlagenforschung, in der man normalerweise an einem bestimmten Zusammenhang interessiert ist, werden daher eher schließende statistische Methoden verwendet. Firmen wie Amazon und Google konzentrieren sich jedoch eher auf prädiktive Methoden. Ihnen geht es primär darum, aus großen Datenmengen möglichst genaue Vorhersagen zu machen, z.B. was Kunden interessiert, ohne dass das "warum" im Vordergrund steht. 
 	
 	\paragraph{Versuchsplanung:} Versuchsplanung oder experimentelles Design\marginnote{Versuchsplanung oder experimentelles Design = wie erzeugt man gute Daten?} umfasst alle Aspekte der Datenerzeugung, insbesondere Fragen wie "Welche Variablen sollten erfasst werden?", "Wie viele Replikate werden benötigt?", "Wie sollten die Variablen in einem Experiment optimalerweise verändert werden?". Versuchsplanung ist offensichtlich von großer Wichtigkeit für die empirisch arbeitenden Wissenschaften (sowohl die Naturwissenschaften, als auch die empirischen Sozialwissenschaften). 
 	
@@ -143,7 +143,7 @@ Created 2014, University of Freiburg. Updated 2015, University of Freiburg. Upda
 	\end{itemize}
 	
 
-Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie es nicht schon kennen. Wir werden in diesem Text immer wieder Beispiele mit R sehen, und mehrere Appendices am Ende zeigen, wie man die hier behandelten Inhalt in R berechnen würde. Trotzdem will dieser Text keine Einführung in die Spezifika der Sprache R geben. Hierzu gibt es schon viele andere Anleitungen. Ein Übersicht ist  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{hier} verfügbar, inklusive Hilfestellungen zur Installation von R und zusätzlicher Software wir RStudio.
+Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie es nicht schon kennen. Wir werden in diesem Text immer wieder Beispiele mit R sehen, und mehrere Appendices am Ende zeigen, wie man die hier behandelten Inhalte in R berechnen würde. Trotzdem will dieser Text keine Einführung in die Spezifika der Sprache R geben. Hierzu gibt es schon viele andere Anleitungen. Ein Übersicht ist  \href{http://biometry.github.io/APES/R/R10-gettingStarted.html}{hier} verfügbar, inklusive Hilfestellungen zur Installation von R und zusätzlicher Software wir RStudio.
 	
 	\begin{figure}[]
 		\begin{center}
@@ -154,55 +154,13 @@ Also, R ist einfach der Standard, und Sie sollten sich an R gewöhnen wenn Sie e
 	\end{figure}
 	
 
-Der Rest dieser Einführung befasst sich mit den vier Grundthemen der Statistik, die in der Einführung genannt wurden: deskriptive Statistik, schließende Statistik, prädiktive Statistik und Versuchsplanung. Bevor wir uns diesen Themen widmen wollen wir uns aber erst noch einmal genauer mit dem befassen worum sich in der Statistik alles dreht: die Daten.
-	
-	\chapter{Daten, Zufall, und der datengenerierende Prozess}
-	
-		\section{Die Daten: Darstellung und Skalenniveaus}
-	
-	Ein typisches Experiment oder eine typische Beobachtungsstudie (mehr zu dem Unterschied später) liefert wiederholte Beobachtungen mehrerer Variablen (beispielhaft: Temperatur, Niederschlag, Produktivität der Vegetation an verschiedenen Standorten). Man kann sich einen solchen Datensatz als Tabelle vorstellen, in der jede Variable eine Spalte einnimmt, und jede Zeile einer Beobachtung entspricht. Natürlich gibt es noch viele andere mögliche Datenstrukturen (z.B. hierarchische Beziehungen / Netzwerke), aber die Tabellenform ist mit Abstand das häufigste Ergebnis von einfachen Experimenten.
-	
-Üblicherweise wird eine wissenschaftliche Studie durchgeführt um eine bestimmte Frage zu untersuchen. Das heißt es gibt eine Variable die uns besonders interessiert, und von der wir wissen wollen wie sie von anderen Variablen beeinflusst wird. \marginnote{Abhängige Variable = unser Fokus, Frage ist wie diese Variable von anderen Faktoren beeinflusst wird.}  Diese Variable wird als ``abhängige Variable'' bezeichnet (auch Antwort- oder Responsevariable), da wir wissen wollen, ob und wie sie von anderen Variablen abhängt. Anderen Variablen, die unsere Antwortvariable beeinflussen, nennt man "erklärende Variablen" (auch: Prädiktoren, Kovariaten oder unabhängige Variablen).\marginnote{Erklärende Variablen sind variable die potentiell einen Einfluss auf die abhängige Variable ausüben.} Ein Beispiel: in einer medizinischen Studie ist der Heilungserfolg typischerweise die abhängige Variable, während die Information ob ein Medikament gegeben wurde (Behandlung) oder nicht (Kontrolle) die erklärende Variable ist. 
+Der Rest dieser Einführung befasst sich mit den vier Grundthemen der Statistik, die in der Einführung genannt wurden: deskriptive Statistik, schließende Statistik, prädiktive Statistik und Versuchsplanung. Bevor wir uns diesen Themen widmen, wollen wir uns aber erst noch einmal genauer mit dem befassen worum sich in der Statistik alles dreht: die Daten.
 
-Normalerweise \marginnote{Die Methoden der multivariaten Statistik befassen sich mit Situationen, in denen wir mehrere Variablen als abhängig betrachten} sind wir daran interessiert, wie eine Variable (abhängige Variable) von anderen Variablen beeinflusst wird. Es gibt aber auch Fälle, in denen man an komplexeren abhängigen Variablen interessiert ist. Ein Beispiel wäre, wie sich Kombinationen aus Arteigenschaften (Gewicht, Physiologie, ...) mit der Umwelt verändern. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Wir werden solche Methoden nur am Rande erwähnen - weitere Informationen über multivariate Statistik ist \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{hier} verfügbar.
 
-Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden sich Variable außerdem in ihrem Typ. Eine numerische Variable (z.B. Gewicht) ist konzeptionell anders als eine Variable, die nur entweder rot, grün, oder blau wird. Der Fachbegriff in der Statistik für den Typ ist das Wort "Skalenniveau".\marginnote{Skalenniveau = Variablentyp. Wichtige Typen: ungeordnet (nominal), geordnet (ordinal), numerisch (metrisch)} Man unterscheidet die folgenden Typen:
-	
-	\begin{itemize}
-	  \item Numerische (metrische) Variablen - metrische Variablen erkennt man daran, dass sie sich wie Distanzen verhalten, z.B. können Sie in sinnvoller Weise addiert werden. Die meisten Messgrößen im Labor (Temperatur, Konzentration, Zeit, Längen etc.) sind metrisch. Zwei für die Statistik wichtige Untertypen sind
-		\begin{itemize}
-  		\item Kontinuierliche metrische Variablen, z.B. Temperatur
-  		\item Ganzzahlig metrische Variablen. Hierzu zählt der wichtige Spezialfall der Zähldaten, z.B. 0,1,2,3, ...
-		\end{itemize}	  
-		\item Geordnete (ordinale) Variablen (klein, mittel, groß)
-		\item Ungeordnete (nominale) Variablen (z.B. rot, grün, blau). Ein Spezialfall sind die binären (dichotome) Variablen (z.B. verstorben / überlebt) die oft durch 0/1 codiert werden,
-	\end{itemize}
-	
-	Ordinale und nominal Variable werden manchmal auch als "kategorial" bezeichnet, weil sie sie nur eine feste Auswahl von Werten (Kategorien) annehmen. 
-	
-	Bei statistischen Auswertungen ist es äußerst wichtig sich klarzumachen, welches Skalenniveau die verschieden Variable haben. Wie wir später lernen werden, bestimmt das Skalenniveau welche Methoden der deskriptiven und schließenden Statistik angewandt werden können. Falls Sie ein Statistikprogramm (z.B. R) benutzen, wird dieses Programm typischerweise versuchen automatisch festzustellen, welches Skalenniveau vorliegt (wenn es eine Spalte mit "rot", "grün" gibt kann das offensichtlich nicht numerisch sein), und je nach Skalenniveau automatisch bestimmte Entscheidungen für Abbildungen und statistisch Verfahren treffen.\marginnote{Bei der Arbeit am Computer muss man immer prüfen, ob den Variablen das richtige Skalenniveau zugewiesen wurde.} In vielen Fällen ist es aber nicht möglich automatisch zu erkennen ob sie, z.B., eine Variable nominal oder ordinal behandeln wollen. Nach dem Einlesen der Daten in ein Statistikprogramm müssen Sie deshalb immer kontrollieren, ob das Skalenniveau jeder Variable korrekt kodiert ist. 
-	
-	Ein weitere Tip: die Erfahrung zeigt, dass viele Studenten dazu neigen, Variablen die eigentlich numerisch sind kategorial zu codieren. Als Beispiel: gemessen wird das Gewicht eines Tieres, aufgeschrieben als leicht, mittel und schwer.\marginnote{Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind!} Die Idee die ich oft als Erklärung höre ist dass die Messung ungenau war und die kategoriale Einteilung dem Rechnung tragen würde. Kurz gesagt: Das tut es ganz und gar nicht. Die kategoriale Einteilung erzeugt nur zusätzliche Probleme. Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind, egal wie groß der Messfehler ist!
-
-	\section{Der Zufall: Stichprobe, Populationen und der datengenerierende Prozess}
-	
-	Daten sind der eine Grundpfeiler der Statistik. Der andere ist der Zufall.\marginnote{Daten entstehen aus einer Mischung von systematischen und zufälligen Prozessen.} Die Vorstellung ist, dass es systematische Beziehungen in und zwischen Variablen gibt, über die wir gerne etwas lernen würden. Diese Beziehungen sind aber von zufälliger Variabilität in den beobachteten Variablen überdeckt. Um die systematischen von den zufälligen Prozessen zu trennen, brauchen wir die Methoden der Statistik, insbesondere der schließenden Statistik. Mehr dazu später. Jetzt wollen wir uns zuerst mit der Frage beschäftigen: wie entsteht überhaupt der Zufall in den Daten?
-	
-	Stellen Sie sich vor,\marginnote{Die Population ist die Menge aller Beobachtungen, die man machen können. Die Stichprobe sind die Beobachtungen, die tatsächlich gemacht wurden.} dass wir gerne wissen würden wie schnell ein Baum in Deutschland im Durchschnitt wächst. Um diese Frage so exakt wie möglich zu beantworten würde man idealerweise alle Bäume in Deutschland wiederholt messen. Dies ist aber offensichtlich unpraktikabel. Also misst man nur eine kleine Menge von normalerweise zufällig ausgewählten Bäumen, und hofft dass die Eigenschaften dieser Bäume ähnlich (=repräsentativ) für die Eigenschaften aller deutschen Bäume sind. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "Population" und die Bezeichnung der ausgewählten gemessenen Bäume ist die "Stichprobe".
-		
-	Ich hoffe es ist einsichtig, dass sich die Stichprobe\marginnote{Stichproben erzeugt Zufälligkeit.} bei repräsentativer Auswahl (mehr dazu im Kapitel zur Versuchsplanung) ähnlich verhält wie die ganze Population. Wenn wir statistische Berechnungen auf der Stichprobe ausführen, können wir erwarten, dass die resultierenden Werte der Population ähnlich. Die Vorstellung ist dass die Werte der Stichproben um den wahren Wert der Population schwanken. Um ein Beispiel zu geben kehren wir zu den Bäumen zurück: aus logistischen Gründen können wir jedes Jahr nur eine Stichprobe von 1000 Bäumen untersuchen. Wenn wir die Wachstumsrate dieser 1000 Bäume berechnen wird sie ähnlich, aber nicht gleich der Wachstumsrate der Population aller Bäume in Deutschland sein, und wenn wir das jedes Jahr wiederholen wird der Wert der Stichprobe in einem Jahr über, und in einem anderen Jahr unter der Rate der ganzen Population sein. 
-	
-	Der Prozess der\marginnote{Die Stichprobe ist nur einer der vielen Prozesse die Zufälligkeit erzeugen.} Stichprobe ist eine Erklärung, wie der Zufall in unsere Daten entsteht. Viele klassische statistische Lehrbücher konzentrieren sich ausschließlich auf diesen Prozess, wodurch sich das Problem der Statistik auf das Problem reduziert die Eigenschaften der Population aus den Eigenschaften der Stichprobe zu schätzen. Leider stößt diese relativ einfache Denkmodell bei vielen komplexeren statistischen Problem an seine Grenzen. Stellen Sie sich z.B. vor, Sie erhalten Daten die durch den folgenden Prozess entstanden sind: eine Person geht zu zufällig ausgewählten Punkten in einem Wald und ermittelt die Strahlung die von der Vegetation absorbiert wird. Beim Messprozess entsteht Variation durch die innerhalb von Minuten wechselnde Bewölkung, der Fehler des Messinstruments, und dadurch dass die messende Person manchmal Ablesefehler macht. Man kann sich die Erzeugung dieser Daten natürlich trotzdem als das Ziehen aus einer abstrakten Population vorstellen, aber meiner Erfahrung nach führt diese Idealisierung oft zu Verwirrung. 
-	
-	
-	Eine moderneres und allgemeineres Gedankenmodell für die Entstehung von Daten ist der "datengenerierende Prozess".\marginnote{Der datengenerierende Prozess beschreibt, wie Zufälligkeit in einer Stichprobe entsteht.} Der datengenerierende Prozess beschreibt, wie die Beobachtungen aus einer Reihe systematischer oder zufälliger Prozesse entstehen. Dies beinhaltet den Prozess der Stichprobenerhebung, aber auch die vielen anderen Vorgänge, die zu systematische und zufällige Mustern in den Daten führen. Mit dieser Vorstellung können wir jetzt sagen: das Ziel der Statistik ist es, aus den Daten auf die Eigenschaften des datengenerierenden Prozesses zu schließen. 
-	
-	Egal ob man die klassische Vorstellung der Stichprobe, oder die flexiblere Vorstellung des datengenerierenden Prozesses präferiert: die Grundidee ist, dass die Daten / Stichprobe durch eine Mischung aus systematischen und zufälligen Prozessen entstehend. Man muss deshalb gedanklich zwei Objekte strikt trennen:\marginnote{Die deskriptive Statistik beschreibt die Daten / Stichprobe, während die schließende Statistik die Eigenschaften der unterliegenden Population / des datengenerierenden Prozesses beschreibt.} die Eigenschaften der Daten / Stichprobe (z.B. Mittelwert, Minimum, Maximum), und die Eigenschaften der Population oder des datengenerierenden Prozesses. Daten / Stichprobe sind uns vollständig bekannt. Was zu tun bleibt ist diese Information möglichst kompakt darzustellen. Dies ist die Aufgabe der deskriptiven Statistik, mit der wir uns im nächsten Kapitel beschäftigen werden (siehe Kapitel~\ref{ch: deskriptive Statistik}). Die Eigenschaften der Population / des datengenerierenden Prozesses aber sind uns nicht direkt bekannt. Wir müssen sie aus den Daten schätzen. Dies ist die Aufgabe der schließenden Statistik (siehe Kapitel~\ref{ch: inductive statistics}). Die prädiktive Statistik ist eine Mischung von beiden Standpunkten: Ziel hier ist es aus einer Stichprobe die Eigenschaften der nächsten Stichprobe vorherzusagen, ohne aber notwendigerweise explizit die Population oder der datengenerierenden Prozess zu schätzen. 
-	
 	
 	\vspace{1cm}
 	\begin{fullwidth}
-		\begin{mdframed}
+\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
 			
 			\textbf{Anwendung in R:} 
 			
@@ -223,16 +181,61 @@ Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden 
 		\end{mdframed}
 	\end{fullwidth}
 	
+
+	
+	\chapter{Daten, Zufall, und der datengenerierende Prozess}
+	
+		\section{Die Daten: Darstellung und Skalenniveaus}
+	
+Üblicherweise wird eine wissenschaftliche Studie durchgeführt um eine bestimmte Frage zu untersuchen. Das heißt es gibt eine Variable die uns besonders interessiert, und von der wir wissen wollen wie sie von anderen Variablen beeinflusst wird. \marginnote{Abhängige Variable = unser Fokus, Frage ist wie diese Variable von anderen Faktoren beeinflusst wird.}  Diese Variable wird als ``abhängige Variable'' bezeichnet (auch Antwort- oder Responsevariable). Anderen Variablen, die unsere Antwortvariable beeinflussen, nennt man "erklärende Variablen" (auch: Prädiktoren, Kovariaten oder unabhängige Variablen).\marginnote{Erklärende Variablen sind variable die potentiell einen Einfluss auf die abhängige Variable ausüben.} Ein Beispiel: in einer medizinischen Studie ist der Heilungserfolg typischerweise die abhängige Variable, während die Information ob ein Medikament gegeben wurde (Behandlung) oder nicht (Kontrolle) die erklärende Variable ist. 
+
+Normalerweise \marginnote{Die Methoden der multivariaten Statistik befassen sich mit Situationen, in denen wir mehrere Variablen als abhängig betrachten} ist die abhängige Variable univariat (ein Wert). Es gibt aber auch Fälle, in denen man an komplexeren abhängigen Variablen interessiert ist. Ein Beispiel wäre, wie sich Kombinationen aus Arteigenschaften (Gewicht, Physiologie, ...) mit der Umwelt verändern. Das Auswerten solcher Daten wird als multivariate Statistik bezeichnet. Wir werden solche Methoden nur am Rande erwähnen - weitere Informationen über multivariate Statistik ist \href{http://biometry.github.io/APES/Stats/stats50-MultivariateStatistics.html}{hier} verfügbar.
+
+Neben der Unterscheidung in abhängige und unabhängige Variablen unterscheiden sich Variable außerdem in ihrem Typ. Eine numerische Variable (z.B. Gewicht) ist konzeptionell anders als eine Variable, die nur entweder rot, grün, oder blau wird. Der Fachbegriff in der Statistik für den Typ ist das Wort "Skalenniveau".\marginnote{Skalenniveau = Variablentyp. Wichtige Typen: ungeordnet (nominal), geordnet (ordinal), numerisch (metrisch)} Man unterscheidet die folgenden Typen:
+	
+	\begin{itemize}
+	  \item Numerische (metrische) Variablen - metrische Variablen erkennt man daran, dass sie sich wie Distanzen verhalten, z.B. können Sie in sinnvoller Weise addiert werden. Die meisten Messgrößen im Labor (Temperatur, Konzentration, Zeit, Längen etc.) sind metrisch. Zwei für die Statistik wichtige Untertypen sind
+		\begin{itemize}
+  		\item Kontinuierliche metrische Variablen, z.B. Temperatur
+  		\item Ganzzahlig metrische Variablen. Hierzu zählt der wichtige Spezialfall der Zähldaten, z.B. 0,1,2,3, ...
+		\end{itemize}	  
+		\item Geordnete (ordinale) Variablen (klein, mittel, groß)
+		\item Ungeordnete (nominale) Variablen (z.B. rot, grün, blau). Ein Spezialfall sind die binären (dichotome) Variablen (z.B. verstorben / überlebt) die oft durch 0/1 codiert werden,
+	\end{itemize}
+	
+	Ordinale und nominal Variable werden manchmal auch als "kategorial" bezeichnet, weil sie sie nur eine feste Auswahl von Werten (Kategorien) annehmen. 
+	
+	Bei statistischen Auswertungen ist es äußerst wichtig sich klarzumachen, welches Skalenniveau die verschieden Variable haben. Wie wir später lernen werden, bestimmt das Skalenniveau welche Methoden der deskriptiven und schließenden Statistik angewandt werden können. Falls Sie ein Statistikprogramm (z.B. R) benutzen, wird dieses Programm typischerweise versuchen automatisch festzustellen, welches Skalenniveau vorliegt (wenn es eine Spalte mit "rot", "grün" gibt kann das offensichtlich nicht numerisch sein), und je nach Skalenniveau automatisch bestimmte Entscheidungen für Abbildungen und statistisch Verfahren treffen.\marginnote{Bei der Arbeit am Computer muss man immer prüfen, ob den Variablen das richtige Skalenniveau zugewiesen wurde.} Oft ist es aber nicht möglich, automatisch zu erkennen, ob z.B. eine Variable nominal oder ordinal behandeln werden soll. Nach dem Einlesen der Daten in ein Statistikprogramm müssen Sie deshalb immer kontrollieren, ob das Skalenniveau jeder Variable korrekt kodiert ist. 
+	
+	Ein weiterer Tip: die Erfahrung zeigt, dass viele Studenten dazu neigen, Variablen die eigentlich numerisch sind kategorial zu codieren. Als Beispiel: gemessen wird das Gewicht eines Tieres, aufgeschrieben als leicht, mittel und schwer.\marginnote{Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind!} Die Idee die ich oft als Erklärung höre ist dass die Messung ungenau war und die kategoriale Einteilung dem Rechnung tragen würde. Kurz gesagt: Das tut es nicht. Die kategoriale Einteilung erzeugt nur zusätzliche Probleme. Verwende niemals eine kategoriale Codierung für Messgrößen, die eigentlich metrisch sind, egal wie groß der Messfehler ist!
+
+	\section{Der Zufall: Stichprobe, Populationen und der datengenerierende Prozess}
+	
+	Daten sind der eine Grundpfeiler der Statistik. Der andere Pfeiler ist der Zufall.\marginnote{Daten entstehen aus einer Mischung von systematischen und zufälligen Prozessen.} In der Statistik stellt man sich vor, dass es systematische Beziehungen in und zwischen Variablen gibt, über die wir gerne etwas lernen würden. Diese Beziehungen sind aber von zufälliger Variabilität in den beobachteten Variablen überdeckt. Um die systematischen von den zufälligen Prozessen zu trennen, brauchen wir die Methoden der Statistik, insbesondere der schließenden Statistik. Mehr dazu später. Hier wollen wir uns zuerst mit der Frage beschäftigen: wie entsteht überhaupt der Zufall in den Daten?
+	
+	Stellen wir uns sich vor,\marginnote{Die Population ist die Menge aller Beobachtungen, die man machen können. Die Stichprobe sind die Beobachtungen, die tatsächlich gemacht wurden.} dass wir gerne wissen würden wie schnell ein Baum in Deutschland im Durchschnitt wächst. Um diese Frage so exakt wie möglich zu beantworten würde man idealerweise alle Bäume in Deutschland wiederholt messen. Dies ist aber offensichtlich unpraktikabel. Also misst man nur eine kleine Menge von normalerweise zufällig ausgewählten Bäumen, und hofft dass die Eigenschaften dieser Bäume ähnlich (=repräsentativ) für die Eigenschaften aller deutschen Bäume sind. Der statistische Terminus für 'alle Bäume in Deutschland' lautet "Population" und die Bezeichnung der ausgewählten gemessenen Bäume ist die "Stichprobe".
+		
+	Ich hoffe es ist einsichtig, dass sich die Stichprobe\marginnote{Stichproben erzeugt Zufälligkeit.} bei repräsentativer Auswahl (mehr dazu im Kapitel zur Versuchsplanung) ähnlich verhält wie die ganze Population. Wenn wir statistische Berechnungen auf der Stichprobe ausführen, können wir erwarten, dass die resultierenden Werte der Population ähnlich. Die Werte der Stichproben werden aber nicht genau dem Wert der Population entsprechen, sondern um den wahren Wert der Population schwanken.
+
+%Um ein Beispiel zu geben kehren wir zu den Bäumen zurück: aus logistischen Gründen können wir jedes Jahr nur eine Stichprobe von 1000 Bäumen untersuchen. Wenn wir die Wachstumsrate dieser 1000 Bäume berechnen wird sie ähnlich, aber nicht gleich der Wachstumsrate der Population aller Bäume in Deutschland sein, und wenn wir das jedes Jahr wiederholen wird der Wert der Stichprobe in einem Jahr über, und in einem anderen Jahr unter der Rate der ganzen Population sein. 
+	
+	Der Prozess der\marginnote{Die Stichprobe ist nur einer der vielen Prozesse die Zufälligkeit erzeugen.} Stichprobe ist eine Erklärung, wie der Zufall in unsere Daten entsteht. Viele klassische statistische Lehrbücher konzentrieren sich ausschließlich auf diesen Prozess, wodurch sich das Problem der Statistik auf das Problem reduziert die Eigenschaften der Population aus den Eigenschaften der Stichprobe zu schätzen. Leider stößt diese relativ einfache Denkmodell bei vielen komplexeren statistischen Problem an seine Grenzen. Stellen uns z.B. vor, wir erhalten Daten durch den folgenden Prozess: eine Person geht zu zufällig ausgewählten Punkten in einem Wald und ermittelt die Strahlung die von der Vegetation absorbiert wird. Beim Messprozess entsteht Variation durch die innerhalb von Minuten wechselnde Bewölkung, der Fehler des Messinstruments, und dadurch dass die messende Person manchmal Ablesefehler macht. Man kann sich die Erzeugung dieser Daten natürlich trotzdem als das Ziehen aus einer abstrakten Population vorstellen, aber meiner Erfahrung nach führt diese Idealisierung oft zu Verwirrung. 
+	
+	
+	Eine moderneres und allgemeineres Gedankenmodell für die Entstehung von Daten ist der "datengenerierende Prozess".\marginnote{Der datengenerierende Prozess beschreibt, wie Zufälligkeit in einer Stichprobe entsteht.} Der datengenerierende Prozess beschreibt, wie die Beobachtungen aus einer Reihe systematischer oder zufälliger Prozesse entstehen. Dies beinhaltet den Prozess der Stichprobenerhebung, aber auch die vielen anderen Vorgänge, die zu systematische und zufällige Mustern in den Daten führen. Mit dieser Vorstellung können wir jetzt sagen: das Ziel der Statistik ist es, aus den Daten auf die Eigenschaften des datengenerierenden Prozesses zu schließen. 
+	
+	Egal ob man die klassische Vorstellung der Stichprobe, oder die flexiblere Vorstellung des datengenerierenden Prozesses präferiert: die Grundidee ist, dass die Daten / Stichprobe durch eine Mischung aus systematischen und zufälligen Prozessen entstehend. Man muss deshalb gedanklich zwei Objekte strikt trennen:\marginnote{Die deskriptive Statistik beschreibt die Daten / Stichprobe, während die schließende Statistik die Eigenschaften der unterliegenden Population / des datengenerierenden Prozesses beschreibt.} die Eigenschaften der Daten / Stichprobe (z.B. Mittelwert, Minimum, Maximum), und die Eigenschaften der Population oder des datengenerierenden Prozesses. Daten / Stichprobe sind uns vollständig bekannt. Was zu tun bleibt ist diese Information möglichst kompakt darzustellen. Dies ist die Aufgabe der deskriptiven Statistik, mit der wir uns im nächsten Kapitel beschäftigen werden (siehe Kapitel~\ref{ch: deskriptive Statistik}). Die Eigenschaften der Population / des datengenerierenden Prozesses aber sind uns nicht direkt bekannt. Wir müssen sie aus den Daten schätzen. Dies ist die Aufgabe der schließenden Statistik (siehe Kapitel~\ref{ch: inductive statistics}). Die prädiktive Statistik ist eine Mischung von beiden Standpunkten: Ziel hier ist es aus einer Stichprobe die Eigenschaften der nächsten Stichprobe vorherzusagen, ohne aber notwendigerweise explizit die Population oder der datengenerierenden Prozess zu schätzen. 
+	
 	
 	\chapter{Deskriptive Statistik und Visualisierung}\label{ch: deskriptive Statistik}
 	
-	Deskriptive Statistik\marginnote{Wie man Daten erhebt wird später noch detaillierter im Kapitel ~\ref{ch: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von Daten.
+	Die deskriptive Statistik\marginnote{Wie man Daten erhebt wird später noch detaillierter im Kapitel ~\ref{ch: design of experiments} Versuchsplanung behandelt.} behandelt die Zusammenfassung und Veranschaulichung von Daten.
 	
 	\section{Kennzahlen der Statistik}
 	
 	Kennzahlen der Statistik\marginnote{Kennzahlen der Statistik fassen Daten numerisch zusammen} bezeichnen Rechenvorschriften (z.B. Mittelwert oder Standardabweichung), die Eigenschaften von Datensätzen numerisch zusammenfassen. Kennzahlen dienen also zur kompakten Veranschaulichung der Eigenschaften eines Datensatzes, oder zu deren Vergleich.
 	
-	\subsection{Univariate Verteilungen - Kennzahlen einer Variable}
+	\subsection{Kennzahlen einer univariaten metrischen Variable - Verteilungsparameter}
 	
 	Eine wichtiger Anwendungsbereich von Kennzahlen ist die Beschreibung der Verteilung einer metrischen Variable. Der Begriff der Verteilung bezieht sich auf die Häufigkeit des Vorkommens verschiedener Werte dieser Variablen. Als Beispiel kann man sich vorstellen, man habe 2000 Bäume mehrfach vermessen. Man kann jetzt die Verteilung verschiedener Werte für den Durchmesserzuwachs betrachten (siehe Abb.\ref{fig: data distribution}).
 
@@ -256,16 +259,15 @@ MLEEstimate <- parameter[which.max(distr)]
 # abline(v=MLEEstimate, col = "red")
 #text(3.1,0.4, "Mode", col = "red", cex = 1.5)
 @
-\caption{Verteilung von beobachteten zunehmenden Duschmesserzuwächsen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datengenerierender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
+\caption{Verteilung von beobachteten zunehmenden Durchmesserzuwächsen (graue Balken). Wir nehmen an (in diesem Fall wissen wir es), dass diese Werte von wahren Verteilungen stammen (Population oder datengenerierender Prozess) die hier in einer rot-gestrichelten Linie angedeutet werden. Wenn wir nun mehr Daten aufzeichnen würden, würden sich die grauen Balken der wahren Verteilung immer mehr annähern.}
 \label{fig: data distribution}
 \end{center}
 \end{figure}
 
 
-Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften wären beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (die Maximalverteilung, d.h. der Wert der höchsten Beobachtungsdichte). Außerdem  gibt es zwei weitere Kennzahlen, die ebenso oft Gebrauch finden: Moment und Quantil.
+Wie kann man nun die Eigenschaften der beobachteten Stichprobe zusammenfassen? Ein paar grundlegende Eigenschaften wären beispielsweise das Minimum und das Maximum, der Mittelwert, oder der Modalwert (Maximum der Verteilung). Daneben gibt es zwei weitere Kennzahlen, die von großer Wichtigkeit sind: Momente und Quantile.
 
-
-Der Begriff "Moment" mag vielleicht nicht jedem geläufig sein, vermutlich wurde aber schon einmal das erste und zweite Moment der Verteilung berechnet. Diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
+Der Begriff "Moment" mag vielleicht nicht jedem geläufig sein, vermutlich haben Sie aber schon das erste und zweite Moment einer Verteilung berechnet, denn diese sind ebenfalls unter den Bezeichnungen Mittelwert und Standardabweichung bekannt. Allgemein wird das n-te Moment $\mu_n$ einer Verteilung $f(x)$ um einen Wert c definiert als 
 
 \begin{equation}
 \mu_n(c) = \int_{-\infty}^{\infty} f(x) (x - c)^n dx
@@ -279,17 +281,17 @@ oder, für eine endliche Anzahl an Beobachtungen
 
 Das erste Moment mit $c=0$, ist der Mittelwert. Für die folgenden höheren Momente ist es üblich die zentralen Momente zu betrachten, die man durch das Setzen von c auf den Mittelwert erhält, da ihre Werte einfacher als Indikatoren für die Verteilungsform zu interpretieren sind.\footnote{Um die Varianz abzuschätzen, ersetzt man oft den Term 1/N durch den Bias-korrigierten Term 1/(N-1).} Die drei höheren zentralen Momente werden Varianz (n=2, identisch mit dem Quadrat der Standardabweichung, Messgröße der Streuung), Schiefe (n=3, Messgröße für die Asymmetrie in der Verteilung) und Wölbung (n=4) genannt. 
 
-Quantilen stellen die zweite Zentralklasse der Kennzahlen-Statistik dar, um die kontinuierliche Verteilung zu beschreiben. Wenn wir eine Verteilung wie in der oben gezeigten Abbildung vorfinden, kann man sich die Frage stellen: Welcher ist der entscheidende Wert, der den Datensatz in zwei Hälften trennt, sodass eine Hälfte der beobachten Daten kleiner und die andere Hälfte größer als dieser Wert ist?\marginnote{Eine Hälfte der Daten ist kleiner und die andere Hälfte ist größer als die 0.5 Quantile, welches auch als Medianwert bezeichnet wird} Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. 
+Eine zweite zentrale Kennzahl sind die Quantile. Für jede kontinuierliche Verteilung können wir die Frage stellen: Wo ist der Wert, ab dem der Messwert von einer Hälfte der beobachten Daten kleiner ist? Dieser Punkt wird als Medianwert, oder auch als 0.5-Quantil bezeichnet. Allgemeiner kann man sagen, dass die 0.x Quantile der Wert ist, an dem der Anteil 0.x des Datensatzes kleiner ist. Die 0.25 und 0.75 Quantile werden auch als 1. und 3. Quartil bezeichnet. 
 
-\subsection{Korrelation - Abhängigkeit metrischer Variablen}
+\subsection{Kennzahlen der Abhängigkeit mehrerer metrischer Variablen - Korrelation}
 
 Korrelation ist eine Kennzahl die die Abhängigkeit zweier metrischer Variablen misst. Es gibt mehrere unterschiedlich definierte Korrelationskoeffizienten. Die zwei wichtigsten sind:
 
-\paragraph{Lineare Korrelationskoeffizienten:} Lineare Korrelationskoeffizienten messen die lineare Abhängigkeit zwischen zwei Variablen. Der wichtigste Vertreter ist der "Pearson'schen Korrelationskoeffizienten". Wegen seiner schnellen Berechnung und leichten Interpretation ist dieser Wert die Grundeinstellung in den meisten Statistikprogrammen. Man sollte bei der Interpretation beachten, dass der Koeffizient angibt, wie gut die Punkte auf einer geraden Linie liegen. Eine nichtlineare Abhängigkeit wird nicht als perfekt korreliert betrachtet, punktsymmetrische Abhängigkeiten haben grundsätzlich Korrelation 0 (Fig.~\ref{fig: correlation}.)
+\paragraph{Lineare Korrelationskoeffizienten:} Lineare Korrelationskoeffizienten messen die lineare Abhängigkeit zwischen zwei Variablen. Der wichtigste Vertreter ist der "Pearson'schen Korrelationskoeffizienten". Wegen seiner schnellen Berechnung und leichten Interpretation ist dieser Wert die Grundeinstellung in den meisten Statistikprogrammen. Man sollte bei der Interpretation beachten, dass der Koeffizient angibt, wie gut die Punkte auf einer geraden Linie liegen. Eine nichtlineare Abhängigkeit wird nicht als perfekt korreliert betrachtet, punktsymmetrische Abhängigkeiten haben grundsätzlich Korrelation Null (Fig.~\ref{fig: correlation}).
 
 \paragraph{Rangkorrelationskoeffizienten:} Rangkorrelationskoeffizienten, wie zum Beispiel der "Spearman'sche Rangkorrelationskoeffizient" und der "Kendall Tau Rangkorrelationskoeffizient" ermitteln, wie genau die Variablen gemeinsam tendenziell steigen oder fallen, ohne hierbei das Ausmaß oder die Linearität ihrer Steigung zu beachten. Diese werden bevorzugt, wenn man von nicht-linearen Korrelationen ausgeht. 
 
-\paragraph{Starke Korrelation != bedeutender Einfluss:} Siehe auch Fig.~\ref{fig: cfeinorrelation}; ist ein oft falsch verstandener Zustand der Korrelation und Abhängigkeit - ein hoher Korrelationskoeffizient bedeutet nicht, dass eine Variable eine starke Reaktion auf eine andere bewirkt. Um eine hohe Korrelation zu erreichen braucht es nur eine geringe Streuung um die Korrelationslinie (siehe mittlere Reihe - die Auswirkung ist anders, aber die Korrelation bleibt gleich). 
+\paragraph{Starke Korrelation != bedeutender Einfluss:} Siehe auch Fig.~\ref{fig: correlation}; ist ein oft falsch verstandener Zustand der Korrelation und Abhängigkeit - ein hoher Korrelationskoeffizient bedeutet nicht, dass eine Variable eine starke Reaktion auf eine andere bewirkt. Um eine hohe Korrelation zu erreichen braucht es nur eine geringe Streuung um die Korrelationslinie (siehe mittlere Reihe - die Auswirkung ist anders, aber die Korrelation bleibt gleich). 
 
 % note about higher-dim correlation
 
@@ -375,9 +377,15 @@ Others <- function(n = 1000) {
 \end{center}
 \end{figure}
 
-\subsection{Kreuztabellen - Abhängigkeit mehrerer nominaler Variablen}
+\subsection{Verteilung und Abhängigkeit nichtmetrischer Variablen - Häufigkeit- und Kontingenztabellen}
 
-Zu guter Letzt\marginnote{Dieser Datensatz von Berkeley ist ein berühmtes Beispiel für das Simpson-Paradoxon. Weitere Informationen auf Wikipedia über diese wichtige statistische Falle.} gibt es noch die klassischen Kreuztabellen, um binäre oder kategorische Daten zu beschreiben. Hier ist ein Auszug eines üblichen Datensatzes aus R über Sammeldaten von Hochschulbewerber in Berkeley aus dem sechst-größten Departments im Jahre 1973, geordnet nach Zulassung und Geschlecht. Hier wird nur das erste Department gezeigt.
+Zu guter Letzt gibt es noch die klassischen Häufigkeits- und Kreuztabellen.
+
+Eine normale Häufigkeitstabelle beschreibt die Verteilung einer nominalen oder ordinalen Variable. Eine solche Tabelle zählt einfach, wie oft verschiedene Merkmale (rot, grün, blau) in einem Datensatz vorkommen. 
+
+Eine Kontingenztabelle (auch: Kontingenztafel oder Kreuztabelle) beschreibt, wie häufig Kombinationen von Merkmalen zweier oder mehr Variablen auftreten. Wenn man z.B. einen Datensatz mit der Variable Farbe (rot, grün, blau) und Preis (hoch, niedrig) hat, zählt die Kontingenztabelle wie oft jede Kombination (z.B. rot, hoher Preis) auftritt. 
+
+Als\marginnote{Dieser Datensatz von Berkeley ist ein berühmtes Beispiel für das Simpson-Paradoxon. Weitere Informationen über dieses wichtige Phänomen im Abschnitt~\ref{ch: design of experiments}, Versuchsplanung.} Beispiel hier eine Kontingenztabelle eines berühmten Datensatzes aus R über die Zulassung von Hochschulbewerber in Berkeley, mit den Variablen Zulassung und Geschlecht. 
 
 <<>>=
 UCBAdmissions[,,1]
@@ -388,7 +396,7 @@ UCBAdmissions[,,1]
 \begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
-\textbf{In R:} 
+\textbf{Anwendung in R:} 
 
 Für die vielseitigen Berechnungsmöglichkeiten der deskriptiven Statistik in R, siehe \href{http://www.uni-kiel.de/psychologie/rexrepos/rerDescriptive.html}{hier}
 
@@ -494,7 +502,7 @@ Es gibt eine große, fast unendliche Bandbreite an verschiedenen visuellen Darst
 \begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
-\textbf{In R:} 
+\textbf{Anwendung in R:} 
 
 Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier nicht weiter aufgeführt werden. Zu Beginn empfehle ich diese  \href{https://github.com/florianhartig/ResearchSkills/tree/master/Labs/Statistics/Practicals/GraphicsInR}{übungen zum graphischen Gestalten mit R}. Diese sind begleitend zu diesem Skript, oder auch zu
 
@@ -512,7 +520,7 @@ Es gibt viele gute Einleitungen in Graphiken mit R, sodass diese Details hier ni
 
 \marginnote{Schließende Statistik ist das Ziehen von Schlüssen aus Beobachtungen durch statistische Methoden} 
 
-Die deskriptive Statistik beschreibt unsere Daten, kann uns aber nicht sagen ob Abhängigkeiten in den Daten systematisch oder zufällig sind. Genau dies ist das Ziel der schließenden Statistik. Ein Beispiel wäre eine klinische Studie, in der es 2 Gruppen gab, die eine (Behandlung) die ein Medikament erhalten hat, und die andere (Kontrolle) die einen Placebo erhalten hat.\marginnote{In der Statistik spricht man von "Kontrolle" wenn man Beobachtungen von Versuchseinheiten hat, an denen keine experimentelle Manipulation vorgenommen wurde. Wenn man etwas manipuliert (z.B. Medikament, Düngerzugabe, etc.) so spricht man von einer "Behandlung"} Die Ergebnisse sind dass in der Behandlungsgruppe 15/30 Patienten, und in der Kontrollgruppe 10/30 Patienten geheilt wurden. Dies können wir jetzt erst mal deskriptiv darstellen, aber die Frage an die schließende Statistik wäre: können wir davon ausgehen dass es einen Effekt der Behandlung gibt, und wenn ja, wie groß ist er wahrscheinlich?
+Die deskriptive Statistik beschreibt unsere Daten, kann uns aber nicht sagen, ob Abhängigkeiten in den Daten systematisch oder zufällig sind. Genau dies ist das Ziel der schließenden Statistik. Ein Beispiel wäre eine klinische Studie, in der es 2 Gruppen gab, die eine (Behandlung) die ein Medikament erhalten hat, und die andere (Kontrolle) die einen Placebo erhalten hat.\marginnote{In der Statistik spricht man von "Kontrolle" wenn man Beobachtungen von Versuchseinheiten hat, an denen keine experimentelle Manipulation vorgenommen wurde. Wenn man etwas manipuliert (z.B. Medikament, Düngerzugabe, etc.) so spricht man von einer "Behandlung"} Die Ergebnisse sind dass in der Behandlungsgruppe 15/30 Patienten, und in der Kontrollgruppe 10/30 Patienten geheilt wurden. Dies können wir jetzt erst mal deskriptiv darstellen, aber die Frage an die schließende Statistik wäre: können wir davon ausgehen dass es einen Effekt der Behandlung gibt, und wenn ja, wie groß ist er wahrscheinlich?
 
 
 \section{Datenerzeugendes Modell}
@@ -526,28 +534,35 @@ Eine zentrale Idee von vielen Methoden der schließenden Statistik ist das Prinz
 <<echo = FALSE>>=
 
 boxplot(weight ~ group, data = PlantGrowth, main = "Plant Growth",
-        ylab = "Dried weight of plants", col = "lightgray",
-        notch = F, names = c("Control", "Fertilizer 1, "Fertilizer 2"))
+        ylab = "Biomasse", col = "lightgray",
+        notch = F, names = c("Kontrolle", "Behandlung 1", "Behandlung 2"))
 
 @
+
 \caption{Beispiel: Wachstumsmessungen unter Kontrolle und zwei verschiedenen Behandlungen. Beachte die Interpretation eines Boxplots - die dickere Linie in der Mitte der Box ist der Medianwert. Die Box bedeckt das zentrale 0.5 Quantil der Verteilung}\label{fig: plant growth music}
 \end{center}
 \end{figure}
 
-Ein Beispiel hierfür ist Fig.~\ref{fig: plant growth music}. Es scheint Unterschiede zwischen Kontrolle und Behandlung zu geben, jedoch gab es auch Abweichungen in den Wachstumsraten innerhalb der einzelnen Behandlungsguppen (durchschnittlich haben wir hier sieben Beobachtungen pro Behandlung). Somit ist es immer noch möglich, dass die Unterschiede in den Beobachtungen durch Zufall entstanden sind.
+Ein Beispiel hierfür ist Fig.~\ref{fig: plant growth music}. Es scheint Unterschiede zwischen Kontrolle und Behandlung zu geben, jedoch gibt es auch zufällige Variation innerhalb der einzelnen Behandlungsguppen (durchschnittlich haben wir hier sieben Beobachtungen pro Behandlung). Somit könnten die Unterschiede im Mittel auch durch Zufall entstanden sein.
 
-Wenn wir genaue Aussagen über die Wahrscheinlichkeit der Unterschiede zwischen den zwei behandelten und der Kontrollgruppe treffen möchten, müssen wir ein Modell erstellen, welches die stochastische Abweichung in den Daten beschreibt. Diese Annahmen sind das, was wir als statistisches Modell bezeichnen (oder auch: stochastische Verfahren, datengenerierendes Modell). 
-
-Die üblichere Modellart für solche Zwecke ist das parametrische statistische Modell. Für die Daten, die wir hier haben, würde das parametrische statistische Modell annehmen, dass es eine durchschnittliche Wachstumsrate für jede Behandlungsart gibt, jedoch das Wachstum jeder individuellen Pflanze mit einer normalverteilten Abweichung um ihre behandlungsspezifische durchschnittliche Wachstumsrate variiert. Die Parameter dieses Modells sind die unbekannten durchschnittlichen Wachstumsraten und die Abweichung der Normalverteilung. Diese Parameter werden dann mit Methoden, die hier in diesem Kapitel erklärt werden, an die Daten angepasst und basieren auf der Berechnung für z.B. die Wahrscheinlichkeit der Datenresultate, wenn keine Unterschiede zwischen den Gruppen wären.
+Wenn wir genaue Aussagen über die Wahrscheinlichkeit eines Unterschieds zwischen den zwei behandelten und der Kontrollgruppe treffen möchten, müssen wir ein Modell erstellen, welches den Zufall in den Daten beschreibt. Der übliche Ansatz ist das parametrische statistische Modell. Für die Daten könnte man z.B. annehmen, dass es eine durchschnittliche Wachstumsrate für jede Behandlungsart gibt, und das Wachstum jeder individuellen Pflanze normalverteilt um diesem Mittelwert streut. Die Parameter dieses Modells sind a) die durchschnittlichen Wachstumsraten und b) die Varianz der Normalverteilung. Diese Parameter kann man dann mit den Methoden der schließenden Statistik schätzen oder testen. 
 
 Eine andere Möglichkeit datengenerierende Modelle zu erstellen sind nicht-parametrische Methoden.\marginnote{Die nicht-parametrische Statistik versucht Vermutungen über datengenerierende Prozesse zu vermeiden. Normalerweise entsteht der datengenerierende Prozess durch das Imitieren der eigentlichen Daten, z.B. durch das erneute Prüfen von Methoden.} Nicht-parametrische Methoden umgehen die Notwendigkeit Modellannahmen zu erstellen z.B. über Resamplingmethoden, in denen wiederholt Teile aus dem beobachteten Datensatz gezogen werden um so "künstlich" neue Daten zu generieren. Für Pflanzenwachstumsbeobachtungen unter drei verschiedenen Bedingungen (Behandlung) könnte man z.B. ein nichtparametrisches Modell für die Annahmen dass es keine Unterschiede in dem Wachstum gibt dadurch erstellen, dass man alle Beobachtungen ungeachtet der Behandlung in einen Topf wirft, sie dann zufällig den drei Gruppen zuweist, und ausrechnet wir groß die Unterschiede zwischen den Gruppen sind. Wenn wir dies nun oft wiederholen (z.B. 1000 mal) kann man einen guten Eindruck davon bekommen, wie wahrscheinlich es ist die beobachteten Unterschiede zu erhalten, wenn die Behandlungen keinen Effekt hätten.
 
 Nicht-parametrische Methoden sind inzwischen ein wichtiger Bestandteil der modernen Statistik.\marginnote{Parametrische Methoden haben normalerweise eine höhere "Teststärke" (das Konzept wird gleich erklärt, aber grob heißt das dass sie eher einen Effekt finden wenn er da ist). Allerdings basieren alle Ergebnisse der parameterischen Statistik auf der Richtigkeit des parametrischen Modells. Wie man die Modellannahmen überprüft kann werden wir später in diesem Kapitel behandeln.} Ihr Vorteil liegt darin dass sie weniger Annahmen über die Daten treffen. Andererseits sind parametrische Methoden meist wesentlich schneller zu berechnen, und, falls ihre Annahmen korrekt sind, mit der selben Menge an Daten sensitiver (höhere Teststärke, siehe Kap.~\ref{ch: p-werte}), wodurch sie ehereinen vorhandenen Effekt erkennen. Deshalb sind die parametrische Methoden immer noch die Grundlage der meisten statistischen Analysen.
 
+Ob parametrisch oder nicht-parametrisch, am Ende erhalten wir ein Modell dass es uns ermöglicht eine Aussage zu machen über die Wahrscheinlichkeit der Beobachtungen $D_{obs}$
+
+\begin{equation}
+p(D_{obs} | M, \Theta)
+\end{equation}
+
+gegeben unsere Modellannahmen $M$ und potentiell Parameter $\Theta$
+
 
 \section{Inferentielle Outputs}
 
-Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene schließenden Methoden anwenden, um Schlüsse über unsere Daten zu ziehen (in unserem Beispiel: Um entscheiden zu können, ob die Behandlung einen Unterschied macht, oder nicht). In der "normalen" Statistik sind hier vor allem zwei Methoden zu nennen, die fast universell auf jedes Problem angewandt werden: p-Werte und Maximum-Likelihood-Schätzer. Ein weiteres drittes Verfahren wird momentan immer beliebter - die nachträglich, durch Bayes ermittelte Inferenz. Auf diese werde ich noch am Ende dieses Abschnittes eingehen.
+Auf diesem Modell basierend (parametrisch oder nicht-parametrisch) können wir nun verschiedene schließenden Methoden anwenden, um Schlüsse über unsere Daten zu ziehen (in unserem Beispiel: Um entscheiden zu können, ob die Behandlung einen Unterschied macht, oder nicht). In der "normalen" Statistik sind hier vor allem zwei Methoden zu nennen, die fast universell auf jedes Problem angewandt werden: p-Werte und Maximum-Likelihood-Schätzer. Außerdem wird ein weiteres drittes Verfahren momentan immer beliebter - die Posterior Wahrscheinlichkeit, die in der Bayes'schen Statistik berechnet wird. Auf diese werde ich am Ende dieses Abschnittes noch kurz eingehen.
 
 \begin{figure}[htb]
 \begin{center}
@@ -558,34 +573,34 @@ Auf dem datengenerierendem Modell basierend (parametrisch oder nicht-parametrisc
 \end{figure}
 
 
-\subsection{p-Werte}\label{ch: p-werte}
+\subsection{Hypothesentests und p-Werte}\label{ch: p-werte}
 
-Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. Die Verwendung des p-Wertes basiert auf dem Ansatz des Hypothesentests (englisch: null hypothesis significance testing, NHST). Die Idee dahinter ist Folgende: wenn wir Beobachtungsdaten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um zu testen ob die Daten zu einer festen, vorgegebenen Hypothese passen. Für das Beispiel der Pflanzen könnte unsere Hypothese so lauten: "Die Behandlung hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen." Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} In der Praxis wird typischerweise wird als Nullhypothese ein Szenario von "keinem" Einfluss gewählt, so dass man dann zeigen kann das es einen Einfluss gibt. Technisch könnte man aber genauso die Vermutung "Behandlung 2 verdoppelt die Wachstumsrate der Pflanzen" als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, bzw. an der Fragestellung, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
+Der p-Wert ist die am häufigsten benutzte, aber leider auch am schwierigsten zu interpretierende Methode. Die Verwendung des p-Wertes basiert auf dem Ansatz des Hypothesentests (englisch: null hypothesis significance testing, NHST). Die Idee ist Folgende: wenn wir Beobachtungsdaten und ein statistisches Modell haben, können wir dieses statistische Modell benutzen, um zu testen ob die Daten zu einer festen, vorgegebenen Hypothese passen. Für das Beispiel der Pflanzen könnte unsere Hypothese so lauten: "Die Behandlung hat keinen Einfluss auf Pflanzen; alle beobachteten Unterschiede basieren auf zufälligen Abweichungen zwischen den Individuen." Dieses Szenario wird als Nullhypothese bezeichnet. \marginnote{Eine Nullhypothese $H_0$ ist ein vorgegebenes Szenario, das Vorhersagen über erwartete Wahrscheinlichkeiten von verschiedenen Beobachtungen macht.} In der Praxis wird typischerweise wird als Nullhypothese ein Szenario von "keinem" Einfluss gewählt, so dass man dann zeigen kann das es einen Einfluss gibt. Technisch könnte man aber genauso die Vermutung "Behandlung 2 verdoppelt die Wachstumsrate der Pflanzen" als Nullhypothese setzen. Es liegt im Ermessen des Analytikers, bzw. an der Fragestellung, was als Nullhypothese betrachtet werden soll. Dies ist auch der Grund für die große Auswahlmöglichkeit an verfügbaren Tests. Wir werden noch einige davon im folgenden Kapitel über wichtige Hypothesentests kennen lernen.
 
-Nachdem\marginnote{Die Teststatstik ist eine deskriptive Statistik die die beobachteten Daten und H0 vergleicht.} wir uns für eine Nullhypothese entschieden haben, wollen wir nun feststellen ob die Daten zu der Nullhypothese passen. Die Frage ist natürlich: wie definiert man denn "passen"? Die Strategie der Hypothesentests ist sich zuerst eine Teststatistik zu definieren. Die Teststatistik ist irgendeine deskriptive Statistik die den Datensatz beschreibt (einfachstes Beispiel: der Mittelwert). Im Prinzip steht es jedem frei sein eigenes Maß zu wählen, aber es gibt natürlich Teststatistiken die sinnvoller sind als andere. Die Nullhypothese und die Teststatistik zusammen spezifizieren die Annahmen eines Hypothesentests. 
+Nachdem\marginnote{Die Teststatstik ist eine deskriptive Statistik die die beobachteten Daten und H0 vergleicht.} wir uns für eine Nullhypothese entschieden haben, wollen wir nun feststellen ob die Daten zu der Nullhypothese passen. Die Frage ist natürlich: wie definiert man denn "passen"? Die Strategie der Hypothesentests ist sich zuerst eine Teststatistik zu definieren. Die Teststatistik ist irgendeine deskriptive Statistik die den Datensatz beschreibt (einfachstes Beispiel: der Mittelwert). Im Prinzip steht es jedem frei seine eigene Teststatistik zu wählen, aber es gibt natürlich Teststatistiken die sinnvoller sind als andere. Die Nullhypothese und die Teststatistik zusammen definieren einen Hypothesentest. 
 
-Mit der Teststatistik gewappnet können wir jetzt die beobachteten Daten mit H0 vergleichen. Hierzu definieren wir den p-Wert 
+Mit dem Hypothesentest gewappnet können wir jetzt die beobachteten Daten mit H0 vergleichen. Hierzu definieren wir den p-Wert \marginnote{Der p-Wert ist die Wahrscheinlichkeit der beobachteten Daten oder extremer, gegeben H0.} 
 
 \begin{equation}
 p := p(d >= D_{obs} | H_0)
 \end{equation}
 
-als die Wahrscheinlichkeit die beobachteten Daten oder extremer (gemessen an der Teststatsitik) zu bekommen wenn H0 wahr ist (siehe Abb.~\ref{fig: teststatistik}).\marginnote{Der p-Wert ist die Wahrscheinlichkeit der beobachteten Daten oder extremer, gegeben H0.} 
+als die Wahrscheinlichkeit die beobachteten Daten oder extremer (gemessen an der Teststatsitik) zu bekommen wenn H0 wahr ist (siehe Abb.~\ref{fig: teststatistik}).
 
 
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width = 6cm]{Teststatistik}
-\caption{Eine visualisierung von p-Wert und Teststatistik. Gegen H0 erwarten wir eine gewisse Verteilung der Teststatistik. Wenn $D_obs$ die rote Linie ist, so ist der p-Wert die Wahrscheinlichkeit eine größere Teststatistik zu bekommen als der Wert für $D_obs$.}
+\caption{Eine Visualisierung des p-Werts und der Teststatistik. Für H0 erwarten wir eine gewisse Verteilung der Teststatistik. Die beobachteten Date haben den Wert $D_obs$ der Teststatistik (rote Linie). Der p-Wert (hier ein rechsseitiger Test) ist die Wahrscheinlichkeit eine größere Teststatistik zu bekommen als der Wert für $D_obs$.}
 \label{fig: teststatistik}
 \end{center}
 \end{figure}
 
 Ein kleiner p-Wert zeigt also an, dass die Wahrscheinlichkeit die beobachteten Daten zu bekommen für H0 sehr klein ist. Jetzt kommt ein Trick der erst mit der weiteren Erklärung richtig sinnvoll wird: Wenn der p-Wert unter eine gewisse Schwelle sinkt (das sog. Signifikanzlevel $\alpha$), so sagt man die "Nullhypothese wird abgelehnt", "es gibt signifikante Evidenz gegen die Nullhypothese", oder einfach: "der Test / Effekt ist siginfikant". Der Wert von $\alpha$ ist eine Übereinkunft, in der Ökologie üblicherweise 0.05, sodass ein p-Wert kleiner als 0.05 ein Abweisen der Nullhypothese veranlässt. \marginnote{Wenn p<0.05, haben wir signifikante Beweise für ein Abweisen der Nullhypothese.} 
 
-Warum diese Definition Sinn macht sieht man wenn man sich überlegt was passiert wenn man diese Regel anwendet. Zuerst: wie oft wird denn ein Ergebnis signifikant wenn H0 wahr ist? Wenn man scharf auf die Definition schaut, sieht man: genau $\alpha$. 	Man weiß also dass, wenn H0 wahr ist, man genau $\alpha$ signifikante Ergebnisse bekommt. Man nennt diese falschen Positiven Tests den Typ I Fehler. \textbf{Der Typ I Fehler ist also immer $\alpha$}. 
+Warum diese Definition Sinn macht sieht man wenn man sich überlegt was passiert wenn man diese Regel anwendet. Zuerst: wie oft wird denn ein Ergebnis signifikant wenn H0 wahr ist? Wenn man scharf auf die Definition schaut, sieht man: genau $\alpha$. 	Man weiß also dass, wenn H0 wahr ist, man genau $\alpha$ signifikante Ergebnisse bekommt. Man nennt diese falschen Positiven den Typ I Fehler. \textbf{Der Typ I Fehler ist also immer $\alpha$}. 
 
-Die andere Möglichkeit einen falschen Schluss zu ziehen ist, dass ein Ergebnis nicht signifikant wird, obwohl H0 falsch ist. Dieses nennt man falsche negative, oder Typ II Fehler. Den umgekehrten Wert, 1-TypII, also die Wahrscheinlichkeit Signifikanz zu bekommen wenn H0 nicht wahr ist, nennt man die Teststärke. Der Typ II Fehler ist im Allgemeinen nicht bekannt, kann aber berechnet werden wenn man den datengenerierenden Prozess und $\alpha$ kennt. Typischerweise nimmt der Fehler ab mit größerer Effektstärke, mehr Daten, größerem $\alpha$, und weniger Stochastizität (Rauschen). Ein Überblick über die Fehler beiden Fehler gibt Fig.~\ref{fig: Error Types}
+Die andere Möglichkeit einen falschen Schluss zu ziehen ist, dass der Test nicht signifikant wird, obwohl H0 falsch ist. Dieses nennt man falsche Negative, oder Typ II Fehler. Den umgekehrten Wert, 1-TypII, also die Wahrscheinlichkeit Signifikanz zu bekommen wenn H0 nicht wahr ist, nennt man die Teststärke. Der Typ II Fehler ist im Allgemeinen nicht bekannt, kann aber berechnet werden wenn man den datengenerierenden Prozess und $\alpha$ kennt. Typischerweise nimmt der Fehler ab mit größerer Effektstärke, mehr Daten, größerem $\alpha$, und weniger Stochastizität (Rauschen). Ein Überblick über die Fehler beiden Fehler gibt Fig.~\ref{fig: Error Types}
 
 \begin{figure}[htb]
 \begin{center}
@@ -597,17 +612,20 @@ Die andere Möglichkeit einen falschen Schluss zu ziehen ist, dass ein Ergebnis 
 
 Ein Problem der Hypothesentests und der p-Werte ist die notorische Fehlinterpretation der Ergebnisse. Der p-Wert ist NICHT die Wahrscheinlichkeit, dass die Nullhypothese wahr, oder die Alternativhypothese falsch ist \citep[siehe][]{Cohen-earthisround-1994}. Noch garantiert der kontrollierte Typ I Fehler, dass ein signifikantes Ergebnis mit einer festen Wahrscheinlichkeit richtig ist. 
 
-Die Wahrscheinlichkeit das ein signifikantes Ergebnis falsch ist wird durch die False Discovery Rate (FDR) beschrieben. Hierzu überlegt man sich folgendes: ein signifikantes Ergebnis kann durch 2 Wege entstehen: entweder ein Typ I Fehler, der entsteht mit Wahrscheinlichkeit $\alpha$ wenn H0 falsch ist, oder ein echtes positives Ergebnis, das entsteht mit Wahrscheinlichkeit $1-\beta$ (Teststärke) wenn H0 wahr ist. Dies ist in Fig~\ref{fig: FDR}. Wenn man dann auch noch die Wahrscheinlichkeit dass H0 wahr ist kennt, so ergibt sich für die FDR
-
+Die Wahrscheinlichkeit, dass ein signifikantes Ergebnis falsch ist, wird durch die False Discovery Rate (FDR) beschrieben. Hierzu überlegt man sich folgendes: ein signifikantes Ergebnis kann durch 2 Wege entstehen: entweder man macht einen Typ I Fehler (Wahrscheinlichkeit $\alpha$ mal Wahrscheinlichkeit dass H0 wahr ist), oder man bekommt ein echtes positives Ergebnis (Wahrscheinlichkeit $1-\beta$ (Teststärke) mal Wahrscheinlichkeit dass H0 wahr ist). Dies ist in Fig~\ref{fig: FDR} dargestellt. Also kann man die FDR ausrechnen
 \begin{equation}
 FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)}
 \end{equation}
+
+Solange man neben $\alpha$ auch die Teststärke und $p(H0)$ kennt. Beachte: aus der Formel sieht man dass die FDR typischerweise wesentlich höher ist als 5\%. Man sollte also signifikante Ergebnisse mit der entsprechenden Vorsicht genießen. Die FDR ist höher a) je kleiner die Teststärke ist, und b) je wahrscheinlicher H0 ist. 
+
+% Zitat hier
 
 
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width = 11cm]{FDR}
-\caption{False Discovery Rate}
+\caption{Visualisierung der False Discovery Rate (FDR)}
 \label{fig: FDR}
 \end{center}
 \end{figure}
@@ -617,13 +635,13 @@ FDR := \frac{p(H0) \cdot \alpha}{ p(H0) \cdot \alpha + p(!H0) \cdot (1-\beta)}
 
 Das zweite zentrale Verfahren der schließenden Statistik ist die Methode der Maximum Likelihood Schätzer (maximum-likelihood estimate, MLE). Für diese Methode betrachtet man die Wahrscheinlichkeit der beobachteten Daten als Funktion der Modellparameter $\theta$ 
 
-\begin{equation}\ref{eq: likelihood}
-L(\theta) := p(dD_{obs} | M(\theta))
+\begin{equation}\label{eq: likelihood}
+L(\theta) := p(D_{obs} | M(\theta))
 \end{equation}
 
 Der Maximum-Likelihood-Schätzer\marginnote{Merke: der Maximum Likelihood Schätzer ist der Parametersatz, für den die Daten am wahrscheinlichsten sind, nicht jedoch der wahrscheinlichste Parametersatz!} ist die Parameterkombination, für welche die Wahrscheinlichkeit in eq.~\ref{eq: likelihood}. 
 
-Der Maximum-Likelihood-Schätzung (MLE) ist eine "Punktschätzer" (engl: point estimate), weil nur ein Parameterwert berechnet wird.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Ein einzelner Wert ist aber oft nicht besonders nützlich, wenn man nicht weiß wie unsicher er ist.\marginnote{Das Konfidenzintervall beschreibt die Unsicherheit um die Punktschätzung} Deswegen wird der MLE normalerweise mit einem Konfidenzintervall angegeben. Ein korrekt definiertes 95\% Konfidenzintervall überdeckt bei wiederholten Experimenten den wahren Parameter in 95\% aller Fälle. Salopp gesagt ist das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
+Der Maximum-Likelihood-Schätzung (MLE) ist eine "Punktschätzer" (engl: point estimate), weil nur ein Parameterwert berechnet wird.\marginnote{Eine Punktschätzung ist vergleichbar mit einer einzelnen besten Schätzung.} Ein einzelner Wert ist aber oft nicht besonders nützlich, weil man nicht weiß, wie unsicher er ist.\marginnote{Das Konfidenzintervall beschreibt die Unsicherheit um die Punktschätzung} Deswegen wird der MLE normalerweise mit einem Konfidenzintervall angegeben. Ein korrekt definiertes 95\% Konfidenzintervall überdeckt bei wiederholten Experimenten den wahren Parameter in 95\% aller Fälle. Salopp gesagt ist das Konfidenzintervall ist der ungefähre Bereich, in dem wir den korrekten Parameter erwarten. 
 
 \vspace{1cm}
 \begin{fullwidth}
@@ -631,8 +649,8 @@ Der Maximum-Likelihood-Schätzung (MLE) ist eine "Punktschätzer" (engl: point e
     
 \textbf{Übungsfragen MLE:} 
 \textbf{4.1} Wie ist die Likelihood der beobachteten Daten D für ein gegebenes Modell M mit Parameter x definiert?
-\textbf{4.2} In einem Experiment wurde der Effekt von Stickstoff auf das Wachstum von Pflanzen getestet - der Likelihood ist maximal für eine Verdoppelung des Wachstums. Die Autoren schreiben: “Die Wahrscheinlichkeit die beobachteten Daten zu erhalten ist maximal wenn man annimmt dass Stickstoff das Wachstum von den beobachteten Pflanzen verdoppelt” - ist diese Aussage Korrekt?
-\textbf{4.3} Weiter unten schreiben die Autoren: “Der wahrscheinlichste Wert für den Effekt von Stickstoff ist 2 (verdoppelung)” - ist diese Aussage korrekt?
+\textbf{4.2} In einem Experiment wurde der Effekt von Stickstoff auf das Wachstum von Pflanzen getestet - die Likelihood ist maximal für eine Verdoppelung des Wachstums. Die Autoren schreiben: “Die Wahrscheinlichkeit die beobachteten Daten zu erhalten ist maximal wenn man annimmt dass Stickstoff das Wachstum von den beobachteten Pflanzen verdoppelt” - ist diese Aussage korrekt?
+\textbf{4.3} Weiter unten schreiben die Autoren: “Der wahrscheinlichste Wert für den Effekt von Stickstoff ist 2 (Verdoppelung)” - ist diese Aussage korrekt?
 
 \end{mdframed}
 \end{fullwidth}
@@ -645,11 +663,12 @@ Unsere\marginnote{Die Bayes'sche Statistik berechnen eine dritte Größe, die Po
 
 Wir kennen nun die drei Methoden der schließenden Statistik (Hypothesentests, Maximum-Likelihood, und Bayes), und wissen dass diese drei verschiedene Größen liefern: p-Wert, MLE und die Posterior. 
 
-Ich\marginnote{ANOVA , t-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} betone dass, da ein häufiges Missverständnis darin besteht eine andere Auswertungsmethode mit einem anderen Modell zu verwechseln. Ein Beispiel hierfür sind die nun folgenden Methoden ANOVA, t-Tests und die lineare Regression. Alle basieren auf ein und dem selben datengenerierenden Prozess, nur mit andere Auswertung. ANOVA und t-Tests legen verschiedenste Nullhypothesen fest, und die lineare Regression sucht nach dem MLE. Man könnte für das gleiche Modell noch die Posterior berechnen. 
+\marginnote{ANOVA , t-Tests und lineare Regression sind nur unterschiedliche Begutachtungen des selben Modells} 
+Ein häufiges Missverständnis besteht darin, die Auswertungsmethode mit dem Modell zu verwechseln. Ein Beispiel hierfür sind die nun folgenden Methoden ANOVA, t-Tests und die lineare Regression. Alle basieren auf ein und dem selben datengenerierenden Modell. Nur legen ANOVA und t-Tests verschiedenste Nullhypothesen fest, und die lineare Regression sucht nach dem MLE. 
 
 \section{Wichtige Hypothesentests}
 
-Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennenzulernen - den t-Test und ANOVA. Wie bereits erwähnt, basieren sie beide auf dem selben datengenerierenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
+Nachdem jetzt die grundlegenden statistischen Datenausgaben besprochen wurden, gehen wir nun in die Praxis über, um die zwei wohl häufigsten Hypothesentests kennenzulernen - den t-Test und ANOVA. Wie bereits erwähnt, basieren beide auf dem selben datengenerierenden Prozess, legen jedoch geringfügig unterschiedliche Nullhypothesen fest.
 
 \subsection{t-Test}
 
@@ -681,13 +700,41 @@ with(sleep, t.test(sleep$extra[sleep$group == 1], extra[group == 2]))
 t.test(extra ~ group, data = sleep)
 @
 
-Beachte, dass die Funktion einen p-Wert (H0 = kein Unterschied), aber auch einen MLE mit Konfidenzinterval ausgibt. Dies geht also über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
+Zu beachten ist, dass die Funktion einen p-Wert (H0 = kein Unterschied), aber auch einen MLE mit Konfidenzinterval ausgibt. Dies geht also über den klassischen T-Test hinaus. Vermutlich nahmen die Programmierer an, dass man zusätzlich den besten Schätzwert für die Mittelwertsunterschiede haben möchte.
 
 Hier ein Vorschlag für die verbale Kommunikation der Ergebnisse: wenn p>0.05: Unterschiede zwischen den Gruppen waren nicht signifikant. Wenn p<0.05: Wir erhielten einen Unterschied von X +- Konfidenzintervall zwischen den Gruppen (p-Wert für die Unterschiede eines T-Tests mit X). 
 
 
+\subsection{Varianzanalyse (ANOVA)}
+
+Die Definition der ANOVA (analysis of variance) oder Varianzanalyse ist nicht ganz eindeutig. Die klassische ANOVA macht grundsätzlich die gleichen Annahmen wie ein t-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet sie, ob die gemessene abhängige Variable von einer oder mehrerer kategorialer Variablen beeinflusst wird, und wie sich der Einfluss auf die verschiedenen Variablen aufteilt. Es können auch Interaktionen beachtet werden. Eine Interaktion\marginnote{Interaktion: eine Variable verändert den Effekt der anderen Variablen. Beispiel: die Variable Geschlecht könnte eine Auswirkung darauf haben wie gut ein Medikament wirkt. Es besteht also potentielle eine Interaktion zwischen Geschlecht und Behandlung.} zwischen zwei erklärenden Variablen bedeutet, dass sich der Wert der einen auf den Effekt der anderen Variable auswirkt. 
+
+Wir werden später lernen, dass die normale lineare Regression (die die gleichen Annahmen macht wie t-Tests und klassische ANOVA) auf andere Verteilungsannahmen erweitert werden kann. Hierdurch gelangt man zu den sogenannten generalisierten linearen Modellen. Das Prinzip der ANOVA lässt sich auch auf diese Modelle anwenden, und dies wird dann oft auch einfach als ANOVA bezeichnen. Deshalb Vorsicht: normalerweise heißt ANOVA = Normalverteilung, aber oft wird der Begriff auch wesentlich breiter verwendet.
+
+Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein Faktor mit vier Möglichkeiten ist:
+
+<<>>=
+aovresult <- aov(weight~Diet, ChickWeight)
+summary(aovresult)
+@
+
+Wir erhalten einen p-Wert von 6.43e-07, welcher mit unseren normalen Signifikanzniveau $\alpha=0.05$ höchst signifikant ist. Somit können wir die Nullhypothese (H0: die Ernährung hat keinen Einfluss auf die abhängige Variable "Gewicht") ablehnen. 
+
+Ein Problem der ANOVA ist, dass wir keine Parameterschätzwerte erhalten und deshalb keine Aussagen darüber machen können, welche Ernährung nun am besten ist, oder welche sich von welcher unterscheidet. Man hat jetzt 2 Möglichkeiten
+
+\begin{itemize}
+\item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Paaren von Ernährungsweisen testet (Bsp. mit einem t-Test).
+\item Oder man wechselt zu einer Regression, die im folgenden Kapitel genauer beschrieben wird.
+\end{itemize}
+
+\paragraph{Multiples Testen}\marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} Typischerweise macht man nicht einen, sondern mehrere Post-Hoc-Test. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist dass der Typ I Fehler fest ist, aber dass man nur einen Test macht. Wenn man nun mehrere Tests macht, aber gerne immer noch eine 5\% Typ I Fehlerrate bei einem $\alpha$ Level von 0.05 hätte, muss man für multiples Testen korrigieren.  
+
+\subsection{Weitere wichtige Tests}
+
+Es gibt natürlich wesentlich mehr Hypothesentests als wir hier durchgenommen haben. Eine Liste mit wichtigen Tests gibt es beispielsweise auf \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Wikipedia}. Niemand kann alle Tests auswendig kennen. Der Trick ist sich genau zu überlegen welche Nullhypothese man testen will, und sich dann den entsprechenden Test zu suchen. Eine hervorragende Resource ist die Liste von gebräuchlichen Tests auf  \href{http://www.ats.ucla.edu/stat/mult_pkg/whatstat/}{hier}, zusammen mit der praktischen Anwendung in R auf \href{http://www.ats.ucla.edu/stat/r/whatstat/whatstat.htm}{hier}.
+
 \vspace{1cm}
-%\begin{fullwidth}
+\begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
 \textbf{Übungsfragen Hypothesentests:} 
@@ -711,62 +758,21 @@ Hier ein Vorschlag für die verbale Kommunikation der Ergebnisse: wenn p>0.05: U
 \textbf{4.21}  In einer Reihe von Experimenten testen Sie Medikamente auf eine Wirkung. Ihre Power ist 100\%. Sie schätzen dass jedes 20. Medikament das Sie testen eine Wirkung haben solte. Wie ist ihre FDR bei einem Signifikanzlevel von 5\%? Es reicht wenn Sie den Rechenweg aufschreiben, Sie müssen den Wert nicht ausrechnen.
 
 \end{mdframed}
-%\end{fullwidth}
-
-
-\subsection{Varianzanalyse (ANOVA)}
-
-Die Definition der ANOVA (analysis of variance) oder Varianzanalyse ist nicht ganz eindeutig. Die klassische ANOVA macht grundsätzlich die gleichen Annahmen wie ein T-Test (normalverteilte Resonanz), jedoch für mehr als zwei Gruppen. Genauer gesagt testet Sie, ob die gemessene abhängige Variable von einer oder mehrerer kategorialer Variablen beeinflusst wird, und wie sich der Einfluss auf die verschiedenen Variablen aufteilt. Es können auch Interaktionen beachtet werden. Eine Interaktion\marginnote{Interaktion: eine Variable verändert den Effekt der anderen Variablen} zwischen zwei erklärenden Variablen bedeutet, dass sich der Wert der einen auf den Effekt der anderen Variable auswirkt. Beispiel: die Variable Geschlecht könnte eine Auswirkung darauf haben wie gut ein Medikament wirkt. Es besteht also potentielle eine Interaktion zwischen Geschlecht und Behandlung. 
-
-Als Warnung: wir werden später lernen dass die normale lineare Regression (die die gleichen Annahmen macht wie t-tests und klassische ANOVA) auf andere Verteilungsannahmen erweitert werden kann. Hierdurch gelangt man zu den sogenannten generalisierten linearen Modellen. Das Prinzip der ANOVA lässt sich auf auf diese Modelle anwenden, und wird oft auch einfach als ANOVA bezeichnen. Deshalb Vorsicht: normalerweise heißt ANOVA = Normalverteilung, aber oft wird der Begriff auch wesentlich weiter verwendet.
-
-Hier ist ein einfaches Beispiel mit einer Standard-ANOVA (normalverteilte Fehler), in der getestet werden soll, ob Gewicht (von Hühnern) von ihrer Ernährung abhängt, wobei 'Ernährung' ein Faktor mit vier Möglichkeiten ist:
-
-<<>>=
-aovresult <- aov(weight~Diet, ChickWeight)
-summary(aovresult)
-@
-
-Wir erhalten einen p-Wert von 6.43e-07, welcher mit unseren normalen Signifikanzniveau $\alpha=0.05$ höchst signifikant ist. Somit können wir die Nullhypothese (H0: die Ernährung hat keinen Einfluss auf die abhängige Variable "Gewicht") ablehnen. 
-
-Ein Problem der ANOVA ist, dass wir keine Parameterschätzwerte erhalten und deshalb keine Aussagen darüber machen können, welche Ernährung nun am besten ist, oder welche sich von welcher Unterscheidet. an hat jetzt 2 Möglichkeiten
-
-\begin{itemize}
-\item Entweder wendet man den sogenannten Post-Hoc-Test an, welcher auf Unterschiede der Ernährungsweisen testet (Bsp. mit einem T-Test).
-\item Oder man wechselt zu einer Regression, die im folgenden Kapitel genauer beschrieben wird.
-\end{itemize}
-
-\subsection{Multiples Testen}
-
-Typischerweise macht man nicht einen, sondern mehrere Post-Hoc-Test. Dies kann zum Problem werden - der Grundgedanke des p-Werts ist dass der Typ I Fehler fest ist, aber dass man nur einen Test macht. Wenn man nun mehrere Tests macht, aber gerne immer noch eine 5\% Typ I Fehlerrate bei einem $\alpha$ Level von 0.05 hätte, muss man für multiples Testen korrigieren. \marginnote{Beim Anwenden multipler Tests auf die selben Daten benötigt man eine Korrektur des p-Werts für multiples Testen.} 
-
-\subsection{Weitere wichtige Tests}
-
-Es gibt natürlich wesentlich mehr Hypothesentests als wir hier durchgenommen haben. Eine Liste mit wichtigen Tests gibt es beispielsweise auf \href{http://en.wikipedia.org/wiki/Category:Statistical_tests}{Wikipedia}. Niemand kann alle Tests auswendig kennen. Der Trick ist sich genau zu überlegen welche Nullhypothese man testen will, und sich dann den entsprechenden Test zu suchen. 
-
-Eine hervorragende Resource ist die Liste von gebräuchlichen Tests auf  \href{http://www.ats.ucla.edu/stat/mult_pkg/whatstat/}{hier}, zusammen mit der praktischen Anwendung in R auf \href{http://www.ats.ucla.edu/stat/r/whatstat/whatstat.htm}{hier}.
+\end{fullwidth}
 
 
 
-\section{Regression}
+\section{Lineare Regression}
 
-Wie zuvor schon angedeutet liegt der Regression nicht unbedingt ein anderes statistisches Modell zugrunde als den Hypothesentests. Genauer gesagt: die lineare Regression, die wir als erstes kennenlernen, macht im Prinzip die gleichen Annahmen wir t-Test und ANOVA. 
+Wie zuvor schon angedeutet liegt der Regression nicht unbedingt ein anderes statistisches Modell zugrunde als den Hypothesentests. Genauer gesagt: die lineare Regression, die wir als erstes kennenlernen, macht im Prinzip die gleichen Annahmen wie t-Test und ANOVA. Der Unterschied besteht in der schließenden Methode. Während die Hypothesentests p-Werte berechnen, berechnet die Regression den Maximum-Likelihood-Schätzer für eine vom Nutzer vorgegebene potentielle Abhängigkeit zwischen der abhängigen Variable und den Prädiktoren.
 
-Der Unterschied besteht in der schließenden Methode. Während die Hypothesentests p-Werte berechnen, berechnet die Regression den Maximum-Likelihood-Schätzer für eine vom Nutzer vorgegebene potentielle Abhängigkeit zwischen der abhängigen Variable und den Prädiktoren.
-
-\subsection{Lineare Regression}
-
-Das einfachste Regressionsmodell ist die einfache lineare Regression. Das Wort "einfach" bedeutet in diesem Zusammenhang: es gibt nur einen Prädiktor. Wenn es mehr als einen Prädiktor gibt, spricht man von einer "multiplen" lineare Regression. 
-
-Bei der einfachen linearen Regression lautet die Annahme, dass wir eine abhängige Variable haben, die von einem Prädiktor wie folgt abhängt:
+Das einfachste Regressionsmodell ist die einfache lineare Regression. Das Wort "einfach" bedeutet in diesem Zusammenhang: es gibt nur einen Prädiktor. Wenn es mehr als einen Prädiktor gibt, spricht man von einer "multiplen" lineare Regression. Bei der einfachen linearen Regression lautet die Annahme, dass wir eine abhängige Variable haben, die von einem Prädiktor wie folgt abhängt:
 
 \begin{equation} \label{eq: linear regression}
 y \sim a \cdot x + b + \epsilon 
 \end{equation}
 
-Hier ist y die abhängige Variable, x der Prädiktor, a, b sind die zu schätzenden Parameter die die Abhängigkeit zwischen y und x beschreiben, und  $\epsilon$ steht für eine normalverteilte Zufallsvariable 
-
-In R führt man eine solche Regression durch den folgenden Befehl aus
+Hier ist y die abhängige Variable, x der Prädiktor, a, b sind die zu schätzenden Parameter die die Abhängigkeit zwischen y und x beschreiben, und  $\epsilon$ steht für eine normalverteilte Zufallsvariable. In R führt man eine solche Regression durch den folgenden Befehl aus
 
 <<>>=
 fit = lm(airquality$Temp~airquality$Ozone)
@@ -809,52 +815,52 @@ abline(fit)
 
 \vspace{1cm}
 \begin{fullwidth}
-\begin{mdframed}
+\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
-\textbf{Präzisieren von verschiedenen Modellannahmen in R:} 
+\textbf{Spezifizierung von verschiedenen Modellannahmen in R:} 
 
-abhängige Variable y hängt linear von Variable a (metrisch oder kategorisch) ab
+Die abhängige Variable y hängt linear von Variable a (metrisch oder kategorisch) ab
 
 <<eval = FALSE>>=
 fit = lm(y~a)
 summary(fit)
 @
 
-abhängige Variable y hängt linear von zwei Variablen a und b (metrisch oder kategorisch) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die abhängige Variable hat (keine Interaktion)
+Die abhängige Variable y hängt linear von zwei Variablen a und b (metrisch oder kategorisch) ab, aber der Wert beider Variablen beeinflusst nicht den Effekt, welcher die andere Variable auf die abhängige Variable hat (keine Interaktion)
 
 <<eval = FALSE>>=
 fit = lm(y~a+b)
 summary(fit)
 @
 
-abhängige Variable y hängt linear von zwei Variablen a und b (metrisch oder kategorisch) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die abhängige Variable (Interaktion)
+Die abhängige Variable y hängt linear von zwei Variablen a und b (metrisch oder kategorisch) ab, aber der Wert der einen Variable beeinflusst nicht den Effekt der anderen Variable auf die abhängige Variable (Interaktion)
 
 <<eval = FALSE>>=
 fit = lm(y~a*b)
 summary(fit)
 @
 
-abhängige Variable y ist von einer Variablen a (metrisch oder kategorisch) wie in $a + a^2$ abhängig
+Die abhängige Variable y ist von einer Variablen a (metrisch oder kategorisch) wie in $a + a^2$ abhängig
 
 <<eval = FALSE>>=
 fit = lm(y~a + I(a^2))
 summary(fit)
 @
 
-die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel. 
+Bemerkung: so ein quadratische Zusammenhang wird immer noch als lineare Regression bezeichnet. Das Wort "linear" steht dafür dass die Parameter lineare in die Regressionsgleichung eingehen, und nicht für einen linearen Zusammenhang. Bemerkung 2: Die Schreibweise I() kennzeichnet eine darauf folgende mathematische Formel. 
 
 \end{mdframed}
 \end{fullwidth}
 
 
 
-\subsection{Überprüfen der Annahmen}
+\subsection{Überprüfen der Modellannahmen}
 
 Technisch kann man fast jeden Datensatz mit einer linearen Regression schätzen, ohne dass die Software zusammenbricht. Dies heißt allerdings nicht dass man das tun sollte. In der Statistik gilt immer: die Ergebnisse basieren auf den Annahmen der Methode. Wenn Sie diese Annahmen verletzten, kann alles passieren, im Zweifel sind die Ergebnisse wahrscheinlich falsch. Es ist also immer wichtig die Annahmen der Regression zu überprüfen.
 
 Also was genau waren die Annahmen einer linearen Regression? Richtig, Normalverteilung! Ein häufiger Fehler ist an diesem Punkt den Prädiktor oder die abhängige Variable auf Normalverteilung zu überprüfen. Das bring gar nichts. Schauen Sie auf die Formel ~\ref{eq: linear regression}. Wenn man die Formel umstellt, sieht man dass der folgende Ausdruck
 
-\begin{equation} \label{eq: linear regression}
+\begin{equation} \label{eq: residuals}
 res_i = y_i - (a \cdot x_i + b ) \sim \epsilon 
 \end{equation}
 
@@ -892,7 +898,7 @@ par(oldpar)
 In Fig.~\ref{fig: ResidualPatterns} sind typische Probleme dargestellt die in einen solchen Residuenplot auftreten können. Die wichtigsten sind:
 
 \begin{itemize}
-  \item Heteroskedastizität (Varianzinhomogenität): hier ändert sich die breite der Streuung, eine Verletzung der Regressionsannahme dass die Normalverteilung eine feste Varianz hat. 
+  \item Heteroskedastizität (Varianzinhomogenität): hier ändert sich die Breite der Streuung, eine Verletzung der Regressionsannahme dass die Normalverteilung eine feste Varianz hat. 
   \item Muster in den Residuen: wenn an ein Muster in den Residuen sieht heißt dass typischerweise, dass man die falsche Funktion fittet. 
   \item Verteilung nicht normal: tja, wenn sie nicht normalverteilt ist, dann ist das natürlich schlecht, denn das ist die Annahme der linearen Regression. 
 \end{itemize}  
@@ -906,16 +912,7 @@ Die Annahmen der linearen Regression waren, dass 1) die abhängige Variable metr
 
 Die Idee der GLMs ist, das allgemeine Prinzip der LMs beizubehalten, den Wertebereich und die Verteilung aber zu modifizieren. Dazu geschehen zwei Dinge
 
-\begin{itemize}
-  \item Um den Wertebereich zu modifzieren wendet man auf die Erwartung der normalen linearen Regression eine Transformation, die sogenannte Link-Funktion, an. 
-  \item Und dann benutzen wir einfach eine andere Verteilung in der Berechnung der Likelihood für die Regression
-\end{itemize}    
-   
-Hier das ganze noch mal im Detail:
-
-\subsection{Die Link-Funktion}
-
-Wir haben gesagt, dass eine lineare Regression folgende Form annimmt
+\paragraph{Die Link-Funktion:} Um den Wertebereich zu modifizieren, wendet man auf die Erwartung der normalen linearen Regression eine Transformation, die sogenannte Link-Funktion, an. Wir haben gesagt, dass eine lineare Regression folgende Form annimmt
 
 \begin{equation}
 y \sim a \cdot x + b 
@@ -929,9 +926,7 @@ y \sim f^{link}(a \cdot x + b )
 
 Im Prinzip gibt es bei der Wahl kein Einschränkung, aber es gibt ein paar typische Funktione die benutzt werden, z.B. die Exponentialfunktion, die positive Ergebnisse garantiert, oder der inverse Logit, der Bereich zwischen 0 und 1 garantiert.
 
-\subsection{Andere Verteilungen}
-
-Nachdem wir den Wertebereich modifiziert haben können wir jetzt auch über andere Verteilungen nachdenken. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird die Idee noch deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
+\paragraph{Andere Verteilungen:} Nachdem wir den Wertebereich modifiziert haben können wir jetzt auch über andere Verteilungen nachdenken. Zwei typische Entscheidungen, die wir unten verwenden, sind die Binomial- (die Verteilung für das Münzwerfen) und die Poisson-Verteilung (eine diskrete Wahrscheinlichkeitsverteilung). Es stehen viele andere Möglichkeiten zur Verfügung. Vielleicht wird die Idee noch deutlicher, wenn wir uns in den nächsten Abschnitten zu den konkreten Beispielen bewegen.
 
 \subsection{0/1 Daten - logistische Regression}
 
@@ -941,7 +936,7 @@ Die logistische Regression ist die Standardoption für binäre Daten (1/0, Anwes
 \begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
-\textbf{In R:} 
+\textbf{Anwendung in R:} 
 
 Hier ein Beispiel mit den Daten der Titanik-überlebenden. Beachte, dass die Logit-Link automatisch ausgewählt wird, wenn in R die Binomialverteilung verwendet wird. Bei Bedarf könnte man diese Wahl überschreiben.
 
@@ -964,7 +959,7 @@ Die Poisson-Regression ist die Standardoption für Zähldaten. Zähldaten sind i
 \begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
-\textbf{In R:} 
+\textbf{Anwendung in R:} 
 
 Als Beispiel, hier ein Test ob Vogeleltern ihren Kindern mehr Futter geben wenn sie attraktiver sind. 
 
@@ -988,7 +983,7 @@ summary(fm)
 %Ein Standardproblem in Poisson oder binomialen allgemeinen linearen Regressionsmodellen ist, dass die Varianz der Poisson- und Binomialverteilung nicht eingestellt werden kann, sondern durch den Mittelwert festgelegt wird. Dies ist ein Problem, das im normalen linearen Modell nicht auftritt, da hier der zufällige Teil durch eine Normalverteilung modelliert wird, die einen Parameter für die Varianz aufweist. Ein Problem, das sehr häufig in Poisson oder binomialen allgemeinen linearen Regressionsmodellen auftritt, ist eine überdispersion, d.h. dass die Residuen mehr Varianz, als unter dem angepassten Modell erwartet, zeigen. \marginnote{Man kann auf überdispersion prüfen, indem man die angepasste Abweichung betrachtet oder einen überdispersionstest anwendet} Der einfachste Weg, um dies zu korrigieren, ist die Verwendung der Quasi-Poisson- und Quasibinomialmodelle, die in der allgemeinen linearen Regressionsmodell-Funktion verfügbar sind. Diese Modelle bringen einen zusätzlichen Parameter ein, der die Varianz des Poisson- und des binomialen allgemeinen linearen Regressionsmodells abwandelt.
 
 \vspace{1cm}
-%\begin{fullwidth}
+\begin{fullwidth}
 \begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
 \textbf{Übungsfragen Regression:} 
@@ -997,12 +992,12 @@ summary(fm)
 \textbf{4.24} Welche H0 steckt hinter den p-Werten der Parameter der linearen Regression?
 
 \end{mdframed}
-%\end{fullwidth}
+\end{fullwidth}
 
 
 \chapter{Prädiktive Statistik und Maschinelles Lernen}\label{ch: Prädiktive Statistik}
 
-Prädiktive Statistik (auch: maschinelles Lernen) ist ein dritter Bereich der Statistik der in den letzten Jahren zunehmend an Bedeutung gewonnen hat. Das grundlegende Ziel dieser Methoden besteht darin, gute Vorhersagen aus einem komplexen Datensatz zu erzeugen. Dabei verwenden sie typischerweise relativ komplizierte, nicht-parametrische Verfahren, die typischerweise Vorhersagen ermöglichen, aber keine Berechnung klassischer Größen der schließenden Statistik, wie z.B. der p-Wert oder MLE. 
+Prädiktive Statistik (auch: maschinelles Lernen) ist ein dritter Bereich der Statistik, der in den letzten Jahren zunehmend an Bedeutung gewonnen hat. Das grundlegende Ziel dieser Methoden besteht darin, gute Vorhersagen aus einem komplexen Datensatz zu erzeugen. Dabei verwenden sie typischerweise relativ komplizierte, nicht-parametrische Verfahren, die Vorhersagen ermöglichen, aber keine Berechnung klassischer Größen der schließenden Statistik, wie z.B. der p-Wert oder MLE. 
 
 Die vielleicht bekannteste Methode des maschinellen Lernens ist der sogenannte Random Forest Algorithmus. Genau zu erklären wie dieses Algorithmus funktioniert würde hier zu weit führen, aber um eine grobe Idee zu geben: die Idee ist die Daten durch sogenannten Entscheidungsbäume zu beschreiben. Die Entscheidungsbäume sagen: Daten mit Eigenschaft A führen zu Ergebnis X, und Eigenschaft B führt zu Y. Eine Strategie für Vorhersagen wäre jetzt einen sehr detaillierten Entscheidungsbaum zu bauen. Genau das mach der Random Forest nicht. Statt dessen baut er viele einfache (= schlechte) Entscheidungsbäume und kombiniert diese dann. Erstaunlicherweise führt die Kombination von vielen schlechten Modellen oft zu einer besseren Vorhersage als die eines guten Modells. Hier ein Beispiel des Algorithmus, in dem wir die Menge an Ozon in der Luft aus verschiedenen anderen Wetterparametern voraussagen 
 
@@ -1015,7 +1010,7 @@ summary(ozone.lm)
 
 Random Forest schafft es auf 70\%. Wir haben hier keine Vorhersagen auf neue Daten getestet, aber typischerweise fällt der Unterschied zwischen lm und rf in diesem Fall noch deutlicher aus. 
 
-<<>>=
+<<message=F>>=
 library(randomForest)
 ozone.rf <- randomForest(Ozone ~ ., data=airquality, mtry=3,
                          importance=TRUE, na.action=na.omit)
@@ -1024,9 +1019,17 @@ print(ozone.rf)
 
 Der Random Forest liefert keine p-Werte o.ä., aber man kann sich wenigsten die Wichtigkeit der verschiedenen Variablen anzeigen lassen, wobei sich hier Wichtigkeit auf die Wichtigkeit für die Vorhersage bezieht, eine kausale Annahme wird hier nicht gemacht. 
 
-<<>>=
+
+\begin{figure}[htbp]
+\begin{center}
+<< echo = F>>=
 varImpPlot(ozone.rf)
 @
+\caption{Wichtigkeit der Variablen im geschätzten Random Forest Modell.}
+\label{fig: Variable Importance Random Forest}
+\end{center}
+\end{figure}
+
 
 Das Verhältnis zwischen den Anhängern der klassischen schließenden Statistik und den maschinellen Lernen ist seit langem von Spannungen geprägt. Klassische Statistiker bemängeln dass das maschinelle Lernen die Idee des "Lernens von Daten" im Sinne des Vergleichens von Hypothesen und Daten zugunsten einfacher Prognosen aufgegeben hat. Ein Anhänger des maschinellen Lernens würde darauf antworten, dass es bei vielen angewandten Problemen nicht um das Testen von kausalen Zusammenhängen, sondern nur um das Erkennen von Pattern geht. Das Ziel ist es, einen Algorithmus zu erstellen, der in der Lage ist bei einem komplexen Datensatz korrekt vorherzusagen. \footnote{Typische maschinelle Lernanwendungen beinhalten die Vorhersage der Interessen der Kunden in Web-Shops, die Korrelation komplexer Satellitendaten mit Bodensignalen oder Sprach/Gesichtserkennung.} Der Erfolg ist auf der Seite des maschinellen Lernens: Experten in diesem Feld sind derzeit bei Technologieunternehmen wie Google, Facebook, etc. heiß begehrt, und der Markt scheint immer weiter zu wachsen. Der Unterschied zwischen der schließenden und der prädiktiven Statistik sowie die Spannung zwischen diesen Bereichen ist Inhalt des äußerst empfehlenswerten Artikels "Statistical Modeling: The Two Cultures" von \citet{Breiman-StatisticalModelingTwo-2001}, dem Erfinder des Random Forest Algorithms. Hier ein Auszug aus diesem Text:
 
@@ -1034,7 +1037,7 @@ Das Verhältnis zwischen den Anhängern der klassischen schließenden Statistik 
 There are two cultures in the use of statistical modeling to reach conclusions from data. One assumes that the data are generated by given stochastic data model. The other uses algorithmic models and treats the data mechanism as unknown. The statistical community has been committed to the almost exclusive use of data models. This commitment has led to irrelevant theory, questionable conclusions, and has kept statisticians from working on a large range of interesting current problems. Algorithmic modeling, both in theory and practice, has developed rapidly in fields outside statistics. It can be used both on large complex data sets and as a more accurate and informative alternative to data modeling on smaller data sets. If our goal as a field is to use data to solve problems, then we need to move away from exclusive dependence on data models and adopt a more diverse set of tools.
 \end{quote}
 
-Eine abschließende Bemerkung: Aufgrund der großen und wachsenden Bedeutung der prädiktiven Methoden in der modernen Statistik habe ich dieses kurze Kapitel in diesen Einführungstext aufgenommen. Natürlich gibt es wesentlich mehr zu diesem Thema zu sagen als der Platz hier erlaubt. Um mehr über prädiktive Methoden zu lernen würde ich Ihnen die sehr lesbaren Artikel \citet{Breiman-StatisticalModelingTwo-2001, Shmueli-Toexplainor-2010} sehr ans Herz legen, außerdem das Lehrbuch von \citet{James-IntroductiontoStatistical-2013}, das ich auch am Ende dieses für die weitere Lektüre empfehle. Es ist auch instruktiv zu sehen wie viel Interesse diesen Methoden im Internet entgegengebracht wird, und dass viele Firmen offene Wettbewerbe in prädikativer Statistik ausschreiben um Mitarbeiter zu gewinnen (siehe, z.B. \href{kaggle.com}{https://www.kaggle.com/}). 
+Eine abschließende Bemerkung: Aufgrund der großen und wachsenden Bedeutung der prädiktiven Methoden in der modernen Statistik habe ich dieses kurze Kapitel in diesen Einführungstext aufgenommen. Natürlich gibt es wesentlich mehr zu diesem Thema zu sagen als der Platz hier erlaubt. Um mehr über prädiktive Methoden zu lernen würde ich Ihnen die sehr lesbaren Artikel \citet{Breiman-StatisticalModelingTwo-2001, Shmueli-Toexplainor-2010} sehr ans Herz legen, außerdem das Lehrbuch von \citet{James-IntroductiontoStatistical-2013}, das ich auch am Ende dieses für die weitere Lektüre empfehle. Es ist instruktiv zu sehen wie viel Interesse diesen Methoden im Internet entgegengebracht wird, und dass viele Firmen offene Wettbewerbe in prädikativer Statistik ausschreiben um Mitarbeiter zu gewinnen (siehe, z.B. \href{kaggle.com}{https://www.kaggle.com/}). 
 
 
 \chapter{Versuchsplanung}\label{ch: design of experiments}
@@ -1044,11 +1047,11 @@ Kommen wir zurück zum Anfangspunkt dieses Skripts: den Daten. Wenn wir selbst D
 
 \section{Auswahl der Variablen}
 
-In der Praxis interessieren wir uns typischerweise dafür, wie eine abhängige Variable von einer Anzahl von Prädiktoren beeinflusst wird. Wenn uns diese Beziehung interessiert, müssen wir logischerweise sowohl die abhängige Variable als auch die Prädiktoren.\marginnote{Korrelation ist keine Kausalität.} Eine minimale Anforderung ist dass wir verschiedene Werte der Prädiktoren haben sollten (wenn sich die Prädiktoren nicht ändern können wir auch keine Abhängigkeit beweisen. Normalerweise interessiert uns aber nicht nur Korrelation, sondern wir wollen mit einiger Sicherheit sagen können ob diese Korrelation kausal kausal ist. Um das zu tun, müssen wir alternative Erklärungen ausschließen. Variablen die als alternative Erklärung für einen Korrelation in Betracht kommen werden als Störfaktoren bezeichnet werden.
+In der Praxis interessieren wir uns typischerweise dafür, wie eine abhängige Variable von einer Anzahl von Prädiktoren beeinflusst wird. Wenn uns diese Beziehung interessiert, müssen wir logischerweise sowohl die abhängige Variable als auch die Prädiktoren messen.\marginnote{Korrelation ist keine Kausalität.} Eine minimale Anforderung ist weiter, dass wir verschiedene Werte der Prädiktoren haben sollten (wenn sich die Prädiktoren nicht ändern können wir auch keine Abhängigkeit beweisen). Normalerweise interessiert uns aber nicht nur Korrelation, sondern wir wollen auch mit einiger Sicherheit sagen können ob diese Korrelation kausal ist. Hierzu müssen wir alternative Erklärungen ausschließen. Variablen die als alternative Erklärung in Betracht kommen werden als Störfaktoren bezeichnet.
 
 \subsection{Was ist ein Störfaktor?}
 
-Stellen wir uns vor wir wollen wissen ob A von B abhängt, also $A~B$. Was passiert, wenn es einen zweiten Prädiktor C gibt, der auch A beeinflusst, uns aber eigentlich nicht interessiert? In Englischen nennt man C "extraneous variable", im Deutschen gibt es dafür leider keine gängige Übersetzung. \marginnote{Eine "extraneous variable" ist eine Variable, die die abhängige Variable beeinflussen kann, aber für den Experimentator nicht von Interesse ist.}. Also, es gibt auch $A~C$, aber diese Beziehung interessiert uns nicht. Die Korrelation $A~C$ ist es normalerweise kein Problem, solange C mit B unkorreliert ist. Wenn man C misachtet könnte es sein dass die unerklärte Varianz des Modells etwas höher ist, dadurch p-Werte etwas beinflusst werden können, aber im Großen und Ganzen sollten hierdurch keine großen Problem auftreten.
+Stellen wir uns vor wir wollen wissen ob A von B abhängt, also $A \sim B$. Was passiert, wenn es einen zweiten Prädiktor C gibt, der auch A beeinflusst, uns aber eigentlich nicht interessiert? In Englischen nennt man C "extraneous variable", im Deutschen gibt es dafür leider keine gängige Übersetzung. \marginnote{Eine "extraneous variable" ist eine Variable, die die abhängige Variable beeinflussen kann, aber für den Experimentator nicht von Interesse ist.}. Also, es gibt auch $A \sim C$, aber diese Beziehung interessiert uns nicht. Die Korrelation $A \sim C$ ist es normalerweise kein Problem, solange C mit B unkorreliert ist. Wenn man in einem solchen Fall C missachtet, passiert normalerweise kein großer Schaden (es könnte sein, dass die unerklärte Varianz des Modells etwas höher ist, dadurch p-Werte etwas beeinflusst werden).
 
 \begin{figure}[]
 \begin{center}
@@ -1058,7 +1061,7 @@ Stellen wir uns vor wir wollen wissen ob A von B abhängt, also $A~B$. Was passi
 \end{center}
 \end{figure}
 
-Die Variable C wird zu einem Problem wenn Sie auch mit B korreliert. Dann nennt man C einen Störfaktor.\marginnote{Eine Störfaktor ist eine externe Variable, die sowohl mit der abhängigen Variable, als auch mit einer primär interessanten Prädiktorvariable korreliert.} Wenn wir in diesem Fall nur $A~B$ messen, erscheint in der Korrelation $A~B$ auch die Auswirkungen von B und C auf A. In diesem Fall kann es passieren, dass eine Korrelation zwischen $A~B$ erscheint, obwohl A gar nicht mit B, sondern nur mit C kausal zusammenhängt.\marginnote{Eine Scheinkorrelation ist eine Korrelation, die durch einen Störfaktor verursacht wird.} Dieses Phänomen wird als Scheinkorrelation bezeichnet. Wenn der geschätze Effekt von $A~B$ falsch ist weil ein Störfaktor in in der Analyse bedacht wurde, so wird dies als omitted variable bias (OVB) bezeichnet. Eine extreme Version davon ist Simpson's Paradoxon. Simpson's Paradoxon beschreibt das Phänomen, dass ein Störfaktor die Richtung der Korrelation $A~B$ (Vorzeichen) umdrehen kann, so dass der Anschein besteht als ob der Einfluss in B umgekehrt ist als der wahre Einfluss. 
+Die Variable C wird zu einem Problem wenn Sie auch mit B korreliert. Dann nennt man C einen Störfaktor.\marginnote{Eine Störfaktor ist eine externe Variable, die sowohl mit der abhängigen Variable, als auch mit einer primär interessanten Prädiktorvariable korreliert.} Wenn wir in diesem Fall nur $A  \sim B$ messen, erscheint in der Korrelation $A \sim B$ auch die Auswirkungen von B und C auf A. In diesem Fall kann es passieren, dass eine Korrelation zwischen $A \sim B$ erscheint, obwohl A gar nicht mit B, sondern nur mit C kausal zusammenhängt.\marginnote{Eine Scheinkorrelation ist eine Korrelation, die durch einen Störfaktor verursacht wird.} Dieses Phänomen wird als Scheinkorrelation bezeichnet. Wenn der geschätze Effekt von $A \sim B$ falsch ist weil ein Störfaktor in in der Analyse bedacht wurde, so wird dies als omitted variable bias (OVB) bezeichnet. Eine extreme Version davon ist Simpson's Paradoxon. Simpson's Paradoxon beschreibt das Phänomen, dass ein Störfaktor die Richtung der Korrelation $A \sim B$ (Vorzeichen) umdrehen kann, so dass der Anschein besteht als ob der Einfluss in B umgekehrt ist als der wahre Einfluss. 
 
 
 \subsection{Was macht man mit Störfaktoren?}
@@ -1076,10 +1079,9 @@ Natürlich können die drei Techniken auch kombiniert werden.
 
 \section{Definition und Messfehler von Variablen}
 
-Nach der Entscheidung WAS gemessen werden soll geht es jetzt um das WIE. Ein häufiger Fehler bei diesem Schritt des experimentellen Desigs ist es die Messungen für selbstverständlich zu erachten, und sich jetzt direkt mit der Anzahl an Replikaten usw. auseinanderzusetzen. Erst sollten wir uns aber fragen:
+Nach der Entscheidung WAS gemessen werden soll geht es jetzt um das WIE. Ein häufiger Fehler bei diesem Schritt des experimentellen Desigs ist es die Messungen für selbstverständlich zu erachten, und sich jetzt direkt mit der Anzahl an Replikaten usw. auseinanderzusetzen. Erst sollten wir uns aber fragen:\footnote{Die Betrachtung dieser beiden Fragen wird oft als Konstruktvalidität bezeichnet.}
 
-
-\begin{enumerate}  \marginnote{Die Betrachtung dieser beiden Fragen wird oft als Konstruktvalidität bezeichnet.}
+\begin{enumerate}  
   \item Misst mein Versuchsaufbau, was ich messen möchte
   \item Was ist der erwartete statistische (stochastische) Fehler in meinen Messungen und was ist der mögliche systematische Fehler?
 \end{enumerate}
@@ -1100,7 +1102,7 @@ Die zweite Frage bezieht sich darauf, wie sehr sich zwei Messungen voneinander u
 
 \section{Auswahl der Werte für die unabhängigen (Prädiktor-) Variablen}
 
-Inzwischen wisen wir welche Prädiktoren wir messen wollen, und wie. Normalerweise haben wir Einfluss auf die Auswahl der Werte der Prädiktoren (z.B. weil wir Manipulationen an dem System vornehmen). Wir müssen uns also jetzt überlegen wie wir die Werte variieren. 
+Inzwischen wissen, wir welche Prädiktoren wir messen wollen, und wie. Normalerweise haben wir Einfluss auf die Auswahl der Werte der Prädiktoren (z.B. weil wir Manipulationen an dem System vornehmen). Wir müssen uns also jetzt überlegen wie wir die Werte variieren. 
 
 In\marginnote{Die experimentelle Einheit ist die Einheit, die einer bestimmten Variablenkombination (z.B. Behandlung oder Kontrolle) zugewiesen werden kann. Beispiel: eine einzelne Pflanze oder ein Topf.} einer experimentellen Studie haben wir in der Regel eine Versuchseinheit (experimental unit), z.B. eine Pflanze, ein Topf oder eine Versuchsfläche, und diese Einheit wird dann manipuliert. Auch Beobachtungsstudien haben Versuchseinheiten (das was man beobachtet), aber es ist meist nicht möglich, die Prädiktoren vollständig zu kontrollieren. Allerdings hat man in der Regel die Möglichkeit bestimmte Selektionen vorzunehmen. Dies ist wichtig, denn in jedem Fall benötigt man eine ausreichende Variation der Prädiktorvariablen um eine aussagekräftige statistische Analyse zu gewährleisten.
 
@@ -1121,23 +1123,32 @@ Die Verbindung von zwei Punkten ist eine Linie. Wenn man herausfinden möchte, o
 
 \section{Wie viele Replikate?}
 
-Wie wir gelernt haben, ist der Typ I Fehler unabhängig von der Anzahl der Datenpunkte. Was sich ändert ist Teststärke (engl. power) = 1 - Typ II Fehler (falsche Negative), und FDR. \marginnote{Teststärke ist die Wahrscheinlichkeit, Signifikanz für einen Effekt zu finden, wenn es welche gibt}. Für statistische Standardverfahren kann die Teststärke berechnet werden. Im Allgemeinen 
+Wie wir gelernt haben, ist der Typ I Fehler unabhängig von der Anzahl der Datenpunkte. Was sich ändert ist Teststärke (engl. power) = 1 - Typ II Fehler (falsche Negative), und FDR. \marginnote{Teststärke ist die Wahrscheinlichkeit, Signifikanz für einen Effekt zu finden, wenn es welche gibt}. Im Allgemeinen 
 
 \begin{enumerate}
 \item steigt die Teststärke wenn die Effekte stärker sind und die Daten mehr
 \item sinkt die Teststärke wenn die Variabilität zunimmt, oder wenn man $\alpha$ erhöht
 \end{enumerate}
 
-In den meisten Fällen kann man Effektstärken, Rauschen etc. aus Erfahrung abschätzen. Dann kann man in einer Poweranalyse berechnen wir, wie viele Replikate benötigt werden.
+In den meisten Fällen kann man Effektstärken, Rauschen etc. aus Erfahrung abschätzen. Dann kann man in einer Poweranalyse berechnen wir, wie viele Replikate benötigt werden, um eine bestimmte Tesstärke zu erreichen. Hier ein Beispiel in R für den t-Test, dass zeigt dass wir bei einem Gruppenunterschied von 1, Varianz 1.5 ungefähr 50 Replikate benötigen um eine Tesstärke von 0.9 zu erreichen. 
+
+<<>>=
+power.t.test(power = .90, delta = 1, sd = 1.5)
+@
+
+
+
+
 
 \newpage
-\begin{mdframed}
+\begin{fullwidth}
+\begin{mdframed}[backgroundcolor=black!10,rightline=false,leftline=false]
     
 \textbf{Checkliste für die Versuchsplanung}
 
 \begin{description}
 
-\item[( )] Eindeutige, logische Frage? Schriftlich festhalten. Siehe auch Kapitel über gute Fragen  \href{http://florianhartig.github.io/ResearchSkills/}{http://florianhartig.github.io/ResearchSkills/}
+\item[( )] Eindeutige, logische Frage? Schriftlich festhalten.
 
 \item[( )] Frage auf Validität checken, siehe hier \href{http://florianhartig.github.io/ResearchSkills/}{http://florianhartig.github.io/ResearchSkills/}
 
@@ -1175,19 +1186,20 @@ In den meisten Fällen kann man Effektstärken, Rauschen etc. aus Erfahrung absc
 \end{description}
 
 \end{mdframed}
+\end{fullwidth}
 
 
-\chapter{Wissenswertes und weiterführende Lektüren}
+\chapter{Wissenswertes und weiterführende Literatur}
 
-\section{Reproduzierbarkeit und gute wissenschaftliche Vorgehensweise}
+\section{Reproduzierbarkeit und gutes wissenschaftliches Arbeiten}
 
 Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Die Erfahrung zeigt, dass es nicht so trivial ist, wie man denkt, die Reproduzierbarkeit zu gewährleisten. Hier einige Hinweise, wie man Datenanalyse reproduzierbar machen kann
 
 \begin{itemize}
 
-\item{Sobald man Rohdaten produziert hat, ändert man sie NIE. Man speichert sie an einem Speicherort, erstellt eine Sicherung und berührt sie niemals erneut}
+\item{Sobald man Rohdaten produziert hat: speichern, Backup, und nie mehr ändern}
 
-\item{In der Regel muss man einige Aufwertungen, Umbenennung etc. vor der Datenanalyse erledigen. Wenn möglich, macht man dies durch ein Skript (z. B. R, Python, perl). Man speichert das Skript zusammen mit der Analyse ab.}
+\item{"Cleaning", Umbenennung etc. vor der Datenanalyse wenn möglich durch ein Skript (z. B. R, Python, perl). Wenn es absolut notwendig ist mit Hand/Maus zu arbeiten (ist es fast nie), eine Kopie des Datensatzes erstellen und jede Eingabe schriftlich dokumentieren.}
 
 \item{Verwende ein Versionskontrollsystem für den Code und notiere für jede Ausgabe die Revisionsnummer, mit der die Ausgabe erstellt wurde.}
 
@@ -1218,7 +1230,6 @@ Reproduzierbarkeit bedeutet, dass jeder Schritt der Analyse wiederholbar ist. Di
 \bibliographystyle{chicago}
 \bibliography{/Users/Florian/Home/Bibliography/Databases/flo}
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 
 \begin{appendices}
 
@@ -1263,7 +1274,7 @@ Anmerkung: ich wollte Ihnen mit diesem Beispiel zeigen dass es 2 Möglichkeiten 
 
 R selbst ist ein Kommandozeilenprogramm. Das heißt man kommuniziert mit R über schriftliche Befehle, die man in die R-Konsole eingibt. Hierzu schreibt man entweder die Befehle direkt in die Konsole, oder man schreibt den R Code in einem Texteditor vor und fügt ihn dann in die R-Konsole ein.
 
-Für die tägliche Arbeit ist dies jedoch recht unpraktisch. Man hätte gerne ein Programm, dass einen Texteditor mit der Konsole und weiteren Optionen (z.B. die Möglichkeit graphische Ausgaben aus R anzuzeigen) kombiniert. R bietet eine einfache Version eines solchen Programms an, die RGui (ist ist zu beachaten, dass die Mac und Windows Versionen der RGui leicht unterschiedlich aussehen).  Um die RGui unter Windows zu starten, startet man einfach das Programm "R". Wenn man in der RGui 2 + 2 im Hauptfenster eintippt und "Enter" drückt, sollte Folgendes zu sehen sein:
+Für die tägliche Arbeit ist dies jedoch recht unpraktisch. Man hätte gerne ein Programm, dass einen Texteditor mit der Konsole und weiteren Optionen (z.B. die Möglichkeit graphische Ausgaben aus R anzuzeigen) kombiniert. R bietet eine einfache Version eines solchen Programms an, die RGui (ist ist zu beachaten, dass die Mac und Windows Versionen der RGui leicht unterschiedlich aussehen).  Um die RGui unter Windows zu starten, startet man einfach das Programm "R-Gui". Wenn man in der RGui 2 + 2 im Hauptfenster eintippt und "Enter" drückt, sollte Folgendes zu sehen sein:
 
 \begin{figure}[]
 \begin{center}
@@ -1326,7 +1337,7 @@ Ein typisches Skript sieht so aus:
 
 Um einen Teil des Skripts an die Konsole zu senden, kann man den run-Button am oberen rechten Rand des Editorfensters verwenden. Für alles, was wir von nun an tun, würde ich dringend empfehlen, es in das Skript zu schreiben und es dann von dort aus an die Konsole zu senden.
 
-\section{Verarbeitung von Daten in R}\label{HandlingDataInR}
+\section{Daten in R}\label{HandlingDataInR}
 
 \subsection{Variablen}
 
@@ -1491,9 +1502,7 @@ data = read.table("airquality.txt", header = T)
 
 In diesem Fall funktioniert es gut, weil ich die Daten auf die einfachste Weise vorbereitet habe. Wenn man andere Datenformate (Kommas, Semikolons, überschriften / keine überschriften) hat, befragt man die Hilfe-Option mit dem Befehl read.table. Siehe auch http://www.statmethods.net/input/importingdata.html für weitere Optionen, z.B. Excel oder Datenbankimport.
 
-\subsubsection{Überprüfen der Daten}
-
-Wie schon gesagt: nach dem Laden der Daten immer überprüfen, ob das Datenformat korrekt ist
+\paragraph{Überprüfen der Daten:} Wie schon gesagt: nach dem Laden der Daten immer überprüfen, ob das Datenformat korrekt ist
 
 <<>>=
 str(data)
@@ -1740,7 +1749,7 @@ quasipoisson(link = "log")
 Aber Schritt für Schritt ... schauen wir uns ein Beispiel für 0/1 Daten an
 
 
-\subsubsection{0/1 abhängige Variable - die logistische Regression}
+\subsection{0/1 abhängige Variable - die logistische Regression}
 
 <<>>=
 library(effects) 
@@ -1785,9 +1794,7 @@ fmt <- glm(surv ~ age  + sex + passengerClass, family=binomial)
 summary(fmt)
 @
 
-\subsection{ANOVA für GLM}
-
-Wenn eine ANOVA erwünscht ist
+\paragraph{ANOVA für GLM:} Wenn eine ANOVA erwünscht ist
 
 <<>>=
 library(car)
