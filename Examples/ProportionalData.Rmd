@@ -1,0 +1,107 @@
+---
+title: "Options to deal with continous proportions"
+author: "Florian Hartig"
+date: "2/16/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: true
+---
+
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=8, message = F)
+```
+
+# Creating test data
+
+```{r}
+library(gamlss)
+difference = 0.1
+sampleSize = 50
+dat<-data.frame(resp = rBEZI(100, mu=rep(c(0.5-difference/2,0.5+difference/2), each = sampleSize), sigma=5, nu=0.1), pred = as.factor(rep(c(1,2), each = sampleSize)))
+boxplot(resp~pred, data = dat)
+```
+
+
+# Fitting the data
+
+## Kruskal-Wallis Rank Sum Test
+
+For a categorical predictor, a simple KW test might suffice
+
+```{r}
+kruskal.test(resp~pred, data = dat) 
+```
+
+## Beta-Regression
+
+A standard regression approach is the beta-regression. The most general framework to do this in R is the gamlss package, which also permits zero-inflated beta data. 
+
+```{r}
+mod1<-gamlss(resp~pred,sigma.formula=~1, nu.formula=~1, family=BEZI, data = dat) 
+summary(mod1)
+```
+
+maybe also with GLMMTMT http://stats.stackexchange.com/questions/233366/how-to-fit-binomial-glmm-with-continuous-response-between-0-and-1-that-is-not-a
+
+## Transformation
+
+Idea is to apply a transformation to map the data onto -inf, inf, and apply a normal linear regression / ANOVA. Warton, D. I. & Hui, F. K. C. The arcsine is asinine: the analysis of proportions in ecology Ecology, Ecology, 2010, 92, 3-10 recommend the logit transformation, although they do not that there is not general rule and any transformation that would make residuals normal is permissible. 
+
+```{r}
+dat$transformed = qlogis(dat$resp)
+hist(dat$transformed, breaks = 20)
+```
+
+The hist looks great, but note that we had zeros in the data, which were removed here because they are mappped to -Inf. If there are zero / ones present, one can shrink the borders a bit to avoid the -Inf for zero, but if there are lots of zeros, the zero-peak will still be visible
+
+```{r}
+eps = 0.03
+dat$transformed = qlogis(dat$resp / (1 + 2*eps) + eps)
+hist(dat$transformed, breaks = 20)
+```
+
+OK, so this doesn't look so great but let's do the model anyay
+
+```{r}
+mod2<-lm(transformed~pred, data = dat) 
+summary(mod2)
+```
+
+
+## Quantile regression 
+
+This is a somewhat exotic option, although it has been applied in a few papers: quantile regression makes no particular distributional assumptions, so it should also work well on proportional data. We use
+
+```{r}
+require(quantreg)
+mod3 <- rq(resp~pred, data = dat)
+summary(mod3, se = "boot")
+```
+
+## Quasi-Binomial / "pseudo-binomial"
+
+Another technique is the idea of fitting a "pseudo-binomial" model, see 
+
+* http://stats.stackexchange.com/questions/233366/how-to-fit-binomial-glmm-with-continuous-response-between-0-and-1-that-is-not-a
+
+* http://stats.stackexchange.com/questions/233366/how-to-fit-binomial-glmm-with-continuous-response-between-0-and-1-that-is-not-a
+
+* https://support.sas.com/documentation/cdl/en/statug/63033/HTML/default/viewer.htm#statug_glimmix_sect016.htm
+
+* http://stats.stackexchange.com/questions/91724/what-is-quasi-binomial-distribution-in-the-context-of-glm
+
+Why this works is still not 100% clear to me - in the glm, we can specify proportions, such as 0.2, 0.3, but then we have to provide weights (10, 20), which are then the number of trials. It seems the quasi-binomial allows 0.2 etc responses also with weights all equal to 1. 
+
+I saw remarks that the power of this model is similar to the logit transformation with lm ... in my simulations, I seemed more like lower Power, but this would have to be tested more thoroghly. Advantage is that zeros are no problem. Disadvantage is that residuals are difficult to check. 
+
+
+```{r}
+mod4 = glm(resp~pred, data = dat, family = quasibinomial)
+summary(mod4)
+```
+
+
+
+
