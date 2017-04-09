@@ -1,5 +1,5 @@
 ---
-title: "Options to deal with continous proportions"
+title: "Options to analyze continous proportions"
 author: "Florian Hartig"
 date: "2/16/2017"
 output: 
@@ -23,16 +23,31 @@ dat<-data.frame(resp = rBEZI(100, mu=rep(c(0.5-difference/2,0.5+difference/2), e
 boxplot(resp~pred, data = dat)
 ```
 
+The issue with continous proportions is that they are continous obviously, so we would like to use a continous distribution, but they are also bound between 0 and 1, which limits our options quite considerably. 
 
-# Fitting the data
+# Options to fit the data
+
+Here, a list of options to fit the data. There is no clear best choice, either of the options makes slighly different assumptions about the residuals.
 
 ## Kruskal-Wallis Rank Sum Test
 
-For a categorical predictor, a simple KW test might suffice
+In experimental settings with a single categorical predictor, a simple KW test might suffice
 
 ```{r}
 kruskal.test(resp~pred, data = dat) 
 ```
+
+Although some sources suggest that this is less powerfull than regression-alternatives, I didn't see major losses of power when playing with this informally. 
+
+
+## GLM, logit link, Gaussian response
+
+A second choice is to fit a gaussian glm with a logit link. The idea is to stretch out the data towards the 0/1 borders, so that residuals become more symmetric. This streching idea, however, is dangerous. Firstly, this distribution cannot deal with zeros or ones. Because there are zeros and ones in our data, I have shrunk the data by 0.01 inside [0.01,0.99]. But even so, if there are many zeros and ones, the distributional assumptions are easily violated. Use this with care
+
+```{r}
+
+```
+
 
 ## Beta-Regression
 
@@ -47,7 +62,7 @@ maybe also with GLMMTMT http://stats.stackexchange.com/questions/233366/how-to-f
 
 ## Transformation
 
-Idea is to apply a transformation to map the data onto -inf, inf, and apply a normal linear regression / ANOVA. Warton, D. I. & Hui, F. K. C. The arcsine is asinine: the analysis of proportions in ecology Ecology, Ecology, 2010, 92, 3-10 recommend the logit transformation, although they do not that there is not general rule and any transformation that would make residuals normal is permissible. 
+Idea is to apply a transformation to map the data onto -inf, inf, and apply a normal linear regression / ANOVA. Warton, D. I. & Hui, F. K. C. The arcsine is asinine: the analysis of proportions in ecology Ecology, Ecology, 2010, 92, 3-10 recommend the logit transformation, although they do not that there is not general rule and any transformation that would make residuals normal is permissible. I have seen other papers discourage it, especially when there are observations close to 0 and 1. 
 
 ```{r}
 dat$transformed = qlogis(dat$resp)
@@ -67,6 +82,13 @@ OK, so this doesn't look so great but let's do the model anyay
 ```{r}
 mod2<-lm(transformed~pred, data = dat) 
 summary(mod2)
+```
+
+A faster way to do the procedure is to use a glm with logit link and gaussian distribution 
+
+```{r}
+mod0 = glm(resp+0.01/0.98~pred, data = dat, family = gaussian(link = "logit")) 
+summary(mod0)
 ```
 
 
@@ -92,7 +114,7 @@ Another technique is the idea of fitting a "pseudo-binomial" model, see
 
 * http://stats.stackexchange.com/questions/91724/what-is-quasi-binomial-distribution-in-the-context-of-glm
 
-Why this works is still not 100% clear to me - in the glm, we can specify proportions, such as 0.2, 0.3, but then we have to provide weights (10, 20), which are then the number of trials. It seems the quasi-binomial allows 0.2 etc responses also with weights all equal to 1. 
+Why this works is a bit mysterious. In the glm, we can specify proportions, such as 0.2, 0.3, but then we have to provide weights (10, 20), which are then the number of trials. It seems the quasi-binomial allows 0.2 etc responses also with weights all equal to 1, because the weights are the essentially fitted. 
 
 I saw remarks that the power of this model is similar to the logit transformation with lm ... in my simulations, I seemed more like lower Power, but this would have to be tested more thoroghly. Advantage is that zeros are no problem. Disadvantage is that residuals are difficult to check. 
 
