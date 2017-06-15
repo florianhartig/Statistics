@@ -1,0 +1,103 @@
+---
+title: "Residuals"
+author: "Florian Hartig"
+date: "6/15/2017"
+output: html_document
+---
+
+1. In general, residual = model prediction - data
+2. These residuals are called "raw residuals"
+
+Let's have a look at this in R - create simulated data according to the assumptions of a linear regresission
+
+
+```{r}
+x = runif(50)
+y = 0.7 * x + rnorm(50, mean = 0, sd = 0.1)
+plot(x, y)
+```
+
+
+```{r}
+fit = lm(y ~ x)
+plot(x, y)
+abline(fit, col = "red")
+
+```
+We are now interested in the resdiduals. We can get the residuals from the fitted object via 
+
+```{r}
+res = residuals(fit)
+```
+
+The assumptions of the lm are that the residuals are iid normally distributed ... the first thing one usually does is to see if they are overall normally distributed
+
+
+```{r}
+hist(res)
+qqnorm(res)
+```
+
+The distribution shoudl be overall normal, but iid also implies that it should be normal and identical variance if if plotted against other variables (time, mean predictions, predictor). The most common choice is to plot against the predictor, because this allows to idetify if the variance change with the prediceted value 
+
+
+```{r}
+plot(res ~ predict(fit))
+```
+
+
+So far so good. Let's do the same with a glm
+
+
+```{r}
+x = log(runif(50, 0, 2))
+y = rpois(50, lambda = exp(2 * x ))
+plot(x, y)
+```
+
+```{r}
+fit = glm(y ~ x, family = poisson())
+```
+
+
+Check 
+
+```{r}
+res = residuals(fit, type = "response")
+qqnorm(res)
+```
+
+hmm ... looks a bit weird. Why? Because for this model, residuals are not normally distributed, but Poisson distributed. Even more - they are not distributed according to one poisson distribution, but basically through a mix of Poisson distributions with different means. 
+```{r}
+plot(predict(fit, type = "response"), res)
+```
+
+
+
+Hence, doesn't make sense to use a qqnorm plot, but even a simple pppois probably wouldn't work. 
+
+
+Standard remedies: 
+
+1) Pearson residuals: Pearson residuals divide the residual of each data point by the standard deviation expected from the model at this data point (e.g. Poisson: variance = mean)
+
+2) Deviance residuals: Deviance = -2 (log(likelihood) - log(likelihoodSat)), where likelihoodSat refers to the likelihood of a perfect (saturated) model
+
+```{r}
+plot(predict(fit, type = "response"), residuals(fit, type = "pearson"))
+plot(predict(fit, type = "response"), residuals(fit, type = "deviance"))
+```
+
+
+These corrections solve the issue of heteroskedasticity, but not the shape. Here comes the idea of the simulated quantile residuals, which is fully explained in https://cran.r-project.org/web/packages/DHARMa/vignettes/DHARMa.html 
+
+
+
+
+
+
+
+
+
+
+
