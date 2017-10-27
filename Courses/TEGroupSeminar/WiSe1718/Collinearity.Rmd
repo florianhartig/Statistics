@@ -1,0 +1,160 @@
+---
+title: "Colinearity"
+author: "Florian Hartig"
+date: "10/26/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# A regression problem with collinearity
+
+Note that you can change col and n
+
+```{r}
+library(car)
+library(perturb)
+
+n = 1000
+col = 0.95
+
+x1 = runif(n)
+x2 = col * x1 + (1-col) * runif(n)
+
+y = x1 - x2
+
+fit = lm(y ~ x1 + x2)
+
+```
+
+# Detecting collinearity
+
+## Simple correlation
+
+
+```{r}
+cor(x1, x2)
+```
+
+Criteria: Correlation > 0.7 (Dormann et al. 2013)
+
+## VIFs
+
+From the vif help:
+
+> If any terms in an unweighted linear model have more than 1 df, then generalized variance-inflation factors (Fox and Monette, 1992) are calculated. These are interpretable as the inflation in size of the confidence ellipse or ellipsoid for the coefficients of the term in comparison with what would be obtained for orthogonal data.
+
+
+```{r}
+
+vif(fit)
+
+```
+
+Criteria: VIF - https://cran.r-project.org/doc/contrib/Faraway-PRA.pdf > 30, https://cran.r-project.org/doc/contrib/Faraway-PRA.pdf, An Introduction to Statistical Learning, page 101, says that VIF values above 5 or 10 indicate a problem.
+
+## Conditioning indices
+
+From the colldiag help:
+
+> Colldiag is an implementation of the regression collinearity diagnostic procedures found in Belsley, Kuh, and Welsch (1980). These procedures examine the “conditioning” of the matrix of independent variables.
+> 
+> Colldiag computes the condition indexes of the matrix. If the largest condition index (the condition number) is large (Belsley et al suggest 30 or higher), then there may be collinearity problems. All large condition indexes may be worth investigating.
+> 
+> Colldiag also provides further information that may help to identify the source of these problems, the variance decomposition proportions associated with each condition index. If a large condition index is associated two or more variables with large variance decomposition proportions, these variables may be causing collinearity problems. Belsley et al suggest that a large proportion is 50 percent or more.
+
+
+```{r}
+colldiag(fit)
+```
+
+## Behavior of the indices for changing n
+
+Play around with the indices changing n and the correlation - note that indices are largely independent of n.
+
+# Behavior of the model with and without addressing collinearity
+
+
+Doing nothing, regression estimates are usually PERFECT despite high multicolinearity and high VIF, provided we have enough data
+
+```{r}
+summary(fit)
+```
+
+
+Taking a variable out - estimates get screwed up completely
+
+```{r}
+fit = lm(y ~ x1 )
+
+summary(fit)
+
+```
+
+
+# Concluding thoughts 
+
+
+* imo, for confirmatory / hypothesis testing, collinearity should be tested for, but NOT corrected --> just be more wary about results if you see high collinearity
+
+* For predictions, whatever, AIC works probably fine, better are probably model averaging methods that we could talk about in another session  
+
+# Other blog post / comments 
+
+* Really good summuary of the problem at http://psychologicalstatistics.blogspot.de/2013/11/multicollinearity-and-collinearity-in.html
+
+* https://stat.ethz.ch/pipermail/r-help/2003-July/036756.html
+
+* https://analysights.wordpress.com/tag/increasing-sample-size/
+
+## Micronumerosity
+
+This is from http://davegiles.blogspot.de/2011/09/micronumerosity.html and I copied it here just in case it disapperars from the web
+
+
+In a much earlier post I took a jab at the excessive attention paid to the concept of "multicollinearity", historically, in econometrics text books.
+
+Art Goldberger (1930-2009) made numerous important contributions to econometrics, and modelling in the social sciences in general. He wrote several great texts, the earliest of which (Goldberger, 1964) was one of the very first to use the matrix notation that we now take as standard for the linear regression model.
+
+In one of  his text books, Art also poked fun at the attention given to multicollinearity, and I'm going to share his parody with you here in full. In a couple of places I've had to replace formulae with words. What follows is from Chapter 23.3. of Goldberger (1991):
+
+"Econometrics texts devote many pages to the problem of multicollinearity in multiple regression, but they say little about the closely analogous problem of small sample size in estimation a univariate mean. Perhaps that imbalance is attributable to the lack of an exotic polysyllabic name for 'small sample size'. If so, we can remove that impediment by introducing the term micronumerosity.
+
+Suppose an econometrician set out to write a chapter about small sample size in sampling from a univariate population. Judging from what is now written about multicollinearity, the chapter might look like this:
+
+1. Micronumerosity
+The extreme case, 'exact micronumerosity', arises when n = 0; in which case the sample estimate of μ is not unique. (Technically, there is a violation of the rank condition n > 0: the matrix 0 is singular.) The extreme case is easy enough to recognize. 'Near micronumerosity' is more subtle, and yet very serious. It arises when the rank condition n > 0 is barely satisfied. Near micronumerosity is very prevalent in empirical economics.
+
+2. Consequences of micronumerosity
+The consequences of micronumerosity are serious. Precision of estimation is reduced. There are two aspects of this reduction: estimates of μ may have large errors, and not only that, but [the variance of the sample mean; DG] will be large.
+
+Investigators will sometimes be led to accept the hypothesis μ = 0 because [the ratio of the sample mean to its standard error; DG] is small, even though the true situation may be not that μ = 0 but simply that the sample data have not enabled us to pick μ up.
+
+The estimate of μ will be very sensitive to sample data, and the addition of a few more observations can sometimes produce drastic shifts in the sample mean.
+
+The true μ may be sufficiently large for the null hypothesis μ= 0 to be rejected, even though [the variance of the sample mean; DG]  = σ2/n is large because of micronumerosity. But if the true μ is small (although nonzero) the hypothesis μ = 0 may mistakenly be accepted.
+
+3. Testing for micronumerosity
+Tests for the presence of micronumerosity require the judicious use of various fingers. Some researchers prefer a single finger, others use their toes, still others let their thumbs rule.
+
+A generally reliable guide may be obtained by counting the number of observations. Most of the time in econometric analysis, when n is close to zero, it is also far from infinity.
+
+Several test procedures develop critical values n*; such that micronumerosity is a problem only if n is smaller than n*: But those procedures are questionable.
+
+4. Remedies for micronumerosity
+If micronumerosity proves serious in the sense that the estimate of μ has an unsatisfactorily low degree of precision, we are in the statistical position of not being able to make bricks without straw. The remedy lies essentially in the acquisition, if possible, of larger samples from the same population.
+
+But more data are no remedy for micronumerosity if the additional data are simply 'more of the same'. So obtaining lots of small samples from the same population will not help."
+
+If you check the data that go with that earlier post of mine, you'll see that in this text book, Goldberger devoted 8 pages (2.12% of the book) - including what you've just read - to the topic of multicollinearity. The average for the introductory texts in my sample was 2.15%. This was probably the only time that Art was (slightly) below average!
+
+References
+
+Goldberger, A. S.  (1964). Econometric Theory. Wiley, New York.
+
+Goldberger, A. S. (1991). A Course in Econometrics. Harvard University Press, Cambridge MA.
+
+
+
