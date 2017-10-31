@@ -1,7 +1,7 @@
 ---
 title: "Biostatistik - Übung zu Vorlesung 1"
-author: "Florian Hartig"
-date: "10 Nov 2016"
+author: "Lisa Hülsmann & Florian Hartig"
+date: "26 Oktober 2017"
 output:
   html_document:
     keep_md: yes
@@ -9,40 +9,51 @@ output:
     toc: yes
 ---
 
+
+## Ziel der Übungen
+
+* Vorlesungsinhalte an praktischen Beispiele wiederholen!
+* offene Fragen beantworten!
+* Aber: kein R-Kurs (R nicht klausur-relevant)!
+
+
+
 ## Daten einlesen und prüfen
 
-Also, als erstes lesen wir die Daten ein. Das geht mit der read.delim Funktion. Wenn Sie das zu Hause ausprobieren wollen müssen Sie natürlich den Pfad ändern
+Als erstes lesen wir die Daten ein. Das geht zum Beispiel mit der read.csv Funktion. Wenn Sie das zu Hause ausprobieren wollen müssen Sie natürlich den Pfad ändern
 
 ```{r}
-Daten <- read.delim("~/Home/Teaching/Vorlesungen/Statistik/Vorlesungen/16-11-Biostatistik/Biostatistik Vorlesung.csv", na.strings = "")
+Daten <- read.csv("C:/Users/LocalAdmin/Work/Teaching/@UR/Statistik@Git/Courses/BScBiostatistik/Daten.csv")
 ```
 
-Sie können Daten aber auch über den Reiter "Environment" im Fenster rechts oben, und dan "Import Dataset" einlesen. 
+Sie können Daten aber auch über den Reiter "Environment" im Fenster rechts oben, und dann "Import Dataset" einlesen. 
 
-Übrigens, die read.delim Funktion ist eine Hilfsfunktion mit einigen Voreinstellungen für die allgemeine Funktion "read.table". Sie können sich die Voreinstellungen anschauen wenn sie die Hilfe aufrufen. Das geht entweder über 
+Übrigens können Sie in der R-Hilfe nachschauen, was eine Funktion macht und an Argumenten erwartet. Das geht entweder über 
 
 ```{r}
-?read.delim
+?read.csv
 ```
 
 oder mit der Maus den Cursor auf die Funktion setzen, und dann F1 drücken. 
 
 Bemerkung: diese und weitere technischen Kommentare zu Details der Sprache R sind nicht klausurrelevant. Ich möchte nur dass Sie verstehen was wir hier machen. 
 
-Die Daten sind jetzt in R als Tabelle die den Namen "Daten" hat. Als erstes sollten wir überprüfen ob R auch den Typ der Variable korrekt erkannt hat. Das geht über den str() Befehl (steht für structure, struktur)
+Die Daten sind jetzt in R als Tabelle die den Namen "Daten" hat. Als erstes sollten wir überprüfen ob R auch den Typ der Variable korrekt erkannt hat. Das geht über den str() Befehl (steht für structure, Struktur)
 
 ```{r}
 str(Daten)
 ```
 
-Sie sehen dass die Daten aus 30 Beobachtungen von 8 Variablen bestehen. 
+Sie sehen dass die Daten aus 29 Beobachtungen von 10 Variablen bestehen. 
 
-Bei den numerischen Variable steht "int". Das ist OK, und bedeutet dass die Variable integer, also ganzzahlig sind. Bei den kategorialen Variablen steht "Factor" - auch das ist korrekt. Das ist der R Name für kategoriale Variablen.
+Bei den numerischen Variable steht "int". Das ist OK, und bedeutet dass die Variable integer, also ganzzahlig sind. 
+
+Bei den kategorialen Variablen steht "Factor" - auch das ist korrekt. Das ist der R Name für kategoriale Variablen.
 
 Bei den kategorialen Daten werden Ihnen auch gleich die Kategorien angezeigt. Es lohnt sich hier zu schauen ob das korrekt ist. Oft gibt es in Datensätzen Rechtschreibfehler, so dass Kategorien nicht richtig zugeordnet werden. 
 
 
-## Deskriptive Statistiken
+## Univariate deskriptive Statistiken
 
 Man kann sich eine Zusammenfassung der Daten anzeigen lassen über
 
@@ -54,11 +65,11 @@ Diese Funktion zeigt für jede Spalte im Datensatz die folgenden Informationen a
 
 * Numerische Variablen
  * min / max
- * 1. und 3. Quartil (25% und 75% Quantil)
+ * 1. und 3. Quartil (0.25 und 0.75 Quantil)
  * Mittelwert
  * Median
  * NA's
- 
+
 * Kategoriale Variablen
  * Häufigkeit  
  
@@ -66,7 +77,7 @@ NA heißt dass hier keine Information verfügbar ist, also eine fehlende Messung
  
 Auf die einzelnen Spalten (Variablen) des Datensatzes kann man mit 
 
-```{r, echo = F}
+```{r,}
 Daten$Einwohnerzahl
 ```
 
@@ -78,11 +89,22 @@ attach(Daten)
 
 der alle Spalten direkt im "Workspace verfügbar macht". D.h. nach diesem Befehl kann man direkt
 
-```{r, echo = F}
+```{r}
 Einwohnerzahl
 ```
 
-schreiben um auf die Einwohnerzahl zuzugreifen. Dann schauen wir uns die Einwohnerzahl doch mal an. Schauen Sie noch mal auf die Übersicht oben - ausgehend von den Quartilen, Mittelwert und Median, was würden Sie für eine Verteilung erwarten?
+schreiben um auf die Einwohnerzahl zuzugreifen. 
+
+Dann schauen wir uns die Einwohnerzahl doch mal an. Ausgehend von den Quartilen, Mittelwert und Median, was würden Sie für eine Verteilung erwarten?
+
+```{r}
+summary(Einwohnerzahl)
+```
+
+
+
+
+
 
 Hoffentlich haben Sie gesehen dass die Abstände von 1st, 2. (Median) und 3. Quartil größer werden. Außerdem ist der Mittelwert viel größer als der Median. All dies deutet auf eine rechtsschiefe Verteilung hin. 
 
@@ -94,59 +116,66 @@ hist(Einwohnerzahl, breaks = 50)
 
 Also, wir haben eine starke Häufung von kleinere Orten, und nur wenige große Städte die die Verteilung nach rechts ziehen. Vielleicht sollten wir die rechtsschiefe aber noch mal formal ausrechen. Also, wie war das, sollte die Schiefe jetzt postiv oder negativ sein?
 
-Genau, es sollte positiv sein. Dann schauen wir mal. 
 
 ```{r}
 library(moments)
 skewness(Einwohnerzahl, na.rm = T)
 ```
 
-Bemerkungen: 1) R hat viele Befehle die nicht standardmäßig aktiviert sind, sondern die durch das Laden einer Biliothekt aktiviert werden müssen. Dies geschieht durch den library Befehl. 2) das na.rm = T sagt dem Befehl dass die NAs ignoriert werden sollen. 
+Genau, sie sollte positiv sein. 
 
-Wie sieht es denn mit der Distanz zu Regensburg aus?
 
-Hier würde ich sagen es ist nicht so eindeutig wenn man sich die Quartile anschaut. Man könnte eventuell eine leichte rechtsschiefe erwarten, aus ähnlichen Gründen wie oben, aber es ist weniger klar. 
+Bemerkungen: 1) R hat viele Befehle die nicht standardmäßig aktiviert sind, sondern die durch das Laden einer Bibliothek aktiviert werden müssen. Dies geschieht durch den library Befehl. 2) das na.rm = T sagt dem Befehl dass die NAs ignoriert werden sollen. 
+
+Wie sieht es denn mit der Körpergröße aus?
+
+```{r}
+summary(Körpergröße)
+```
+
+Hier würde ich sagen, es ist nicht ganz so klar, wenn man sich die Quartile anschaut. Aber man könnte eventuell eine leichte Rechtsschiefe erwarten, aus ähnlichen Gründen wie oben. 
 
 Dann schauen wir noch mal auf die Verteilung
 
 ```{r}
-hist(Distanz, breaks = 50)
+hist(Körpergröße, breaks = 50)
 ```
 
-Ja, es sieht ganz leicht rechtsschief aus. Überprüfen wir das auch noch mal numerisch
+Ja, es sieht leicht rechtsschief aus. Überprüfen wir das auch noch mal numerisch
 
 ```{r}
-skewness(Distanz, na.rm = T)
+skewness(Körpergröße, na.rm = T)
 ```
 
 
-Vielleicht ist es an dieser Stelle ja mal Instruktiv alle Statistiken die wir hatten an diesem Beispiel zu berechnen
+Vielleicht ist es an dieser Stelle ja mal Instruktiv alle Statistiken, die wir kennengelernt haben, an diesem Beispiel zu berechnen
 
 
 ```{r}
-Mittelwert = mean(Distanz, na.rm = T)
-Median = median(Distanz, na.rm = T)
-Maximum = max(Distanz, na.rm = T)
-Minimum = min(Distanz, na.rm = T)
-Quantile = quantile(Distanz, na.rm = T)
-Varianz = var(Distanz, na.rm = T)
-Standardabweichung = sd(Distanz, na.rm = T)
-Schiefe = skewness(Distanz, na.rm = T)
-Wölbung = kurtosis(Distanz, na.rm = T)
+Mittelwert = mean(Körpergröße, na.rm = T)
+Median = median(Körpergröße, na.rm = T)
+Maximum = max(Körpergröße, na.rm = T)
+Minimum = min(Körpergröße, na.rm = T)
+Quantile = quantile(Körpergröße, na.rm = T)
+Varianz = var(Körpergröße, na.rm = T)
+Standardabweichung = sd(Körpergröße, na.rm = T)
+Schiefe = skewness(Körpergröße, na.rm = T)
+Wölbung = kurtosis(Körpergröße, na.rm = T)
 ```
+
+Erinnern Sie sich noch wie Standardabweichung und Varianz zueinander stehen?
 
 Plotten wir doch noch mal die Quartile auf die Verteilung
 
 ```{r}
-hist(Distanz, breaks = 50)
-abline(v = Quantile, col = "red", lwd = 2)
+hist(Körpergröße, breaks = 50); abline(v = Quantile, col = "red", lwd = 2)
 ```
 
-Sie sehen dass die Abstände der Quartile weiter werden nach rechts. Das zeigt die Rechtsschiefe an. 
+Sie sehen dass die Abstände der Quartile leicht weiter werden nach rechts. Das zeigt die Rechtsschiefe an. 
 
 Übrigens, haben Sie gemerkt dass das 0-Quantil ein anderes Wort für das Minimum ist?
 
-Noch ein Kommentar zur Wölbung. Die Wölbung einer Normalverteilung ist 3. Deshabl wird manchmal statt der eigentlichen Wölbung der Exzess (Unterschied zur Normalverteilung) angegeben. Unsere Wölbung is 
+Noch ein Kommentar zur Wölbung. Die Wölbung einer Normalverteilung ist 3. Deshalb wird manchmal statt der eigentlichen Wölbung der Exzess (Unterschied zur Normalverteilung) angegeben. Unsere Wölbung ist 
 
 ```{r}
 Wölbung
@@ -160,11 +189,11 @@ Wölbung - 3
 
 D.h. die Verteilung der Distanzen ist "flacher" als bei einer Normalverteilung. 
 
-Wo wir gerade von Normalverteilungen reden - kennen Sie die Normalverteilung? Die Formel für die Normalverteilung ist 
 
-1/(2*Pi*sd) * exp(- (x - mean)^2 / (2*sd^2 )
 
-Graphisch sieht das so aus. Das interessante an der Formel für die Normalverteilung ist dass die Parameter der Verteilung auch direkt dem Mittelwert und der Standardabweichung entsprechen
+Wo wir gerade von Normalverteilungen reden - kennen Sie die Normalverteilung? 
+
+Graphisch sieht sie so aus. 
 
 ```{r}
 curve(dnorm(x), -5,5)
@@ -173,7 +202,19 @@ lines(x = c(-1,1), y = dnorm(c(-1,1)), col = "red", lwd = 2)
 lines(x = c(-2,2), y = dnorm(c(-2,2)), col = "red", lwd = 2)
 ```
 
-Mit den roten Linien habe ich den bereich von 1 und 2 Standardabweichungen vom Mittelwert eingezeichnet. 63% der Daten liegen +/- 1 Standardabweichung vom Mittelwert.
+
+Das interessante an der Formel für die Normalverteilung ist, dass die Parameter der Verteilung auch direkt dem Mittelwert und der Standardabweichung entsprechen. Dies hat entscheidende Vorteile für statistische Anwendungen. Daher wird Ihnen die Normalverteilung immer wieder begegnen!
+
+
+Mit den roten Linien habe ich den Bereich von 1 und 2 Standardabweichungen vom Mittelwert eingezeichnet. 63% der Daten liegen +/- 1 Standardabweichung vom Mittelwert.
+
+
+
+
+
+
+
+
 
 Ich glaube wir haben die numerischen Daten genügend behandelt. Schauen wir uns zuletzt noch mal die kategorischen Daten an. 
 
@@ -186,41 +227,78 @@ table(Transport)
 Das ist jetzt nicht so spektakulär schwierig zu interpretieren. Schauen wir uns das doch gleich mal optisch an. 
 
 ```{r}
-oldpar <- par(mfrow = c(2,2))
-plot(Transport, las = 2)
-plot(Augenfarbe, las = 2)
-plot(Geschlecht, las = 2)
-plot(Studium, las = 2)
+oldpar <- par(mfrow = c(2,3))
+plot(Transport, las=1)
+plot(Augenfarbe, las=1)
+plot(Geschlecht, las=1)
+plot(SchwierigkeitStudium, las=1)
+plot(Feierabendgetränk, las=1)
+plot(Vegetarier, las=1)
 par(oldpar)
 ```
 
-Ausblick auf nächste Woche ... natürlich liegt es jetzt auf der Hand mal zu schauen ob es Abhängigkeiten zwischen bestimmten Variablen gibt. Zum Beispiel könnten wir uns anschauen ob es eine Abhängigkeit zwischen der Körpergröße und dem Vergehrsmittel gibt. 
+
+
+
+
+
+## Multivariate deskriptive Statistiken (AUSBLICK)
+
+Natürlich liegt es jetzt auf der Hand mal zu schauen ob es Abhängigkeiten zwischen bestimmten Variablen gibt. Zum Beispiel könnten wir uns anschauen ob es eine Abhängigkeit zwischen der Körpergröße und dem Vergehrsmittel gibt. 
 
 ```{r}
-boxplot(Körpergröße ~ Geschlecht)
+boxplot(Körpergröße ~ Geschlecht, las=1)
 ```
+
+Und was ist jetzt die erklärende und was die abhängige Variable?
+
+
 
 Hier geht die Achse aber nicht bei 0 los ... das kann verwirrend sein. So noch mal anders.
 
 ```{r}
-boxplot(Körpergröße ~ Geschlecht, ylim = c(0,350))
+boxplot(Körpergröße ~ Geschlecht, ylim = c(0,200), las=1)
 ```
+
+
+
 
 Sind denn größere Menschen vielleicht auch mehr mit den Fahrad unterwegs?
 
 ```{r}
-boxplot(Körpergröße ~ Transport)
+boxplot(Körpergröße ~ Transport, las=1)
 ```
 
-Da kann man so nicht viel sehen. Vielleicht als letztes noch mal 
+Da kann man so nicht viel sehen. 
+
+
+
+Man kann natürlich auch kategoriale Variablen anschauen. 
+
+Zum Beispiel ob sich das Geschlecht auf den Fleischkonsum auswirkt.
+
+Dazu kann man zwei Variablen gemeinsam tabellarisieren und dann darstellen. Die Größe der Rechtecke zeigt an, wie häufig eine Beobachtung ist. 
 
 
 ```{r}
-plot(Distanz, Einwohnerzahl)
-
+plot(table(Geschlecht, Vegetarier))
 ```
 
-Noch eine Bemerkung für die MSc Arbeit:
+Frauen sind anscheinend häufiger Vegetarier.
+
+
+Und hier Ihre eigenen Hypothesen:
+
+```{r}
+plot(table(Augenfarbe, Vegetarier))
+boxplot(Körpergröße ~ Vegetarier)
+plot(table(SchwierigkeitStudium, Vegetarier))
+```
+
+
+
+
+Noch eine Bemerkung für Abschlussarbeiten:
 
 * Grafiken sollten Sie exportieren als pdf, nicht png oder tiff (weil Vektorgrafik, höhere Qualität und kleine Größe)
 * Kann dann auch mit Illustrator (kommerziell) oder Inkscape nachbearbeitet werden. 
@@ -229,4 +307,14 @@ Noch eine Bemerkung für die MSc Arbeit:
 ```{r}
 detach(Daten)
 ```
+
+
+## Infos zum Schluss
+
+Ab nächster Woche werden nach der Vorlesung Übungsfragen im GRIPS hochgeladen (zur Vorbereitung der Übung). 
+
+Am 2.11. fällt die Übung aus (Infomail folgt).
+
+
+
 
