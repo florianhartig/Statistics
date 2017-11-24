@@ -1,6 +1,45 @@
 # Übung zur Vorlesung 3 - Hypothesentests
-Florian Hartig  
-20 Nov 2016  
+Lisa Hülsmann & Florian Hartig  
+16 Nov 2017  
+
+
+# Wiederholung PCA
+
+Zur Wiederholung der Hauptkomponentenanalyse habe ich Ihnen noch mal ein anschauliches Beispiel vorbereitet.
+
+Es handelt sich um den Datensatz "olympic", der die Ergebnisse von 33 Sportlern im Zehnkampf enthält. Jeder Sportler hat also eine Bewertung in 10 Disziplinen bekommen, also recht multivariat. 
+
+100m Lauf (100), 110m Hürden (110), 1500m Lauf (1500), 400m Lauf (400), Diskus werfen (disq), Hochsprung (haut), Speerwurf (jave), Weitsprung (long), Stabhochsprung (perc), Kugelstoßen (poid)!
+
+Schauen Sie sich die folgenden beiden Darstellungen an.
+
+Der erste ist eine Abbildung der Spearman-Korrelationen. Leistungen welcher Disziplinen sind korreliert, positiv oder negativ? 
+
+In der zweiten Abbildungen sehen sie die ersten beiden Kompenenten der PCA und in rot die Anteile und Richtungen der Disziplinen an den ersten beiden Komponenten. Wo finden sich nun die korrelierten Variablen? Und wie würden Sie die ersten beiden Komponenten interpretieren?
+
+Diskutieren Sie fünf min mit Ihrem Nachbarn. 
+
+
+```
+## Warning: package 'ade4' was built under R version 3.4.2
+```
+
+```
+## Warning: package 'corrplot' was built under R version 3.4.2
+```
+
+```
+## corrplot 0.84 loaded
+```
+
+![](Uebung3_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+Die Laufdisziplinen (auch Hürde) sind positiv miteinander korreliert. Ebenso die Wurfdisziplinen Speer, Diskus und Kugelstoßen. Die Sprungdisziplinen sind leicht positiv miteinander korreliert. Die Lauf- und Sprungdisziplinen sind negativ miteinander korreliert.
+
+Die Pfeile der positiv korrelierten Variablen zeigen in die gleiche Richtung, negativ korrelierte in die entgegengesetzte Richtung. 
+
+Die erste Komponente scheint mehrheitlich die Lauf- und Sprungleistung aufzuzeigen (Tradeoff?). Die zweite Komponente scheint die Kraft eines Sportlers zu beschreiben. 
+
 
 # Variabilität 
 
@@ -15,7 +54,7 @@ x = table(Daten$Geheilt, Daten$Behandlung)
 barplot(x)
 ```
 
-![](Uebung3_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](Uebung3_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 Wenn wir viele Computerexperiment machen sehen wir aber dass dass ein solches Ergebnis nicht außergewöhnlich ist, sondern im Rahmen der normal erwarteten Streuung einer solchen, relativ kleinen Stichprobe liegt. Wenn sie die folgende Animation zu Hause sehen wollen müssten Sie das in R laufen lassen.
 
@@ -132,10 +171,10 @@ for (i in 1:1000){
   test = prop.test(xn)
   p[i] = test$p.value
 }
-hist(p, breaks = 100)
+hist(p, breaks = 100, main= "Histogramm der p-Werte")
 ```
 
-![](Uebung3_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Uebung3_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 mean(p < 0.05) 
@@ -230,7 +269,7 @@ power.prop.test(power = 0.95, p1 = 0.64, p2 = 0.36)
 
 ## False Discovery Rate FDR
 
-Stellen Sie sich vor wir testen 1000 Wirkstoffe gegen Krebs mit unserer vorherigen Stichprobengröße. Nehmen wir mal an dass 95% der Mittel nicht wirken, aber wenn sie wirken dann bewirken sie eine Heilungsrate von 85%, gegenüber 75% ohne das Medikament. Sie testen ihren ersten Wirkstoff und er kommt signifikant zurück. Was ist die Wahrscheinlichkeit dass er wirklich wirkt?
+Stellen Sie sich vor wir testen 1000 Wirkstoffe gegen Krebs mit unserer vorherigen Stichprobengröße (n = 25). Nehmen wir mal an dass 90% der Mittel nicht wirken, aber wenn sie wirken dann bewirken sie eine Heilungsrate von 85%, gegenüber 75% ohne das Medikament. Sie testen ihren ersten Wirkstoff und er kommt signifikant zurück. Was ist die Wahrscheinlichkeit dass er wirklich wirkt?
 
 Antwort: rechen wir erst mal die Power aus:
 
@@ -253,30 +292,35 @@ power.prop.test(n = 25, p1 = 0.85, p2 = 0.75)
 ## NOTE: n is number in *each* group
 ```
 
-Power ist 13%. Also, 13% der Stoffe die wirklich wirken kommen signifikant zurück, aber auch 5% der Stoffe die nicht wirken. Leider gibt es viel mehr Stoffe die nicht wirken. Also ist die Wahrscheinlichkeit dass ihr signifikantes Ergebnis in wirklichkeit eine "Niete" ist
+Power ist 14%. Also, 14% der Stoffe die wirklich wirken kommen signifikant zurück, aber auch 5% der Stoffe die nicht wirken. Leider gibt es viel mehr Stoffe die nicht wirken. Also ist die Wahrscheinlichkeit dass ihr signifikantes Ergebnis in wirklichkeit eine "Niete" ist
 
 
 ```r
-0.95*0.05 / (0.95*0.05  + 0.05*0.13)
+0.05*0.9 / (0.05*0.9  + 0.139*0.1)
 ```
 
 ```
-## [1] 0.8796296
+## [1] 0.7640068
 ```
 
-Wenn uns das zu niedrig ist können haben wir 2 Möglichkeiten. Welche?
+Wenn uns diese False discovery rate zu hoch ist, haben wir 2 Möglichkeiten. Welche?
 
 1. Stichprobengröße erhöhen, das erhöht die Power
 2. Siginfikanzlevel verringert, das verringert die falschen Positiven
+
+
+
+
 
 
 # Andere Tests mit den Daten des Kurses
 
 
 ```r
-Klasse <- read.delim("~/Home/Teaching/Vorlesungen/Statistik/Vorlesungen/16-11-Biostatistik/Biostatistik Vorlesung.csv", na.strings = "")
+Klasse <- read.csv("C:/Users/LocalAdmin/Work/Teaching/@UR/Statistik@Git/Courses/BScBiostatistik/Daten.csv")
 attach(Klasse)
 ```
+
 
 ## Numerisch - Kategorial: der t-Test
 
@@ -287,7 +331,7 @@ Fangen wir doch mal an mit
 boxplot(Körpergröße ~ Geschlecht)
 ```
 
-![](Uebung3_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](Uebung3_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
 Numerische Abhängige Variable, kategorialer Prädiktor - was kann man da nehmen? 
 
@@ -295,39 +339,35 @@ Genau, t-test ... solange?
 
 Genau, Normalverteilung der Gruppen. Schauen wir doch mal optisch
 
-![](Uebung3_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
-
-also, diese Ausreißer mit 300 wären nicht gut. Die nehme ich daher für den t-test raus. 
-
 ![](Uebung3_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
-So sieht es schon besser aus. Aber sind die jetzt wirklich normalverteil? Wie könnte man das denn testen?
+Das sieht nicht so schlecht aus. Aber sind die jetzt wirklich normalverteilt? Wie könnte man das denn testen?
 
 Genau, mit einem Test auf Normalverteilung. Da gibt es den Shapiro-Wilk test
 
 
 ```r
-shapiro.test(Körpergröße[Geschlecht == "Weiblich" & Körpergröße < 220])
+shapiro.test(Körpergröße[Geschlecht == "Weiblich"])
 ```
 
 ```
 ## 
 ## 	Shapiro-Wilk normality test
 ## 
-## data:  Körpergröße[Geschlecht == "Weiblich" & Körpergröße < 220]
-## W = 0.96262, p-value = 0.5705
+## data:  Körpergröße[Geschlecht == "Weiblich"]
+## W = 0.96455, p-value = 0.6911
 ```
 
 ```r
-shapiro.test(Körpergröße[Geschlecht == "Männlich" & Körpergröße < 220])
+shapiro.test(Körpergröße[Geschlecht == "Männlich"])
 ```
 
 ```
 ## 
 ## 	Shapiro-Wilk normality test
 ## 
-## data:  Körpergröße[Geschlecht == "Männlich" & Körpergröße < 220]
-## W = 0.79663, p-value = 0.0548
+## data:  Körpergröße[Geschlecht == "Männlich"]
+## W = 0.85814, p-value = 0.07256
 ```
 
 Was heißt das?
@@ -338,24 +378,24 @@ Bemerkung: die Siginfikanz ist kein strenges Kriterium für die Anwendung des t-
 
 
 ```r
-t.test(Körpergröße[Geschlecht == "Männlich" & Körpergröße < 220], Körpergröße[Geschlecht == "Weiblich" & Körpergröße < 220])
+t.test(Körpergröße[Geschlecht == "Männlich"], Körpergröße[Geschlecht == "Weiblich"])
 ```
 
 ```
 ## 
 ## 	Welch Two Sample t-test
 ## 
-## data:  Körpergröße[Geschlecht == "Männlich" & Körpergröße < 220] and Körpergröße[Geschlecht == "Weiblich" & Körpergröße < 220]
-## t = 5.7724, df = 11.095, p-value = 0.0001201
+## data:  Körpergröße[Geschlecht == "Männlich"] and Körpergröße[Geschlecht == "Weiblich"]
+## t = 5.3891, df = 17.511, p-value = 4.427e-05
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##   7.517661 16.768053
+##   7.088996 16.177671
 ## sample estimates:
 ## mean of x mean of y 
-##  179.0000  166.8571
+##  181.3000  169.6667
 ```
 
-und das ist klar signifikant. War ja auch zu erwarten. Wie sieht es denn aus mit der Beziehung zwischen Körpergröße und Transportmitte? 
+und das ist klar signifikant. War ja auch zu erwarten. Wie sieht es denn aus mit der Beziehung zwischen Körpergröße und Transportmittel? 
 
 
 ```r
@@ -364,62 +404,62 @@ boxplot(Körpergröße ~ Transport)
 
 ![](Uebung3_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
-Ich test mal gegen Auto / Bus, die anderen beiden sind ja sinnlose weil zu wenige Daten
+Ich test mal gegen Zu Fuß / Bus.
 
 
 ```r
-t.test(Körpergröße[Transport == "Bus" & Körpergröße < 220], Körpergröße[Transport == "Auto" & Körpergröße < 220])
+t.test(Körpergröße[Transport == "Bus"], Körpergröße[Transport == "Zu Fuß" & Körpergröße < 220])
 ```
 
 ```
 ## 
 ## 	Welch Two Sample t-test
 ## 
-## data:  Körpergröße[Transport == "Bus" & Körpergröße < 220] and Körpergröße[Transport == "Auto" & Körpergröße < 220]
-## t = 1.2939, df = 15.766, p-value = 0.2143
+## data:  Körpergröße[Transport == "Bus"] and Körpergröße[Transport == "Zu Fuß" & Körpergröße < 220]
+## t = -1.1657, df = 13.547, p-value = 0.2639
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -2.56592 10.58063
+##  -10.813909   3.213909
 ## sample estimates:
 ## mean of x mean of y 
-##  170.8824  166.8750
+##     171.7     175.5
 ```
 
 nein, einen siginfikanten Effek können wir hier nicht nachweisen. 
 
 
-### Numerisch-Numerisch: Test auf Signifikanz der Korrelation
+## Numerisch-Numerisch: Test auf Signifikanz der Korrelation
 
-Frage: was ist H0?
+Frage: was ist in diesem Fall H0?
 
 Antwort: keine Korrelation. Diese Nullhypothese können Sie so testen
 
 
 ```r
-plot(Körpergröße, Distanz)
+plot(Körpergröße, Einwohnerzahl)
 ```
 
 ![](Uebung3_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
 
 ```r
-cor.test(Körpergröße, Distanz)
+cor.test(Körpergröße, Einwohnerzahl)
 ```
 
 ```
 ## 
 ## 	Pearson's product-moment correlation
 ## 
-## data:  Körpergröße and Distanz
-## t = 1.4643, df = 27, p-value = 0.1547
+## data:  Körpergröße and Einwohnerzahl
+## t = 3.6472, df = 26, p-value = 0.001165
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  -0.1057770  0.5800824
+##  0.2665525 0.7845647
 ## sample estimates:
-##       cor 
-## 0.2712442
+##      cor 
+## 0.581775
 ```
 
-### Kategorial-Kategorial: Test auf Assoziation in Kontingenztabellen
+## Kategorial-Kategorial: Test auf Assoziation in Kontingenztabellen
 
 Frage: was ist H0?
 
@@ -442,7 +482,7 @@ chisq.test(table(Geschlecht, Augenfarbe))
 ## 	Pearson's Chi-squared test
 ## 
 ## data:  table(Geschlecht, Augenfarbe)
-## X-squared = 1.2072, df = 2, p-value = 0.5468
+## X-squared = 3.8465, df = 2, p-value = 0.1461
 ```
 
 Allerdings bekommen wir hier eine Warnung ... die kommt weil wir eine sehr kleine Stichprobebgröße haben, hierfür ist der Test nicht ausgelegt. In dem Fall ist der Test von Fischer besser
@@ -458,7 +498,7 @@ fisher.test(table(Geschlecht, Augenfarbe))
 ## 	Fisher's Exact Test for Count Data
 ## 
 ## data:  table(Geschlecht, Augenfarbe)
-## p-value = 0.6294
+## p-value = 0.1976
 ## alternative hypothesis: two.sided
 ```
 
@@ -467,8 +507,46 @@ Aber auch der ist nicht signifikant
 
 
 
+# Testfragen
 
 
+1) 
+ a) Stellen Sie sich vor Sie leben in Venedig, und es gibt 3 Taxibootfirmen. Sie wollen wissen ob es Unterschiede in der Beförderungsgeschwindigkeit gibt und machen deshalb 300 Fahrten mit jeder Firma und stoppen die Zeit. Was wäre eine geignete Nullhypothese H0, um auf einen Unterschied zu testen?
+ b) Bonusfrage: Nennen Sie eine der vielen möglichen sinnvollen Teststatistiken.
+
+ 
+2)
+a)	In einer klinischen Studie wurde getestet, ob ein neuartiges Medikament zu einer Gewichtabnahme führt. Gemessen wurde die Gewichtsveränderung von Probanden nach 4 Wochen. Probanden waren in zwei Gruppen unterteilt, eine Kontrollgruppe (Placebo), und eine Behandlungsgruppe (Medikament). Die gemessenen Gewichtsveränderungen wurden durch einen t-Test ausgewertet. Geben Sie die Nullhypothese H0 des t-Tests an, inklusive der Verteilungsannahme.
+ b) Das Ergebnis des t-Tests ergibt eine p-Wert von 0.03. Der Studienleiter berichtet seinem Chef von dem Experiments und sagt: "Der p-Wert war ungefähr 3%, also besteht nur eine 3% Restwahrscheinlichkeit dass das Medikament nicht wirkt” – was ist an dieser Aussage falsch? Begründen Sie die Antwort, indem Sie die Definition des p-Wertes erklären.
+ c) Sie bekommen die weitere Information, dass die Teststärke der klinischen Studie 80% war, und die a priori Wahrscheinlichkeit p(H0) dass das Medikament nicht wirkt 50%. Mit dem üblichen Signifikanzniveau von 0.05, wie wahrscheinlich ist es in einer solchen Studie ein signifikantes Ergebnis zu erhalten, auch wenn das Medikament keine Wirkung hat (False Discovery Rate)?
 
 
+3)
+ a) Definierent Sie den Typ I Fehler (falsch positive). 
+ b) Wie viel Typ I Fehler erwarten Sie bei einen Signifikanzlevel von 7%? 
+ c) Definieren Sie den Typ II Fehler (falsch negative). 
+ d) Wie viel Typ II Fehler erwarten Sie bei einen Signifikanzlevel von 7%?
+ 
+ 
+# Antworten
 
+1)
+  a) H0: Die durchschnittliche Zeit aller 3 Firmen ist gleich. 
+  b) Mögliche Antworten: Varianz der 3 Mittelwerte, Unterschied größter / kleinster Mittelwert, Durchschnitt der Differenzen der Mittelwerte, . . . [alles womit man die Firmen vergleichen könnte .. natürlich könnten Sie auch Mittelwert durch Median ersetzen].
+  
+  
+2)
+  a) H0: Die Mittelwerte der Gewichtsveränderungen beider Behandlungsgruppen sind gleich. Die Gewichtsveränderungen beider Gruppen sollen normalverteilt sein. 
+ b) Der Studienleiter meint die false discovery rate. Der p-Wert sagt nur wie wahrscheinlich die Daten und noch extremere Werte unter Annahme der Null-Hypothese sind: p(d >= Dobs|H0). 
+ c) FDR = 0.5 * 0.05 / (0.5 * 0.05 + 0.5 * 0.8)
+ 
+ 
+3)
+ a) Wahrscheinlichkeit dass der p-Wert signifikant wird wenn H0 wahr ist. 
+ b) 7%. 
+ c) Wahrscheinlichkeit dass der p-Wert nicht signifikant wird wenn H0 nicht wahr ist. 
+ d) Nur mit dieser Information kann man das nicht sagen, weil der Typ II von mehreren Faktoren abhängt.
+ 
+ 
+ 
+ 
