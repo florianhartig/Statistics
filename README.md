@@ -7,7 +7,7 @@ Teaching material for statistics by [Florian Hartig](http://www.uni-regensburg.d
 Einführung in die Statistik auf Deutsch
 
 * Skript "Grundlagen der Statistik" [pdf](https://www.dropbox.com/s/ow7ninhjy4zppf6/GrundlagenDerStatistik.pdf?dl=0)
-* [Übungen zum Skript](https://github.com/florianhartig/Statistics/blob/master/Exercises/BScBiostatistik/readme.md)
+* [Übungen zum Skript](https://github.com/florianhartig/Statistics/tree/master/Courses/BScBiostatistik)
 
 More or less the same in English 
 
