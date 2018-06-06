@@ -1,6 +1,6 @@
 # Übung zur Vorlesung 2 - Multivariate Deskriptive Statistik
-Florian Hartig  
-14 Nov 2016  
+Lisa Hülsmann & Florian Hartig  
+9 Nov 2017  
 
 
 
@@ -18,30 +18,30 @@ Florian Hartig
 
 
 ```r
-Klasse <- read.delim("~/Home/Teaching/Vorlesungen/Statistik/Vorlesungen/16-11-Biostatistik/Biostatistik Vorlesung.csv", na.strings = "")
+Klasse <- read.csv("C:/Users/LocalAdmin/Work/Teaching/@UR/Statistik@Git/Courses/BScBiostatistik/Daten.csv")
 attach(Klasse)
 ```
 
 
 ## Assoziation zweier nominaler Variablen
 
-Schauen wir uns doch mal an ob die Augenfarbe was damit zu tun hat wie schwer sie das Studium finden - so ein Effekt ist zwar nicht zu erwarten, aber es ermöglichst uns ein paar Plots zu machen. 
+Schauen wir uns doch mal an ob die Augenfarbe was damit zu tun hat wie schwer Sie das Studium finden - so ein Effekt ist zwar nicht zu erwarten, aber es ermöglichst uns ein paar Plots zu machen. 
 
 In der Kontingenztabelle sehen wir die Häufigkeit der verschiedenen Kombinationen
 
 
 
 ```r
-Kontingenztabelle = table(Augenfarbe, Studium)
+Kontingenztabelle = table(Augenfarbe, SchwierigkeitStudium)
 Kontingenztabelle
 ```
 
 ```
-##           Studium
+##           SchwierigkeitStudium
 ## Augenfarbe Leicht Mittel Schwer
-##      Blau       0      9      5
-##      Braun      0      2      5
-##      Grün       1      5      2
+##      Blau       0      7      4
+##      Braun      2      2      8
+##      Grün       1      1      3
 ```
 
 Frage: wie kann man die Kontingenztabelle visualisieren? 
@@ -70,9 +70,9 @@ mosaicplot(Kontingenztabelle)
 
 ![](Uebung2_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
-Frage: Wie ist das jetzt - zeigen die Daten dass Studierende mit grünen Augen ihr Studium leichter finden?
+Frage: Wie ist das jetzt - zeigen die Daten dass Studierende mit braunen Augen ihr Studium schwerer finden?
 
-Richtige Antwort: nein! Um solche Schlüsse zu ziehen brauchen wir die inferentielle Statistik (nächste Woche). Die deskriptive Statistik sagt erst mal nur faktisch dass in diesen Daten die einzige Person die "leicht"" angekreuzt hat grüne Augen hatte. Die deskriptive Statistik ist aber kein Instrument um daraus allgemeine Schlüsse über einen Zusammenhang zu ziehen.
+Richtige Antwort: nein! Um solche Schlüsse zu ziehen brauchen wir die inferentielle Statistik (nächste Woche). Die deskriptive Statistik sagt erst mal nur faktisch dass in diesen Daten viele Personen, die braune Augen haben, "schwer" angekreuzt haben. Die deskriptive Statistik ist aber kein Instrument um daraus allgemeine Schlüsse über einen Zusammenhang zu ziehen.
 
 ## Assoziation von numerisch und kategorial (nominal)
 
@@ -97,7 +97,7 @@ Darstellung
 
 
 ```r
-plot(log10(Einwohnerzahl), log10(Distanz + 1))
+plot(log10(Einwohnerzahl), Körpergröße)
 ```
 
 ![](Uebung2_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
@@ -106,7 +106,7 @@ Nehmen wir mal die Körpergröße als Info dazu
 
 
 ```r
-plot(log10(Einwohnerzahl), log10(Distanz + 1), cex = Körpergröße /100, pch = 16)
+plot(log10(Einwohnerzahl), Körpergröße, cex = log10(Distanz + 1))
 ```
 
 ![](Uebung2_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
@@ -115,7 +115,7 @@ Und dann noch die Augenfarbe
 
 
 ```r
-plot(log10(Einwohnerzahl), log10(Distanz + 1), cex = Körpergröße /100, pch = 16, col = c("darkblue", "brown", "darkgreen")[Augenfarbe])
+plot(log10(Einwohnerzahl), Körpergröße, cex = log10(Distanz + 1), pch = 16, col = c("darkblue", "brown", "darkgreen")[Augenfarbe])
 ```
 
 ![](Uebung2_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
@@ -126,14 +126,16 @@ Dann schauen wir mal
 
 
 ```r
-cor(log10(Einwohnerzahl), log10(Distanz + 1), use = "complete.obs")
+cor(log10(Einwohnerzahl), Körpergröße, use = "complete.obs")
 ```
 
 ```
-## [1] -0.1574264
+## [1] 0.4175573
 ```
 
-hmm, negativ ... optisch sieht das doch eher positiv aus ... der Standard in R ist Pearson. Versuchen wir doch mal die Rank-correlation 
+das sieht ja nach einer starken Korrelation aus! Aber stimmt das?
+
+der Standard in R ist Pearson. Versuchen wir doch mal die Rank-correlation 
 
 
 ```r
@@ -141,16 +143,27 @@ cor(log10(Einwohnerzahl), log10(Distanz + 1), use = "complete.obs", method = "ke
 ```
 
 ```
-## [1] 0.1031584
+## [1] 0.01879332
 ```
 
-Jetzt ist es leicht positv ... also, merken Sie sich - das Kleingedruckte lesen bei Korrelationen - Pearson (linear) und Rangkorrelationen (Spearman, Kendall) zeigen oft Unterschiede. 
+```r
+cor(log10(Einwohnerzahl), log10(Distanz + 1), use = "complete.obs", method = "spearman")
+```
+
+```
+## [1] 0.01782534
+```
+
+Jetzt ist es nur noch leicht positv ... Das liegt am Ausreißer: die größte Person kam aus der größten Stadt!
+
+
+also, merken Sie sich - das Kleingedruckte lesen bei Korrelationen - Pearson (linear) und Rangkorrelationen (Spearman, Kendall) zeigen oft Unterschiede. 
 
 Als letztes noch mal ein pairplot ... machen Sie sich klar dass das nur lineare Korrelationen sind
 
 
 ```r
-pairs(cbind(log10(Einwohnerzahl), log10(Distanz + 1), Körpergröße))
+pairs(data.frame(Einwohnerzahl=log10(Einwohnerzahl), Distanz=log10(Distanz + 1), Körpergröße))
 ```
 
 ![](Uebung2_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
@@ -159,6 +172,18 @@ pairs(cbind(log10(Einwohnerzahl), log10(Distanz + 1), Körpergröße))
 
 
 
+```
+## Warning: package 'effects' was built under R version 3.4.2
+```
+
+```
+## Loading required package: carData
+```
+
+```
+## lattice theme set by effectsTheme()
+## See ?effectsTheme for details.
+```
 
 
 
@@ -236,6 +261,20 @@ a) Sind die Datenpunkte korreliert (deskriptiv), und wenn ja, positiv oder negat
 b) Denken Sie dass es einen deutlichen Unterschied zwischen den Korrelationskoeffizienten von Pearson und Spearman gibt?
 
 
+5. Schauen Sie sich die folgende PCA an  (nun sind zur vorherigen Abbildung noch zwei Variablen hinzugekommen).
+
+
+```r
+biplot(prcomp(iris[, 1:4], scale. = T), xlim=c(-0.25, 0.25), ylim=c(-0.25, 0.25), col=c("grey", "red"), cex=0.8)
+```
+
+![](Uebung2_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+
+a) Was zeigen die roten Pfeile an?
+
+b) Welche der Variablen entspricht der zweiten Achse?
+
+c) Wenn man nur zwei Variablen aufnehmen könnte: Mit welchen beiden Variablen zusammen würde man am meisten Variabilität der Daten erklären?
 
 
 # Antworten
@@ -260,7 +299,7 @@ abline(v = quantile(exp(data), probs  = c(0.25,0.5,0.75)), col = "red", lwd = 2)
 abline(v = mean(exp(data)), col = "green", lwd = 2)
 ```
 
-![](Uebung2_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](Uebung2_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
 ## Multivariat
 
@@ -272,7 +311,7 @@ abline(v = mean(exp(data)), col = "green", lwd = 2)
 
 4. -a) ja, positiv, b) es gibt zwar diesen Cluster an Punkten links unten, aber da die Daten trotzdem mehr oder weniger linear sind, eher nicht (in der Tat, die Werte sind 0.87 und 0.88). 
 
-
+5. a) den Beitrag der vier Variablen an den beiden Achsen / Hauptkomponenten b) Sepal.Width (und ein wenig Sepal.Length) c) Petal.Length und Sepal.Width
 
 
 
