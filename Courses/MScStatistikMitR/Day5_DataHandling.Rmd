@@ -1,0 +1,141 @@
+---
+title: "Data handling"
+author: "Lisa Hülsmann"
+date: "18 Mai 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reading excel files
+
+Let's import a new dataset from excel. This is possible with the package readxl. 
+```{r}
+
+library(readxl)
+test = read_excel("../data/test.xlsx")
+```
+
+R Markdown files use their own working directory. So you have to provide the path relative to the location of the RMarkdown file!!!
+
+```{r}
+str(test) # this is a tibble and a data.frame
+
+```
+
+Data imported with read_excel() is stored as a tibble and a data.frame. For typical analysis we have to convert it to data.frame.
+
+```{r}
+testDF = as.data.frame(test)
+str(testDF)
+```
+
+# Solution of the exercise
+
+## Read data into R
+
+First, you read in the files using read.csv(). You have to modify the separator. 
+
+```{r}
+treedata = read.csv("../data/treedata.csv", sep = ";")
+species = read.csv("../data/species.csv", sep = ";")
+# View(species)
+```
+
+Note that the View() function is not printed in the Rmarkdown output.
+
+## Dataset properties
+
+To get an overview of the structure of a dataset we use str().
+```{r}
+str(treedata)
+```
+
+The dataset has four colums: species code, dbh (diameter at breast height [cm]), heigth [m] and remarks. We would expect the following classes:
+
+species code: integer
+dbh: numeric
+height: numeric
+rem: factor
+
+But dbh is not numeric but a factor. 
+
+## Change to numeric and remove weird values
+
+Searching for the X
+```{r}
+select = treedata$dbh == "X"
+
+# alternatives
+select = treedata$dbh %in% LETTERS | treedata$dbh %in% letters
+
+# or if even two letters are possible
+select = grepl("^[A-Za-z]+$", treedata$dbh, perl = T)
+
+```
+
+replace it in the vector and convert to numeric.
+Note that you have to convert to character before!!!
+Otherwise the facto levels will be the numbers you obtain.
+
+```{r}
+treedata$dbh[select] = NA
+treedata$dbh = as.numeric(as.character(treedata$dbh))
+```
+
+## How many NA values in height?
+
+```{r}
+sum(is.na(treedata$height)) # sum of a logical vector = number of TRUE
+```
+There are 221 NA values.
+
+
+
+## Implausible values
+
+```{r}
+pairs(treedata[, c("dbh", "height")])
+```
+
+One height and one DBH are very strange: a tree larger that 100 m? or a dbh of 2000 cm?
+Lets put these to NA.
+
+```{r}
+select = treedata$height > 60 & !is.na(treedata$height) # larger 60 and not NA
+treedata$height[select] = NA
+
+select = treedata$dbh > 1000 & !is.na(treedata$dbh) # larger 60 and not NA
+treedata$dbh[select] = NA
+pairs(treedata[, c("dbh", "height")])
+```
+
+
+
+## add information from a lookup table
+
+Use match() or merge()
+```{r}
+treedata$specie_english = species$species_english[match(treedata$species_code, species$species_code)]
+```
+
+
+
+## Summarizing data
+
+```{r}
+# install.packages("dplyr")
+library(dplyr)
+
+summary = treedata %>% 
+  group_by(specie_english) %>% 
+  summarise(meanDBH = mean(dbh, na.rm = T), 
+            meadianDBH = median(dbh, na.rm = T))
+
+
+```
+
+
+
