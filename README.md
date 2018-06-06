@@ -15,7 +15,7 @@ More or less the same in English
 
 ## Blockkurs Einführung in die Statistik mit R
 
-Will be added soon 
+* Class exercises [here](https://github.com/florianhartig/Statistics/tree/master/Courses/MScStatistikMitR)
 
 ## Advanced Biostatistics 
 
