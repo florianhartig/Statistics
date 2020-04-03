@@ -1,0 +1,269 @@
+---
+title: "Variation Partitioning"
+author: "Florian Hartig"
+date: "4/3/2020"
+abstract: Analysis of Variance, Variance partitioning, Communality Analysis, Variance component analysis – what’s the difference.
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# The problem
+
+We have a regression of the form: 
+
+Y ~ x1 + x2
+
+We want to know how important x1 and x2 for explaining the signal in y. By important, we mean (in principle R2), i.e. the reduction in R2. Let's look at this example that all of you probably know
+
+```{r}
+m = lm(Ozone ~ Wind + Temp , data = airquality)
+summary(m)
+```
+
+Note that we can read off the R2 in the regression table (+ adjusted R2, more on that later). The standard ANOVA (type I) is doing this by adding one variable after the other, and measuring how much the explained R2 is being reduced
+
+```{r}
+anova(m)
+```
+
+## Anova vs. other option to partition variance 
+
+For numeric predictors ANOVA will be similar to effect sizes with scaled predictors IF predictors are balanced and uniformly distributed
+
+```{r}
+m = lm(Ozone ~ scale(Wind) + scale(Temp) , data = airquality)
+summary(m)
+```
+
+For categorical predictors, ANOVA will be similar to random effect variances IF data is balanced 
+
+
+```{r}
+m = lm(Ozone ~ as.factor(Month) + as.factor(Day) , data = airquality)
+anova(m)
+
+library(lme4)
+m = lmer(Ozone ~ (1|Month) + (1|Day) , data = airquality)
+summary(m)
+```
+
+To use the random effects like this is called **variance component analysis**, see 
+
+* Designs for Variance Components Estimation: Past and Present https://sci-hub.tw/https://doi.org/10.1111/j.1751-5823.2000.tb00333.x
+* Analysis of variance (ANOVA) and estimation of variance components http://www.fao.org/3/y4391e/y4391e07.htm
+* R-Package VCA for Variance Component Analysis
+
+From the Vignette of the VCA package: 
+
+VCA are a way to assess how the variability of a dependent variable is structured taking into account its association with one or multiple random-effects variables. Proportions of the total variability found to be attributed to these random effects variables are called variance components (VC). Thus, VCA is the procedure of estimating the amount of the VCs’ contribution to the total variability in the dependent variable. Moreover, there are methods provided for estimating confidence intervals (CI) of VCs along with different graphical tools to better understand the data and for detecting outliers. Also included, but usually of less importance in the field of VCA: Estimation of fixed effects and least square means (LS means) as well as testing linear hypotheses of fixed effects/LS means of linear mixed models (LMMs).
+
+## Shared components and interactions
+
+
+Problem of that: if we turn it around, we get another result, because there is collinearity in the variables  
+
+```{r}
+m = lm(Ozone ~ Temp + Wind , data = airquality)
+anova(m)
+```
+
+
+## Commonality analysis
+
+To calculate the differences is known as Commonality Analysis
+
+* Ray‐Mukherjee, Jayanti, Kim Nimon, Shomen Mukherjee, Douglas W. Morris, Rob Slotow, and Michelle Hamer. 2014. “Using Commonality Analysis in Multiple Regressions: A Tool to Decompose Regression Effects in the Face of Multicollinearity.” Methods in Ecology and Evolution 5 (4): 320–28. https://doi.org/10.1111/2041-210X.12166.
+* Seibold, David R., and Robert D. McPhee. 1979. “Commonality Analysis: A Method for Decomposing Explained Variance in Multiple Regression Analyses.” Human Communication Research 5 (4): 355–65. https://doi.org/10.1111/j.1468-2958.1979.tb00649.x.
+
+
+```{r}
+library(yhat)
+
+## All-possible-subsets regression
+apsOut=aps(airquality,"Ozone",list("Temp", "Wind","Solar.R"))
+
+## Commonality analysis
+x = commonality(apsOut)
+x
+```
+
+Note the negative shared components. Happens sometimes, always a point of discussoin. 
+
+It's also common to visualize this via Venn diagrams. Note I had to change the negative values so that it's possible to draw this
+
+
+```{r}
+library(VennDiagram)
+venn.plot <- draw.triple.venn(sum(x[c(1,4,5,7),1]), 
+                                sum(x[c(2,4,6,7),1]), 
+                                sum(x[c(3,4,6,7),1]), 
+                                x[4,1], 0.01, x[5,1], 0.00001,
+                                c("Temp", "Wind", "Solar.R"), fill = c("red", "blue", "yellow"), cat.cex = 1.5, cat.dist = 0.05);
+grid.newpage();
+grid.draw(venn.plot);
+```
+
+This is identical to what is done in variation partitioning in community analysis, only that here the model is different - we are not using a simple regression, but somethingl like an RDA, see 
+
+* https://mb3is.megx.net/gustame/constrained-analyses/variation-partitioning
+* https://academic.oup.com/jpe/article/1/1/3/1130269 (Legendre, looks good)
+* https://sci-hub.tw/10.1658/1100-9233(2003)014[0693:ptviap]2.0.co;2
+
+
+## Type I, II, III Anova
+
+Type I, II, III Anova is basically about how to distribute the shared components. 
+
+Type I SS is sequential, main effects first:
+SS(A)
+SS(B|A)
+SS(A*B|A,B)
+
+Type II SS is conditional on main effects, and sequential for interactions - note that SS don't add up to 1:
+SS(A|B)
+SS(B|A)
+SS(A*B|A,B)
+
+Type III SS is conditional on main effects and interactions:
+SS(A|B,A*B)
+SS(B|A,A*B)
+SS(A*B|A,B)
+
+Thus, type III SS tell you how much of the residual variability in Y can be accounted for by A after having accounted for everything else, and how much of the residual variability in Y can be accounted for by B after having accounted for everything else as well, and so on. (Note that both go both first and last simultaneously; if this makes sense to you, and accurately reflects your research question, then use type III SS.)
+
+Hector, Andy, Stefanie Von Felten, and Bernhard Schmid. 2010. “Analysis of Variance with Unbalanced Data: An Update for Ecology & Evolution.” Journal of Animal Ecology 79 (2): 308–16. https://doi.org/10.1111/j.1365-2656.2009.01634.x.
+
+
+```{r}
+m = lm(Ozone ~ Wind * Temp , data = airquality)
+summary(m)
+anova(m)
+library(car)
+Anova(m, type = 2)
+Anova(m, type = 3)
+```
+
+
+## Adjusting for complexity 
+
+One issue that has been discussed on the VP literature is how to adjust for complexity. The basic question is - should we use raw or adjusted R2 for the VP, see Pedro’s paper https://doi.org/10.1890/0012-9658(2006)87[2614:VPOSDM]2.0.CO;2
+
+There are various discussions about whether VP works in practice, although it's often a bit dubious what exatly the problem is  https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/j.1365-2664.2010.01861.x
+
+# Simulations 
+
+```{r}
+# Balanced design 
+
+n = 10000
+
+f2 = runif(10)
+f1 = runif(10)
+
+x1 = sample.int(10, n, prob = rep(1,10), replace = T)
+x2 = sample.int(10, n, prob = rep(1,10), replace = T)
+
+e1 = 1
+e2 = 1
+
+y = rnorm(n, mean = e1 *f1[x1] + e2 * f2[x2], sd = 0.3)
+
+dat = data.frame(y = y, x1 = factor(x1), x2 = factor(x2))
+
+m1 = lm(y ~ x1 * x2, data = dat)
+summary(m1)
+
+# sequential
+anova(m1)
+
+# type II/III
+library(car)
+anova(m1) # type 1
+Anova(m1, type = "II") # there is no difference, because there is no collinearity
+Anova(m1, type = "III")
+
+library(lme4)
+m1 = lmer(y ~ (1|x1) + (1|x2), data = dat)
+summary(m1)
+
+# note that we have to compare variance to conform to ANOVA
+
+#analogy for varpart 
+library(vegan)
+?varpart
+
+
+# Unbalanced design 
+
+n = 10000
+
+f2 = runif(10)
+f1 = runif(10)
+
+x1 = sample.int(10, n, prob = c(10, rep(0.1,9)), replace = T)
+x2 = sample.int(10, n, prob = rep(1,10), replace = T)
+
+e1 = 1
+e2 = 1
+
+y = rnorm(n, mean = e1 *f1[x1] + e2 * f2[x2], sd = 0.3)
+
+dat = data.frame(y = y, x1 = factor(x1), x2 = factor(x2))
+
+m1 = lm(y ~ x1 + x2, data = dat)
+summary(m1)
+
+# sequential
+anova(m1)
+
+# type II/III
+library(car)
+Anova(m1, type = "II")
+
+library(lme4)
+m1 = lmer(y ~ (1|x1) + (1|x2), data = dat)
+summary(m1)
+```
+
+
+
+
+```{r}
+
+
+
+# Simulations to see how we can use GLMs to partition variation between 3 variables in a glm
+
+x1 = rnorm(10)
+x2 = rnorm(10)
+x3 = rnorm(10)
+
+df = expand.grid(as.factor(x1), as.factor(x2), as.factor(x3))
+resp = plogis(x1[df$Var1] + x2[df$Var2] + x3[df$Var3] )
+df$y = rbinom(nrow(df), 10, resp)
+
+fit1 <- glm(y/10 ~ (Var1 + Var2 + Var3)^2 , data = df, family = binomial, weights = rep(10, nrow(df)) )
+summary(fit1)
+
+# this is completely wrong
+anova(fit1)
+
+# not much better
+library(car)
+
+Anova(fit1, type = "III")
+
+
+library(lme4)
+fit <- glmer(y/10 ~ 1 + (1|Var1) + (1|Var2) + (1|Var3) + (1|Var1:Var2) + (1|Var1:Var3) + (1|Var2:Var3), data = df, family = binomial, weights = rep(10, nrow(df)) )
+summary(fit)
+
+# there is also an option on lmerTest to do an ANOVA-type table for REs https://rdrr.io/cran/lmerTest/man/ranova.html, but not for glmer
+```
+
