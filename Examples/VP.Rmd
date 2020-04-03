@@ -65,24 +65,33 @@ VCA are a way to assess how the variability of a dependent variable is structure
 
 ## Shared components and interactions
 
-
-Problem of that: if we turn it around, we get another result, because there is collinearity in the variables  
+Problem in the standard anova: if we turn the order of variables around, we get another result, because there is collinearity in the variables  
 
 ```{r}
 m = lm(Ozone ~ Temp + Wind , data = airquality)
 anova(m)
 ```
 
-
-## Commonality analysis
+### Commonality analysis
 
 To calculate the differences is known as Commonality Analysis
 
 * Ray‐Mukherjee, Jayanti, Kim Nimon, Shomen Mukherjee, Douglas W. Morris, Rob Slotow, and Michelle Hamer. 2014. “Using Commonality Analysis in Multiple Regressions: A Tool to Decompose Regression Effects in the Face of Multicollinearity.” Methods in Ecology and Evolution 5 (4): 320–28. https://doi.org/10.1111/2041-210X.12166.
+
 * Seibold, David R., and Robert D. McPhee. 1979. “Commonality Analysis: A Method for Decomposing Explained Variance in Multiple Regression Analyses.” Human Communication Research 5 (4): 355–65. https://doi.org/10.1111/j.1468-2958.1979.tb00649.x.
 
 
 ```{r}
+m = lm(Ozone ~ scale(Temp) + scale(Wind) + scale(Solar.R) , data = airquality)
+summary(m)
+```
+
+
+
+```{r}
+
+
+
 library(yhat)
 
 ## All-possible-subsets regression
@@ -99,11 +108,12 @@ It's also common to visualize this via Venn diagrams. Note I had to change the n
 
 
 ```{r}
+# note - I'not correctly calculating the shared components here, need to corret this
 library(VennDiagram)
-venn.plot <- draw.triple.venn(sum(x[c(1,4,5,7),1]), 
-                                sum(x[c(2,4,6,7),1]), 
-                                sum(x[c(3,4,6,7),1]), 
-                                x[4,1], 0.01, x[5,1], 0.00001,
+venn.plot <- draw.triple.venn(sum(x[c(1,4,5,7),2]), 
+                                sum(x[c(2,4,6,7),2]), 
+                                sum(x[c(3,4,6,7),2]), 
+                                x[4,2], 0.01, x[5,2], 0.00001,
                                 c("Temp", "Wind", "Solar.R"), fill = c("red", "blue", "yellow"), cat.cex = 1.5, cat.dist = 0.05);
 grid.newpage();
 grid.draw(venn.plot);
@@ -116,7 +126,7 @@ This is identical to what is done in variation partitioning in community analysi
 * https://sci-hub.tw/10.1658/1100-9233(2003)014[0693:ptviap]2.0.co;2
 
 
-## Type I, II, III Anova
+### Type I, II, III Anova
 
 Type I, II, III Anova is basically about how to distribute the shared components. 
 
@@ -161,24 +171,18 @@ There are various discussions about whether VP works in practice, although it's 
 ```{r}
 # Balanced design 
 
-n = 10000
-
+n = 100
 f2 = runif(10)
 f1 = runif(10)
-
 x1 = sample.int(10, n, prob = rep(1,10), replace = T)
 x2 = sample.int(10, n, prob = rep(1,10), replace = T)
-
 e1 = 1
 e2 = 1
 
 y = rnorm(n, mean = e1 *f1[x1] + e2 * f2[x2], sd = 0.3)
-
 dat = data.frame(y = y, x1 = factor(x1), x2 = factor(x2))
 
-m1 = lm(y ~ x1 * x2, data = dat)
-summary(m1)
-
+m1 = lm(y ~ x1 + x2, data = dat)
 # sequential
 anova(m1)
 
