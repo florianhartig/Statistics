@@ -4,24 +4,26 @@ Teaching material for statistics by [Florian Hartig](http://www.uni-regensburg.d
 
 ## BSc Grundvorlesung Statistk
 
-Einführung in die Statistik auf Deutsch
-
+* GRIPS course [here](https://elearning.uni-regensburg.de/course/view.php?id=491)
 * Skript "Grundlagen der Statistik" [pdf](https://www.dropbox.com/s/ow7ninhjy4zppf6/GrundlagenDerStatistik.pdf?dl=0)
-* [Übungen zum Skript](https://github.com/florianhartig/Statistics/tree/master/Courses/BScBiostatistik)
+* English translation: Essential Statistics [pdf](https://www.dropbox.com/s/s38ge7pjgf55qs1/EssentialStatistics.pdf?dl=0)
 
-More or less the same in English 
+## Block course: Introduction to Statistics with R
 
-* Essential Statistics [pdf](https://www.dropbox.com/s/s38ge7pjgf55qs1/EssentialStatistics.pdf?dl=0)
+* GRIPS course [here](https://elearning.uni-regensburg.de/course/view.php?id=30940)
+* Lecture notes
 
-## Blockkurs Einführung in die Statistik mit R
+## Block course: Advanced Biostatistics with R
 
-* Class exercises [here](https://github.com/florianhartig/Statistics/tree/master/Courses/MScStatistikMitR)
+* GRIPS course [here](https://elearning.uni-regensburg.de/course/view.php?id=30941)
+* Lecture notes
 
-## Advanced Biostatistics 
+## Block course: Machine Learning and AI
 
-Will be added soon 
+* GRIPS course [here](https://elearning.uni-regensburg.de/course/view.php?id=37685)
+* Lecture notes [here](https://theoreticalecology.github.io/machinelearning/index.html)
 
-## Bayesian Statistics
+## Block course: Bayesian Statistics
 
 See [here](https://github.com/florianhartig/LearningBayes) 
 
