@@ -27,4 +27,4 @@ Teaching material for statistics by [Florian Hartig](http://www.uni-regensburg.d
 
 See [here](https://github.com/florianhartig/LearningBayes) 
 
-**Note**: Unless noted otherwise, all materials are licenced [CC-BY-ND-NC 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+**Note**: Unless noted otherwise, all materials are licenced [CC-BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
